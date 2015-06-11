@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C43780531B2933080018BD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780521B2933080018BD41 /* AppDelegate.swift */; };
+		C43780551B2933080018BD41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780541B2933080018BD41 /* ViewController.swift */; };
+		C43780581B2933080018BD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C43780561B2933080018BD41 /* Main.storyboard */; };
+		C437805A1B2933080018BD41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43780591B2933080018BD41 /* Images.xcassets */; };
+		C437805D1B2933080018BD41 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437805B1B2933080018BD41 /* LaunchScreen.xib */; };
+		C43780691B2933080018BD41 /* GiveDirectlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780681B2933080018BD41 /* GiveDirectlyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C43780631B2933080018BD41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C43780451B2933080018BD41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C437804C1B2933080018BD41;
+			remoteInfo = GiveDirectly;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C437804D1B2933080018BD41 /* GiveDirectly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiveDirectly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C43780511B2933080018BD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C43780521B2933080018BD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C43780541B2933080018BD41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C43780571B2933080018BD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C43780591B2933080018BD41 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C437805C1B2933080018BD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C43780621B2933080018BD41 /* GiveDirectlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiveDirectlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C43780671B2933080018BD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C43780681B2933080018BD41 /* GiveDirectlyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveDirectlyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C437804A1B2933080018BD41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C437805F1B2933080018BD41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C43780441B2933080018BD41 = {
+			isa = PBXGroup;
+			children = (
+				C437804F1B2933080018BD41 /* GiveDirectly */,
+				C43780651B2933080018BD41 /* GiveDirectlyTests */,
+				C437804E1B2933080018BD41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C437804E1B2933080018BD41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C437804D1B2933080018BD41 /* GiveDirectly.app */,
+				C43780621B2933080018BD41 /* GiveDirectlyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C437804F1B2933080018BD41 /* GiveDirectly */ = {
+			isa = PBXGroup;
+			children = (
+				C43780521B2933080018BD41 /* AppDelegate.swift */,
+				C43780541B2933080018BD41 /* ViewController.swift */,
+				C43780561B2933080018BD41 /* Main.storyboard */,
+				C43780591B2933080018BD41 /* Images.xcassets */,
+				C437805B1B2933080018BD41 /* LaunchScreen.xib */,
+				C43780501B2933080018BD41 /* Supporting Files */,
+			);
+			path = GiveDirectly;
+			sourceTree = "<group>";
+		};
+		C43780501B2933080018BD41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C43780511B2933080018BD41 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C43780651B2933080018BD41 /* GiveDirectlyTests */ = {
+			isa = PBXGroup;
+			children = (
+				C43780681B2933080018BD41 /* GiveDirectlyTests.swift */,
+				C43780661B2933080018BD41 /* Supporting Files */,
+			);
+			path = GiveDirectlyTests;
+			sourceTree = "<group>";
+		};
+		C43780661B2933080018BD41 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C43780671B2933080018BD41 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C437804C1B2933080018BD41 /* GiveDirectly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C437806C1B2933080018BD41 /* Build configuration list for PBXNativeTarget "GiveDirectly" */;
+			buildPhases = (
+				C43780491B2933080018BD41 /* Sources */,
+				C437804A1B2933080018BD41 /* Frameworks */,
+				C437804B1B2933080018BD41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GiveDirectly;
+			productName = GiveDirectly;
+			productReference = C437804D1B2933080018BD41 /* GiveDirectly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C43780611B2933080018BD41 /* GiveDirectlyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C437806F1B2933080018BD41 /* Build configuration list for PBXNativeTarget "GiveDirectlyTests" */;
+			buildPhases = (
+				C437805E1B2933080018BD41 /* Sources */,
+				C437805F1B2933080018BD41 /* Frameworks */,
+				C43780601B2933080018BD41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C43780641B2933080018BD41 /* PBXTargetDependency */,
+			);
+			name = GiveDirectlyTests;
+			productName = GiveDirectlyTests;
+			productReference = C43780621B2933080018BD41 /* GiveDirectlyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C43780451B2933080018BD41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = GiveDirectly;
+				TargetAttributes = {
+					C437804C1B2933080018BD41 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					C43780611B2933080018BD41 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = C437804C1B2933080018BD41;
+					};
+				};
+			};
+			buildConfigurationList = C43780481B2933080018BD41 /* Build configuration list for PBXProject "GiveDirectly" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C43780441B2933080018BD41;
+			productRefGroup = C437804E1B2933080018BD41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C437804C1B2933080018BD41 /* GiveDirectly */,
+				C43780611B2933080018BD41 /* GiveDirectlyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C437804B1B2933080018BD41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43780581B2933080018BD41 /* Main.storyboard in Resources */,
+				C437805D1B2933080018BD41 /* LaunchScreen.xib in Resources */,
+				C437805A1B2933080018BD41 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C43780601B2933080018BD41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C43780491B2933080018BD41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43780551B2933080018BD41 /* ViewController.swift in Sources */,
+				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C437805E1B2933080018BD41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C43780691B2933080018BD41 /* GiveDirectlyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C43780641B2933080018BD41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C437804C1B2933080018BD41 /* GiveDirectly */;
+			targetProxy = C43780631B2933080018BD41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C43780561B2933080018BD41 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C43780571B2933080018BD41 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C437805B1B2933080018BD41 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C437805C1B2933080018BD41 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C437806A1B2933080018BD41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C437806B1B2933080018BD41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C437806D1B2933080018BD41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GiveDirectly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C437806E1B2933080018BD41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GiveDirectly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C43780701B2933080018BD41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GiveDirectlyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GiveDirectly.app/GiveDirectly";
+			};
+			name = Debug;
+		};
+		C43780711B2933080018BD41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GiveDirectlyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GiveDirectly.app/GiveDirectly";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C43780481B2933080018BD41 /* Build configuration list for PBXProject "GiveDirectly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C437806A1B2933080018BD41 /* Debug */,
+				C437806B1B2933080018BD41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C437806C1B2933080018BD41 /* Build configuration list for PBXNativeTarget "GiveDirectly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C437806D1B2933080018BD41 /* Debug */,
+				C437806E1B2933080018BD41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C437806F1B2933080018BD41 /* Build configuration list for PBXNativeTarget "GiveDirectlyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C43780701B2933080018BD41 /* Debug */,
+				C43780711B2933080018BD41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C43780451B2933080018BD41 /* Project object */;
+}
