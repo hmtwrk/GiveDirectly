@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */; };
+		4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */; };
 		4AD91CB41B2B306F00A9FB23 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */; };
 		4AD91CB61B2B307A00A9FB23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */; };
 		4AD91CB81B2B309F00A9FB23 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB71B2B309F00A9FB23 /* libsqlite3.dylib */; };
@@ -21,6 +23,9 @@
 		4AD91CCC1B2B31DD00A9FB23 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CCA1B2B31DD00A9FB23 /* Bolts.framework */; };
 		4AD91CCD1B2B31DD00A9FB23 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CCB1B2B31DD00A9FB23 /* Parse.framework */; };
 		4AD91CD51B2B5C0400A9FB23 /* RecipientListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */; };
+		4AF9507C1B306646004313DC /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9507B1B306646004313DC /* ProfileTableViewController.swift */; };
+		4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */; };
+		4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */; };
 		C43780531B2933080018BD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780521B2933080018BD41 /* AppDelegate.swift */; };
 		C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780541B2933080018BD41 /* RecipientListTableViewController.swift */; };
 		C43780581B2933080018BD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C43780561B2933080018BD41 /* Main.storyboard */; };
@@ -40,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewController.swift; sourceTree = "<group>"; };
+		4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4AD91CB71B2B309F00A9FB23 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -54,6 +61,9 @@
 		4AD91CCA1B2B31DD00A9FB23 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		4AD91CCB1B2B31DD00A9FB23 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientListTableViewCell.swift; sourceTree = "<group>"; };
+		4AF9507B1B306646004313DC /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientUpdatesTableViewCell.swift; sourceTree = "<group>"; };
+		4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		C437804D1B2933080018BD41 /* GiveDirectly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiveDirectly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43780511B2933080018BD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C43780521B2933080018BD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +127,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4AF9507D1B306672004313DC /* Profile View */ = {
+			isa = PBXGroup;
+			children = (
+				4AF9507B1B306646004313DC /* ProfileTableViewController.swift */,
+				4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */,
+				4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */,
+			);
+			name = "Profile View";
+			sourceTree = "<group>";
+		};
+		4AF9507E1B30668E004313DC /* Recipients Browse View */ = {
+			isa = PBXGroup;
+			children = (
+				4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */,
+				4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */,
+			);
+			name = "Recipients Browse View";
+			sourceTree = "<group>";
+		};
+		4AF9507F1B3066DE004313DC /* First Version — testing */ = {
+			isa = PBXGroup;
+			children = (
+				C43780541B2933080018BD41 /* RecipientListTableViewController.swift */,
+				4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */,
+			);
+			name = "First Version — testing";
+			sourceTree = "<group>";
+		};
 		C43780441B2933080018BD41 = {
 			isa = PBXGroup;
 			children = (
@@ -139,9 +177,10 @@
 		C437804F1B2933080018BD41 /* GiveDirectly */ = {
 			isa = PBXGroup;
 			children = (
+				4AF9507F1B3066DE004313DC /* First Version — testing */,
+				4AF9507E1B30668E004313DC /* Recipients Browse View */,
+				4AF9507D1B306672004313DC /* Profile View */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
-				C43780541B2933080018BD41 /* RecipientListTableViewController.swift */,
-				4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
 				C437805B1B2933080018BD41 /* LaunchScreen.xib */,
@@ -276,8 +315,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */,
+				4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */,
+				4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */,
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
 				4AD91CD51B2B5C0400A9FB23 /* RecipientListTableViewCell.swift in Sources */,
+				4AF9507C1B306646004313DC /* ProfileTableViewController.swift in Sources */,
+				4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */,
+				4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
