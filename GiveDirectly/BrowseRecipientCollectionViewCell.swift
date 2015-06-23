@@ -7,7 +7,78 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 class BrowseRecipientCollectionViewCell: UICollectionViewCell {
+ 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var jobLabel: UILabel!
+    // wonder if this label should be # of followers?
+    @IBOutlet weak var numberOfChildrenLabel: UILabel!
+
+    
+    @IBOutlet weak var storyTextView: UITextView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var coloredBarView: UIView!
+    
+    // TODO: @IBAction for clicking on the button to see close-up of profile
+    // TODO: @IBAction for clicking on the heart(?)
+    // TODO: Do the Parse query on the TestData class
+    
+    // TODO: make a test array for the objectId objects in TestData
+    // Maybe easiest way is to do a query on the objectId and return all elements?
+    
+
+    
+    
+    // ideally would only want to do one Parse query, and not ten queries... one to grab the array
+    // for testing, could just plug in an objectId as a String into the parameter of doParseQuery()
+    func configureWithBrowseData(objectID:String) {
+        var browseQuery:PFQuery = PFQuery(className: "TestData")
+        browseQuery.whereKey("objectId", equalTo: objectID)
+        browseQuery.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error: NSError?) -> Void in
+            
+            
+            for recipientData in objects! {
+                
+                let recipientProfilePhoto = recipientData["profilePhoto"] as! PFFile
+                recipientProfilePhoto.getDataInBackgroundWithBlock({
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        let image = UIImage(data: imageData!)
+                        self.profileImageView.image = image
+                    }
+                })
+                
+                
+                let recipientName:String? = (recipientData as! PFObject)["recipientName"] as? String
+                let recipientAge:Int? = (recipientData as! PFObject)["age"] as? Int
+                let recipientJob:String? = (recipientData as! PFObject)["job"] as? String
+                let recipientLocation:String? = (recipientData as! PFObject)["location"] as? String
+                var recipientNumberOfChildren:Int? = (recipientData as! PFObject)["numberOfChildren"] as? Int
+                let recipientProfileStory:String? = (recipientData as! PFObject)["profileStory"] as? String
+                
+                
+                if recipientAge != nil {
+                    self.ageLabel.text = String(stringInterpolationSegment: recipientAge!)
+                }
+                
+                if recipientNumberOfChildren != nil {
+                    self.numberOfChildrenLabel.text = String(stringInterpolationSegment: recipientNumberOfChildren!)
+                }
+                
+                self.nameLabel.text = recipientName
+                self.jobLabel.text = recipientJob?.capitalizedString
+                self.storyTextView.text = recipientProfileStory
+
+
+
+                
+            }
+        }
+    }
+
     
 }
