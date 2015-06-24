@@ -27,9 +27,6 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
     // TODO: @IBAction for clicking on the heart(?)
     // TODO: Do the Parse query on the TestData class
     
-    // TODO: make a test array for the objectId objects in TestData
-    // Maybe easiest way is to do a query on the objectId and return all elements?
-    
 
     
     
@@ -43,6 +40,7 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
             
             for recipientData in objects! {
                 
+                // convert Parse profile image file data for use in cell
                 let recipientProfilePhoto = recipientData["profilePhoto"] as! PFFile
                 recipientProfilePhoto.getDataInBackgroundWithBlock({
                     (imageData: NSData?, error: NSError?) -> Void in
@@ -52,7 +50,7 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
                     }
                 })
                 
-                
+                // assign variables / constants from the Parse query for assignment to labels, etc.
                 let recipientName:String? = (recipientData as! PFObject)["recipientName"] as? String
                 let recipientAge:Int? = (recipientData as! PFObject)["age"] as? Int
                 let recipientJob:String? = (recipientData as! PFObject)["job"] as? String
@@ -60,7 +58,7 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
                 var recipientNumberOfChildren:Int? = (recipientData as! PFObject)["numberOfChildren"] as? Int
                 let recipientProfileStory:String? = (recipientData as! PFObject)["profileStory"] as? String
                 
-                
+                // safely convert Int to String without "Optional" appearing
                 if recipientAge != nil {
                     self.ageLabel.text = String(stringInterpolationSegment: recipientAge!)
                 }
@@ -69,12 +67,10 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
                     self.numberOfChildrenLabel.text = String(stringInterpolationSegment: recipientNumberOfChildren!)
                 }
                 
+                // assign constants to labels
                 self.nameLabel.text = recipientName
                 self.jobLabel.text = recipientJob?.capitalizedString
                 self.storyTextView.text = recipientProfileStory
-
-
-
                 
             }
         }

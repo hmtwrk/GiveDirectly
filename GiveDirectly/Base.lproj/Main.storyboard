@@ -654,7 +654,7 @@
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQi-g1-LKw" userLabel="colored bar">
                                             <rect key="frame" x="7" y="216" width="130" height="4"/>
-                                            <color key="backgroundColor" red="0.46992912889999999" green="0.57003510000000002" blue="0.59506082530000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.6401197314" green="0.64010053870000005" blue="0.64011138680000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="130" id="1ek-U9-RO4"/>
                                                 <constraint firstAttribute="height" constant="4" id="x7y-Lm-new"/>
