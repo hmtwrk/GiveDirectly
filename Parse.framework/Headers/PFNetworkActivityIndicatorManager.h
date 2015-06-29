@@ -5,7 +5,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 #import <Parse/PFNullability.h>
 

@@ -12,107 +12,76 @@ import Bolts
 
 class ProfileTableViewController: UITableViewController {
     
+    // prepare variable for receiving data from segue
+    var recipientInfo: AnyObject = ""
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set navigation title to match recipient's name
+        let recipientName:String? = (recipientInfo as AnyObject)["recipientName"] as? String
         
-        // Why doesn't this code below seem to seem to do anything?
-         tableView.estimatedRowHeight = 300
-         tableView.rowHeight = UITableViewAutomaticDimension
+
+        // test to make sure data was received properly during segue
+        println(recipientInfo)
         
-        queryParseForRows()
         
+        // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+        // Fill the navigation title with the recipient's name (from Parse query)
+        self.navigationItem.title = recipientName
+        
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
-    // MARK: - Table view data source
-    
     // One row for the basic profile view, and then a row for each update cell in the Parse backend.
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // TODO: create a query that counts the number of updates to return,
-        // and then return the number of updates plus the one cell for the profile cell
-        // (So if there are five updates, the function would return "6")
-        
+        // TODO: check query for number of rows needed (number of recipients returned
 
         
-        let numberOfCells = 1
+        
+        
+        
+        // just show one profile cell and one update cell, for now
+        let numberOfCells = 2
         
         return numberOfCells
     }
     
     
-    // Controller determining which cell(s) to plug into the table view... how to return multiple?
-    // Where to do the Parse query?
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-
+        let identifier = indexPath.row == 0 ? "ProfileSummaryCell" : "RecipientUpdatesCell"
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
         
         
+        // configure cells
+        if let profileSummaryCell = cell as? ProfileSummaryTableViewCell {
+            profileSummaryCell.configureProfileSummary(recipientInfo)
+        }
         
-        let identifier = "RecipientUpdatesCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! RecipientUpdatesTableViewCell
+        if let recipientUpdatesCell = cell as? RecipientUpdatesTableViewCell {
+            recipientUpdatesCell.configureRecipientUpdates(recipientInfo)
+        }
         
-        
-        // let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
-        
-        cell.configureRecipientUpdates()
-        // cell.configureProfileSummary()
+        // make separators extend all the way left
+        cell.preservesSuperviewLayoutMargins = false
+        cell.layoutMargins = UIEdgeInsetsZero
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return nil
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            
-            tableView.deselectRowAtIndexPath(indexPath, animated: false)
-    }
-    
-    
-    func queryParseForRows() {
-        
-        let numberOfUpdates:PFQuery = PFQuery(className: "RecipientUpdate")
-        numberOfUpdates.whereKey("recipientName", equalTo: PFObject (withoutDataWithClassName: "recipientName", objectId: "st3hctPPFb"))
-        numberOfUpdates.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                println("retrieved \(objects!.count) things")
-                
-//                
-//                [query whereKey:@"post"
-//                equalTo:[PFObject objectWithoutDataWithClassName:@"Post" objectId:@"1zEcyElZ80"]];
-                
-//                for recipientBiodata in objects! {
-//                    let recipientName:String? = (recipientBiodata as! PFObject)["name"] as? String
-//                    let recipientAge:Int? = (recipientBiodata as! PFObject)["age"] as? Int
-//                    let recipientOccupation:String? = (recipientBiodata as! PFObject)["job"] as? String
-//                    let recipientLocation:String? = (recipientBiodata as! PFObject)["location"] as? String
-//                    let recipientNumberChildren:Int? = (recipientBiodata as! PFObject)["children"] as? Int
-//                    
-//                    println(recipientName)
-//                    println(recipientAge)
-//                    println(recipientNumberChildren)
-//                
-//                    
-//                }
-                
-            } else {
-                println("Error: \(error!) \(error!.userInfo)")
-            }
-            
-            
-            
-        }
-        
-    }
+
     
     
     
