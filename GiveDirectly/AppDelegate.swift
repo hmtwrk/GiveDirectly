@@ -19,6 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Change appearance of tab bar navigation globally
+        let tabBarAppearance = UITabBar.appearance()
+        let tabBarItemAppearance = UITabBarItem.appearance()
+        let font = UIFont(name: "Helvetica Neue", size: 10)
+        let attributes: [NSObject : AnyObject]? = [ NSFontAttributeName : font! ]
+        tabBarAppearance.barTintColor = UIColor.whiteColor()
+        tabBarAppearance.translucent = false
+        tabBarItemAppearance.setTitleTextAttributes(attributes, forState: .Normal)
+        
+        
+        // Change appearance of navigation bars globally
+        let navBarAppearance = UINavigationBar.appearance()
+        navBarAppearance.translucent = false
+        navBarAppearance.barTintColor = UIColor.whiteColor()
+        
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
         Parse.enableLocalDatastore()

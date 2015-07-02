@@ -19,6 +19,10 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // turn the navigation bar seam back on for this page
+        self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.shadowImage = nil
+        
         // set navigation title to match recipient's name
         let recipientName:String? = (recipientInfo as AnyObject)["recipientName"] as? String
         
@@ -81,9 +85,12 @@ class ProfileTableViewController: UITableViewController {
         return cell
     }
     
-
     
-    
-    
+    // remove the seam when returning to the profile collection view
+    override func viewWillDisappear(animated: Bool) {
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage(named: "TransparentPixel")
+    }
     
 }

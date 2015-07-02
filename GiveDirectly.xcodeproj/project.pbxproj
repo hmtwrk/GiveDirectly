@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */; };
+		4A1848121B446D36009D6026 /* NewsfeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848111B446D36009D6026 /* NewsfeedTableViewCell.swift */; };
+		4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848141B44A375009D6026 /* CommentViewController.swift */; };
 		4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */; };
 		4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */; };
 		4A7462A11B3DBC9E00B8555C /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462831B3DBC9E00B8555C /* AsyncButton.swift */; };
@@ -87,6 +90,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
+		4A1848111B446D36009D6026 /* NewsfeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewCell.swift; sourceTree = "<group>"; };
+		4A1848141B44A375009D6026 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewController.swift; sourceTree = "<group>"; };
 		4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A7462831B3DBC9E00B8555C /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
@@ -206,6 +212,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A18480D1B4467D4009D6026 /* Newsfeed View */ = {
+			isa = PBXGroup;
+			children = (
+				4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */,
+				4A1848111B446D36009D6026 /* NewsfeedTableViewCell.swift */,
+				4A1848141B44A375009D6026 /* CommentViewController.swift */,
+			);
+			name = "Newsfeed View";
+			sourceTree = "<group>";
+		};
+		4A18480E1B4469B5009D6026 /* Company Profile View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Company Profile View";
+			sourceTree = "<group>";
+		};
 		4A7462821B3DBC9E00B8555C /* Spring */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,23 +313,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4AF9507D1B306672004313DC /* Profile View */ = {
+		4AF9507D1B306672004313DC /* User Profile View */ = {
 			isa = PBXGroup;
 			children = (
-				4AF9507B1B306646004313DC /* ProfileTableViewController.swift */,
-				4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */,
-				4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */,
 			);
-			name = "Profile View";
+			name = "User Profile View";
 			sourceTree = "<group>";
 		};
-		4AF9507E1B30668E004313DC /* Browse View */ = {
+		4AF9507E1B30668E004313DC /* Recipients View */ = {
 			isa = PBXGroup;
 			children = (
 				4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */,
 				4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */,
+				4AF9507B1B306646004313DC /* ProfileTableViewController.swift */,
+				4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */,
+				4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */,
 			);
-			name = "Browse View";
+			name = "Recipients View";
 			sourceTree = "<group>";
 		};
 		4AF9507F1B3066DE004313DC /* testing */ = {
@@ -340,9 +363,11 @@
 		C437804F1B2933080018BD41 /* GiveDirectly */ = {
 			isa = PBXGroup;
 			children = (
+				4A18480D1B4467D4009D6026 /* Newsfeed View */,
+				4AF9507E1B30668E004313DC /* Recipients View */,
+				4AF9507D1B306672004313DC /* User Profile View */,
+				4A18480E1B4469B5009D6026 /* Company Profile View */,
 				4AF9507F1B3066DE004313DC /* testing */,
-				4AF9507E1B30668E004313DC /* Browse View */,
-				4AF9507D1B306672004313DC /* Profile View */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
@@ -490,9 +515,11 @@
 				4A7462B81B3DBC9E00B8555C /* SpringTextField.swift in Sources */,
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
 				4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */,
+				4A1848121B446D36009D6026 /* NewsfeedTableViewCell.swift in Sources */,
 				4A7462C71B3F095D00B8555C /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */,
 				4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */,
+				4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */,
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
 				4A7462AB1B3DBC9E00B8555C /* DesignableView.swift in Sources */,
 				4A7462B11B3DBC9E00B8555C /* Misc.swift in Sources */,
@@ -500,6 +527,7 @@
 				4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */,
 				4A7462A81B3DBC9E00B8555C /* DesignableTabBarController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
+				4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,
 				4A7462BA1B3DBC9E00B8555C /* SpringView.swift in Sources */,
 				4A7462B71B3DBC9E00B8555C /* SpringLabel.swift in Sources */,

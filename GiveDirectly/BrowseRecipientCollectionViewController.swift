@@ -35,14 +35,17 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         self.queryForRecipientData()
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        
+        // turn off the seam on the navigation bar for this page only
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage(named: "TransparentPixel")
         
         if isFirstTime {
             
