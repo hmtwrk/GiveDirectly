@@ -55,7 +55,7 @@ class ProfileTableViewController: UITableViewController {
         
         
         
-        // just show one profile cell and one update cell, for now
+//         just show one profile cell and one update cell, for now
         let numberOfCells = 2
         
         return numberOfCells

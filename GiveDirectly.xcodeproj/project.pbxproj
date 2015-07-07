@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */; };
-		4A1848121B446D36009D6026 /* NewsfeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848111B446D36009D6026 /* NewsfeedTableViewCell.swift */; };
+		4A1848121B446D36009D6026 /* UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848111B446D36009D6026 /* UpdateTableViewCell.swift */; };
 		4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848141B44A375009D6026 /* CommentViewController.swift */; };
+		4A1848171B472952009D6026 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848161B472952009D6026 /* SharingViewController.swift */; };
+		4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */; };
 		4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */; };
 		4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */; };
 		4A7462A11B3DBC9E00B8555C /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462831B3DBC9E00B8555C /* AsyncButton.swift */; };
@@ -91,8 +93,10 @@
 
 /* Begin PBXFileReference section */
 		4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
-		4A1848111B446D36009D6026 /* NewsfeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewCell.swift; sourceTree = "<group>"; };
+		4A1848111B446D36009D6026 /* UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewCell.swift; sourceTree = "<group>"; };
 		4A1848141B44A375009D6026 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		4A1848161B472952009D6026 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
+		4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateFooterTableViewCell.swift; sourceTree = "<group>"; };
 		4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewController.swift; sourceTree = "<group>"; };
 		4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A7462831B3DBC9E00B8555C /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
@@ -216,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */,
-				4A1848111B446D36009D6026 /* NewsfeedTableViewCell.swift */,
+				4A1848111B446D36009D6026 /* UpdateTableViewCell.swift */,
 				4A1848141B44A375009D6026 /* CommentViewController.swift */,
 			);
 			name = "Newsfeed View";
@@ -368,6 +372,8 @@
 				4AF9507D1B306672004313DC /* User Profile View */,
 				4A18480E1B4469B5009D6026 /* Company Profile View */,
 				4AF9507F1B3066DE004313DC /* testing */,
+				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
+				4A1848161B472952009D6026 /* SharingViewController.swift */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
@@ -515,7 +521,8 @@
 				4A7462B81B3DBC9E00B8555C /* SpringTextField.swift in Sources */,
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
 				4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */,
-				4A1848121B446D36009D6026 /* NewsfeedTableViewCell.swift in Sources */,
+				4A1848121B446D36009D6026 /* UpdateTableViewCell.swift in Sources */,
+				4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */,
 				4A7462C71B3F095D00B8555C /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */,
 				4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */,
@@ -544,6 +551,7 @@
 				4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */,
 				4A7462A71B3DBC9E00B8555C /* DesignableLabel.swift in Sources */,
 				4A7462B41B3DBC9E00B8555C /* SpringAnimation.swift in Sources */,
+				4A1848171B472952009D6026 /* SharingViewController.swift in Sources */,
 				4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */,
 				4A7462AF1B3DBC9E00B8555C /* LoadingView.swift in Sources */,
 				4A7462B61B3DBC9E00B8555C /* SpringImageView.swift in Sources */,

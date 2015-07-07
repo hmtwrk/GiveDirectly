@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         // Override point for customization after application launch.
         
         // Change appearance of tab bar navigation globally
@@ -45,6 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // Check for user's login status
+        self.checkUserStatus()
+//        self.easyLogin()
         
         return true
     }
@@ -69,6 +73,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func checkUserStatus() {
+        
+        var currentUser = PFUser.currentUser()
+        let currentUserName: AnyObject? = currentUser?.objectForKey("fullName")
+        if currentUser != nil {
+            
+            // do stuff with the user
+            println("You are already logged in as \"\(currentUserName!).\"")
+            
+        } else {
+            
+            // show the signup or login screen
+            let parseUsername = "wesleysnipes"
+            let testPassword = "testpass123"
+            
+            PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {
+                (user: PFUser?, error: NSError?) -> Void in
+                if user != nil {
+                    
+                    // do successful login stuff
+                    println("You have successfully logged in as \"\(parseUsername).\"")
+                } else {
+                    // oh no
+                    println("There was an error of \(error).")
+                }
+            }
+        }
+        
+    }
+    
+    func easyLogin() {
+        
+        let parseUsername = "wesleysnipes"
+        let testPassword = "testpass123"
+        
+        PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {
+            (user: PFUser?, error: NSError?) -> Void in
+            if user != nil {
+                
+                // do successful login stuff
+                println("You have successfully logged in as \"\(parseUsername).\"")
+            } else {
+                // oh no
+                println("There was an error of \(error).")
+            }
+        }
     }
     
     

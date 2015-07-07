@@ -141,7 +141,7 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
                         
                         // builds array of recipient IDs for determining number of items to display
                         self.objectIDsFromParse.append(object.objectId!)
-
+                        
                         // testing function
                         println(object.objectId!)
                         
