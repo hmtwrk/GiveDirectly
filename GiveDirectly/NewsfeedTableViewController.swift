@@ -9,168 +9,172 @@
 import UIKit
 
 class NewsfeedTableViewController: UITableViewController {
+  
+  // initialize variable to accept Parse update data
+  var recipientUpdates = [AnyObject]()
+  var numberOfUpdates = Int()
+  var updateData: [AnyObject] = []
+  var commentData: [AnyObject] = []
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    // initialize variable to accept Parse update data
-    var recipientUpdates = [AnyObject]()
-    var numberOfUpdates = Int()
-    var mostRecentCommentInfo = [AnyObject]()
+    // turn off the seam on the navigation bar for this page only
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
+    self.navigationController?.navigationBar.shadowImage = UIImage(named: "TransparentPixel")
     
+    // turn off the cell separators
+    //        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+    //        self.tableView.separatorColor = UIColor.clearColor()
     
-
+    // autofit cells?
+    tableView.estimatedRowHeight = 44
+    tableView.rowHeight = UITableViewAutomaticDimension
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // turn off the seam on the navigation bar for this page only
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage(named: "TransparentPixel")
-        
-        // turn off the cell separators
-//        self.tableView.tableFooterView = UIView(frame: CGRectZero)
-//        self.tableView.separatorColor = UIColor.clearColor()
-        
-        
-        // autofit cells?
-        tableView.estimatedRowHeight = 500
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // query Parse to determine how many updates to display
-        self.queryParseForNewsfeedUpdates()
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // fetch the data for the newsfeed cells
+    self.queryParseForNewsfeedUpdates()
     
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // Return the number of rows in the section.
-        return (numberOfUpdates)
-    }
+  }
+  
+  override func viewDidAppear(animated: Bool) {
     
+  }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+  
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
-        
-        let identifier = "UpdateTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
-        
-        
-        // configure cells depending on type
-        if let update = cell as? UpdateTableViewCell {
-            
-            // "updateInfo" is a chunk of the table that populates a row
-            let updateInfo: AnyObject = recipientUpdates[indexPath.row]
-            
-            // "recipientInfo" is a relational lookup on the recipient's name
-            let recipientInfo = updateInfo["recipientName"] as? PFObject
-            
-//            println(recipientInfo!)
-
-            
-            
-            
-            
-            // when indexPath.row is finished, reload tableView?
-            
-            
-            
-            
-            
-//            self.queryParseForRelatedComments(updateInfo)
-            
-            // configure the cell with the comment info
-//            update.configureCommentsWithParse(updateInfo)
-            
-//            self.queryParseForRelatedComments(object)
-            
-//            let recipientInfo: AnyObject = recipientUpdates[indexPath.row]
-            
-            update.configureUpdateViewCell(updateInfo, recipientInfo: recipientInfo!)
-        }
-
-        
-        return cell
-        
-    }
+    // Return the number of rows in the section.
+    numberOfUpdates = self.updateData.count
+    return (numberOfUpdates)
+  }
+  
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
+    let identifier = "UpdateTableViewCell"
+    let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "CommentSegue" {
-            let toView = segue.destinationViewController as! CommentViewController
-            let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
-            let updateInfo: (AnyObject) = recipientUpdates[indexPath!.row]
-            let recipientInfo = updateInfo["recipientName"] as? PFObject
-
-            toView.updateInfo = updateInfo
-            toView.recipientInfo = recipientInfo!
-        }
+    if let update = cell as? UpdateTableViewCell {
+      
+      // sends each cell to its row, starting with newest update
+      let updateDataForCell: AnyObject = updateData[indexPath.row]
+      // updateDataForCell["recipientName"] as? PFObject
+      
+      // "recipientInfo" is a relational lookup on the recipient's name
+      // can't I just put this code in the cell itself, without assigning to new variables?
+      let recipientDataForCell = updateDataForCell["recipientName"] as? PFObject
+      
+      //            println(recipientInfo!)
+      
+      //
+      let commentDataForCell: AnyObject = commentData
+      
+      
+      //      println(commentDataForCell)
+      //      println(commentData)
+      //            let commentDataForCell: AnyObject = commentData
+      
+      
+      
+      
+      // when indexPath.row is finished, reload tableView?
+      
+      
+      
+      
+      
+      //            self.queryParseForRelatedComments(updateInfo)
+      
+      // configure the cell with the comment info
+      //            update.configureCommentsWithParse(updateInfo)
+      
+      //            self.queryParseForRelatedComments(object)
+      
+      //            let recipientInfo: AnyObject = recipientUpdates[indexPath.row]
+      
+      //      update.configureUpdateViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell!, commentDataForCell: commentDataForCell)
+      update.configureUpdateViewCell(updateDataForCell, commentDataForCell: commentDataForCell)
     }
     
     
-    func queryParseForNewsfeedUpdates() {
-
-        // here is the query for the update text, but need to fetch the "recipientName" pointer,
-        // which points to the "Recipients" class, and fetch the data from "name" and "profileSquarePhoto"
-        
-        var query:PFQuery = PFQuery(className: "RecipientUpdate")
-        query.includeKey("recipientName")
-        query.findObjectsInBackgroundWithBlock {
-            
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                
-                self.recipientUpdates = objects!
-//                println("Successfully retrieved \(objects!.count) objects!")
-                self.numberOfUpdates = objects!.count
-                
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        
-                        let query = PFQuery(className: "Comments")
-                        query.whereKey("relatedUpdate", equalTo: object)
-                        
-                        // add constraints to return most recent
-                        query.orderByDescending("createdAt")
-                        query.limit = 1
-                        
-                        query.findObjectsInBackgroundWithBlock {
-                            
-                            (comments: [AnyObject]?, error: NSError?) -> Void in
-                            
-                            println(comments!)
-                            
-                        
-                        
-                        }
-                        
-
-
-//                        println(object.objectId!)
-                    }
-                
-                
-                // Parse query is complete, so reload the tableview
-                self.tableView?.reloadData()
-//                println(self.numberOfUpdatesFromParse)
-//                println(self.recipientUpdates)
-//                println(query)
-                
-            } else {
-                // log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-            }
-        }
+    return cell
+    
+  }
+  
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "CommentSegue" {
+      let toView = segue.destinationViewController as! CommentViewController
+      let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
+      let updateInfo: (AnyObject) = updateData[indexPath!.row]
+      let recipientInfo = updateInfo["recipientName"] as? PFObject
+      
+      toView.updateInfo = updateInfo
+      toView.recipientInfo = recipientInfo!
     }
-
+  }
+  
+  
+  func queryParseForNewsfeedUpdates() {
+    
+    // here is the query for the update text, but need to fetch the "recipientName" pointer,
+    // which points to the "Recipients" class, and fetch the data from "name" and "profileSquarePhoto"
     
     
+    // 3 —— combine the two queries into one variable for network call
+    //        let query = PFQuery.orQueryWithSubqueries([recipientUpdateQuery, relatedComments])
+    //        query.orderByDescending("createdAt")
+    
+    
+    // 1 —— retrieve the RecipientUpdates and all the corresponding biodata (recipient's name, timestamp, etc.)
+    // For now, just retrieve "Everyone"
+    
+    //        recipientUpdate.whereKey("recipientName", equalTo: PFObject(withoutDataWithClassName: "Recipients", objectId: "st3hctPPFb"))
+    //        recipientUpdate.whereKey("objectId", equalTo: "xPSyiLfMJ8")
+    
+    
+    
+    
+    let recipientUpdate:PFQuery = PFQuery(className: "RecipientUpdate")
+    
+    // this particular post has five comments...
+    recipientUpdate.whereKey("objectId", equalTo: "xPSyiLfMJ8")
+    
+    // the following post has zero comments...
+    //    recipientUpdate.whereKey("objectId", equalTo: "h2dIPMH
+    //    recipientUpdate.orderByDescending("createdAt")
+    
+    // recipientUpdate retrieves all the updates (around ten), and includes the biodata for each recipient (includeKey)
+    recipientUpdate.includeKey("recipientName")
+    recipientUpdate.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
+      
+      self.updateData = result!
+//      println(self.updateData)
+      
+      let relatedComments:PFQuery = PFQuery(className: "Comments")
+      relatedComments.whereKey("relatedUpdate", matchesQuery: recipientUpdate)
+      //      relatedComments.whereKey("relatedUpdate", matchesKey: "objectId", inQuery: recipientUpdate)
+      //      relatedComments.orderByDescending("createdAt")
+      //            relatedComments.limit = 1
+      relatedComments.includeKey("author")
+      relatedComments.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
+        
+        // this should handle the nil comment case, and insert an empty array object... but yet doesn't
+        //        self.commentData = result! as [AnyObject] ?? []
+        self.commentData = result!
+        self.tableView.reloadData()
+        
+      }
+    }
+  }
+  
+  
+  
+  
+  
 }

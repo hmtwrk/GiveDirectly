@@ -27,7 +27,7 @@ class RecipientUpdatesTableViewCell: UITableViewCell {
         let recipientName:String? = (recipientInfo as AnyObject)["recipientName"] as? String
         let recipientGender:String? = (recipientInfo as AnyObject)["gender"] as? String
         let recipientProfilePhoto = recipientInfo["profileSquarePhoto"] as! PFFile
-        let submittedPhoto = recipientInfo["submittedPhoto"] as! PFFile
+        let submittedPhoto = recipientInfo["profilePhoto"] as! PFFile
         
 
         

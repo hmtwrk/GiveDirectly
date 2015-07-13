@@ -31,7 +31,7 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         
 
         // assign variables / constants from the Parse query to outlets
-        let recipientName:String? = (recipientInfo as AnyObject)["recipientName"] as? String
+        let recipientName:String? = (recipientInfo as AnyObject)["name"] as? String
         let recipientAge:Int? = (recipientInfo as AnyObject)["age"] as? Int
         let recipientJob:String? = (recipientInfo as AnyObject)["job"] as? String
 //        let recipientLocation:String? = (recipientInfo as AnyObject)["location"] as? String

@@ -123,7 +123,7 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
 
     // This function will do the Parse query, and then return appropriate objects for use in building each item's cell
     func queryForRecipientData() {
-        var query:PFQuery = PFQuery(className: "TestData")
+        var query:PFQuery = PFQuery(className: "Recipients")
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {

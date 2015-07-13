@@ -578,7 +578,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sr0-et-NEp">
-                            <size key="itemSize" width="145" height="220"/>
+                            <size key="itemSize" width="145" height="236"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -588,7 +588,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="145" height="220"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="145" height="236"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T">
@@ -641,7 +641,7 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQi-g1-LKw" userLabel="Colored Bar">
-                                            <rect key="frame" x="7" y="216" width="130" height="4"/>
+                                            <rect key="frame" x="7" y="232" width="130" height="4"/>
                                             <color key="backgroundColor" red="0.6401197314" green="0.64010053870000005" blue="0.64011138680000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="130" id="1ek-U9-RO4"/>
@@ -649,19 +649,21 @@
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA9-KH-3rM" userLabel="Recipient Story" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
-                                            <rect key="frame" x="7" y="131" width="130" height="84"/>
+                                            <rect key="frame" x="7" y="131" width="130" height="90"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="130" id="8HZ-8N-ECk"/>
+                                                <constraint firstAttribute="height" constant="90" id="KKj-xh-Fln"/>
                                                 <constraint firstAttribute="height" constant="75" id="X93-82-6hL"/>
                                                 <constraint firstAttribute="height" constant="84" id="kqj-vD-tGO"/>
                                                 <constraint firstAttribute="width" constant="130" id="qsZ-Bi-LhH"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="X93-82-6hL"/>
+                                                    <exclude reference="kqj-vD-tGO"/>
                                                     <exclude reference="qsZ-Bi-LhH"/>
                                                 </mask>
                                             </variation>
@@ -937,7 +939,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="UpdateImageView" destination="RiV-Z6-iAy" id="L1P-mi-kzz"/>
+                                    <outlet property="mostRecentCommentLabel" destination="rSZ-j5-83Z" id="I7H-Ca-gg6"/>
                                     <outlet property="nameLabel" destination="SON-Jb-C8U" id="91b-qM-MB5"/>
+                                    <outlet property="numberOfCommentsLabel" destination="7u2-cw-cv1" id="q0Q-Fl-C7A"/>
                                     <outlet property="recipientStoryTextView" destination="nRG-Hh-DwG" id="2HE-If-WHy"/>
                                     <outlet property="timeLabel" destination="wh8-wQ-98S" id="9SP-HH-Yhx"/>
                                     <outlet property="topicLabel" destination="aTv-sW-xXt" id="RmG-5E-Oyd"/>
@@ -1356,8 +1360,8 @@
                                         </userDefinedRuntimeAttributes>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="MNx-wO-6KG"/>
                                                 <exclude reference="2Xv-Dd-AcT"/>
+                                                <exclude reference="MNx-wO-6KG"/>
                                             </mask>
                                         </variation>
                                     </textView>
