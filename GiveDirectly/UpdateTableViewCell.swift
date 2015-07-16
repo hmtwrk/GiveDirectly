@@ -24,7 +24,7 @@ class UpdateTableViewCell: UITableViewCell {
     
     
     let recipientData:PFObject = (updateDataForCell["recipientName"] as? PFObject)!
-    let mostRecentCommentData:PFObject = (commentDataForCell[0] as? PFObject)!
+    let mostRecentCommentData:PFObject = (commentDataForCell as? PFObject)!
     let author:PFObject = (mostRecentCommentData["author"] as? PFObject)!
 //    var updateTimestamp:Int? = (updateDataForCell as AnyObject)["updatedAt"] as? Int
     let updateText:String? = (updateDataForCell as AnyObject)["updateText"] as? String
@@ -33,7 +33,7 @@ class UpdateTableViewCell: UITableViewCell {
     let recipientName = ((recipientData as AnyObject)["name"] as? String)!
     let recipientProfilePhoto = recipientData["profileSquarePhoto"] as! PFFile
     let numberOfComments:Int? = commentDataForCell.count
-    let mostRecentComment:NSString? = (commentDataForCell[0] as AnyObject)["text"] as? NSString
+    let mostRecentComment:NSString? = (commentDataForCell as AnyObject)["text"] as? NSString
     let authorOfMostRecentComment:String? = (author as AnyObject)["nickname"] as? String
     
     var userCommentAuthorAttributes = [

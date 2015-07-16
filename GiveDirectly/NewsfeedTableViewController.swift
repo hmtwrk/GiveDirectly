@@ -143,34 +143,64 @@ class NewsfeedTableViewController: UITableViewController {
     let recipientUpdate:PFQuery = PFQuery(className: "RecipientUpdate")
     
     // this particular post has five comments...
-    recipientUpdate.whereKey("objectId", equalTo: "xPSyiLfMJ8")
+//    recipientUpdate.whereKey("objectId", equalTo: "xPSyiLfMJ8")
+//    recipientUpdate.whereKey("objectId", equalTo: "NcLyy3pUv7")
     
     // the following post has zero comments...
-    //    recipientUpdate.whereKey("objectId", equalTo: "h2dIPMH
-    //    recipientUpdate.orderByDescending("createdAt")
+    recipientUpdate.whereKey("objectId", equalTo: "h2dIPMHfCL")
     
+    recipientUpdate.orderByDescending("createdAt")
     // recipientUpdate retrieves all the updates (around ten), and includes the biodata for each recipient (includeKey)
     recipientUpdate.includeKey("recipientName")
+    
+    let relatedComments:PFQuery = PFQuery(className: "Comments")
+    relatedComments.whereKey("relatedUpdate", matchesQuery: recipientUpdate)
+    relatedComments.orderByDescending("createdAt")
+    relatedComments.includeKey("author")
+    
     recipientUpdate.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
       
       self.updateData = result!
-//      println(self.updateData)
+      println("Doth any error exist? It's \(error).")
+      println(self.updateData)
       
-      let relatedComments:PFQuery = PFQuery(className: "Comments")
-      relatedComments.whereKey("relatedUpdate", matchesQuery: recipientUpdate)
-      //      relatedComments.whereKey("relatedUpdate", matchesKey: "objectId", inQuery: recipientUpdate)
-      //      relatedComments.orderByDescending("createdAt")
-      //            relatedComments.limit = 1
-      relatedComments.includeKey("author")
+      
+      
       relatedComments.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
         
-        // this should handle the nil comment case, and insert an empty array object... but yet doesn't
-        //        self.commentData = result! as [AnyObject] ?? []
-        self.commentData = result!
+        println("Within empty comments, doth any result exist? \(result!).")
+        
+        
+        
+        
+        // need to check if the comment is empty, and do something... maybe append to the updateData var?
+        
+        
+        
+        
+//        if result!.isEmpty {
+////          println(result![0])
+          self.commentData = result!
+//          self.commentData = []
+//          println("It's empty, yo.")
+//          println(self.commentData)
+//          self.updateData.append([])
+//          println(self.updateData)
+//        } else {
+////          println(result![0])
+//          self.commentData = result!
+//        }
+        
+//        println(result!)
+        
+        
+        
         self.tableView.reloadData()
         
-      }
-    }
+        
+        
+      } // end of nested API call (for comments)
+    } // end of first API call (for updates)
   }
   
   

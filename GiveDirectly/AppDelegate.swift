@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarAppearance.translucent = false
         tabBarItemAppearance.setTitleTextAttributes(attributes, forState: .Normal)
         
-        
         // Change appearance of navigation bars globally
         let navBarAppearance = UINavigationBar.appearance()
         navBarAppearance.translucent = false

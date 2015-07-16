@@ -14,6 +14,8 @@
 		4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */; };
 		4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */; };
 		4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */; };
+		4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */; };
+		4A5A6EDF1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */; };
 		4A7462A11B3DBC9E00B8555C /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462831B3DBC9E00B8555C /* AsyncButton.swift */; };
 		4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */; };
 		4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462851B3DBC9E00B8555C /* AutoTextView.swift */; };
@@ -99,6 +101,8 @@
 		4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateFooterTableViewCell.swift; sourceTree = "<group>"; };
 		4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewController.swift; sourceTree = "<group>"; };
 		4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientBrowseViewController.swift; sourceTree = "<group>"; };
+		4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientBrowseCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A7462831B3DBC9E00B8555C /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		4A7462851B3DBC9E00B8555C /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -374,7 +378,9 @@
 				4AF9507F1B3066DE004313DC /* testing */,
 				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
 				4A1848161B472952009D6026 /* SharingViewController.swift */,
+				4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
+				4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
 				C437805B1B2933080018BD41 /* LaunchScreen.xib */,
@@ -531,11 +537,13 @@
 				4A7462AB1B3DBC9E00B8555C /* DesignableView.swift in Sources */,
 				4A7462B11B3DBC9E00B8555C /* Misc.swift in Sources */,
 				4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */,
 				4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */,
 				4A7462A81B3DBC9E00B8555C /* DesignableTabBarController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
 				4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,
+				4A5A6EDF1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift in Sources */,
 				4A7462BA1B3DBC9E00B8555C /* SpringView.swift in Sources */,
 				4A7462B71B3DBC9E00B8555C /* SpringLabel.swift in Sources */,
 				4AD91CD51B2B5C0400A9FB23 /* RecipientListTableViewCell.swift in Sources */,
