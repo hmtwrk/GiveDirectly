@@ -19,7 +19,7 @@ class RecipientListTableViewController: UITableViewController {
 
         tableView.estimatedRowHeight = 300
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+      
         
         
 //        var biodataQuery:PFQuery = PFQuery(className: "Registration")

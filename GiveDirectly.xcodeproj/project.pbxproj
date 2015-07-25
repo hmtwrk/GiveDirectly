@@ -16,6 +16,12 @@
 		4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */; };
 		4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */; };
 		4A5A6EDF1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */; };
+		4A5A6EE11B57F804003A1D0F /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */; };
+		4A5A6EE41B580DEB003A1D0F /* DonateesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */; };
+		4A5A6EE61B5D7726003A1D0F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE51B5D7726003A1D0F /* MenuViewController.swift */; };
+		4A5A6EE91B5E83F4003A1D0F /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE81B5E83F4003A1D0F /* CenterViewController.swift */; };
+		4A5A6EEB1B5E8B52003A1D0F /* PortfolioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EEA1B5E8B52003A1D0F /* PortfolioTableViewController.swift */; };
+		4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */; };
 		4A7462A11B3DBC9E00B8555C /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462831B3DBC9E00B8555C /* AsyncButton.swift */; };
 		4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */; };
 		4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462851B3DBC9E00B8555C /* AutoTextView.swift */; };
@@ -60,6 +66,7 @@
 		4AB19B231B3B6C7900B3E973 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B1E1B3B6C7900B3E973 /* FBSDKMessengerShareKit.framework */; };
 		4AB19B241B3B6C7900B3E973 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B1F1B3B6C7900B3E973 /* FBSDKShareKit.framework */; };
 		4AB19B281B3B714800B3E973 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B271B3B714800B3E973 /* Bolts.framework */; };
+		4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */; };
 		4AD91CB41B2B306F00A9FB23 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */; };
 		4AD91CB61B2B307A00A9FB23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */; };
 		4AD91CB81B2B309F00A9FB23 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB71B2B309F00A9FB23 /* libsqlite3.dylib */; };
@@ -103,6 +110,12 @@
 		4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientBrowseViewController.swift; sourceTree = "<group>"; };
 		4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientBrowseCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateesTableViewCell.swift; sourceTree = "<group>"; };
+		4A5A6EE51B5D7726003A1D0F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		4A5A6EE81B5E83F4003A1D0F /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		4A5A6EEA1B5E8B52003A1D0F /* PortfolioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewController.swift; sourceTree = "<group>"; };
+		4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestActivityTableViewCell.swift; sourceTree = "<group>"; };
 		4A7462831B3DBC9E00B8555C /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		4A7462851B3DBC9E00B8555C /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -153,6 +166,7 @@
 		4AB19B1E1B3B6C7900B3E973 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		4AB19B1F1B3B6C7900B3E973 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4AB19B271B3B714800B3E973 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticMenuTableViewController.swift; sourceTree = "<group>"; };
 		4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4AD91CB71B2B309F00A9FB23 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -378,10 +392,17 @@
 				4AF9507F1B3066DE004313DC /* testing */,
 				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
 				4A1848161B472952009D6026 /* SharingViewController.swift */,
+				4A5A6EE81B5E83F4003A1D0F /* CenterViewController.swift */,
 				4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
+				4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */,
+				4A5A6EE51B5D7726003A1D0F /* MenuViewController.swift */,
+				4A5A6EEA1B5E8B52003A1D0F /* PortfolioTableViewController.swift */,
 				4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */,
+				4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */,
+				4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
+				4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
 				C437805B1B2933080018BD41 /* LaunchScreen.xib */,
 				4AB19B181B3B6A5600B3E973 /* GiveDirectly-Bridging-Header.h */,
@@ -520,6 +541,7 @@
 				4A7462B51B3DBC9E00B8555C /* SpringButton.swift in Sources */,
 				4A7462B21B3DBC9E00B8555C /* SoundPlayer.swift in Sources */,
 				4A7462B91B3DBC9E00B8555C /* SpringTextView.swift in Sources */,
+				4A5A6EE61B5D7726003A1D0F /* MenuViewController.swift in Sources */,
 				C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */,
 				4A7462A91B3DBC9E00B8555C /* DesignableTextField.swift in Sources */,
 				4A7462AA1B3DBC9E00B8555C /* DesignableTextView.swift in Sources */,
@@ -527,19 +549,23 @@
 				4A7462B81B3DBC9E00B8555C /* SpringTextField.swift in Sources */,
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
 				4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */,
+				4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */,
 				4A1848121B446D36009D6026 /* UpdateTableViewCell.swift in Sources */,
 				4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */,
+				4A5A6EE41B580DEB003A1D0F /* DonateesTableViewCell.swift in Sources */,
 				4A7462C71B3F095D00B8555C /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */,
 				4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */,
 				4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */,
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
 				4A7462AB1B3DBC9E00B8555C /* DesignableView.swift in Sources */,
+				4A5A6EEB1B5E8B52003A1D0F /* PortfolioTableViewController.swift in Sources */,
 				4A7462B11B3DBC9E00B8555C /* Misc.swift in Sources */,
 				4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */,
 				4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */,
 				4A7462A81B3DBC9E00B8555C /* DesignableTabBarController.swift in Sources */,
+				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
 				4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,
@@ -550,6 +576,7 @@
 				4A7462AE1B3DBC9E00B8555C /* KeyboardLayoutConstraint.swift in Sources */,
 				4A7462A11B3DBC9E00B8555C /* AsyncButton.swift in Sources */,
 				4A7462AC1B3DBC9E00B8555C /* ImageLoader.swift in Sources */,
+				4A5A6EE11B57F804003A1D0F /* PortfolioViewController.swift in Sources */,
 				4A7462B31B3DBC9E00B8555C /* Spring.swift in Sources */,
 				4A7462BB1B3DBC9E00B8555C /* TransitionManager.swift in Sources */,
 				4A7462A51B3DBC9E00B8555C /* DesignableButton.swift in Sources */,
@@ -563,6 +590,7 @@
 				4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */,
 				4A7462AF1B3DBC9E00B8555C /* LoadingView.swift in Sources */,
 				4A7462B61B3DBC9E00B8555C /* SpringImageView.swift in Sources */,
+				4A5A6EE91B5E83F4003A1D0F /* CenterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
