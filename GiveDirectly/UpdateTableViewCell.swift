@@ -24,8 +24,8 @@ class UpdateTableViewCell: UITableViewCell {
     
     
     let recipientData:PFObject = (updateDataForCell["recipientName"] as? PFObject)!
-    let mostRecentCommentData:PFObject = (commentDataForCell as? PFObject)!
-    let author:PFObject = (mostRecentCommentData["author"] as? PFObject)!
+//  let mostRecentCommentData:PFObject = (commentDataForCell as? PFObject)!
+//    let author:PFObject = (mostRecentCommentData["author"] as? PFObject)!
 //    var updateTimestamp:Int? = (updateDataForCell as AnyObject)["updatedAt"] as? Int
     let updateText:String? = (updateDataForCell as AnyObject)["updateText"] as? String
     let updateTopic:String? = (updateDataForCell as AnyObject)["updateTitle"] as? String
@@ -34,7 +34,7 @@ class UpdateTableViewCell: UITableViewCell {
     let recipientProfilePhoto = recipientData["profileSquarePhoto"] as! PFFile
     let numberOfComments:Int? = commentDataForCell.count
     let mostRecentComment:NSString? = (commentDataForCell as AnyObject)["text"] as? NSString
-    let authorOfMostRecentComment:String? = (author as AnyObject)["nickname"] as? String
+//    let authorOfMostRecentComment:String? = (author as AnyObject)["nickname"] as? String
     
     var userCommentAuthorAttributes = [
       NSForegroundColorAttributeName: UIColor.blackColor(),
@@ -52,14 +52,14 @@ class UpdateTableViewCell: UITableViewCell {
       NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 12)!
     ]
     
-    let pureComment = "\(authorOfMostRecentComment!) \(mostRecentComment!)"
-    let rangeLength = authorOfMostRecentComment?.length
-    let range = NSRange(location: 0, length: rangeLength!)
+//    let pureComment = "\(authorOfMostRecentComment!) \(mostRecentComment!)"
+//    let rangeLength = authorOfMostRecentComment?.length
+//    let range = NSRange(location: 0, length: rangeLength!)
     var attributedComment = NSMutableAttributedString()
-    println("The author \(authorOfMostRecentComment!) has a nickname of \(rangeLength!) characters.")
+//    println("The author \(authorOfMostRecentComment!) has a nickname of \(rangeLength!) characters.")
     
-    attributedComment = NSMutableAttributedString(string: pureComment, attributes: userCommentTextAttributes)
-    attributedComment.addAttributes(userCommentAuthorAttributes, range: range)
+//    attributedComment = NSMutableAttributedString(string: pureComment, attributes: userCommentTextAttributes)
+//    attributedComment.addAttributes(userCommentAuthorAttributes, range: range)
 //    attributedComment.addAttributes(GDAuthorAttributes, range: range)
 
     let updateID = updateDataForCell.objectId

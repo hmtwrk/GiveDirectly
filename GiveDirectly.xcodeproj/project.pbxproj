@@ -66,7 +66,16 @@
 		4AB19B231B3B6C7900B3E973 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B1E1B3B6C7900B3E973 /* FBSDKMessengerShareKit.framework */; };
 		4AB19B241B3B6C7900B3E973 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B1F1B3B6C7900B3E973 /* FBSDKShareKit.framework */; };
 		4AB19B281B3B714800B3E973 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B271B3B714800B3E973 /* Bolts.framework */; };
+		4AB36AE21B67DB1400ABCE23 /* UserAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE11B67DB1400ABCE23 /* UserAccountTableViewController.swift */; };
+		4AB36AE41B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE31B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift */; };
+		4AB36AE61B67E02000ABCE23 /* FriendActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE51B67E02000ABCE23 /* FriendActivityTableViewCell.swift */; };
+		4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE71B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift */; };
+		4AB36AEA1B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE91B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift */; };
 		4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */; };
+		4ACBA75A1B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */; };
+		4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */; };
+		4ACBA75E1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */; };
+		4ACBA7601B66785900F25D74 /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */; };
 		4AD91CB41B2B306F00A9FB23 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */; };
 		4AD91CB61B2B307A00A9FB23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */; };
 		4AD91CB81B2B309F00A9FB23 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB71B2B309F00A9FB23 /* libsqlite3.dylib */; };
@@ -166,7 +175,16 @@
 		4AB19B1E1B3B6C7900B3E973 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		4AB19B1F1B3B6C7900B3E973 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4AB19B271B3B714800B3E973 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		4AB36AE11B67DB1400ABCE23 /* UserAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountTableViewController.swift; sourceTree = "<group>"; };
+		4AB36AE31B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountProfileTableViewCell.swift; sourceTree = "<group>"; };
+		4AB36AE51B67E02000ABCE23 /* FriendActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendActivityTableViewCell.swift; sourceTree = "<group>"; };
+		4AB36AE71B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountStatsTableViewCell.swift; sourceTree = "<group>"; };
+		4AB36AE91B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountFollowingTableViewCell.swift; sourceTree = "<group>"; };
 		4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticMenuTableViewController.swift; sourceTree = "<group>"; };
+		4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedUpdateTableViewCell.swift; sourceTree = "<group>"; };
+		4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedTableViewController.swift; sourceTree = "<group>"; };
+		4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4AD91CB71B2B309F00A9FB23 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -239,6 +257,9 @@
 			children = (
 				4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */,
 				4A1848111B446D36009D6026 /* UpdateTableViewCell.swift */,
+				4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */,
+				4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */,
+				4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */,
 				4A1848141B44A375009D6026 /* CommentViewController.swift */,
 			);
 			name = "Newsfeed View";
@@ -338,6 +359,11 @@
 		4AF9507D1B306672004313DC /* User Profile View */ = {
 			isa = PBXGroup;
 			children = (
+				4AB36AE11B67DB1400ABCE23 /* UserAccountTableViewController.swift */,
+				4AB36AE31B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift */,
+				4AB36AE91B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift */,
+				4AB36AE51B67E02000ABCE23 /* FriendActivityTableViewCell.swift */,
+				4AB36AE71B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift */,
 			);
 			name = "User Profile View";
 			sourceTree = "<group>";
@@ -346,9 +372,9 @@
 			isa = PBXGroup;
 			children = (
 				4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */,
+				4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */,
 				4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */,
 				4AF9507B1B306646004313DC /* ProfileTableViewController.swift */,
-				4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */,
 				4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */,
 			);
 			name = "Recipients View";
@@ -357,6 +383,8 @@
 		4AF9507F1B3066DE004313DC /* testing */ = {
 			isa = PBXGroup;
 			children = (
+				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
+				4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */,
 				C43780541B2933080018BD41 /* RecipientListTableViewController.swift */,
 				4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */,
 			);
@@ -390,7 +418,6 @@
 				4AF9507D1B306672004313DC /* User Profile View */,
 				4A18480E1B4469B5009D6026 /* Company Profile View */,
 				4AF9507F1B3066DE004313DC /* testing */,
-				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
 				4A1848161B472952009D6026 /* SharingViewController.swift */,
 				4A5A6EE81B5E83F4003A1D0F /* CenterViewController.swift */,
 				4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */,
@@ -538,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACBA75A1B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift in Sources */,
 				4A7462B51B3DBC9E00B8555C /* SpringButton.swift in Sources */,
 				4A7462B21B3DBC9E00B8555C /* SoundPlayer.swift in Sources */,
 				4A7462B91B3DBC9E00B8555C /* SpringTextView.swift in Sources */,
@@ -545,6 +573,8 @@
 				C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */,
 				4A7462A91B3DBC9E00B8555C /* DesignableTextField.swift in Sources */,
 				4A7462AA1B3DBC9E00B8555C /* DesignableTextView.swift in Sources */,
+				4AB36AE61B67E02000ABCE23 /* FriendActivityTableViewCell.swift in Sources */,
+				4AB36AE41B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift in Sources */,
 				4A7462BC1B3DBC9E00B8555C /* TransitionZoom.swift in Sources */,
 				4A7462B81B3DBC9E00B8555C /* SpringTextField.swift in Sources */,
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
@@ -552,6 +582,7 @@
 				4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */,
 				4A1848121B446D36009D6026 /* UpdateTableViewCell.swift in Sources */,
 				4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */,
+				4AB36AE21B67DB1400ABCE23 /* UserAccountTableViewController.swift in Sources */,
 				4A5A6EE41B580DEB003A1D0F /* DonateesTableViewCell.swift in Sources */,
 				4A7462C71B3F095D00B8555C /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */,
@@ -563,12 +594,16 @@
 				4A7462B11B3DBC9E00B8555C /* Misc.swift in Sources */,
 				4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */,
+				4ACBA7601B66785900F25D74 /* NewsfeedViewController.swift in Sources */,
 				4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */,
 				4A7462A81B3DBC9E00B8555C /* DesignableTabBarController.swift in Sources */,
+				4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */,
+				4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
 				4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,
+				4ACBA75E1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift in Sources */,
 				4A5A6EDF1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift in Sources */,
 				4A7462BA1B3DBC9E00B8555C /* SpringView.swift in Sources */,
 				4A7462B71B3DBC9E00B8555C /* SpringLabel.swift in Sources */,
@@ -582,6 +617,7 @@
 				4A7462A51B3DBC9E00B8555C /* DesignableButton.swift in Sources */,
 				4A7462A41B3DBC9E00B8555C /* BlurView.swift in Sources */,
 				4AF9507C1B306646004313DC /* ProfileTableViewController.swift in Sources */,
+				4AB36AEA1B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift in Sources */,
 				4A7462C91B3F095D00B8555C /* TPKeyboardAvoidingTableView.m in Sources */,
 				4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */,
 				4A7462A71B3DBC9E00B8555C /* DesignableLabel.swift in Sources */,

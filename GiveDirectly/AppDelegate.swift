@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // Override point for customization after application launch.
-    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+//  UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
     
     // Change appearance of tab bar navigation globally
     let tabBarAppearance = UITabBar.appearance()
@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let font = UIFont(name: "Helvetica Neue", size: 10)
     let attributes: [NSObject : AnyObject]? = [ NSFontAttributeName : font! ]
     tabBarAppearance.barTintColor = UIColor.whiteColor()
+    tabBarAppearance.tintColor = UIColor(red: 72.0/255, green: 185.0/255, blue: 163.0/255, alpha: 1.0)
     tabBarAppearance.translucent = false
     tabBarItemAppearance.setTitleTextAttributes(attributes, forState: .Normal)
     
