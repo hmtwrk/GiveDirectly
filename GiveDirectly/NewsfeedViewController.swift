@@ -15,6 +15,9 @@ class NewsfeedViewController: UIViewController, UITableViewDelegate, UITableView
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // This view controller may require a custom navigation, so a UIViewController was used instead of a UITableViewController,
+    // which doesn't allow for resizing of the UITableView object.
+    
 //    self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     
     // turn off the seam on the navigation bar for this page only
@@ -38,25 +41,15 @@ class NewsfeedViewController: UIViewController, UITableViewDelegate, UITableView
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    return 2
+    return 1
     
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    var identifier = "UpdateTableViewCell_textonly"
-    
-    if indexPath.row == 1 {
-      
-      identifier = "UpdateTableViewCell_withphoto"
-      
-    }
-    
-    //    if indexPath.row == 2 {
-    //
-    //      identifier = "UpdateTableViewCell_notextnorphoto"
-    //
-    //    }
+    let identifier = "UpdateTableViewCell_textonly"
+
+
     
     let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
     println(indexPath.row)

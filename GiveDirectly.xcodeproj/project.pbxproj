@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */; };
-		4A1848121B446D36009D6026 /* UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848111B446D36009D6026 /* UpdateTableViewCell.swift */; };
+		4A1848101B446CEF009D6026 /* old_NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A18480F1B446CEF009D6026 /* old_NewsfeedTableViewController.swift */; };
+		4A1848121B446D36009D6026 /* old_UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848111B446D36009D6026 /* old_UpdateTableViewCell.swift */; };
 		4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848141B44A375009D6026 /* CommentViewController.swift */; };
 		4A1848171B472952009D6026 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848161B472952009D6026 /* SharingViewController.swift */; };
 		4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */; };
@@ -19,9 +19,10 @@
 		4A5A6EE11B57F804003A1D0F /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */; };
 		4A5A6EE41B580DEB003A1D0F /* DonateesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */; };
 		4A5A6EE61B5D7726003A1D0F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE51B5D7726003A1D0F /* MenuViewController.swift */; };
-		4A5A6EE91B5E83F4003A1D0F /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE81B5E83F4003A1D0F /* CenterViewController.swift */; };
 		4A5A6EEB1B5E8B52003A1D0F /* PortfolioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EEA1B5E8B52003A1D0F /* PortfolioTableViewController.swift */; };
 		4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */; };
+		4A6A60B11B6AB81A00C3F142 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */; };
+		4A6A60B31B6AB97A00C3F142 /* UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */; };
 		4A7462A11B3DBC9E00B8555C /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462831B3DBC9E00B8555C /* AsyncButton.swift */; };
 		4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */; };
 		4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462851B3DBC9E00B8555C /* AutoTextView.swift */; };
@@ -110,8 +111,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
-		4A1848111B446D36009D6026 /* UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewCell.swift; sourceTree = "<group>"; };
+		4A18480F1B446CEF009D6026 /* old_NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = old_NewsfeedTableViewController.swift; sourceTree = "<group>"; };
+		4A1848111B446D36009D6026 /* old_UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = old_UpdateTableViewCell.swift; sourceTree = "<group>"; };
 		4A1848141B44A375009D6026 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		4A1848161B472952009D6026 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateFooterTableViewCell.swift; sourceTree = "<group>"; };
@@ -122,9 +123,10 @@
 		4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateesTableViewCell.swift; sourceTree = "<group>"; };
 		4A5A6EE51B5D7726003A1D0F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		4A5A6EE81B5E83F4003A1D0F /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		4A5A6EEA1B5E8B52003A1D0F /* PortfolioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewController.swift; sourceTree = "<group>"; };
 		4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestActivityTableViewCell.swift; sourceTree = "<group>"; };
+		4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
+		4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewCell.swift; sourceTree = "<group>"; };
 		4A7462831B3DBC9E00B8555C /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		4A7462851B3DBC9E00B8555C /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -255,11 +257,12 @@
 		4A18480D1B4467D4009D6026 /* Newsfeed View */ = {
 			isa = PBXGroup;
 			children = (
-				4A18480F1B446CEF009D6026 /* NewsfeedTableViewController.swift */,
-				4A1848111B446D36009D6026 /* UpdateTableViewCell.swift */,
+				4A18480F1B446CEF009D6026 /* old_NewsfeedTableViewController.swift */,
+				4A1848111B446D36009D6026 /* old_UpdateTableViewCell.swift */,
 				4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */,
 				4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */,
 				4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */,
+				4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */,
 				4A1848141B44A375009D6026 /* CommentViewController.swift */,
 			);
 			name = "Newsfeed View";
@@ -270,6 +273,16 @@
 			children = (
 			);
 			name = "Company Profile View";
+			sourceTree = "<group>";
+		};
+		4A6A60B51B6BD71E00C3F142 /* Archived */ = {
+			isa = PBXGroup;
+			children = (
+				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
+				4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */,
+				C43780541B2933080018BD41 /* RecipientListTableViewController.swift */,
+			);
+			name = Archived;
 			sourceTree = "<group>";
 		};
 		4A7462821B3DBC9E00B8555C /* Spring */ = {
@@ -383,10 +396,8 @@
 		4AF9507F1B3066DE004313DC /* testing */ = {
 			isa = PBXGroup;
 			children = (
-				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
-				4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */,
-				C43780541B2933080018BD41 /* RecipientListTableViewController.swift */,
-				4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */,
+				4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */,
+				4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */,
 			);
 			name = testing;
 			sourceTree = "<group>";
@@ -413,13 +424,13 @@
 		C437804F1B2933080018BD41 /* GiveDirectly */ = {
 			isa = PBXGroup;
 			children = (
+				4A6A60B51B6BD71E00C3F142 /* Archived */,
 				4A18480D1B4467D4009D6026 /* Newsfeed View */,
 				4AF9507E1B30668E004313DC /* Recipients View */,
 				4AF9507D1B306672004313DC /* User Profile View */,
 				4A18480E1B4469B5009D6026 /* Company Profile View */,
 				4AF9507F1B3066DE004313DC /* testing */,
 				4A1848161B472952009D6026 /* SharingViewController.swift */,
-				4A5A6EE81B5E83F4003A1D0F /* CenterViewController.swift */,
 				4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
 				4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */,
@@ -580,7 +591,7 @@
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
 				4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */,
 				4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */,
-				4A1848121B446D36009D6026 /* UpdateTableViewCell.swift in Sources */,
+				4A1848121B446D36009D6026 /* old_UpdateTableViewCell.swift in Sources */,
 				4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */,
 				4AB36AE21B67DB1400ABCE23 /* UserAccountTableViewController.swift in Sources */,
 				4A5A6EE41B580DEB003A1D0F /* DonateesTableViewCell.swift in Sources */,
@@ -591,6 +602,7 @@
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
 				4A7462AB1B3DBC9E00B8555C /* DesignableView.swift in Sources */,
 				4A5A6EEB1B5E8B52003A1D0F /* PortfolioTableViewController.swift in Sources */,
+				4A6A60B31B6AB97A00C3F142 /* UpdateTableViewCell.swift in Sources */,
 				4A7462B11B3DBC9E00B8555C /* Misc.swift in Sources */,
 				4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */,
@@ -601,7 +613,7 @@
 				4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
-				4A1848101B446CEF009D6026 /* NewsfeedTableViewController.swift in Sources */,
+				4A1848101B446CEF009D6026 /* old_NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,
 				4ACBA75E1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift in Sources */,
 				4A5A6EDF1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift in Sources */,
@@ -622,11 +634,11 @@
 				4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */,
 				4A7462A71B3DBC9E00B8555C /* DesignableLabel.swift in Sources */,
 				4A7462B41B3DBC9E00B8555C /* SpringAnimation.swift in Sources */,
+				4A6A60B11B6AB81A00C3F142 /* NewsfeedTableViewController.swift in Sources */,
 				4A1848171B472952009D6026 /* SharingViewController.swift in Sources */,
 				4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */,
 				4A7462AF1B3DBC9E00B8555C /* LoadingView.swift in Sources */,
 				4A7462B61B3DBC9E00B8555C /* SpringImageView.swift in Sources */,
-				4A5A6EE91B5E83F4003A1D0F /* CenterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
