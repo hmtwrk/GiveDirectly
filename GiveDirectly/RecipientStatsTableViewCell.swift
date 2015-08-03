@@ -11,12 +11,12 @@ import UIKit
 class RecipientStatsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var recipientProfileImageView: UIImageView!
-    @IBOutlet weak var recipientNameLabel: UILabel!
-    @IBOutlet weak var numberOfFollowersLabel: UILabel!
-    @IBOutlet weak var recipientAgeLabel: UILabel!
-    @IBOutlet weak var recipientJobTitleLabel: UILabel!
-    @IBOutlet weak var recipientNumberOfChildrenLabel: UILabel!
-    @IBOutlet weak var recipientLocationLabel: UILabel!
+//    @IBOutlet weak var recipientNameLabel: UILabel!
+//    @IBOutlet weak var numberOfFollowersLabel: UILabel!
+//    @IBOutlet weak var recipientAgeLabel: UILabel!
+//    @IBOutlet weak var recipientJobTitleLabel: UILabel!
+//    @IBOutlet weak var recipientNumberOfChildrenLabel: UILabel!
+//    @IBOutlet weak var recipientLocationLabel: UILabel!
     
     
     
@@ -41,16 +41,16 @@ class RecipientStatsTableViewCell: UITableViewCell {
         
         // safely convert Int to String without "Optional" appearing
         if recipientAge != nil {
-            self.recipientAgeLabel.text = String(stringInterpolationSegment: recipientAge!)
+//            self.recipientAgeLabel.text = String(stringInterpolationSegment: recipientAge!)
         }
         
         if recipientNumberOfChildren != nil {
-            self.recipientNumberOfChildrenLabel.text = String(stringInterpolationSegment: recipientNumberOfChildren!)
+//            self.recipientNumberOfChildrenLabel.text = String(stringInterpolationSegment: recipientNumberOfChildren!)
         }
         
         // assign variables and constants to labels
-        self.recipientNameLabel.text = recipientName
-        self.recipientJobTitleLabel.text = recipientJob?.capitalizedString
+//        self.recipientNameLabel.text = recipientName
+//        self.recipientJobTitleLabel.text = recipientJob?.capitalizedString
 //        self.recipientLocationLabel.text = recipientLocation
         
         // make profile image round

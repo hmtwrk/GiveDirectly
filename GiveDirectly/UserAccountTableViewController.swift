@@ -56,6 +56,14 @@ class UserAccountTableViewController: UITableViewController {
             userProfileCell.configureUserProfileCell()
         }
         
+        if let userNetworkCell = cell as? UserAccountFollowingTableViewCell {
+            userNetworkCell.configureYourNetworkCell()
+        }
+        
+        if let recentActivityCell = cell as? RecentActivityTableViewCell {
+            recentActivityCell.configureLatestActivityCell()
+        }
+        
         println(indexPath.row)
         return cell
     }

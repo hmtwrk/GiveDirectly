@@ -9,8 +9,9 @@
 import UIKit
 
 class UserAccountFollowingTableViewCell: UITableViewCell {
-
-
+    
+    @IBOutlet weak var userFollowingImageView: UIImageView!
+    
     
     func configureYourNetworkCell() {
         
@@ -21,5 +22,5 @@ class UserAccountFollowingTableViewCell: UITableViewCell {
         userFollowingImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
         
     }
-
+    
 }
