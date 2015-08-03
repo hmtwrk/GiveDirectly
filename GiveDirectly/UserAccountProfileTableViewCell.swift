@@ -9,16 +9,22 @@
 import UIKit
 
 class UserAccountProfileTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var userPhotoImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userMessageLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+
+    func configureUserProfileCell() {
+        
+        userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.width / 2
+        userPhotoImageView.clipsToBounds = true
+        userPhotoImageView.layer.borderWidth = 2.0
+        userPhotoImageView.layer.borderColor = UIColor.clearColor().CGColor
+        userPhotoImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+        
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

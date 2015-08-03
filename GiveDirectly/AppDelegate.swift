@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navBarAppearance = UINavigationBar.appearance()
     navBarAppearance.translucent = false
     navBarAppearance.barTintColor = UIColor.whiteColor()
+    navBarAppearance.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
+    navBarAppearance.shadowImage = UIImage(named: "TransparentPixel")
+    
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS

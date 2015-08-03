@@ -10,15 +10,16 @@ import UIKit
 
 class UserAccountFollowingTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configureYourNetworkCell() {
+        
+        userFollowingImageView.layer.cornerRadius = self.userFollowingImageView.frame.size.width / 2
+        userFollowingImageView.clipsToBounds = true
+        userFollowingImageView.layer.borderWidth = 2.0
+        userFollowingImageView.layer.borderColor = UIColor.clearColor().CGColor
+        userFollowingImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+        
     }
 
 }
