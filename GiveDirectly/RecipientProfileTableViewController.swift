@@ -20,6 +20,9 @@ class RecipientProfileTableViewController: UITableViewController {
         let recipientName:String? = (recipientInfo as AnyObject)["gdid"] as? String
         println(recipientInfo)
         
+        // Fill the navigation title with the recipient's name (from Parse query)
+        self.navigationItem.title = recipientName
+        
         // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -51,9 +54,9 @@ class RecipientProfileTableViewController: UITableViewController {
               recipientStatsCell.configureStatsCell(recipientInfo)
             }
         
-//            if let recipientStoriesCell = cell as? RecipientStoriesTableViewCell {
-//              recipientStoriesCell.configureStoriesCell(recipientInfo)
-//            }
+            if let recipientStoriesCell = cell as? RecipientStoriesTableViewCell {
+              recipientStoriesCell.configureStoriesCell(recipientInfo)
+            }
         
         // make separators extend all the way left
         cell.preservesSuperviewLayoutMargins = false

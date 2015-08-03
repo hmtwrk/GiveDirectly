@@ -894,6 +894,14 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="challengesTextView" destination="Jyo-Bi-6HW" id="ZYN-b7-4fG"/>
+                                    <outlet property="donorImageView" destination="v0y-vm-SYf" id="e6t-34-HRG"/>
+                                    <outlet property="donorNameLabel" destination="3Ez-WJ-uJc" id="Gte-sn-Cda"/>
+                                    <outlet property="goalsTextView" destination="FaE-20-kPl" id="GKY-dt-W5U"/>
+                                    <outlet property="hardshipsTextView" destination="Dk3-LS-tcM" id="QK7-L7-Zm2"/>
+                                    <outlet property="paymentTextView" destination="t5t-dd-kqQ" id="5bD-9d-bbG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
