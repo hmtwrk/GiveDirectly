@@ -84,9 +84,9 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BrowseCells", forIndexPath: indexPath) as! BrowseRecipientCollectionViewCell
         
         // set up the appearance of the cells
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.lightGrayColor().CGColor
-        
+//        cell.layer.borderWidth = 1.0
+//        cell.layer.borderColor = UIColor.lightGrayColor().CGColor
+      
         // array of repeating colors for colored UIView at the bottom of each cell
         let barViewColor = [
             
@@ -99,8 +99,9 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
         ]
         
         // cycle through colors
-        cell.coloredBarView.backgroundColor = barViewColor[indexPath.row % barViewColor.count]
-        
+//        cell.coloredBarView.backgroundColor = barViewColor[indexPath.row % barViewColor.count]
+//      
+      
         // the recipientData object is being sent OK, but need to constrain info for each ID
         let recipientInfo: AnyObject = recipientData[indexPath.row]
         
@@ -112,18 +113,18 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ProfileSegue" {
-            let toView = segue.destinationViewController as! ProfileTableViewController
+        if segue.identifier == "RecipientProfileSegue" {
+            let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
             let recipientInfo: (AnyObject) = recipientData[indexPath!.row]
             toView.recipientInfo = recipientInfo
-//            println(recipientInfo)
+            //            println(recipientInfo)
         }
     }
 
     // This function will do the Parse query, and then return appropriate objects for use in building each item's cell
     func queryForRecipientData() {
-        var query:PFQuery = PFQuery(className: "Recipients")
+        var query:PFQuery = PFQuery(className: "Registration")
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {

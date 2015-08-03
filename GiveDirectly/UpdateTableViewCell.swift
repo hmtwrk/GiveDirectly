@@ -47,6 +47,7 @@ class UpdateTableViewCell: UITableViewCell {
     self.authorNameLabel.text = author
     self.updateTitleLabel.text = title
     self.updateTextView.text = updateText
+    self.timestampLabel.text = "1d"
     
     // make updater's profile image round...
     authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2

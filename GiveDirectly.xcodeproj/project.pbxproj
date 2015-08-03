@@ -23,6 +23,9 @@
 		4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */; };
 		4A6A60B11B6AB81A00C3F142 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */; };
 		4A6A60B31B6AB97A00C3F142 /* UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */; };
+		4A6A60B71B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B61B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift */; };
+		4A6A60BB1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60BA1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift */; };
+		4A6A60BD1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60BC1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift */; };
 		4A7462A11B3DBC9E00B8555C /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462831B3DBC9E00B8555C /* AsyncButton.swift */; };
 		4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */; };
 		4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462851B3DBC9E00B8555C /* AutoTextView.swift */; };
@@ -127,6 +130,9 @@
 		4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestActivityTableViewCell.swift; sourceTree = "<group>"; };
 		4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewCell.swift; sourceTree = "<group>"; };
+		4A6A60B61B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientProfileTableViewController.swift; sourceTree = "<group>"; };
+		4A6A60BA1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientStatsTableViewCell.swift; sourceTree = "<group>"; };
+		4A6A60BC1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientStoriesTableViewCell.swift; sourceTree = "<group>"; };
 		4A7462831B3DBC9E00B8555C /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		4A7462841B3DBC9E00B8555C /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		4A7462851B3DBC9E00B8555C /* AutoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
@@ -439,6 +445,9 @@
 				4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */,
 				4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */,
 				4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */,
+				4A6A60B61B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift */,
+				4A6A60BA1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift */,
+				4A6A60BC1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
@@ -589,6 +598,7 @@
 				4A7462BC1B3DBC9E00B8555C /* TransitionZoom.swift in Sources */,
 				4A7462B81B3DBC9E00B8555C /* SpringTextField.swift in Sources */,
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
+				4A6A60BB1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift in Sources */,
 				4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */,
 				4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */,
 				4A1848121B446D36009D6026 /* old_UpdateTableViewCell.swift in Sources */,
@@ -607,12 +617,14 @@
 				4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */,
 				4ACBA7601B66785900F25D74 /* NewsfeedViewController.swift in Sources */,
+				4A6A60B71B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift in Sources */,
 				4A7462A21B3DBC9E00B8555C /* AsyncImageView.swift in Sources */,
 				4A7462A81B3DBC9E00B8555C /* DesignableTabBarController.swift in Sources */,
 				4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */,
 				4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
+				4A6A60BD1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift in Sources */,
 				4A1848101B446CEF009D6026 /* old_NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,
 				4ACBA75E1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift in Sources */,
