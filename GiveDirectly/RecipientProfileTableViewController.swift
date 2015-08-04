@@ -24,7 +24,7 @@ class RecipientProfileTableViewController: UITableViewController {
         self.navigationItem.title = recipientName
         
         // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 45
         tableView.rowHeight = UITableViewAutomaticDimension
         
     }
