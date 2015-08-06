@@ -52,7 +52,7 @@ class NewsfeedTableViewController: UITableViewController {
 //      println(updateData)
       let updateDataForCell: AnyObject = updateData[indexPath.row]
       updateCell.configureUpdateTableViewCell(updateDataForCell)
-      println(updateData.count)
+//      println(updateData.count)
       
     }
     

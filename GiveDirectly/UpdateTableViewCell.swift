@@ -36,7 +36,7 @@ class UpdateTableViewCell: UITableViewCell {
   func configureUpdateTableViewCell(updateData: AnyObject) {
     
     // have to get the updateData[indexPath.row] in table view controller for subscripting to work like below...
-    println(updateData)
+//    println(updateData)
     
     // configure outlets with Parse data
     let author:String? = (updateData as AnyObject)["gdid"] as? String

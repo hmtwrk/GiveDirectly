@@ -28,7 +28,7 @@ class ProfileTableViewController: UITableViewController {
         
 
         // test to make sure data was received properly during segue
-        println(recipientInfo)
+//        println(recipientInfo)
         
         
         // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)

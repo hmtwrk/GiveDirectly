@@ -10,6 +10,7 @@ import UIKit
 
 class UserAccountTableViewController: UITableViewController {
     
+
     let identifierArray = ["UserAccountProfileCell", "UserAccountFollowingCell", "YourFriends", "FriendActivityCell"]
     
     
@@ -24,6 +25,9 @@ class UserAccountTableViewController: UITableViewController {
         
         // customize separators
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+
+
         
     }
     
@@ -49,11 +53,12 @@ class UserAccountTableViewController: UITableViewController {
         
         let identifier = indexPath.row < identifierArray.count ? identifierArray[indexPath.row] : "FriendActivityCell"
         
-        println(identifier)
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
         
         if let userProfileCell = cell as? UserAccountProfileTableViewCell {
-            userProfileCell.configureUserProfileCell()
+//            userProfileCell.configureUserProfileCell(userData)
+            let userData = PFUser.currentUser()
+            userProfileCell.configureUserProfileCell(userData!)
         }
         
         if let userNetworkCell = cell as? UserAccountFollowingTableViewCell {
@@ -64,19 +69,11 @@ class UserAccountTableViewController: UITableViewController {
             recentActivityCell.configureLatestActivityCell()
         }
         
-        println(indexPath.row)
+//        println(indexPath.row)
         return cell
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
+
+
     
 }

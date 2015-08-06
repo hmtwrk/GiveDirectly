@@ -17,9 +17,7 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
 
     // determine whether or not to display a loading screen
     var isFirstTime = true
-    
-    // initalize variable for recipient ID array
-    var objectIDsFromParse = [String]()
+
     
     // initialize variable for Parse recipient data array
     var recipientData = [AnyObject]()
@@ -74,8 +72,7 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        // create one row per each recipient ID
-        return objectIDsFromParse.count
+        return recipientData.count
     }
     
     
@@ -133,26 +130,11 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
                 // need to mine this variable to return just one ID information
                 self.recipientData = objects!
                 
-                println("Successfully retrieved \(objects!.count) objects!")
+//                println("Successfully retrieved \(objects!.count) objects!")
 
-                
-                // casting AnyObject to PFObject to use "objectId" subclass
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        
-                        // builds array of recipient IDs for determining number of items to display
-                        self.objectIDsFromParse.append(object.objectId!)
-                        
-                        // testing function
-                        println(object.objectId!)
-                        
-                    }
-                    
-                }
                 
                 // Parse query is complete, so reload the collection view
                 self.collectionView?.reloadData()
-                println(self.objectIDsFromParse)
                 
             } else {
                 // log details of the failure

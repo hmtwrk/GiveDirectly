@@ -265,13 +265,8 @@
 		4A18480D1B4467D4009D6026 /* Newsfeed View */ = {
 			isa = PBXGroup;
 			children = (
-				4A18480F1B446CEF009D6026 /* old_NewsfeedTableViewController.swift */,
-				4A1848111B446D36009D6026 /* old_UpdateTableViewCell.swift */,
-				4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */,
-				4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */,
-				4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */,
-				4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */,
-				4A1848141B44A375009D6026 /* CommentViewController.swift */,
+				4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */,
+				4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */,
 			);
 			name = "Newsfeed View";
 			sourceTree = "<group>";
@@ -286,9 +281,25 @@
 		4A6A60B51B6BD71E00C3F142 /* Archived */ = {
 			isa = PBXGroup;
 			children = (
+				4AF9507B1B306646004313DC /* ProfileTableViewController.swift */,
+				4A5A6EEA1B5E8B52003A1D0F /* PortfolioTableViewController.swift */,
+				4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */,
 				4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */,
 				4AD91CD41B2B5C0400A9FB23 /* RecipientListTableViewCell.swift */,
+				4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */,
+				4A5A6EE51B5D7726003A1D0F /* MenuViewController.swift */,
+				4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */,
 				C43780541B2933080018BD41 /* RecipientListTableViewController.swift */,
+				4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */,
+				4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */,
+				4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */,
+				4A1848161B472952009D6026 /* SharingViewController.swift */,
+				4A18480F1B446CEF009D6026 /* old_NewsfeedTableViewController.swift */,
+				4A1848111B446D36009D6026 /* old_UpdateTableViewCell.swift */,
+				4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */,
+				4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */,
+				4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */,
+				4A1848141B44A375009D6026 /* CommentViewController.swift */,
 			);
 			name = Archived;
 			sourceTree = "<group>";
@@ -396,19 +407,12 @@
 				4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */,
 				4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */,
 				4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */,
-				4AF9507B1B306646004313DC /* ProfileTableViewController.swift */,
+				4A6A60B61B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift */,
 				4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */,
+				4A6A60BA1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift */,
+				4A6A60BC1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift */,
 			);
 			name = "Recipients View";
-			sourceTree = "<group>";
-		};
-		4AF9507F1B3066DE004313DC /* testing */ = {
-			isa = PBXGroup;
-			children = (
-				4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */,
-				4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */,
-			);
-			name = testing;
 			sourceTree = "<group>";
 		};
 		C43780441B2933080018BD41 = {
@@ -438,19 +442,7 @@
 				4AF9507E1B30668E004313DC /* Recipients View */,
 				4AF9507D1B306672004313DC /* User Profile View */,
 				4A18480E1B4469B5009D6026 /* Company Profile View */,
-				4AF9507F1B3066DE004313DC /* testing */,
-				4A1848161B472952009D6026 /* SharingViewController.swift */,
-				4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
-				4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */,
-				4A5A6EE51B5D7726003A1D0F /* MenuViewController.swift */,
-				4A5A6EEA1B5E8B52003A1D0F /* PortfolioTableViewController.swift */,
-				4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */,
-				4A5A6EE31B580DEB003A1D0F /* DonateesTableViewCell.swift */,
-				4A5A6EEC1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift */,
-				4A6A60B61B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift */,
-				4A6A60BA1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift */,
-				4A6A60BC1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
@@ -535,6 +527,7 @@
 				TargetAttributes = {
 					C437804C1B2933080018BD41 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = FJ5A95DE4J;
 					};
 					C43780611B2933080018BD41 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -782,6 +775,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -789,6 +784,7 @@
 				INFOPLIST_FILE = GiveDirectly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GiveDirectly/GiveDirectly-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -799,6 +795,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -806,6 +804,7 @@
 				INFOPLIST_FILE = GiveDirectly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GiveDirectly/GiveDirectly-Bridging-Header.h";
 			};
 			name = Release;

@@ -53,7 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Check for user's login status
     self.checkUserStatus()
-    //        self.easyLogin()
+    
+    self.refreshUserData()
+    
+//            self.easyLogin()
     
     return true
   }
@@ -92,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } else {
       
       // show the signup or login screen
-      let parseUsername = "wesleysnipes"
+      let parseUsername = "braddourif"
       let testPassword = "testpass123"
       
       PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {
@@ -112,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func easyLogin() {
     
-    let parseUsername = "wesleysnipes"
+    let parseUsername = "braddourif"
     let testPassword = "testpass123"
     
     PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {
@@ -128,6 +131,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
   
-  
+    func refreshUserData() {
+        
+        // refresh user data
+        var currentUser = PFUser.currentUser()
+        currentUser?.fetchInBackgroundWithBlock { (object, error) -> Void in
+            println("Refreshed!")
+            println(currentUser)
+        }
+        
+    }
+    
 }
 

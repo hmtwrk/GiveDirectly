@@ -1906,6 +1906,10 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="userDonationsLabel" destination="VwE-pc-9dH" id="jlm-4F-eB5"/>
+                                    <outlet property="userFundedLabel" destination="LrW-1E-oCH" id="aES-kb-AhD"/>
+                                    <outlet property="userJoinDateLabel" destination="KHV-P0-eA2" id="zCJ-4j-lpO"/>
+                                    <outlet property="userLocationLabel" destination="RT4-1u-Rxj" id="Ktz-G7-Yx6"/>
                                     <outlet property="userMessageLabel" destination="vb8-hR-LBH" id="33i-RQ-jbY"/>
                                     <outlet property="userNameLabel" destination="9nb-Rg-SZH" id="VDL-a7-Gfb"/>
                                     <outlet property="userPhotoImageView" destination="8Jn-T3-gHj" id="QZF-VR-YZf"/>
