@@ -63,8 +63,7 @@ class NewsfeedTableViewController: UITableViewController {
   func queryParseForNewsfeedUpdates() {
     
     // construct query to return target recipient
-    let query:PFQuery = PFQuery(className: "Registration")
-//    query.whereKey("objectId", equalTo: "CfNMy0uMJt")
+    let query:PFQuery = PFQuery(className: "RecipientUpdates")
     query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
       
       self.updateData = result!

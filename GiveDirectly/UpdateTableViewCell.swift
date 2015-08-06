@@ -39,13 +39,13 @@ class UpdateTableViewCell: UITableViewCell {
 //    println(updateData)
     
     // configure outlets with Parse data
-    let author:String? = (updateData as AnyObject)["gdid"] as? String
-    let title:String? = (updateData as AnyObject)["goals"] as? String
-    let updateText:String? = (updateData as AnyObject)["hardship"] as? String
+    let author:String? = (updateData as AnyObject)["GDID"] as? String
+    let title:String? = (updateData as AnyObject)["improvement"] as? String
+    let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
     
     // assign labels and views
     self.authorNameLabel.text = author
-    self.updateTitleLabel.text = title
+    self.updateTitleLabel.text = "on " + title!
     self.updateTextView.text = updateText
     self.timestampLabel.text = "1d"
     
