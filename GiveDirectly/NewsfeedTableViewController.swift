@@ -64,8 +64,8 @@ class NewsfeedTableViewController: UITableViewController {
     
     // construct query to return target recipient
     let query:PFQuery = PFQuery(className: "RecipientUpdates")
+    query.orderByAscending("createdAt")
     query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
-      
       self.updateData = result!
       self.numberOfUpdates = result!.count
 //      println(result!)

@@ -36,18 +36,21 @@ class UpdateTableViewCell: UITableViewCell {
   func configureUpdateTableViewCell(updateData: AnyObject) {
     
     // have to get the updateData[indexPath.row] in table view controller for subscripting to work like below...
-//    println(updateData)
     
     // configure outlets with Parse data
     let author:String? = (updateData as AnyObject)["GDID"] as? String
     let title:String? = (updateData as AnyObject)["improvement"] as? String
     let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
     
+    // get the date and format
+    let date:String = (updateData as AnyObject)["date"] as! String
+    var newDate = date.substringToIndex(advance(date.endIndex, -18))
+    
     // assign labels and views
     self.authorNameLabel.text = author
     self.updateTitleLabel.text = "on " + title!
     self.updateTextView.text = updateText
-    self.timestampLabel.text = "1d"
+    self.timestampLabel.text = newDate
     
     // make updater's profile image round...
     authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
