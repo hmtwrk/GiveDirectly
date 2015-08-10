@@ -35,6 +35,7 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         // configure round profile image
         userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.width / 2
         userPhotoImageView.clipsToBounds = true
+        
         userPhotoImageView.layer.borderWidth = 2.0
         userPhotoImageView.layer.borderColor = UIColor.clearColor().CGColor
         userPhotoImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor

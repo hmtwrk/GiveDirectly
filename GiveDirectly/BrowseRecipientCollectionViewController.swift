@@ -11,30 +11,25 @@ import QuartzCore
 import Parse
 import Bolts
 
+// necessary?
+import AVFoundation
 
-class BrowseRecipientCollectionViewController: UICollectionViewController {
+
+class BrowseRecipientCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-
     // determine whether or not to display a loading screen
     var isFirstTime = true
 
-    
     // initialize variable for Parse recipient data array
     var recipientData = [AnyObject]()
-    
-    
-    // constants for the colored bars at the bottom of each cell
-    let viewOliveColor = UIColor(hex: "#93AAAF")
-    let viewOrangeColor = UIColor(hex: "#FFBC45")
-    let viewCyanColor = UIColor(hex: "#1EA9DD")
-    let viewGreenColor = UIColor(hex: "#9BCB42")
-    let viewBlackColor = UIColor(hex: "#000000")
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.queryForRecipientData()
+        
+        
         
     }
     
@@ -63,7 +58,7 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
     }
     
     
-    // sections are groups of grids—— probably we will only need just one section only
+    // only going to need one section only?
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
         
@@ -78,22 +73,12 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BrowseCells", forIndexPath: indexPath) as! BrowseRecipientCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BrowseCell", forIndexPath: indexPath) as! BrowseRecipientCollectionViewCell
         
         // set up the appearance of the cells
 //        cell.layer.borderWidth = 1.0
 //        cell.layer.borderColor = UIColor.lightGrayColor().CGColor
-      
-        // array of repeating colors for colored UIView at the bottom of each cell
-        let barViewColor = [
-            
-            viewOliveColor,
-            viewOrangeColor,
-            viewCyanColor,
-            viewGreenColor,
-            viewBlackColor
-            
-        ]
+
         
         // cycle through colors
 //        cell.coloredBarView.backgroundColor = barViewColor[indexPath.row % barViewColor.count]
@@ -144,6 +129,21 @@ class BrowseRecipientCollectionViewController: UICollectionViewController {
         
     }
     
+    // MARK: UICollectionViewDelegateFlowLayout delegate method
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let cellSpacing = CGFloat(15)        // define the space between each cell
+        let leftRightMargin = CGFloat(15)   // if defined in IB for "section insets"
+        let numColumns = CGFloat(2)         // the total number of columns you want
+        
+        let totalCellSpace = cellSpacing * (numColumns - 1)                             // calculates the total (empty) space in view
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        let width = (screenWidth - leftRightMargin - totalCellSpace) / numColumns       // seems OK
+        let height = CGFloat(250)           // whatever height you want
+        
+        return CGSizeMake(width, height)
+
+    }
     
     
 }

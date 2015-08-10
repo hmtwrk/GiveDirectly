@@ -58,6 +58,7 @@ class ProfileSummaryTableViewCell: UITableViewCell {
         self.nameLabel.text = recipientName
         self.jobLabel.text = recipientJob?.capitalizedString
         self.storyTextView.text = recipientProfileStory
+        self.storyTextView.sizeToFit()
         self.locationLabel.text = recipientLocation
         
         
