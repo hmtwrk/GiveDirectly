@@ -28,24 +28,22 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         
         
         // assign variables / constants from the Parse query to outlets
-        //        let recipientName:String? = (recipientInfo as AnyObject)["name"] as? String
-        let recipientName:String? = (recipientInfo as AnyObject)["gdid"] as? String
+        let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
         //    let recipientAge:Int? = (recipientInfo as AnyObject)["age"] as? Int
         //    let recipientJob:String? = (recipientInfo as AnyObject)["job"] as? String
         //    let recipientLocation:String? = (recipientInfo as AnyObject)["location"] as? String
         //    var recipientNumberOfChildren:Int? = (recipientInfo as AnyObject)["numberOfChildren"] as? Int
-        //    let recipientProfileStory:String? = (recipientInfo as AnyObject)["profileStory"] as? String
-        let recipientProfileStory:String? = (recipientInfo as AnyObject)["hardship"] as? String
-        //    let recipientProfilePhoto = recipientInfo["profilePhoto"] as! PFFile
+        let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
+        let recipientProfilePhoto = recipientInfo["image"] as! PFFile
         
         // TODO: make the optional safe for an image not existing in Parse
-        //    recipientProfilePhoto.getDataInBackgroundWithBlock({
-        //      (imageData: NSData?, error: NSError?) -> Void in
-        //      if (error == nil) {
-        //        let image = UIImage(data: imageData!)
-        //        self.profileImageView.image = image
-        //      }
-        //    })
+        recipientProfilePhoto.getDataInBackgroundWithBlock({
+            (imageData: NSData?, error: NSError?) -> Void in
+            if (error == nil) {
+            let image = UIImage(data: imageData!)
+            self.profileImageView.image = image
+            }
+        })
         
         // safely convert Int to String without "Optional" appearing
         //        if recipientNumberOfChildren != nil {

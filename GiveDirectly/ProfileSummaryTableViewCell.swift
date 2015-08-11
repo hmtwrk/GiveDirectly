@@ -28,13 +28,13 @@ class ProfileSummaryTableViewCell: UITableViewCell {
     func configureProfileSummary(recipientInfo: AnyObject) {
         
         // import the data from the original Parse query on the Collection View controller
-        let recipientName:String? = (recipientInfo as AnyObject)["name"] as? String
+        let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
         let recipientAge:Int? = (recipientInfo as AnyObject)["age"] as? Int
         let recipientJob:String? = (recipientInfo as AnyObject)["job"] as? String
-        let recipientLocation:String? = (recipientInfo as AnyObject)["location"] as? String
+        let recipientLocation:String? = (recipientInfo as AnyObject)["village"] as? String
         var recipientNumberOfChildren:Int? = (recipientInfo as AnyObject)["numberOfChildren"] as? Int
-        let recipientProfileStory:String? = (recipientInfo as AnyObject)["profileStory"] as? String
-        let recipientProfilePhoto = recipientInfo["profileSquarePhoto"] as! PFFile
+        let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
+        let recipientProfilePhoto = recipientInfo["image"] as! PFFile
         
         recipientProfilePhoto.getDataInBackgroundWithBlock({
             (imageData: NSData?, error: NSError?) -> Void in
