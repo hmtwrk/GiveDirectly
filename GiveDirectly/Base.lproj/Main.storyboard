@@ -485,7 +485,6 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hs7-4K-xgN">
                                             <rect key="frame" x="0.0" y="173" width="145" height="13.5"/>
-                                            <color key="backgroundColor" red="0.87863004209999995" green="0.86564946170000001" blue="0.0581557937" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -493,7 +492,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.93228310032894723" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="B4Y-4y-oMG" firstAttribute="bottom" secondItem="2jz-FJ-jy9" secondAttribute="bottom" id="0oV-xa-A1I"/>
                                     <constraint firstAttribute="trailing" secondItem="hs7-4K-xgN" secondAttribute="trailing" id="22A-Y7-xqp"/>
