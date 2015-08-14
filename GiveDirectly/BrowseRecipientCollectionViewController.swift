@@ -85,7 +85,7 @@ class BrowseRecipientCollectionViewController: UICollectionViewController, UICol
 //      
       
         // the recipientData object is being sent OK, but need to constrain info for each ID
-        let recipientInfo: AnyObject = recipientData[indexPath.row]
+        let recipientInfo: AnyObject = recipientData[indexPath.item]
         
         cell.configureCellWithParse(recipientInfo)
         
@@ -98,7 +98,7 @@ class BrowseRecipientCollectionViewController: UICollectionViewController, UICol
         if segue.identifier == "RecipientProfileSegue" {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
-            let recipientInfo: (AnyObject) = recipientData[indexPath!.row]
+            let recipientInfo: (AnyObject) = recipientData[indexPath!.item]
             toView.recipientInfo = recipientInfo
             //            println(recipientInfo)
         }

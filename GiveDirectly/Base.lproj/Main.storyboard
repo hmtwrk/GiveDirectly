@@ -434,27 +434,22 @@
         <!--Recipients-->
         <scene sceneID="1zQ-ek-fdx">
             <objects>
-                <collectionViewController id="lyh-CJ-5zO" customClass="BrowseRecipientCollectionViewController" customModule="GiveDirectly" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="lyh-CJ-5zO" customClass="RecipientBrowserViewController" customModule="GiveDirectly" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l6O-QG-Muh">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Sr0-et-NEp">
-                            <size key="itemSize" width="145" height="250"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="6u5-9a-56g" customClass="BrowserLayout" customModule="GiveDirectly" customModuleProvider="target"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="BrowseCell" id="8KW-DI-V00" customClass="BrowseRecipientCollectionViewCell" customModule="GiveDirectly" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="RecipientBrowserCell" id="8KW-DI-V00" customClass="BrowserViewCell" customModule="GiveDirectly" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="145" height="250"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="280"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="145" id="97y-jM-61n"/>
@@ -469,22 +464,24 @@
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-FJ-jy9">
-                                            <rect key="frame" x="0.0" y="149" width="32" height="14"/>
+                                            <rect key="frame" x="0.0" y="154" width="32" height="14"/>
+                                            <color key="backgroundColor" red="0.28235294119999998" green="0.72549019609999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4Y-4y-oMG">
-                                            <rect key="frame" x="121" y="149" width="23.5" height="14"/>
+                                            <rect key="frame" x="126.5" y="154" width="23.5" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_payment-firststage" translatesAutoresizingMaskIntoConstraints="NO" id="eku-P6-Wfs">
-                                            <rect key="frame" x="117" y="117" width="24" height="24"/>
+                                            <rect key="frame" x="122" y="122" width="24" height="24"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hs7-4K-xgN">
-                                            <rect key="frame" x="0.0" y="173" width="145" height="13.5"/>
+                                            <rect key="frame" x="0.0" y="178" width="150" height="13.5"/>
+                                            <color key="backgroundColor" red="0.87863004209999995" green="0.86564946170000001" blue="0.0581557937" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -507,12 +504,14 @@
                                     <constraint firstItem="hs7-4K-xgN" firstAttribute="leading" secondItem="8KW-DI-V00" secondAttribute="leading" id="Zs3-hN-mFE"/>
                                     <constraint firstAttribute="centerX" secondItem="gzL-fq-p5T" secondAttribute="centerX" id="owO-CH-OFl"/>
                                 </constraints>
+                                <size key="customSize" width="150" height="280"/>
                                 <connections>
-                                    <outlet property="nameLabel" destination="2jz-FJ-jy9" id="6tE-YT-tPv"/>
-                                    <outlet property="paymentPhaseImageView" destination="eku-P6-Wfs" id="Twa-IY-DJU"/>
-                                    <outlet property="profileImageView" destination="gzL-fq-p5T" id="YLB-Aa-yQo"/>
-                                    <outlet property="storyLabel" destination="hs7-4K-xgN" id="wBM-zF-yX9"/>
-                                    <outlet property="timeLabel" destination="B4Y-4y-oMG" id="TtR-xp-69l"/>
+                                    <outlet property="nameLabel" destination="2jz-FJ-jy9" id="lAZ-hg-DvF"/>
+                                    <outlet property="paymentPhaseImageView" destination="eku-P6-Wfs" id="7bB-qj-2SU"/>
+                                    <outlet property="profileImageView" destination="gzL-fq-p5T" id="d9D-hT-L3M"/>
+                                    <outlet property="profileImageViewHeightLayoutConstraint" destination="NmN-QI-3Ze" id="jCb-uq-rPI"/>
+                                    <outlet property="storyLabel" destination="hs7-4K-xgN" id="hN5-BV-5Zu"/>
+                                    <outlet property="timeLabel" destination="B4Y-4y-oMG" id="z3t-Ns-g0n"/>
                                     <segue destination="Sr0-ms-ssZ" kind="show" identifier="RecipientProfileSegue" id="tD2-Jh-GhK"/>
                                 </connections>
                             </collectionViewCell>

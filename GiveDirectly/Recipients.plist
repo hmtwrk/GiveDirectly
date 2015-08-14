@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Caption</key>
+		<string>Gladys</string>
+		<key>Comment</key>
+		<string>This will be a pretty short comment.</string>
+		<key>Photo</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Lyle</string>
+		<key>Comment</key>
+		<string>In contrast, this will be a much longer comment that drags on a bit before wrapping up.</string>
+		<key>Photo</key>
+		<string>1</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Cecelia</string>
+		<key>Comment</key>
+		<string>I like short comments, so that&apos;s what this is. Except for some reason, my stuff isn&apos;t even showing up. What gives?</string>
+		<key>Photo</key>
+		<string>2</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Franny</string>
+		<key>Comment</key>
+		<string>Let&apos;s have a long comment with plenty of extra words, which would make a nice, fat label to fill or flood with text. Better report a flash flood warning for all this text, hear. I&apos;d actually like to say a few more things, but I am not allowed.</string>
+		<key>Photo</key>
+		<string>3</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Lester</string>
+		<key>Comment</key>
+		<string>Short and simple, son. SASS.</string>
+		<key>Photo</key>
+		<string>4</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Armand</string>
+		<key>Comment</key>
+		<string>New to computer. Forgive.</string>
+		<key>Photo</key>
+		<string>5</string>
+	</dict>
+	<dict>
+		<key>Caption</key>
+		<string>Amanda</string>
+		<key>Comment</key>
+		<string>I&apos;ve little to say, but thanks.</string>
+		<key>Photo</key>
+		<string>6</string>
+	</dict>
+</array>
+</plist>
