@@ -84,7 +84,7 @@ extension RecipientBrowserViewController {
         func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
             
             let annotation = recipients[indexPath.item]
-            let font = UIFont(name: "HelveticaNeue", size: 10)!
+            let font = UIFont(name: "HelveticaNeue", size: 13)!
             let storyHeight = annotation.heightForStory(font, width: width)
             let height = 4 + 17 + 4 + storyHeight + 4
             return height
