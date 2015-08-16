@@ -42,6 +42,7 @@ class BrowserLayoutAttributes: UICollectionViewLayoutAttributes {
 
 class BrowserLayout: UICollectionViewLayout {
     
+    // initializers overridden by later code
     var cellPadding: CGFloat = 0
     var delegate: BrowserLayoutDelegate!
     var numberOfColumns = 1

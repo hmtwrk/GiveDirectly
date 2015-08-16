@@ -23,7 +23,7 @@ class Recipient {
             }
         }
         
-        // Parse API call to return target recipient
+//         Parse API call to return target recipient
 //        let query:PFQuery = PFQuery(className: "RecipientUpdates")
 //        query.orderByAscending("createdAt")
 //        query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in

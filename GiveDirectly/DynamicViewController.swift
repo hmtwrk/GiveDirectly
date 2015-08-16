@@ -27,7 +27,8 @@ class RecipientBrowserViewController: UICollectionViewController {
         collectionView!.backgroundColor = UIColor.whiteColor()
         let size = CGRectGetWidth(collectionView!.bounds) / 2
         
-        collectionView!.contentInset = UIEdgeInsets(top: 23, left: 10, bottom: 10, right: 5)
+        // configure the insets for each collection view item
+        collectionView!.contentInset = UIEdgeInsets(top: -5, left: 5, bottom: 10, right: 5)
         
         let layout = collectionViewLayout as! BrowserLayout
         layout.delegate = self
@@ -52,17 +53,18 @@ extension RecipientBrowserViewController {
     func queryParseForRecipients() {
         
         let query:PFQuery = PFQuery(className: "RecipientUpdates")
+//        let query:PFQuery = PFQuery(className: "Recipients")
         query.orderByAscending("createdAt")
+        query.limit = 20
         query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 let recipientData = result!
+                println(recipientData.count)
                 self.collectionView?.reloadData()
             } else {
                 println("Error: \(error!) \(error!.userInfo!)")
             }
         }
-        
-        
     }
 }
 

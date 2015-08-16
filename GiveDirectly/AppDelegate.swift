@@ -137,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var currentUser = PFUser.currentUser()
         currentUser?.fetchInBackgroundWithBlock { (object, error) -> Void in
             println("Refreshed!")
-            println(currentUser)
+//            println(currentUser)
         }
         
     }
