@@ -64,6 +64,7 @@
 		4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462C61B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		4A84350F1B7E605C008D5E08 /* UIImage+Decompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */; };
 		4A8435111B7E687B008D5E08 /* Recipients.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A8435101B7E687B008D5E08 /* Recipients.plist */; };
+		4A8435131B823F0B008D5E08 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8435121B823F0B008D5E08 /* Global.swift */; };
 		4AB19B131B3B538100B3E973 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B0D1B3B538100B3E973 /* Parse.framework */; };
 		4AB19B141B3B538100B3E973 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B0E1B3B538100B3E973 /* ParseCrashReporting.framework */; };
 		4AB19B151B3B538100B3E973 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B0F1B3B538100B3E973 /* ParseFacebookUtils.framework */; };
@@ -184,6 +185,7 @@
 		4A7462C61B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
 		4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Decompression.swift"; sourceTree = "<group>"; };
 		4A8435101B7E687B008D5E08 /* Recipients.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Recipients.plist; sourceTree = "<group>"; };
+		4A8435121B823F0B008D5E08 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4AB19B0D1B3B538100B3E973 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		4AB19B0E1B3B538100B3E973 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		4AB19B0F1B3B538100B3E973 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		4A1BAF7E1B7A91F800BEFCC9 /* Dynamic Collection */ = {
 			isa = PBXGroup;
 			children = (
+				4A8435121B823F0B008D5E08 /* Global.swift */,
 				4AC663F11B7D4177008AF19F /* Recipient.swift */,
 				4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */,
 				4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */,
@@ -615,6 +618,7 @@
 				4A7462B51B3DBC9E00B8555C /* SpringButton.swift in Sources */,
 				4A7462B21B3DBC9E00B8555C /* SoundPlayer.swift in Sources */,
 				4A7462B91B3DBC9E00B8555C /* SpringTextView.swift in Sources */,
+				4A8435131B823F0B008D5E08 /* Global.swift in Sources */,
 				4A5A6EE61B5D7726003A1D0F /* MenuViewController.swift in Sources */,
 				C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */,
 				4A7462A91B3DBC9E00B8555C /* DesignableTextField.swift in Sources */,
