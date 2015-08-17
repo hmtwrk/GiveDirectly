@@ -12,6 +12,8 @@
 		4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848141B44A375009D6026 /* CommentViewController.swift */; };
 		4A1848171B472952009D6026 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848161B472952009D6026 /* SharingViewController.swift */; };
 		4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */; };
+		4A1BAF801B7A922E00BEFCC9 /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */; };
+		4A1BAF821B7AA9B500BEFCC9 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */; };
 		4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */; };
 		4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */; };
 		4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */; };
@@ -60,6 +62,8 @@
 		4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462C21B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m */; };
 		4A7462C91B3F095D00B8555C /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462C41B3F095D00B8555C /* TPKeyboardAvoidingTableView.m */; };
 		4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462C61B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		4A84350F1B7E605C008D5E08 /* UIImage+Decompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */; };
+		4A8435111B7E687B008D5E08 /* Recipients.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A8435101B7E687B008D5E08 /* Recipients.plist */; };
 		4AB19B131B3B538100B3E973 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B0D1B3B538100B3E973 /* Parse.framework */; };
 		4AB19B141B3B538100B3E973 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B0E1B3B538100B3E973 /* ParseCrashReporting.framework */; };
 		4AB19B151B3B538100B3E973 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B0F1B3B538100B3E973 /* ParseFacebookUtils.framework */; };
@@ -76,6 +80,8 @@
 		4AB36AE61B67E02000ABCE23 /* FriendActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE51B67E02000ABCE23 /* FriendActivityTableViewCell.swift */; };
 		4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE71B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift */; };
 		4AB36AEA1B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB36AE91B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift */; };
+		4AC663F21B7D4177008AF19F /* Recipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC663F11B7D4177008AF19F /* Recipient.swift */; };
+		4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC663F31B7D58C0008AF19F /* DynamicViewCell.swift */; };
 		4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */; };
 		4ACBA75A1B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */; };
 		4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */; };
@@ -121,6 +127,8 @@
 		4A1848141B44A375009D6026 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		4A1848161B472952009D6026 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateFooterTableViewCell.swift; sourceTree = "<group>"; };
+		4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
+		4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
 		4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewController.swift; sourceTree = "<group>"; };
 		4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientBrowseViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +182,8 @@
 		4A7462C41B3F095D00B8555C /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		4A7462C51B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		4A7462C61B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Decompression.swift"; sourceTree = "<group>"; };
+		4A8435101B7E687B008D5E08 /* Recipients.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Recipients.plist; sourceTree = "<group>"; };
 		4AB19B0D1B3B538100B3E973 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		4AB19B0E1B3B538100B3E973 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		4AB19B0F1B3B538100B3E973 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -191,6 +201,8 @@
 		4AB36AE51B67E02000ABCE23 /* FriendActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendActivityTableViewCell.swift; sourceTree = "<group>"; };
 		4AB36AE71B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountStatsTableViewCell.swift; sourceTree = "<group>"; };
 		4AB36AE91B683B7F00ABCE23 /* UserAccountFollowingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountFollowingTableViewCell.swift; sourceTree = "<group>"; };
+		4AC663F11B7D4177008AF19F /* Recipient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipient.swift; sourceTree = "<group>"; };
+		4AC663F31B7D58C0008AF19F /* DynamicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewCell.swift; sourceTree = "<group>"; };
 		4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticMenuTableViewController.swift; sourceTree = "<group>"; };
 		4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedUpdateTableViewCell.swift; sourceTree = "<group>"; };
@@ -278,6 +290,19 @@
 			children = (
 			);
 			name = "Company Profile View";
+			sourceTree = "<group>";
+		};
+		4A1BAF7E1B7A91F800BEFCC9 /* Dynamic Collection */ = {
+			isa = PBXGroup;
+			children = (
+				4AC663F11B7D4177008AF19F /* Recipient.swift */,
+				4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */,
+				4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */,
+				4AC663F31B7D58C0008AF19F /* DynamicViewCell.swift */,
+				4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */,
+				4A8435101B7E687B008D5E08 /* Recipients.plist */,
+			);
+			name = "Dynamic Collection";
 			sourceTree = "<group>";
 		};
 		4A6A60B51B6BD71E00C3F142 /* Archived */ = {
@@ -442,6 +467,7 @@
 				C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */,
 				4A6A60B51B6BD71E00C3F142 /* Archived */,
 				4A18480D1B4467D4009D6026 /* Newsfeed View */,
+				4A1BAF7E1B7A91F800BEFCC9 /* Dynamic Collection */,
 				4AF9507E1B30668E004313DC /* Recipients View */,
 				4AF9507D1B306672004313DC /* User Profile View */,
 				4A18480E1B4469B5009D6026 /* Company Profile View */,
@@ -564,6 +590,7 @@
 			files = (
 				4A7462AD1B3DBC9E00B8555C /* Info.plist in Resources */,
 				C43780581B2933080018BD41 /* Main.storyboard in Resources */,
+				4A8435111B7E687B008D5E08 /* Recipients.plist in Resources */,
 				C437805D1B2933080018BD41 /* LaunchScreen.xib in Resources */,
 				C437805A1B2933080018BD41 /* Images.xcassets in Resources */,
 				4A7462B01B3DBC9E00B8555C /* LoadingView.xib in Resources */,
@@ -595,6 +622,7 @@
 				4AB36AE61B67E02000ABCE23 /* FriendActivityTableViewCell.swift in Sources */,
 				4A6A60BF1B7001D800C3F142 /* RecentActivityTableViewCell.swift in Sources */,
 				4AB36AE41B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift in Sources */,
+				4AC663F21B7D4177008AF19F /* Recipient.swift in Sources */,
 				4A7462BC1B3DBC9E00B8555C /* TransitionZoom.swift in Sources */,
 				4A7462B81B3DBC9E00B8555C /* SpringTextField.swift in Sources */,
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
@@ -609,6 +637,7 @@
 				4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */,
 				4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */,
 				C46E340D1B73FDD2001449E2 /* NSDate+Ago.swift in Sources */,
+				4A84350F1B7E605C008D5E08 /* UIImage+Decompression.swift in Sources */,
 				4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */,
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
 				4A7462AB1B3DBC9E00B8555C /* DesignableView.swift in Sources */,
@@ -623,8 +652,11 @@
 				4A7462A81B3DBC9E00B8555C /* DesignableTabBarController.swift in Sources */,
 				4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */,
 				4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */,
+				4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
+				4A1BAF821B7AA9B500BEFCC9 /* DynamicLayout.swift in Sources */,
+				4A1BAF801B7A922E00BEFCC9 /* DynamicViewController.swift in Sources */,
 				4A6A60BD1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift in Sources */,
 				4A1848101B446CEF009D6026 /* old_NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,

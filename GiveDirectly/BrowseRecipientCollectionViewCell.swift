@@ -34,17 +34,17 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         //    let recipientLocation:String? = (recipientInfo as AnyObject)["location"] as? String
         //    var recipientNumberOfChildren:Int? = (recipientInfo as AnyObject)["numberOfChildren"] as? Int
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
-        let recipientProfilePhoto = recipientInfo["image"] as! PFFile
-        
-        // TODO: make the optional safe for an image not existing in Parse
-        recipientProfilePhoto.getDataInBackgroundWithBlock({
-            (imageData: NSData?, error: NSError?) -> Void in
-            if (error == nil) {
-            let image = UIImage(data: imageData!)
-            self.profileImageView.image = image
+        if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
+            recipientProfilePhoto.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data: imageData)
+                    self.profileImageView.image = image
+                }
             }
-        })
-        
+        } else {
+            self.profileImageView.image = UIImage(named: "blankProfileImage")
+        }
         // safely convert Int to String without "Optional" appearing
         //        if recipientNumberOfChildren != nil {
         //            self.numberOfChildrenLabel.text = String(stringInterpolationSegment: recipientNumberOfChildren!)
@@ -60,11 +60,6 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         // assign constants to labels
         self.nameLabel.text = recipientName
         self.timeLabel.text = "0d"
-        //    self.jobLabel.text = recipientJob?.capitalizedString
         self.storyLabel.text = recipientProfileStory
-        
-        
     }
-    
-    
 }
