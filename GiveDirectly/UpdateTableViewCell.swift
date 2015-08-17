@@ -38,8 +38,31 @@ class UpdateTableViewCell: UITableViewCell {
     // have to get the updateData[indexPath.row] in table view controller for subscripting to work like below...
     
     // configure outlets with Parse data
-    let author:String? = (updateData as AnyObject)["GDID"] as? String
-    let title:String? = (updateData as AnyObject)["improvement"] as? String
+    let author:String! = (updateData as AnyObject)["GDID"] as! String
+
+    // check Recipients class to mine information
+    var query = PFQuery(className:"Recipients")
+    query.whereKey("gdid", equalTo: author)
+    query.findObjectsInBackgroundWithBlock {
+        (objects: [AnyObject]?, error: NSError?) -> Void in
+        if error == nil {
+            // The find succeeded.
+            println("Successfully retrieved \(author).")
+            // Do something with the found objects
+            if let objects = objects as? [PFObject] {
+                for object in objects {
+                    if let recipientName = object["firstName"] as? String {
+                        self.authorNameLabel.text = recipientName
+                    }
+                }
+            }
+        } else {
+            // log details of the failure
+            println("Error: \(error!) \(error!.userInfo!)")
+        }
+    }
+    
+    let title:String? = (updateData as AnyObject)["method"] as? String
     let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
     
     // get the date and format
@@ -47,8 +70,7 @@ class UpdateTableViewCell: UITableViewCell {
     var newDate = date.substringToIndex(advance(date.endIndex, -18))
     
     // assign labels and views
-    self.authorNameLabel.text = author
-    self.updateTitleLabel.text = "on " + title!
+    self.updateTitleLabel.text = "via " + title!
     self.updateTextView.text = updateText
     self.timestampLabel.text = newDate
     
