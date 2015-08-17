@@ -39,7 +39,6 @@ class UpdateTableViewCell: UITableViewCell {
     
     // configure outlets with Parse data
     let author:String! = (updateData as AnyObject)["GDID"] as! String
-
     // check Recipients class to mine information
     var query = PFQuery(className:"Recipients")
     query.whereKey("gdid", equalTo: author)

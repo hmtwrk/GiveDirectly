@@ -1453,9 +1453,8 @@
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-nq-2uZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smallBlankProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="jq8-nq-2uZ">
                                             <rect key="frame" x="8" y="8" width="30" height="30"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="OmN-j4-w33"/>
                                                 <constraint firstAttribute="height" constant="30" id="coe-jT-p57"/>
@@ -2106,6 +2105,7 @@
         <image name="icon_thumbsup" width="14" height="13"/>
         <image name="logo_givedirectly" width="148" height="24"/>
         <image name="menu_profile" width="50" height="50"/>
+        <image name="smallBlankProfileImage" width="36" height="36"/>
         <image name="tab_GD" width="22" height="12"/>
         <image name="tab_portfolio" width="15" height="13"/>
         <image name="tab_profile" width="13" height="13"/>
