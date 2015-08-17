@@ -46,13 +46,25 @@ class UpdateTableViewCell: UITableViewCell {
     query.findObjectsInBackgroundWithBlock {
         (objects: [AnyObject]?, error: NSError?) -> Void in
         if error == nil {
-            // The find succeeded.
-            println("Successfully retrieved \(author).")
-            // Do something with the found objects
+            // check to see if something exists
             if let objects = objects as? [PFObject] {
                 for object in objects {
+                    // if name is pulled
                     if let recipientName = object["firstName"] as? String {
                         self.authorNameLabel.text = recipientName
+                    }
+                    // TODO: create optional else statement
+                    // if image is pulled
+                    if let recipientProfilePhoto = object["image"] as? PFFile {
+                        recipientProfilePhoto.getDataInBackgroundWithBlock {
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if (error == nil) {
+                                let image = UIImage(data: imageData!)
+                                self.authorImageView.image = image
+                                self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
+                                self.authorImageView.clipsToBounds = true
+                            }
+                        }
                     }
                 }
             }
@@ -73,15 +85,5 @@ class UpdateTableViewCell: UITableViewCell {
     self.updateTitleLabel.text = "via " + title!
     self.updateTextView.text = updateText
     self.timestampLabel.text = newDate
-    
-    // make updater's profile image round...
-    authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
-    authorImageView.clipsToBounds = true
-    authorImageView.layer.borderWidth = 2.0
-    authorImageView.layer.borderColor = UIColor.clearColor().CGColor
-    authorImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
-    
   }
-  
-  
 }
