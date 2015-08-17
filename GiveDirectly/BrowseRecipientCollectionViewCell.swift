@@ -34,6 +34,7 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         //    let recipientLocation:String? = (recipientInfo as AnyObject)["location"] as? String
         //    var recipientNumberOfChildren:Int? = (recipientInfo as AnyObject)["numberOfChildren"] as? Int
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
+        /**
         if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
             recipientProfilePhoto.getDataInBackgroundWithBlock {
                 (imageData: NSData?, error: NSError?) -> Void in
@@ -45,6 +46,7 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         } else {
             self.profileImageView.image = UIImage(named: "blankProfileImage")
         }
+        **/
         // safely convert Int to String without "Optional" appearing
         //        if recipientNumberOfChildren != nil {
         //            self.numberOfChildrenLabel.text = String(stringInterpolationSegment: recipientNumberOfChildren!)

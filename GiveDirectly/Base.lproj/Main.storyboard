@@ -1537,9 +1537,6 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_check" translatesAutoresizingMaskIntoConstraints="NO" id="g8r-0C-LPy">
-                                            <rect key="frame" x="25" y="25" width="13" height="13"/>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="v1U-Lk-jPf" firstAttribute="leading" secondItem="bYx-H4-j1y" secondAttribute="trailing" constant="3" id="0YT-IQ-bGH"/>
@@ -1561,7 +1558,6 @@
                                         <constraint firstAttribute="bottom" secondItem="bYx-H4-j1y" secondAttribute="bottom" constant="8" id="Ssv-Yn-UYl"/>
                                         <constraint firstItem="jq8-nq-2uZ" firstAttribute="leading" secondItem="5hl-ZF-DcB" secondAttribute="leading" constant="8" id="adF-Q8-uzb"/>
                                         <constraint firstItem="bYx-H4-j1y" firstAttribute="centerY" secondItem="r3u-j3-IIl" secondAttribute="centerY" id="c1z-LX-5TN"/>
-                                        <constraint firstItem="jq8-nq-2uZ" firstAttribute="bottom" secondItem="g8r-0C-LPy" secondAttribute="bottom" id="d5v-m7-EsW"/>
                                         <constraint firstAttribute="bottom" secondItem="iRz-1e-Eaf" secondAttribute="bottom" id="eru-6U-vGD"/>
                                         <constraint firstItem="Vr4-Le-3Vg" firstAttribute="centerY" secondItem="jq8-nq-2uZ" secondAttribute="centerY" id="hTa-sK-pTL"/>
                                         <constraint firstItem="xTk-Cd-JMo" firstAttribute="trailing" secondItem="r3u-j3-IIl" secondAttribute="trailing" id="ikc-6x-7B7"/>
@@ -1575,7 +1571,6 @@
                                         <constraint firstItem="jq8-nq-2uZ" firstAttribute="leading" secondItem="5hl-ZF-DcB" secondAttribute="leadingMargin" id="qI0-J8-p0p"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="iRz-1e-Eaf" secondAttribute="bottom" constant="18.5" id="qSf-Wa-jjt"/>
                                         <constraint firstItem="jif-0d-bBo" firstAttribute="leading" secondItem="v1U-Lk-jPf" secondAttribute="trailing" constant="10" id="r42-Ii-CyE"/>
-                                        <constraint firstItem="jq8-nq-2uZ" firstAttribute="trailing" secondItem="g8r-0C-LPy" secondAttribute="trailing" id="t4Q-3S-vJ7"/>
                                         <constraint firstItem="xTk-Cd-JMo" firstAttribute="leading" secondItem="Vr4-Le-3Vg" secondAttribute="trailing" constant="3" id="u1s-uC-WEZ"/>
                                         <constraint firstItem="bYx-H4-j1y" firstAttribute="top" secondItem="iRz-1e-Eaf" secondAttribute="bottom" id="w8F-YF-lso"/>
                                         <constraint firstItem="iRz-1e-Eaf" firstAttribute="leading" secondItem="5hl-ZF-DcB" secondAttribute="leadingMargin" id="wKk-ri-0iF"/>
@@ -2094,7 +2089,6 @@
         <image name="icon_FAQ-highlighted" width="13" height="13"/>
         <image name="icon_anonymous" width="36" height="37"/>
         <image name="icon_bubble" width="13" height="13"/>
-        <image name="icon_check" width="15" height="15"/>
         <image name="icon_down-chevron" width="7" height="4"/>
         <image name="icon_givenow" width="13" height="13"/>
         <image name="icon_givenow-highlighted" width="13" height="13"/>

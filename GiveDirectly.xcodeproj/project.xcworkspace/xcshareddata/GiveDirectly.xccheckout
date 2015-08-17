@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>B4F5A86D-658D-4016-A9B2-507666623EC9</string>
 	<key>IDESourceControlProjectName</key>
-	<string>GiveDirectly</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>DA1E7DDC2C9041EB870796AAD3F041BD5DCDF007</key>
 		<string>https://github.com/hmtwrk/GiveDirectly.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GiveDirectly.xcodeproj</string>
+	<string>GiveDirectly.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>DA1E7DDC2C9041EB870796AAD3F041BD5DCDF007</key>
