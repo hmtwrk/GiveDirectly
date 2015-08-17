@@ -11,3 +11,5 @@ import UIKit
 
 // initial recipient collection view data
 var recipientBrowserData = [AnyObject]()
+
+var testData = [String]()

@@ -38,7 +38,7 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
             recipientProfilePhoto.getDataInBackgroundWithBlock {
                 (imageData: NSData?, error: NSError?) -> Void in
                 if (error == nil) {
-                    let image = UIImage(data: imageData)
+                    let image = UIImage(data: imageData!)
                     self.profileImageView.image = image
                 }
             }
