@@ -38,7 +38,6 @@ class NewsfeedTableViewController: UITableViewController {
   
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
     return (numberOfUpdates)
   }
   
@@ -46,14 +45,9 @@ class NewsfeedTableViewController: UITableViewController {
     
     let identifier = "UpdateTableViewCell"
     let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
-    
     if let updateCell = cell as? UpdateTableViewCell {
-      
-//      println(updateData)
-      let updateDataForCell: AnyObject = updateData[indexPath.row]
-      updateCell.configureUpdateTableViewCell(updateDataForCell)
-//      println(updateData.count)
-      
+        let updateDataForCell: AnyObject = updateData[indexPath.row]
+        updateCell.configureUpdateTableViewCell(updateDataForCell)
     }
     
     return cell
@@ -68,7 +62,6 @@ class NewsfeedTableViewController: UITableViewController {
     query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
       self.updateData = result!
       self.numberOfUpdates = result!.count
-//      println(result!)
       self.tableView?.reloadData()
     }
   }
