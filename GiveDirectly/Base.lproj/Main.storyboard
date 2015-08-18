@@ -1455,7 +1455,7 @@
                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="recipient story text" translatesAutoresizingMaskIntoConstraints="NO" id="iRz-1e-Eaf">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="recipient story text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRz-1e-Eaf">
                                             <rect key="frame" x="8" y="43" width="359" height="30.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>

@@ -17,6 +17,7 @@ protocol UpdateTableViewCellDelegate: class {
 class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
+    var userLikedPost = false
     
     
     @IBOutlet weak var authorImageView: UIImageView!
@@ -32,11 +33,14 @@ class UpdateTableViewCell: UITableViewCell {
     @IBOutlet weak var extraButton: SpringButton!
 
     // TODO: assign Parse data to numberOfLikesLabel and numberOfCommentsLabel
+    // TODO: configure labels for number of likes and comments
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // code to run when cell appears (from being queued, etc.)
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -44,17 +48,26 @@ class UpdateTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
         
-        // TODO: configure labels for number of likes and comments
+
     }
     
+    // MARK: SpringButton functionality
     @IBAction func likeButtonDidTap(sender: AnyObject) {
         
         likeButton.animation = "pop"
         likeButton.force = 3
         likeButton.animate()
         
-        // update the numberOfLikesLabel with the user's like
-//        numberOfLikesLabel.text = "1"
+        userLikedPost = !userLikedPost
+        println(userLikedPost)
+        
+        // TODO: create unique image for "already liked" icon, and tweak animation timing
+        if userLikedPost == true {
+            self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+        } else {
+            self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+        }
+
         
         delegate?.updateLikeButtonDidTap(self, sender: sender)
     }
@@ -78,10 +91,13 @@ class UpdateTableViewCell: UITableViewCell {
     }
     
     
-    
+    // MARK: configuration of cell
     func configureUpdateTableViewCell(updateData: AnyObject) {
         
         // have to get the updateData[indexPath.row] in table view controller for subscripting to work like below...
+        
+        // query Parse to determine if user has already liked the update
+        
         
         // configure outlets with Parse data
         let author:String! = (updateData as AnyObject)["GDID"] as! String
@@ -98,7 +114,6 @@ class UpdateTableViewCell: UITableViewCell {
                         if let recipientName = object["firstName"] as? String {
                             self.authorNameLabel.text = recipientName
                         }
-                        // TODO: create optional else statement
                         // if image is pulled
                         if let recipientProfilePhoto = object["image"] as? PFFile {
                             recipientProfilePhoto.getDataInBackgroundWithBlock {
