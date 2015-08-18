@@ -22,7 +22,7 @@ class RecipientStatsTableViewCell: UITableViewCell {
     
     func configureStatsCell(recipientStats: AnyObject) {
         
-        let recipientName:String? = (recipientStats as AnyObject)["gdid"] as? String
+        let recipientName:String? = (recipientStats as AnyObject)["firstName"] as? String
         let recipientAge:Int? = (recipientStats as AnyObject)["age"] as? Int
         let recipientJob:String? = (recipientStats as AnyObject)["income"] as? String
 //        let recipientLocation:String? = (recipientStats as AnyObject)["location"] as? String

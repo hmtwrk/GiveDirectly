@@ -82,6 +82,7 @@ class Recipient {
         //         Parse API call to return target recipient
         let query:PFQuery = PFQuery(className: "Recipients")
         query.orderByAscending("createdAt")
+//        query.limit = 20
         query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
             recipientBrowserData = result!
             NSNotificationCenter.defaultCenter().postNotificationName("refreshRecipientCollectionView", object: nil)

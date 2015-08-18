@@ -64,6 +64,16 @@ extension RecipientBrowserViewController {
         cell.configureCellWithParse(recipientBrowserData[indexPath.item])
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "RecipientProfileSegue" {
+            let toView = segue.destinationViewController as! RecipientProfileTableViewController
+            let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
+            let recipientInfo: (AnyObject) = recipientBrowserData[indexPath!.item]
+            toView.recipientInfo = recipientInfo
+            //            println(recipientInfo)
+        }
+    }
 }
 
 extension RecipientBrowserViewController: BrowserLayoutDelegate {
@@ -86,11 +96,10 @@ extension RecipientBrowserViewController: BrowserLayoutDelegate {
         let annotation: (AnyObject) = recipientBrowserData[indexPath.item]
         let story: String? = (annotation as AnyObject)["goals"] as? String
         let font = UIFont(name: "HelveticaNeue", size: 13)!
-        
-//        println(story!)
         let storyHeight = self.heightForStory(story!, font: font, width: width)
 //        let storyHeight = 68
-        let height = CGFloat(4 + 17 + 4 + storyHeight + 4)
+//        let height = CGFloat(4 + 17 + 4 + storyHeight + 4)
+        let height = 4 + 17 + 4 + storyHeight + 4
         return height
     }
     

@@ -17,7 +17,7 @@ class RecipientProfileTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // set navigation title to match recipient's name
-        let recipientName:String? = (recipientInfo as AnyObject)["gdid"] as? String
+        let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
         println(recipientInfo)
         
         // Fill the navigation title with the recipient's name (from Parse query)
