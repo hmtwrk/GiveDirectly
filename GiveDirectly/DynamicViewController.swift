@@ -14,17 +14,13 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
     
     // Uncomment this code when Parse is wired up.
     //    var recipients = [AnyObject]()
-    
-//    var recipients = Recipient.getRecipients()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        self.queryParseForRecipients()
+        // make Parse API call from Recipient class
         Recipient.queryParseForRecipients()
-        println(testData)
-//        println(recipientBrowserData)
         
         collectionView!.backgroundColor = UIColor.whiteColor()
         let size = CGRectGetWidth(collectionView!.bounds) / 2
@@ -49,13 +45,15 @@ extension RecipientBrowserViewController {
     
     func refreshCollection(notification: NSNotification) {
         self.collectionView?.reloadData()
-//        println(recipientBrowserData.count)
-        
+    }
+    
+    func heightForStory(story: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let rect = NSString(string: story).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        return ceil(rect.height)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         println(recipientBrowserData.count)
-//        return recipients.count
         return recipientBrowserData.count
     }
     
@@ -63,24 +61,8 @@ extension RecipientBrowserViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipientBrowserCell", forIndexPath: indexPath) as! BrowserViewCell
         //        cell.configureCellWithParse(recipients[indexPath.item])
         cell.recipient = recipientBrowserData[indexPath.item] as? Recipient
+        cell.configureCellWithParse(recipientBrowserData[indexPath.item])
         return cell
-    }
-    
-    func queryParseForRecipients() {
-        
-        let query:PFQuery = PFQuery(className: "Recipients")
-        //        let query:PFQuery = PFQuery(className: "Recipients")
-        query.orderByAscending("createdAt")
-        query.limit = 20
-        query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                let recipientData = result!
-                println(recipientData.count)
-                self.collectionView?.reloadData()
-            } else {
-                println("Error: \(error!) \(error!.userInfo!)")
-            }
-        }
     }
 }
 
@@ -101,11 +83,13 @@ extension RecipientBrowserViewController: BrowserLayoutDelegate {
     
     func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         
-//        let annotation = recipients[indexPath.item]
-//        let annotation = recipientBrowserData[indexPath.item]
-//        let font = UIFont(name: "HelveticaNeue", size: 13)!
-//        let storyHeight = annotation.heightForStory(font, width: width)
-        let storyHeight = 34
+        let annotation: (AnyObject) = recipientBrowserData[indexPath.item]
+        let story: String? = (annotation as AnyObject)["goals"] as? String
+        let font = UIFont(name: "HelveticaNeue", size: 13)!
+        
+//        println(story!)
+        let storyHeight = self.heightForStory(story!, font: font, width: width)
+//        let storyHeight = 68
         let height = CGFloat(4 + 17 + 4 + storyHeight + 4)
         return height
     }

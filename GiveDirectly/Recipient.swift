@@ -12,8 +12,18 @@ class Recipient {
     
 //    class func getRecipients() -> [Recipient] {
 //        
+//        // creates an array of Recipient objects... take data from global variable for now?
 //        var recipientData = [Recipient]()
 //        
+//        if let recipientsFromParse = recipientBrowserData {
+//            for recipientItem in recipientsFromParse {
+//                let recipient = Recipient(recipient: recipient as! NSDictionary)
+//                recipientData.append(recipient)
+//            }
+//        }
+    
+        
+        
 //        if let URL = NSBundle.mainBundle().URLForResource("Recipients", withExtension: "plist") {
 //            if let recipientsFromPlist = NSArray(contentsOfURL: URL) {
 //                for dictionary in recipientsFromPlist {
@@ -78,8 +88,8 @@ class Recipient {
         }
     }
     
-        func heightForStory(font: UIFont, width: CGFloat) -> CGFloat {
-            let rect = NSString(string: comment).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-            return ceil(rect.height)
-        }
+//    func heightForStory(font: UIFont, width: CGFloat) -> CGFloat {
+//        let rect = NSString(string: comment).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+//        return ceil(rect.height)
+//    }
 }
