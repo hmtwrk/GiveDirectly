@@ -448,7 +448,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="204"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -464,43 +464,34 @@
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-FJ-jy9">
-                                            <rect key="frame" x="0.0" y="154" width="35" height="16"/>
+                                            <rect key="frame" x="0.0" y="154" width="34.5" height="15.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4Y-4y-oMG">
-                                            <rect key="frame" x="126" y="156" width="23.5" height="14"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                            <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_payment-firststage" translatesAutoresizingMaskIntoConstraints="NO" id="eku-P6-Wfs">
-                                            <rect key="frame" x="122" y="122" width="24" height="24"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hs7-4K-xgN">
-                                            <rect key="frame" x="0.0" y="180" width="150" height="15.5"/>
+                                            <rect key="frame" x="0.0" y="179.5" width="150" height="15.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phasePayment" translatesAutoresizingMaskIntoConstraints="NO" id="oNA-Dd-MyZ">
+                                            <rect key="frame" x="86" y="154" width="64" height="13"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="B4Y-4y-oMG" firstAttribute="bottom" secondItem="2jz-FJ-jy9" secondAttribute="bottom" id="0oV-xa-A1I"/>
                                     <constraint firstAttribute="trailing" secondItem="hs7-4K-xgN" secondAttribute="trailing" id="22A-Y7-xqp"/>
-                                    <constraint firstItem="gzL-fq-p5T" firstAttribute="bottom" secondItem="eku-P6-Wfs" secondAttribute="bottom" constant="4" id="2Ge-aD-Hbp"/>
                                     <constraint firstItem="gzL-fq-p5T" firstAttribute="leading" secondItem="8KW-DI-V00" secondAttribute="leading" id="2fp-6X-b7q"/>
                                     <constraint firstItem="2jz-FJ-jy9" firstAttribute="top" secondItem="gzL-fq-p5T" secondAttribute="bottom" constant="4" id="6uU-av-rGZ"/>
                                     <constraint firstAttribute="trailing" secondItem="gzL-fq-p5T" secondAttribute="trailing" id="EKw-gn-8la"/>
                                     <constraint firstItem="gzL-fq-p5T" firstAttribute="top" secondItem="8KW-DI-V00" secondAttribute="top" id="IIy-34-ZBA"/>
-                                    <constraint firstItem="gzL-fq-p5T" firstAttribute="trailing" secondItem="eku-P6-Wfs" secondAttribute="trailing" constant="4" id="KaS-Jq-7P9"/>
                                     <constraint firstItem="2jz-FJ-jy9" firstAttribute="leading" secondItem="8KW-DI-V00" secondAttribute="leading" id="W1b-1l-aiW"/>
-                                    <constraint firstAttribute="trailing" secondItem="B4Y-4y-oMG" secondAttribute="trailing" id="W4D-qw-In6"/>
                                     <constraint firstItem="hs7-4K-xgN" firstAttribute="top" secondItem="2jz-FJ-jy9" secondAttribute="bottom" constant="10" id="Zrg-Wr-52y"/>
                                     <constraint firstItem="hs7-4K-xgN" firstAttribute="leading" secondItem="8KW-DI-V00" secondAttribute="leading" id="Zs3-hN-mFE"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="oNA-Dd-MyZ" secondAttribute="trailing" constant="-8" id="aVT-BO-lrj"/>
                                     <constraint firstAttribute="centerX" secondItem="gzL-fq-p5T" secondAttribute="centerX" id="owO-CH-OFl"/>
+                                    <constraint firstItem="gzL-fq-p5T" firstAttribute="bottom" secondItem="oNA-Dd-MyZ" secondAttribute="bottom" constant="-17" id="qo8-0J-aPK"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="hs7-4K-xgN" secondAttribute="bottom" constant="4" id="wSD-49-cgm"/>
                                 </constraints>
                                 <size key="customSize" width="150" height="204"/>
@@ -511,11 +502,9 @@
                                 </variation>
                                 <connections>
                                     <outlet property="nameLabel" destination="2jz-FJ-jy9" id="lAZ-hg-DvF"/>
-                                    <outlet property="paymentPhaseImageView" destination="eku-P6-Wfs" id="7bB-qj-2SU"/>
                                     <outlet property="profileImageView" destination="gzL-fq-p5T" id="d9D-hT-L3M"/>
                                     <outlet property="profileImageViewHeightLayoutConstraint" destination="NmN-QI-3Ze" id="jCb-uq-rPI"/>
                                     <outlet property="storyLabel" destination="hs7-4K-xgN" id="hN5-BV-5Zu"/>
-                                    <outlet property="timeLabel" destination="B4Y-4y-oMG" id="z3t-Ns-g0n"/>
                                     <segue destination="Sr0-ms-ssZ" kind="show" identifier="RecipientProfileSegue" id="tD2-Jh-GhK"/>
                                 </connections>
                             </collectionViewCell>
@@ -2084,6 +2073,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blankProfileImage" width="139" height="139"/>
         <image name="icon_FAQ" width="13" height="13"/>
         <image name="icon_FAQ-highlighted" width="13" height="13"/>
         <image name="icon_anonymous" width="36" height="37"/>
@@ -2091,7 +2081,6 @@
         <image name="icon_down-chevron" width="7" height="4"/>
         <image name="icon_givenow" width="13" height="13"/>
         <image name="icon_givenow-highlighted" width="13" height="13"/>
-        <image name="icon_payment-firststage" width="24" height="24"/>
         <image name="icon_portfolio" width="15" height="13"/>
         <image name="icon_portfolio-highlighted" width="15" height="13"/>
         <image name="icon_profile" width="13" height="13"/>
@@ -2105,6 +2094,7 @@
         <image name="icon_thumbsup" width="14" height="13"/>
         <image name="logo_givedirectly" width="148" height="24"/>
         <image name="menu_profile" width="50" height="50"/>
+        <image name="phasePayment" width="64" height="13"/>
         <image name="smallBlankProfileImage" width="36" height="36"/>
         <image name="tab_GD" width="22" height="12"/>
         <image name="tab_portfolio" width="15" height="13"/>

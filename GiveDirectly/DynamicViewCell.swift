@@ -15,7 +15,7 @@ class BrowserViewCell: UICollectionViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
+//  @IBOutlet weak var timeLabel: UILabel!
     
 //    var recipient: Recipient? {
 //        didSet {
@@ -35,7 +35,7 @@ class BrowserViewCell: UICollectionViewCell {
                 profileImageView.image = recipient.image
                 nameLabel.text = recipient.caption
                 storyLabel.text = recipient.comment
-                timeLabel.text = "0d"
+//              timeLabel.text = "0d"
             }
         }
     }
@@ -45,17 +45,33 @@ class BrowserViewCell: UICollectionViewCell {
         let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
         
+        // load an image
+        if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
+            recipientProfilePhoto.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data: imageData!)
+                    self.profileImageView.image = image
+                }
+            }
+        } else {
+            self.profileImageView.image = UIImage(named: "blankProfileImage")
+        }
+        
         // make image round
+        /**
         paymentPhaseImageView.layer.cornerRadius = self.paymentPhaseImageView.frame.size.width / 2
         paymentPhaseImageView.clipsToBounds = true
         paymentPhaseImageView.layer.borderWidth = 2.0
         paymentPhaseImageView.layer.borderColor = UIColor.clearColor().CGColor
+        **/
         
         // assign constants to labels
         self.nameLabel.text = recipientName
         self.storyLabel.text = recipientProfileStory
-        self.timeLabel.text = "0d"
-//        self.profileImageView.image = image
+        
+//      self.timeLabel.text = "0d"
+//      self.profileImageView.image = image
     }
     
     

@@ -16,7 +16,6 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
     
     
     // TODO: @IBAction for clicking on the button to see close-up of profile
@@ -34,6 +33,8 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         //    let recipientLocation:String? = (recipientInfo as AnyObject)["location"] as? String
         //    var recipientNumberOfChildren:Int? = (recipientInfo as AnyObject)["numberOfChildren"] as? Int
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
+
+        
         /**
         if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
             recipientProfilePhoto.getDataInBackgroundWithBlock {
@@ -61,7 +62,6 @@ class BrowseRecipientCollectionViewCell: UICollectionViewCell {
         
         // assign constants to labels
         self.nameLabel.text = recipientName
-        self.timeLabel.text = "0d"
         self.storyLabel.text = recipientProfileStory
     }
 }
