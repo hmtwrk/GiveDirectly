@@ -6,10 +6,9 @@
 //  Copyright (c) 2015 GiveDirectly. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // initial recipient collection view data
 var recipientBrowserData = [AnyObject]()
 
-var testData = [String]()
+var testData: String = ""
