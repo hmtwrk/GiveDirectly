@@ -1497,13 +1497,16 @@
                                             <color key="textColor" red="0.043137254899999998" green="0.4039215686" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jif-0d-bBo">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jif-0d-bBo" customClass="SpringButton" customModule="GiveDirectly" customModuleProvider="target">
                                             <rect key="frame" x="42" y="73" width="13" height="22"/>
                                             <state key="normal" image="icon_bubble">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="commentButtonDidTap:" destination="FDi-R1-mQb" eventType="touchUpInside" id="FQu-4E-70f"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYx-H4-j1y">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYx-H4-j1y" customClass="SpringButton" customModule="GiveDirectly" customModuleProvider="target">
                                             <rect key="frame" x="8" y="73" width="14" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="14" id="jBa-nb-HLs"/>
@@ -1518,12 +1521,18 @@
                                                     <exclude reference="yCI-TF-nwW"/>
                                                 </mask>
                                             </variation>
+                                            <connections>
+                                                <action selector="likeButtonDidTap:" destination="FDi-R1-mQb" eventType="touchUpInside" id="Qov-68-IIu"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3u-j3-IIl">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3u-j3-IIl" customClass="SpringButton" customModule="GiveDirectly" customModuleProvider="target">
                                             <rect key="frame" x="351" y="73" width="16" height="22"/>
                                             <state key="normal" image="icon_threedots">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="extraButtonDidTap:" destination="FDi-R1-mQb" eventType="touchUpInside" id="uDO-cl-ASG"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -1585,7 +1594,10 @@
                                 <connections>
                                     <outlet property="authorImageView" destination="jq8-nq-2uZ" id="hyW-g6-h8g"/>
                                     <outlet property="authorNameLabel" destination="U3D-YZ-LzC" id="R6C-4p-jz9"/>
-                                    <outlet property="numberOfComments" destination="7Ie-ux-X5N" id="tH6-LW-Y2I"/>
+                                    <outlet property="commentButton" destination="jif-0d-bBo" id="ac3-B0-XnW"/>
+                                    <outlet property="extraButton" destination="r3u-j3-IIl" id="RbQ-nb-Tj0"/>
+                                    <outlet property="likeButton" destination="bYx-H4-j1y" id="gnl-j1-ece"/>
+                                    <outlet property="numberOfCommentsLabel" destination="7Ie-ux-X5N" id="EwS-pp-o7y"/>
                                     <outlet property="numberOfLikesLabel" destination="v1U-Lk-jPf" id="sJX-CE-e21"/>
                                     <outlet property="timestampLabel" destination="xTk-Cd-JMo" id="1Oa-ll-Onz"/>
                                     <outlet property="updateTextView" destination="iRz-1e-Eaf" id="hoU-ag-EXC"/>
