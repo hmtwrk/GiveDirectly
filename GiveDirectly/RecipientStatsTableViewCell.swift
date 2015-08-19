@@ -14,9 +14,9 @@ class RecipientStatsTableViewCell: UITableViewCell {
     @IBOutlet weak var recipientNameLabel: UILabel!
     @IBOutlet weak var numberOfFollowersLabel: UILabel!
     @IBOutlet weak var recipientAgeLabel: UILabel!
-    @IBOutlet weak var recipientJobTitleLabel: UILabel!
     @IBOutlet weak var recipientNumberOfChildrenLabel: UILabel!
-//    @IBOutlet weak var recipientLocationLabel: UILabel!
+    @IBOutlet weak var recipientStatusLabel: UILabel!
+    @IBOutlet weak var recipientLocationLabel: UILabel!
     
     
     
@@ -24,20 +24,24 @@ class RecipientStatsTableViewCell: UITableViewCell {
         
         let recipientName:String? = (recipientStats as AnyObject)["firstName"] as? String
         let recipientAge:Int? = (recipientStats as AnyObject)["age"] as? Int
-        let recipientJob:String? = (recipientStats as AnyObject)["income"] as? String
-//        let recipientLocation:String? = (recipientStats as AnyObject)["location"] as? String
-        
+        let recipientStatus:String? = (recipientStats as AnyObject)["maritalStatus"] as? String
+        let recipientLocation:String? = (recipientStats as AnyObject)["village"] as? String
+        let recipientGender:String? = (recipientStats as AnyObject)["gender"] as? String
         var recipientNumberOfChildren:Int? = (recipientStats as AnyObject)["children"] as? Int
-//        let recipientProfilePhoto = recipientStats["profileSquarePhoto"] as! PFFile
         
-
-//        recipientProfilePhoto.getDataInBackgroundWithBlock({
-//            (imageData: NSData?, error: NSError?) -> Void in
-//            if (error == nil) {
-//                let image = UIImage(data: imageData!)
-//                self.recipientProfileImageView.image = image
-//            }
-//        })
+        
+        // load an image
+        if let recipientProfilePhoto = recipientStats["image"] as? PFFile {
+            recipientProfilePhoto.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data: imageData!)
+                    self.recipientProfileImageView.image = image
+                }
+            }
+        } else {
+            self.recipientProfileImageView.image = UIImage(named: "blankProfileImage")
+        }
         
         
         // safely convert Int to String without "Optional" appearing
@@ -51,8 +55,27 @@ class RecipientStatsTableViewCell: UITableViewCell {
         
         // assign variables and constants to labels
         self.recipientNameLabel.text = recipientName
-        self.recipientJobTitleLabel.text = recipientJob?.capitalizedString
-//        self.recipientLocationLabel.text = recipientLocation
+        
+        // determine martial status
+        var maritalStatus:String!
+        switch recipientStatus! {
+        case "single":
+            maritalStatus = "Single"
+        case "couple":
+            maritalStatus = "Married"
+        case "widow_widower":
+            if recipientGender == "female" {
+                maritalStatus = "Widow"
+            } else {
+                maritalStatus = "widower"
+            }
+        case "seperated":
+            maritalStatus = "Seperated"
+        default:
+            maritalStatus = "N/A"
+        }
+        self.recipientStatusLabel.text = maritalStatus
+        self.recipientLocationLabel.text = recipientLocation?.capitalizedString
         
         // make profile image round
         recipientProfileImageView.layer.cornerRadius = self.recipientProfileImageView.frame.size.width / 2
