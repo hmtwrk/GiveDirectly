@@ -17,7 +17,7 @@ protocol UpdateTableViewCellDelegate: class {
 class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
-    var userLikedPost = false
+    var userHasLikedPost = false
     
     
     @IBOutlet weak var authorImageView: UIImageView!
@@ -58,11 +58,11 @@ class UpdateTableViewCell: UITableViewCell {
         likeButton.force = 3
         likeButton.animate()
         
-        userLikedPost = !userLikedPost
-        println(userLikedPost)
+        userHasLikedPost = !userHasLikedPost
+        println(userHasLikedPost)
         
         // TODO: create unique image for "already liked" icon, and tweak animation timing
-        if userLikedPost == true {
+        if userHasLikedPost == true {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
         } else {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
