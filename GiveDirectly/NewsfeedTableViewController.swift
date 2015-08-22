@@ -49,7 +49,6 @@ extension NewsfeedTableViewController {
             let updateDataForCell: AnyObject = updateData[indexPath.row]
             updateCell.configureUpdateTableViewCell(updateDataForCell)
         }
-        
         return cell
     }
     
@@ -65,6 +64,9 @@ extension NewsfeedTableViewController {
         }
     }
 }
+
+
+
 
 // MARK: UpdateTableViewCellDelegate
 extension NewsfeedTableViewController: UpdateTableViewCellDelegate {

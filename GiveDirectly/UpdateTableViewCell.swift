@@ -19,14 +19,14 @@ class UpdateTableViewCell: UITableViewCell {
     weak var delegate: UpdateTableViewCellDelegate?
     var userHasLikedPost = false
     
+    let buttonForce: CGFloat = 1.0
+    
     
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var updateTextView: UITextView!
-    @IBOutlet weak var numberOfLikesLabel: UILabel!
-    @IBOutlet weak var numberOfCommentsLabel: UILabel!
+    @IBOutlet weak var updateStoryLabel: UILabel!
     
     @IBOutlet weak var likeButton: SpringButton!
     @IBOutlet weak var commentButton: SpringButton!
@@ -55,7 +55,7 @@ class UpdateTableViewCell: UITableViewCell {
     @IBAction func likeButtonDidTap(sender: AnyObject) {
         
         likeButton.animation = "pop"
-        likeButton.force = 3
+        likeButton.force = buttonForce
         likeButton.animate()
         
         userHasLikedPost = !userHasLikedPost
@@ -75,7 +75,7 @@ class UpdateTableViewCell: UITableViewCell {
     @IBAction func commentButtonDidTap(sender: AnyObject) {
         
         commentButton.animation = "pop"
-        commentButton.force = 3
+        commentButton.force = buttonForce
         commentButton.animate()
         
         delegate?.updateCommentButtonDidTap(self, sender: sender)
@@ -84,7 +84,7 @@ class UpdateTableViewCell: UITableViewCell {
     @IBAction func extraButtonDidTap(sender: AnyObject) {
         
         extraButton.animation = "pop"
-        extraButton.force = 3
+        extraButton.force = buttonForce
         extraButton.animate()
         
         delegate?.updateExtraButtonDidTap(self, sender: sender)
@@ -143,7 +143,8 @@ class UpdateTableViewCell: UITableViewCell {
         
         // assign labels and views
         self.updateTitleLabel.text = "via " + title!
-        self.updateTextView.text = updateText
+        self.updateStoryLabel.text = updateText
+        self.updateStoryLabel.sizeToFit()
         self.timestampLabel.text = newDate
     }
 }
