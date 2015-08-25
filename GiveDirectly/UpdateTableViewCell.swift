@@ -162,7 +162,7 @@ class UpdateTableViewCell: UITableViewCell {
         var newDate = date.substringToIndex(advance(date.endIndex, -18))
         
         // assign labels and views
-        self.updateTitleLabel.text = "via " + title!
+        self.updateTitleLabel.text = title!
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()
         self.timestampLabel.text = newDate
