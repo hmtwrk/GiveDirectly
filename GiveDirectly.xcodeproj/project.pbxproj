@@ -281,8 +281,8 @@
 		4A18480D1B4467D4009D6026 /* Newsfeed View */ = {
 			isa = PBXGroup;
 			children = (
-				4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */,
 				4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */,
+				4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */,
 			);
 			name = "Newsfeed View";
 			sourceTree = "<group>";

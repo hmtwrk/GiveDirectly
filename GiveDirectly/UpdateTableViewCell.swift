@@ -17,7 +17,9 @@ protocol UpdateTableViewCellDelegate: class {
 class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
+    
     var userHasLikedPost = false
+    var numberOfLikes: Int = 0
     
     let buttonForce: CGFloat = 1.0
     
@@ -58,15 +60,22 @@ class UpdateTableViewCell: UITableViewCell {
         likeButton.force = buttonForce
         likeButton.animate()
         
-        userHasLikedPost = !userHasLikedPost
-        println(userHasLikedPost)
+
         
         // TODO: create unique image for "already liked" icon, and tweak animation timing
-        if userHasLikedPost == true {
+        if userHasLikedPost == false {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+            self.numberOfLikes += 1
+            self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
+            
         } else {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+            self.numberOfLikes -= 1
+            self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
         }
+        
+        userHasLikedPost = !userHasLikedPost
+        println(userHasLikedPost)
 
         
         delegate?.updateLikeButtonDidTap(self, sender: sender)
@@ -90,14 +99,25 @@ class UpdateTableViewCell: UITableViewCell {
         delegate?.updateExtraButtonDidTap(self, sender: sender)
     }
     
+
     
     // MARK: configuration of cell
     func configureUpdateTableViewCell(updateData: AnyObject) {
         
         // have to get the updateData[indexPath.row] in table view controller for subscripting to work like below...
         
-        // query Parse to determine if user has already liked the update
+        // TODO: query Parse to determine if user has already liked the update
+        // need to cast as PFObject to get at the objectId perhaps...
         
+//        if let updateDatas = updateData as? [PFObject] {
+//            println(updateData.objectId)
+//            println(updateDatas)
+//        }
+        
+//        println("The object ID is: \(updateData.objectId), homeboy.")
+        
+
+
         
         // configure outlets with Parse data
         let author:String! = (updateData as AnyObject)["GDID"] as! String
@@ -146,5 +166,8 @@ class UpdateTableViewCell: UITableViewCell {
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()
         self.timestampLabel.text = newDate
+        
+//        self.likeButton.titleLabel!.text = String(numberOfLikes)
+        self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
     }
 }
