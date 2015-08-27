@@ -78,6 +78,7 @@
                                 </variation>
                                 <connections>
                                     <outlet property="nameLabel" destination="2jz-FJ-jy9" id="lAZ-hg-DvF"/>
+                                    <outlet property="paymentPhaseImageView" destination="oNA-Dd-MyZ" id="ugY-E5-96r"/>
                                     <outlet property="profileImageView" destination="gzL-fq-p5T" id="d9D-hT-L3M"/>
                                     <outlet property="profileImageViewHeightLayoutConstraint" destination="NmN-QI-3Ze" id="jCb-uq-rPI"/>
                                     <outlet property="storyLabel" destination="hs7-4K-xgN" id="hN5-BV-5Zu"/>
@@ -305,31 +306,31 @@
                                     <outlet property="recipientStatusLabel" destination="Bhf-g1-W44" id="Ccq-Zw-Kuj"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipientStories" rowHeight="300" id="NPc-12-lVz" customClass="RecipientStoriesTableViewCell" customModule="GiveDirectly" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecipientStories" rowHeight="600" id="NPc-12-lVz" customClass="RecipientStoriesTableViewCell" customModule="GiveDirectly" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NPc-12-lVz" id="xJL-DF-hhb">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eyw-BT-diI" userLabel="Container View">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eyw-BT-diI" userLabel="Container View">
                                             <rect key="frame" x="18" y="69" width="284" height="215.5"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-Ip-YRU" userLabel="Left Column View">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-Ip-YRU" userLabel="Left Column View">
                                                     <rect key="frame" x="0.0" y="0.0" width="142" height="215.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAYMENT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-CN-tzD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="14.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SPENDING PLANS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-CN-tzD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="107.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HARDSHIPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8I-1z-pUc">
-                                                            <rect key="frame" x="0.0" y="120" width="71" height="14.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ACHIEVEMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8I-1z-pUc">
+                                                            <rect key="frame" x="0.0" y="120" width="98" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing hello" translatesAutoresizingMaskIntoConstraints="NO" id="Dk3-LS-tcM" userLabel="Hardships Text View" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing hello" translatesAutoresizingMaskIntoConstraints="NO" id="Dk3-LS-tcM" userLabel="Hardships Text View" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="142" width="132" height="73.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -344,7 +345,7 @@
                                                                 </mask>
                                                             </variation>
                                                         </textView>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" translatesAutoresizingMaskIntoConstraints="NO" id="t5t-dd-kqQ" userLabel="Payment Text View" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" translatesAutoresizingMaskIntoConstraints="NO" id="t5t-dd-kqQ" userLabel="Payment Text View" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="23" width="130.5" height="87.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -380,11 +381,11 @@
                                                         </mask>
                                                     </variation>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-Lz-EZY" userLabel="Right Column View">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-Lz-EZY" userLabel="Right Column View">
                                                     <rect key="frame" x="142" y="0.0" width="142" height="215.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOALS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZET-Jr-VUW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="14.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GOALS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZET-Jr-VUW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="76" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -404,8 +405,8 @@
                                                                 </mask>
                                                             </variation>
                                                         </textView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHALLENGES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzc-cu-55a">
-                                                            <rect key="frame" x="0.0" y="105" width="82" height="14.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HARDSHIPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzc-cu-55a">
+                                                            <rect key="frame" x="0.0" y="105" width="71" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -445,6 +446,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ddB-Ip-YRU" secondAttribute="trailing" multiplier="2" id="BBe-Ib-QtW"/>
+                                                <constraint firstItem="t5t-dd-kqQ" firstAttribute="top" secondItem="FaE-20-kPl" secondAttribute="top" constant="1" id="Fx6-ib-Jcd"/>
                                                 <constraint firstItem="ddB-Ip-YRU" firstAttribute="leading" secondItem="eyw-BT-diI" secondAttribute="leading" id="Mbl-ZV-Tp0"/>
                                                 <constraint firstItem="wbY-Lz-EZY" firstAttribute="top" secondItem="eyw-BT-diI" secondAttribute="top" id="XLb-UJ-SJW"/>
                                                 <constraint firstAttribute="trailing" secondItem="wbY-Lz-EZY" secondAttribute="trailing" id="ZAI-nJ-cqR"/>
@@ -480,6 +482,9 @@
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phasePayment" translatesAutoresizingMaskIntoConstraints="NO" id="00L-oJ-u8O">
+                                            <rect key="frame" x="159" y="19" width="64" height="13"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="v0y-vm-SYf" firstAttribute="leading" secondItem="xJL-DF-hhb" secondAttribute="leading" constant="18" id="4m3-FZ-Czn"/>
@@ -487,10 +492,12 @@
                                         <constraint firstItem="O35-Sc-sET" firstAttribute="leading" secondItem="v0y-vm-SYf" secondAttribute="trailing" constant="8" id="5hg-fm-vst"/>
                                         <constraint firstItem="v0y-vm-SYf" firstAttribute="centerY" secondItem="O35-Sc-sET" secondAttribute="centerY" constant="7" id="AqW-GG-716"/>
                                         <constraint firstAttribute="bottom" secondItem="eyw-BT-diI" secondAttribute="bottom" constant="15" id="DoV-OF-sgy"/>
+                                        <constraint firstItem="00L-oJ-u8O" firstAttribute="centerY" secondItem="v0y-vm-SYf" secondAttribute="centerY" constant="-0.5" id="Hte-XU-4Vw"/>
                                         <constraint firstAttribute="bottom" secondItem="eyw-BT-diI" secondAttribute="bottom" constant="15" id="RU8-73-uyz"/>
                                         <constraint firstItem="eyw-BT-diI" firstAttribute="top" secondItem="v0y-vm-SYf" secondAttribute="bottom" constant="25" id="S08-pd-Z7K"/>
                                         <constraint firstItem="eyw-BT-diI" firstAttribute="leading" secondItem="xJL-DF-hhb" secondAttribute="leading" constant="18" id="edB-Pd-yyf"/>
                                         <constraint firstAttribute="bottom" secondItem="eyw-BT-diI" secondAttribute="bottom" constant="25" id="feG-42-oVe"/>
+                                        <constraint firstItem="00L-oJ-u8O" firstAttribute="leading" secondItem="ZET-Jr-VUW" secondAttribute="leading" constant="-1" id="hKj-iy-DY9"/>
                                         <constraint firstItem="3Ez-WJ-uJc" firstAttribute="top" secondItem="O35-Sc-sET" secondAttribute="bottom" id="hl7-VR-7Uj"/>
                                         <constraint firstAttribute="trailing" secondItem="eyw-BT-diI" secondAttribute="trailing" constant="18" id="ovB-nW-LUw"/>
                                         <constraint firstItem="O35-Sc-sET" firstAttribute="leading" secondItem="3Ez-WJ-uJc" secondAttribute="leading" id="ubS-nP-J6J"/>
@@ -508,6 +515,7 @@
                                     <outlet property="donorNameLabel" destination="3Ez-WJ-uJc" id="Gte-sn-Cda"/>
                                     <outlet property="goalsTextView" destination="FaE-20-kPl" id="GKY-dt-W5U"/>
                                     <outlet property="hardshipsTextView" destination="Dk3-LS-tcM" id="QK7-L7-Zm2"/>
+                                    <outlet property="paymentPhaseImageView" destination="00L-oJ-u8O" id="LVQ-lU-FDE"/>
                                     <outlet property="paymentTextView" destination="t5t-dd-kqQ" id="5bD-9d-bbG"/>
                                 </connections>
                             </tableViewCell>

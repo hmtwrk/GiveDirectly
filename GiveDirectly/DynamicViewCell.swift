@@ -44,6 +44,7 @@ class BrowserViewCell: UICollectionViewCell {
         
         let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
+        let paymentPhase:Int? = (recipientInfo as AnyObject)["phase"] as? Int
         
         // load an image
         if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
@@ -56,6 +57,17 @@ class BrowserViewCell: UICollectionViewCell {
             }
         } else {
             self.profileImageView.image = UIImage(named: "blankProfileImage")
+        }
+        
+        // show phase icon
+
+        switch paymentPhase! {
+        case 1:
+            self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
+        case 2:
+            self.paymentPhaseImageView.image = UIImage(named: "phaseComplete")
+        default:
+            self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
         }
         
         // make image round

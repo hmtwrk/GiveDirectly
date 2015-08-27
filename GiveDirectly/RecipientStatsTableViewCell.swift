@@ -67,7 +67,7 @@ class RecipientStatsTableViewCell: UITableViewCell {
             if recipientGender == "female" {
                 maritalStatus = "Widow"
             } else {
-                maritalStatus = "widower"
+                maritalStatus = "Widower"
             }
         case "seperated":
             maritalStatus = "Seperated"
