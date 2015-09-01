@@ -20,8 +20,6 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 
     func configureStoriesCell(recipientStories: AnyObject) {
         
-        println(recipientStories)
-        
         let recipientPayment:String? = (recipientStories as AnyObject)["spending"] as? String
         let recipientGoals:String? = (recipientStories as AnyObject)["goals"] as? String
         let recipientHardships:String? = (recipientStories as AnyObject)["achievement"] as? String
