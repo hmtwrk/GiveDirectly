@@ -324,14 +324,14 @@
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5t-dd-kqQ" userLabel="Spending Plans" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="14.5" width="130.5" height="73.5"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" translatesAutoresizingMaskIntoConstraints="NO" id="t5t-dd-kqQ" userLabel="Spending Plans" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="14" width="130.5" height="54"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="249" constant="10" id="7sh-zQ-Im5"/>
                                                                 <constraint firstAttribute="width" constant="120" id="L0B-kr-4cx"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
@@ -340,19 +340,19 @@
                                                             </variation>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACHIEVEMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8I-1z-pUc">
-                                                            <rect key="frame" x="0.0" y="98" width="95.5" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="78" width="95.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing hello" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk3-LS-tcM" userLabel="Achievements" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="112.5" width="132" height="103"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing hello" translatesAutoresizingMaskIntoConstraints="NO" id="Dk3-LS-tcM" userLabel="Achievements" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="92" width="132" height="123.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="248" constant="10" id="Isn-qU-DBM"/>
                                                                 <constraint firstAttribute="width" constant="120" id="uOL-tY-xbc"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
@@ -390,14 +390,14 @@
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaE-20-kPl" userLabel="Goals" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="14.5" width="132" height="73.5"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" translatesAutoresizingMaskIntoConstraints="NO" id="FaE-20-kPl" userLabel="Goals" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="14" width="132" height="71"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="4Qg-m7-0P8"/>
                                                                 <constraint firstAttribute="height" priority="249" constant="10" id="ZVr-d0-hvM"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
@@ -406,20 +406,20 @@
                                                             </variation>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HARDSHIPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzc-cu-55a">
-                                                            <rect key="frame" x="0.0" y="97.5" width="71" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="95" width="71" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyo-Bi-6HW" userLabel="Hardships" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="112" width="132" height="103.5"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" translatesAutoresizingMaskIntoConstraints="NO" id="Jyo-Bi-6HW" userLabel="Hardships" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="110" width="132" height="105.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="M3r-UL-3cW"/>
                                                                 <constraint firstAttribute="height" priority="248" constant="10" id="hgi-iN-Ggw"/>
                                                                 <constraint firstAttribute="width" constant="120" id="qhk-F8-A4c"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             <variation key="default">
                                                                 <mask key="constraints">
