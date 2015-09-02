@@ -27,13 +27,13 @@ class RecipientStoriesTableViewCell: UITableViewCell {
         let paymentPhase:Int? = (recipientStories as AnyObject)["phase"] as? Int
         
         self.paymentTextView.text = recipientPayment
-        self.paymentTextView.sizeToFit()
+//        self.paymentTextView.sizeToFit()
         self.goalsTextView.text = recipientGoals
-        self.goalsTextView.sizeToFit()
+//        self.goalsTextView.sizeToFit()
         self.hardshipsTextView.text = recipientHardships
-        self.hardshipsTextView.sizeToFit()
+//        self.hardshipsTextView.sizeToFit()
         self.challengesTextView.text = recipientChallenges
-        self.challengesTextView.sizeToFit()
+//        self.challengesTextView.sizeToFit()
         
         // display proper payment phase
         switch paymentPhase! {
