@@ -318,14 +318,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-Ip-YRU" userLabel="Left Column View">
                                                     <rect key="frame" x="0.0" y="0.0" width="142" height="215.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SPENDING PLANS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-CN-tzD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="106.5" height="15.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPENDING PLANS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-CN-tzD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="106.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5t-dd-kqQ" userLabel="Spending Plans" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="22.5" width="130.5" height="87.5"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5t-dd-kqQ" userLabel="Spending Plans" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="22.5" width="130.5" height="73.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="249" constant="10" id="7sh-zQ-Im5"/>
@@ -340,13 +340,13 @@
                                                             </variation>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACHIEVEMENTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8I-1z-pUc">
-                                                            <rect key="frame" x="0.0" y="120" width="95.5" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="106" width="95.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing hello" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk3-LS-tcM" userLabel="Achievements" customClass="AutoTextView" customModule="GiveDirectly" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="142" width="132" height="73.5"/>
+                                                            <rect key="frame" x="0.0" y="128" width="132" height="87.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="248" constant="10" id="Isn-qU-DBM"/>
@@ -361,7 +361,6 @@
                                                             </variation>
                                                         </textView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="n8I-1z-pUc" firstAttribute="leading" secondItem="ddB-Ip-YRU" secondAttribute="leading" id="4Mo-OB-72y"/>
                                                         <constraint firstItem="Dk3-LS-tcM" firstAttribute="leading" secondItem="ddB-Ip-YRU" secondAttribute="leading" id="6jR-qX-m40"/>
@@ -430,7 +429,6 @@
                                                             </variation>
                                                         </textView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="0.96021792763157898" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="Jyo-Bi-6HW" firstAttribute="top" secondItem="xzc-cu-55a" secondAttribute="bottom" constant="8" id="13n-9M-FHJ"/>
                                                         <constraint firstItem="xzc-cu-55a" firstAttribute="leading" secondItem="wbY-Lz-EZY" secondAttribute="leading" id="IIP-Af-BU6"/>
@@ -446,7 +444,6 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.62667043585526316" green="0.72549019609999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ddB-Ip-YRU" secondAttribute="trailing" multiplier="2" id="BBe-Ib-QtW"/>
                                                 <constraint firstItem="t5t-dd-kqQ" firstAttribute="top" secondItem="FaE-20-kPl" secondAttribute="top" constant="1" id="Fx6-ib-Jcd"/>
@@ -513,7 +510,6 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.28235294119999998" green="0.72549019609999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="challengesTextView" destination="Jyo-Bi-6HW" id="ZYN-b7-4fG"/>
                                     <outlet property="donorImageView" destination="v0y-vm-SYf" id="e6t-34-HRG"/>
