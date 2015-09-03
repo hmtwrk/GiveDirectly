@@ -8,13 +8,20 @@
 
 import UIKit
 
+protocol RecipientRelatedUpdateCellDelegate: class {
+    
+    func relatedUpdateCellLikeButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject)
+    func relatedUpdateCellCommentButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject)
+    func relatedUpdateCellExtraButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject)
+}
+
 class RecipientRelatedUpdateCell: UITableViewCell {
     
+
     var userHasLikedPost = false
+    
     var numberOfLikes: Int = 0
-    
     let buttonForce: CGFloat = 1.0
-    
     
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
@@ -26,6 +33,8 @@ class RecipientRelatedUpdateCell: UITableViewCell {
     @IBOutlet weak var commentButton: SpringButton!
     @IBOutlet weak var extraButton: SpringButton!
     
+    weak var delegate: RecipientRelatedUpdateCellDelegate?
+    
     // TODO: assign Parse data to numberOfLikesLabel and numberOfCommentsLabel
     // TODO: configure labels for number of likes and comments
 
@@ -36,9 +45,8 @@ class RecipientRelatedUpdateCell: UITableViewCell {
         likeButton.animation = "pop"
         likeButton.force = buttonForce
         likeButton.animate()
+    
         
-
-        // TODO: create unique image for "already liked" icon, and tweak animation timing
         if userHasLikedPost == false {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
             self.numberOfLikes += 1
@@ -54,7 +62,7 @@ class RecipientRelatedUpdateCell: UITableViewCell {
         println(userHasLikedPost)
         
         
-//        delegate?.updateLikeButtonDidTap(self, sender: sender)
+        delegate?.relatedUpdateCellLikeButtonDidTap(self, sender: sender)
         
     }
     
@@ -64,7 +72,7 @@ class RecipientRelatedUpdateCell: UITableViewCell {
         commentButton.force = buttonForce
         commentButton.animate()
         
-//        delegate?.updateCommentButtonDidTap(self, sender: sender)
+        delegate?.relatedUpdateCellCommentButtonDidTap(self, sender: sender)
     }
     
     @IBAction func extraButtonDidTap(sender: AnyObject) {
@@ -73,7 +81,7 @@ class RecipientRelatedUpdateCell: UITableViewCell {
         extraButton.force = buttonForce
         extraButton.animate()
         
-//        delegate?.updateExtraButtonDidTap(self, sender: sender)
+        delegate?.relatedUpdateCellExtraButtonDidTap(self, sender: sender)
     }
     
     // MARK: configuration of cell

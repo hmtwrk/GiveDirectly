@@ -17,6 +17,7 @@
 		4A4D11AE1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */; };
 		4A4D11B01B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */; };
 		4A5711AF1B95435000CF32B0 /* RecipientRelatedUpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5711AE1B95435000CF32B0 /* RecipientRelatedUpdateCell.swift */; };
+		4A5711B31B98C39000CF32B0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5711B21B98C39000CF32B0 /* Like.swift */; };
 		4A5A6EDD1B56F134003A1D0F /* RecipientBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */; };
 		4A5A6EDF1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */; };
 		4A5A6EE11B57F804003A1D0F /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */; };
@@ -85,9 +86,6 @@
 		4AC663F21B7D4177008AF19F /* Recipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC663F11B7D4177008AF19F /* Recipient.swift */; };
 		4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC663F31B7D58C0008AF19F /* DynamicViewCell.swift */; };
 		4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */; };
-		4ACBA75A1B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */; };
-		4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */; };
-		4ACBA75E1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */; };
 		4ACBA7601B66785900F25D74 /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */; };
 		4AD91CB41B2B306F00A9FB23 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */; };
 		4AD91CB61B2B307A00A9FB23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */; };
@@ -134,6 +132,7 @@
 		4A4D11AD1B38EB4500E5EEDB /* BrowseRecipientCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewController.swift; sourceTree = "<group>"; };
 		4A4D11AF1B38EBCC00E5EEDB /* BrowseRecipientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseRecipientCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A5711AE1B95435000CF32B0 /* RecipientRelatedUpdateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientRelatedUpdateCell.swift; sourceTree = "<group>"; };
+		4A5711B21B98C39000CF32B0 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		4A5A6EDC1B56F134003A1D0F /* RecipientBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientBrowseViewController.swift; sourceTree = "<group>"; };
 		4A5A6EDE1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientBrowseCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A5A6EE01B57F804003A1D0F /* PortfolioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
@@ -208,9 +207,6 @@
 		4AC663F11B7D4177008AF19F /* Recipient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipient.swift; sourceTree = "<group>"; };
 		4AC663F31B7D58C0008AF19F /* DynamicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewCell.swift; sourceTree = "<group>"; };
 		4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticMenuTableViewController.swift; sourceTree = "<group>"; };
-		4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedUpdateTableViewCell.swift; sourceTree = "<group>"; };
-		4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Testing_NewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		4ACBA75F1B66785900F25D74 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		4AD91CB31B2B306F00A9FB23 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4AD91CB51B2B307A00A9FB23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -328,9 +324,6 @@
 				4A1848161B472952009D6026 /* SharingViewController.swift */,
 				4A18480F1B446CEF009D6026 /* old_NewsfeedTableViewController.swift */,
 				4A1848111B446D36009D6026 /* old_UpdateTableViewCell.swift */,
-				4ACBA7591B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift */,
-				4ACBA75D1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift */,
-				4ACBA75B1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift */,
 				4A1848141B44A375009D6026 /* CommentViewController.swift */,
 			);
 			name = Archived;
@@ -480,6 +473,7 @@
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */,
+				4A5711B21B98C39000CF32B0 /* Like.swift */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
 				C437805B1B2933080018BD41 /* LaunchScreen.xib */,
 				4AB19B181B3B6A5600B3E973 /* GiveDirectly-Bridging-Header.h */,
@@ -617,7 +611,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ACBA75A1B65346C00F25D74 /* Testing_NewsfeedHeaderTableViewCell.swift in Sources */,
 				4A7462B51B3DBC9E00B8555C /* SpringButton.swift in Sources */,
 				4A7462B21B3DBC9E00B8555C /* SoundPlayer.swift in Sources */,
 				4A7462B91B3DBC9E00B8555C /* SpringTextView.swift in Sources */,
@@ -634,6 +627,7 @@
 				4A7462B81B3DBC9E00B8555C /* SpringTextField.swift in Sources */,
 				4A7462A61B3DBC9E00B8555C /* DesignableImageView.swift in Sources */,
 				4A6A60BB1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift in Sources */,
+				4A5711B31B98C39000CF32B0 /* Like.swift in Sources */,
 				4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */,
 				4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */,
 				4A1848121B446D36009D6026 /* old_UpdateTableViewCell.swift in Sources */,
@@ -659,7 +653,6 @@
 				4A7462A81B3DBC9E00B8555C /* DesignableTabBarController.swift in Sources */,
 				4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */,
 				4A5711AF1B95435000CF32B0 /* RecipientRelatedUpdateCell.swift in Sources */,
-				4ACBA75C1B6534A000F25D74 /* Testing_NewsfeedUpdateTableViewCell.swift in Sources */,
 				4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4A7462A31B3DBC9E00B8555C /* AutoTextView.swift in Sources */,
@@ -668,7 +661,6 @@
 				4A6A60BD1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift in Sources */,
 				4A1848101B446CEF009D6026 /* old_NewsfeedTableViewController.swift in Sources */,
 				4A7462BD1B3DBC9E00B8555C /* UnwindSegue.swift in Sources */,
-				4ACBA75E1B6534FE00F25D74 /* Testing_NewsfeedTableViewController.swift in Sources */,
 				4A5A6EDF1B570CEA003A1D0F /* RecipientBrowseCollectionViewCell.swift in Sources */,
 				4A7462BA1B3DBC9E00B8555C /* SpringView.swift in Sources */,
 				4A7462B71B3DBC9E00B8555C /* SpringLabel.swift in Sources */,
