@@ -22,7 +22,7 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
         super.viewDidLoad()
         
         // make the Parse API call
-        self.queryParseForUpdates()
+        self.queryForRelatedUpdates()
         
         // set navigation title to match recipient's name
         let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
@@ -86,6 +86,17 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
         return cell
     }
     
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        // check to see if there's a cell at the tapped row
+//        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+//            
+//            let item: (AnyObject) = recipientRelatedUpdateInfo[indexPath.row]
+////            item.toggleChecked()
+//            
+//        }
+//    }
+    
     // MARK: RelatedUpdateCellDelegate
     func relatedUpdateCellLikeButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
         // hello
@@ -108,20 +119,48 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
 extension RecipientProfileTableViewController {
     
     // Parse query to determine number of update cells to append to the table view, as well as data for the updates
-    func queryParseForUpdates() {
+    func queryForRelatedUpdates() {
         
+        // return the 20 newest updates that correspond to the selected Recipient, arranged in descending order
         let author = (recipientInfo as AnyObject)["gdid"] as! String
         var query:PFQuery = PFQuery(className: "RecipientUpdates")
         query.whereKey("GDID", equalTo: author)
+        query.orderByDescending("createdAt")
+        query.limit = 20
         query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (updates: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                println(objects!.count)
-                self.numberOfUpdates = objects!.count
-                self.recipientRelatedUpdateInfo = objects!
-                self.tableView?.reloadData()
+//                println(updates!)
+                println("\(updates!.count) updates.")
+                self.numberOfUpdates = updates!.count
+                self.recipientRelatedUpdateInfo = updates!
+                
+                // make API call to determine which updates are liked by currentUser, and total number of likes
+                self.queryForLikes(query)
+                
             } else {
                 // log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+    }
+    
+    func queryForLikes(updatesQuery: PFQuery) {
+        
+        // let currentUser = PFUser (assign a constant to the currentUser)
+        var likedQuery: PFQuery = PFQuery(className: "Liked")
+        likedQuery.whereKey("likedRecipientUpdate", matchesQuery: updatesQuery)
+        likedQuery.findObjectsInBackgroundWithBlock {
+            (likes: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                
+                // check how many likes exist
+                println("\(likes!.count) likes.")
+//                println(likes!)
+                
+                // tableView is reloaded after the final Parse API call is completed
+                self.tableView?.reloadData()
+            } else {
                 println("Error: \(error!) \(error!.userInfo!)")
             }
         }

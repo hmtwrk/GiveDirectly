@@ -600,10 +600,10 @@
                                             </state>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="fFi-5G-Mfz"/>
-                                                    <exclude reference="Uvm-TJ-ADj"/>
-                                                    <exclude reference="i7K-ky-wca"/>
                                                     <exclude reference="OVi-t4-2sY"/>
+                                                    <exclude reference="Uvm-TJ-ADj"/>
+                                                    <exclude reference="fFi-5G-Mfz"/>
+                                                    <exclude reference="i7K-ky-wca"/>
                                                 </mask>
                                             </variation>
                                             <connections>

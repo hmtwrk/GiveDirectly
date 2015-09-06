@@ -17,8 +17,9 @@ protocol RecipientRelatedUpdateCellDelegate: class {
 
 class RecipientRelatedUpdateCell: UITableViewCell {
     
-
-    var userHasLikedPost = false
+    
+    // this information needs to be moved to the data source
+    var hasLikedUpdate = false
     
     var numberOfLikes: Int = 0
     let buttonForce: CGFloat = 1.0
@@ -47,7 +48,7 @@ class RecipientRelatedUpdateCell: UITableViewCell {
         likeButton.animate()
     
         
-        if userHasLikedPost == false {
+        if hasLikedUpdate == false {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
             self.numberOfLikes += 1
             self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
@@ -58,8 +59,8 @@ class RecipientRelatedUpdateCell: UITableViewCell {
             self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
         }
         
-        userHasLikedPost = !userHasLikedPost
-        println(userHasLikedPost)
+        hasLikedUpdate = !hasLikedUpdate
+        println(hasLikedUpdate)
         
         
         delegate?.relatedUpdateCellLikeButtonDidTap(self, sender: sender)
@@ -87,7 +88,7 @@ class RecipientRelatedUpdateCell: UITableViewCell {
     // MARK: configuration of cell
     func configureUpdateTableViewCell(recipientName: String, updateData: AnyObject) {
         
-        println(updateData)
+//        println(updateData)
         
         let title:String? = (updateData as AnyObject)["method"] as? String
         let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
@@ -102,6 +103,7 @@ class RecipientRelatedUpdateCell: UITableViewCell {
             if error == nil {
                 // check to see if something exists
                 if let objects = objects as? [PFObject] {
+//                    println("There are \(objects.count) objects.")
                     for object in objects {
 
                         // if image is pulled
