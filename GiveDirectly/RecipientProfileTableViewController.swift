@@ -17,9 +17,13 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
     var numberOfUpdates: Int = 0
     var recipientRelatedUpdateInfo = [AnyObject]()
     var recipientNameData: String = ""
+    var likes = [Liked]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // test subclassing API call
+//        self.queryForTesting()
         
         // make the Parse API call
         self.queryForRelatedUpdates()
@@ -47,6 +51,7 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        // determine which cell identifier to return
         var identifier: String = ""
         
         if indexPath.row == 0 {
@@ -115,7 +120,7 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
 }
 
 
-// MARK: Parse API call
+// MARK: Parse API calls
 extension RecipientProfileTableViewController {
     
     // Parse query to determine number of update cells to append to the table view, as well as data for the updates
@@ -147,18 +152,12 @@ extension RecipientProfileTableViewController {
     
     func queryForLikes(updatesQuery: PFQuery) {
         
-        // let currentUser = PFUser (assign a constant to the currentUser)
-        var likedQuery: PFQuery = PFQuery(className: "Liked")
-        likedQuery.whereKey("likedRecipientUpdate", matchesQuery: updatesQuery)
-        likedQuery.findObjectsInBackgroundWithBlock {
+        let likeQuery = Liked.query()
+        likeQuery?.whereKey("likedRecipientUpdate", matchesQuery: updatesQuery)
+        likeQuery?.findObjectsInBackgroundWithBlock {
             (likes: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                
-                // check how many likes exist
                 println("\(likes!.count) likes.")
-//                println(likes!)
-                
-                // tableView is reloaded after the final Parse API call is completed
                 self.tableView?.reloadData()
             } else {
                 println("Error: \(error!) \(error!.userInfo!)")

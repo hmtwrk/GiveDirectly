@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import <Bolts/Bolts.h>
 #import <ParseUI/ParseUI.h>
+#import <Parse/PFObject+Subclass.h>
 
 
 #endif
