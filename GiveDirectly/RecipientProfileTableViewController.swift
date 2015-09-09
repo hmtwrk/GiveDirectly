@@ -126,12 +126,12 @@ extension RecipientProfileTableViewController {
     // Parse query to determine number of update cells to append to the table view, as well as data for the updates
     func queryForRelatedUpdates() {
         
-        // return the 20 newest updates that correspond to the selected Recipient, arranged in descending order
+        // return the newest updates that correspond to the selected Recipient, arranged in descending order
         let author = (recipientInfo as AnyObject)["gdid"] as! String
         var query:PFQuery = PFQuery(className: "RecipientUpdates")
         query.whereKey("GDID", equalTo: author)
         query.orderByDescending("createdAt")
-        query.limit = 20
+        query.limit = 30
         query.findObjectsInBackgroundWithBlock {
             (updates: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
