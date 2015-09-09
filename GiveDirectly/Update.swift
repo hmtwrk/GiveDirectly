@@ -16,6 +16,8 @@ class Update : PFObject, PFSubclassing {
     
     var image: UIImage?
     
+//    var likes = Dynamic<[PFUser]?>(nil)
+    
     static func parseClassName() -> String {
         return "RecipientUpdates"
     }

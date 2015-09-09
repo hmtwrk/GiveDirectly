@@ -25,7 +25,7 @@ class ParseHelper {
     
     // Update Relation
     static let ParseUpdateRecipient         = "recipientAuthor"
-    static let ParsePostCreatedAt           = "createdAt"
+    static let ParseUpdateCreatedAt         = "createdAt"
     
     // Flagged Content Relation
     static let ParseFlaggedContentClass     = "Flagged"
@@ -45,27 +45,73 @@ class ParseHelper {
     // 2 —— in case following functionality is used in the future
 
     // this query will return all the Recipients objectIds the User follows
+    
+    // MARK: Newsfeed
+    
+    static func mostRecentUpdates(completionBlock: PFArrayResultBlock) {
+        let query = Update.query()
+        query?.orderByDescending(ParseUpdateCreatedAt)
+//        query?.limit = 20
+        query?.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    // MARK: Following
+    
     static func followedUpdatesForCurrentUser(completionBlock: PFArrayResultBlock) {
-        let followingQuery = PFQuery(className: "Following")
-        followingQuery.whereKey("fromUser", equalTo:PFUser.currentUser()!)
+        let followingQuery = PFQuery(className: ParseFollowClass)
+        followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
         
         // this query will return all RecipientUpdates that are authored by
         // the followed Recipients
         let updatesFromFollowedRecipients = Update.query()
-        updatesFromFollowedRecipients!.whereKey("recipientAuthor", matchesKey: "toRecipient", inQuery: followingQuery)
-        updatesFromFollowedRecipients?.includeKey("recipientAuthor")
-        updatesFromFollowedRecipients?.orderByDescending("createdAt")
+        updatesFromFollowedRecipients!.whereKey(ParseUpdateRecipient, matchesKey: ParseFollowToRecipient, inQuery: followingQuery)
+        updatesFromFollowedRecipients?.includeKey(ParseUpdateRecipient)
+        updatesFromFollowedRecipients?.orderByDescending(ParseUpdateCreatedAt)
         
-        // 3 —— make the API call
         updatesFromFollowedRecipients?.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
-    static func mostRecentUpdates(completionBlock: PFArrayResultBlock) {
-        let query = Update.query()
-        query?.orderByAscending("createdAt")
-        query?.findObjectsInBackgroundWithBlock(completionBlock)
-        // how to assign values to variables and reload tableView?
+
+    
+    // MARK: Likes
+    
+    static func likeUpdate(user: PFUser, update: Update) {
+        let likeObject = PFObject(className: ParseLikeClass)
+        likeObject[ParseLikeFromUser] = user
+        likeObject[ParseLikeToUpdate] = update
+        
+        likeObject.saveInBackgroundWithBlock(nil)
     }
     
+    static func unlikePost(user: PFUser, update: Update) {
+        // 1
+        let query = PFQuery(className: ParseLikeClass)
+        query.whereKey(ParseLikeFromUser, equalTo: user)
+        query.whereKey(ParseLikeToUpdate, equalTo: update)
+        
+        query.findObjectsInBackgroundWithBlock {
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            
+            // how to handle error?
+            if let error = error {
+                println(error)
+            }
+            
+            if let results = results as? [PFObject] {
+                for likes in results {
+                    likes.deleteInBackgroundWithBlock(nil)
+                }
+            }
+        }
+    }
     
+    static func likesForUpdate(update: Update, completionBlock: PFArrayResultBlock) {
+        let query = PFQuery(className: ParseLikeClass)
+        query.whereKey(ParseLikeToUpdate, equalTo: update)
+        
+        // 2
+        query.includeKey(ParseLikeFromUser)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
 }
