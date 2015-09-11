@@ -59,11 +59,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // log in a user
+//        self.easyLogin()
+        
         // Check for user's login status
         self.checkUserStatus()
         self.refreshUserData()
         
-        //            self.easyLogin()
+        
         
         return true
     }
@@ -122,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func easyLogin() {
         
-        let parseUsername = "braddourif"
+        let parseUsername = "michaelfaye"
         let testPassword = "testpass123"
         
         PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {

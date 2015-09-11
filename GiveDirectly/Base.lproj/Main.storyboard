@@ -714,7 +714,7 @@
         <!--Donate-->
         <scene sceneID="COY-T0-v6n">
             <objects>
-                <viewController id="r9m-pB-hXY" sceneMemberID="viewController">
+                <viewController id="r9m-pB-hXY" customClass="DonateViewController" customModule="GiveDirectly" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xsh-0P-erZ"/>
                         <viewControllerLayoutGuide type="bottom" id="l1f-bq-j8f"/>
@@ -722,19 +722,7 @@
                     <view key="view" contentMode="scaleToFill" id="7Vz-hr-3dW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GiveDirectly" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptb-Xf-wEE">
-                                <rect key="frame" x="114" y="171" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="ptb-Xf-wEE" secondAttribute="centerX" constant="-0.5" id="WHV-Ty-Dpg"/>
-                            <constraint firstItem="ptb-Xf-wEE" firstAttribute="top" secondItem="Xsh-0P-erZ" secondAttribute="bottom" constant="107" id="moO-9a-dIk"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Donate" id="rAD-qH-v5i"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

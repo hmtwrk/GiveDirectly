@@ -102,6 +102,7 @@
 		4ADAF1151B9E5C110004D7E9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADAF1141B9E5C110004D7E9 /* Post.swift */; };
 		4ADAF11B1B9FB8440004D7E9 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADAF11A1B9FB8440004D7E9 /* Update.swift */; };
 		4ADAF11E1B9FC2FD0004D7E9 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADAF11D1B9FC2FD0004D7E9 /* ParseHelper.swift */; };
+		4ADAF2461BA34FAE0004D7E9 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADAF2451BA34FAE0004D7E9 /* DonateViewController.swift */; };
 		4AF9507C1B306646004313DC /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9507B1B306646004313DC /* ProfileTableViewController.swift */; };
 		4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */; };
 		4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */; };
@@ -226,6 +227,7 @@
 		4ADAF1141B9E5C110004D7E9 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4ADAF11A1B9FB8440004D7E9 /* Update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		4ADAF11D1B9FC2FD0004D7E9 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
+		4ADAF2451BA34FAE0004D7E9 /* DonateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
 		4AF9507B1B306646004313DC /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientUpdatesTableViewCell.swift; sourceTree = "<group>"; };
 		4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
@@ -437,6 +439,14 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		4ADAF2441BA34F7F0004D7E9 /* Donate View */ = {
+			isa = PBXGroup;
+			children = (
+				4ADAF2451BA34FAE0004D7E9 /* DonateViewController.swift */,
+			);
+			name = "Donate View";
+			sourceTree = "<group>";
+		};
 		4AF9507D1B306672004313DC /* User Profile View */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +497,7 @@
 		C437804F1B2933080018BD41 /* GiveDirectly */ = {
 			isa = PBXGroup;
 			children = (
+				4ADAF2441BA34F7F0004D7E9 /* Donate View */,
 				4ADAF11C1B9FC2E50004D7E9 /* Helpers */,
 				4ADAF1131B9E5BA80004D7E9 /* Models */,
 				C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */,
@@ -644,6 +655,7 @@
 				C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */,
 				4A7462A91B3DBC9E00B8555C /* DesignableTextField.swift in Sources */,
 				4A7462AA1B3DBC9E00B8555C /* DesignableTextView.swift in Sources */,
+				4ADAF2461BA34FAE0004D7E9 /* DonateViewController.swift in Sources */,
 				4AB36AE61B67E02000ABCE23 /* FriendActivityTableViewCell.swift in Sources */,
 				4A6A60BF1B7001D800C3F142 /* RecentActivityTableViewCell.swift in Sources */,
 				4AB36AE41B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift in Sources */,

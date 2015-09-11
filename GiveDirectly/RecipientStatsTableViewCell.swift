@@ -19,7 +19,6 @@ class RecipientStatsTableViewCell: UITableViewCell {
     @IBOutlet weak var recipientLocationLabel: UILabel!
     
     
-    
     func configureStatsCell(recipientStats: AnyObject) {
         
         let recipientName:String? = (recipientStats as AnyObject)["firstName"] as? String
