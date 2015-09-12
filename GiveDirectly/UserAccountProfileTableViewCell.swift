@@ -18,24 +18,18 @@ class UserAccountProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var userFundedLabel: UILabel!
     @IBOutlet weak var userLocationLabel: UILabel!
     
-    override func awakeFromNib() {
-        // 
-    }
-    
     
     func configureUserProfileCell(userData: AnyObject) {
         
-//        println(userData)
-        
-        // ideally the user would have to pull to refresh the data,
-        // but for now the data will update when viewDidAppear
+        println(userData)
         
         let userName:String? = (userData as AnyObject)["fullName"] as? String
         let userMessage:String? = (userData as AnyObject)["message"] as? String
         let userJoinDate:String? = (userData as AnyObject)["createdAt"] as? String
         let userDonations:Int? = (userData as AnyObject)["donations"] as? Int
-        let userFunded:String? = (userData as AnyObject)["funded"] as? String
+        let userFunded:Int? = (userData as AnyObject)["funded"] as? Int
         let userLocation:String? = (userData as AnyObject)["location"] as? String
+
         
         
         // configure round profile image
@@ -46,8 +40,10 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         userPhotoImageView.layer.borderColor = UIColor.clearColor().CGColor
         userPhotoImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
         
+
         
-        // load profile photo (load into helper method)
+        // load profile photo
+        // TODO: move this code into helper method
         if let userProfilePhoto = userData["profilePhoto"] as? PFFile {
             userProfilePhoto.getDataInBackgroundWithBlock {
                 (imageData: NSData?, error: NSError?) -> Void in
@@ -61,18 +57,28 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         }
         
         if userDonations != nil {
-            self.userDonationsLabel.text = String(stringInterpolationSegment: userDonations!)
+            
+            var formatter = NSNumberFormatter()
+            formatter.numberStyle = .CurrencyStyle
+//            formatter.usesGroupingSeparator = true
+            formatter.usesSignificantDigits = true
+            var currencyUserDonations = formatter.stringFromNumber(userDonations!)
+            
+            
+//            self.userDonationsLabel.text = String(stringInterpolationSegment: userDonations!)
+            self.userDonationsLabel.text = currencyUserDonations
         }
         
-        if userMessage != nil {
-            self.userMessageLabel.text = userMessage
+        if userFunded != nil {
+            
+            self.userFundedLabel.text = String(stringInterpolationSegment: userFunded!)
         }
         
         self.userNameLabel.text = userName
         self.userJoinDateLabel.text = userJoinDate
-//        self.userDonationsLabel.text = userDonations
-        self.userFundedLabel.text = userFunded
         self.userLocationLabel.text = userLocation
+        self.userMessageLabel.text = userMessage
+
         
     }
     

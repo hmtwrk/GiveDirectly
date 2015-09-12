@@ -50,6 +50,7 @@ class DonateViewController: UIViewController {
                 println(error)
             } else if let donations = donations {
                 donations.incrementKey("donations", byAmount: 1000)
+                donations.incrementKey("funded", byAmount: 1)
                 donations.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {

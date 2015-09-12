@@ -126,6 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func easyLogin() {
         
         let parseUsername = "michaelfaye"
+//        let parseUsername = "seanmoriarity"
         let testPassword = "testpass123"
         
         PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {
