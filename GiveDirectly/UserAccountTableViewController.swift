@@ -10,24 +10,33 @@ import UIKit
 
 class UserAccountTableViewController: UITableViewController {
     
-
     let identifierArray = ["UserAccountProfileCell", "UserAccountFollowingCell", "YourFriends", "FriendActivityCell"]
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         // autofit cells?
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // customize separators
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
+
         
-
-
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        // refresh the Parse current user cache and reload tableView
+        let currentUser = PFUser.currentUser()
+        currentUser?.fetchInBackgroundWithBlock { (object, error) -> Void in
+            println("The current user hath been refreshed!")
+            
+            // reload the tableView so that the data is current
+            self.tableView?.reloadData()
+        
+        }
         
     }
     
@@ -50,7 +59,8 @@ class UserAccountTableViewController: UITableViewController {
         
         //    let identifier = indexPath.row == 0 ? "YourFriends" : "FriendActivityCell"
         
-        
+        // TODO: modify this logic so that numerous update cells can be appended to the bottom of the view
+        // (first three cells are static, whereas cells >= [3] are dynamic newsfeed items
         let identifier = indexPath.row < identifierArray.count ? identifierArray[indexPath.row] : "FriendActivityCell"
         
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
