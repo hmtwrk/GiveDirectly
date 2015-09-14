@@ -19,6 +19,7 @@ class UserAccountProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var userLocationLabel: UILabel!
     @IBOutlet weak var removeableBottomConstraint: NSLayoutConstraint!
 
+    var donationTrackerHasAppeared = false
     
     
     func configureUserProfileCell(userData: AnyObject, willShowDonationTracker: Bool) {
@@ -32,33 +33,35 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         let userFunded:Int? = (userData as AnyObject)["funded"] as? Int
         let userLocation:String? = (userData as AnyObject)["location"] as? String
         
+        let imageName = "donationTracker.pdf"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        
+        let imageWidth = imageView.frame.size.width
+        let contentViewWidth = contentView.bounds.size.width
+        let xPosition = ( (contentViewWidth - imageWidth) / 2.0)
+        
+        imageView.frame = CGRect(x: xPosition, y: (18 + 80 + (75 - 8) ), width: 292, height: 64)
+        imageView.contentMode = .Center
+        
+        println(contentViewWidth)
+        println(imageWidth)
+        println(xPosition)
+        
         // display donationTracker if GD site was visited
-        if willShowDonationTracker == true {
-            
-//            userLocationLabel.backgroundColor = UIColor.blueColor()
-            // this logic works... now to add a view here and put it in the right place
-            
-            // delete
-            
-//            var dynamicView = UIView(frame: CGRectMake(100, 100, 100, 100))
-//            dynamicView.backgroundColor = UIColor.greenColor()
-//            dynamicView.layer.cornerRadius = 25
-//            dynamicView.layer.borderWidth = 2
-//            self.addSubview(dynamicView)
+        if willShowDonationTracker == true && donationTrackerHasAppeared == false && contentViewWidth != 0.0 {
             
             removeableBottomConstraint.constant = 72
+            println(contentView)
             
             
-
-            let imageName = "donationTracker.pdf"
-            let image = UIImage(named: imageName)
-            let imageView = UIImageView(image: image!)
 //            let horizontalCenter = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
-            imageView.frame = CGRect(x: ( (self.contentView.bounds.size.width - imageView.frame.size.width) / 2.0), y: (18 + 80 + (75 - 8) ), width: 292, height: 64)
-            imageView.contentMode = .Center
-            self.addSubview(imageView)
             
-            self.layoutIfNeeded()
+            self.addSubview(imageView)
+            donationTrackerHasAppeared = true
+            
+            
+//            self.layoutIfNeeded()
             
         }
 

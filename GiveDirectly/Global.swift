@@ -14,3 +14,4 @@ var recipientBrowserData = [AnyObject]()
 var testData: String = ""
 
 var showDonationTracker = false
+var tableViewWasLoaded = false

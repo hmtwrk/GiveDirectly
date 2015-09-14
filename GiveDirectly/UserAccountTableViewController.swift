@@ -26,6 +26,7 @@ class UserAccountTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
         
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -36,6 +37,7 @@ class UserAccountTableViewController: UITableViewController {
             println("The current user hath been refreshed!")
             
             // reload the tableView so that the data is current
+            println("Matrix reloaded!")
             self.tableView?.reloadData()
             
         }

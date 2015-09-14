@@ -303,7 +303,6 @@
 		4A1BAF7E1B7A91F800BEFCC9 /* Dynamic Collection */ = {
 			isa = PBXGroup;
 			children = (
-				4A8435121B823F0B008D5E08 /* Global.swift */,
 				4AC663F11B7D4177008AF19F /* Recipient.swift */,
 				4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */,
 				4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */,
@@ -434,6 +433,7 @@
 		4ADAF11C1B9FC2E50004D7E9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4A8435121B823F0B008D5E08 /* Global.swift */,
 				4ADAF11D1B9FC2FD0004D7E9 /* ParseHelper.swift */,
 			);
 			name = Helpers;
