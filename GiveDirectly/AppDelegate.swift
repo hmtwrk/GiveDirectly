@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         // log in a user
-//        self.easyLogin()
+        self.easyLogin()
         
         // Check for user's login status
         self.checkUserStatus()
