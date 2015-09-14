@@ -10,19 +10,21 @@ import UIKit
 
 class UserAccountTableViewController: UITableViewController {
     
+    var displayDonationTracker = false
+    
     let identifierArray = ["UserAccountProfileCell", "UserAccountFollowingCell", "YourFriends", "FriendActivityCell"]
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // autofit cells?
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // customize separators
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
-
+        
         
     }
     
@@ -35,7 +37,7 @@ class UserAccountTableViewController: UITableViewController {
             
             // reload the tableView so that the data is current
             self.tableView?.reloadData()
-        
+            
         }
         
     }
@@ -65,10 +67,10 @@ class UserAccountTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
         
+        
         if let userProfileCell = cell as? UserAccountProfileTableViewCell {
-//            userProfileCell.configureUserProfileCell(userData)
             let userData = PFUser.currentUser()
-            userProfileCell.configureUserProfileCell(userData!)
+            userProfileCell.configureUserProfileCell(userData!, willShowDonationTracker: showDonationTracker)
         }
         
         if let userNetworkCell = cell as? UserAccountFollowingTableViewCell {
@@ -79,11 +81,11 @@ class UserAccountTableViewController: UITableViewController {
             recentActivityCell.configureLatestActivityCell()
         }
         
-//        println(indexPath.row)
+        //        println(indexPath.row)
         return cell
     }
     
-
-
+    
+    
     
 }

@@ -16,6 +16,9 @@ class DonateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // switch variable to display donationTracker.pdf
+        showDonationTracker = true
+        
         // add the webView to the main View
         view.addSubview(webView)
         
