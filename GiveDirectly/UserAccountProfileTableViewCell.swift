@@ -47,19 +47,18 @@ class UserAccountProfileTableViewCell: UITableViewCell {
 //            self.addSubview(dynamicView)
             
             removeableBottomConstraint.constant = 72
-            self.layoutIfNeeded()
+            
             
 
             let imageName = "donationTracker.pdf"
             let image = UIImage(named: imageName)
             let imageView = UIImageView(image: image!)
 //            let horizontalCenter = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
-            imageView.frame = CGRect(x: 100, y: 200, width: 292, height: 64)
+            imageView.frame = CGRect(x: ( (self.contentView.bounds.size.width - imageView.frame.size.width) / 2.0), y: (18 + 80 + (75 - 8) ), width: 292, height: 64)
             imageView.contentMode = .Center
-//            self.addSubview(imageView)
+            self.addSubview(imageView)
             
-            
-//            var donationTrackerView = UIView(frame: CGRectMake(100, 100, 100, 100))
+            self.layoutIfNeeded()
             
         }
 
