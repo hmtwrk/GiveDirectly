@@ -600,10 +600,10 @@
                                             </state>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="fFi-5G-Mfz"/>
-                                                    <exclude reference="Uvm-TJ-ADj"/>
-                                                    <exclude reference="i7K-ky-wca"/>
                                                     <exclude reference="OVi-t4-2sY"/>
+                                                    <exclude reference="Uvm-TJ-ADj"/>
+                                                    <exclude reference="fFi-5G-Mfz"/>
+                                                    <exclude reference="i7K-ky-wca"/>
                                                 </mask>
                                             </variation>
                                             <connections>
@@ -714,7 +714,7 @@
         <!--Donate-->
         <scene sceneID="COY-T0-v6n">
             <objects>
-                <viewController id="r9m-pB-hXY" sceneMemberID="viewController">
+                <viewController id="r9m-pB-hXY" customClass="DonateViewController" customModule="GiveDirectly" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xsh-0P-erZ"/>
                         <viewControllerLayoutGuide type="bottom" id="l1f-bq-j8f"/>
@@ -722,19 +722,7 @@
                     <view key="view" contentMode="scaleToFill" id="7Vz-hr-3dW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GiveDirectly" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptb-Xf-wEE">
-                                <rect key="frame" x="114" y="171" width="93" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="ptb-Xf-wEE" secondAttribute="centerX" constant="-0.5" id="WHV-Ty-Dpg"/>
-                            <constraint firstItem="ptb-Xf-wEE" firstAttribute="top" secondItem="Xsh-0P-erZ" secondAttribute="bottom" constant="107" id="moO-9a-dIk"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Donate" id="rAD-qH-v5i"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -1477,7 +1465,7 @@
                                             <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgL-s6-Tw1">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgL-s6-Tw1" userLabel="Stats Container">
                                             <rect key="frame" x="18" y="118" width="284" height="47"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42r-2q-Fgu">
@@ -1558,16 +1546,16 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBe-K6-hJm">
                                                     <rect key="frame" x="213" y="0.0" width="71" height="47"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVL-YG-M5n">
-                                                            <rect key="frame" x="8" y="0.0" width="41.5" height="12"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                                            <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RT4-1u-Rxj">
                                                             <rect key="frame" x="8" y="15" width="36" height="17"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVL-YG-M5n">
+                                                            <rect key="frame" x="8" y="0.0" width="41.5" height="12"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                            <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1585,7 +1573,7 @@
                                                 <constraint firstItem="cBe-K6-hJm" firstAttribute="width" secondItem="VnM-W1-y4h" secondAttribute="width" id="Gjw-Zb-vi7"/>
                                                 <constraint firstAttribute="trailing" secondItem="SuO-p5-Iam" secondAttribute="trailing" id="JoO-ru-TuF"/>
                                                 <constraint firstAttribute="trailing" secondItem="cBe-K6-hJm" secondAttribute="trailing" id="Mhd-zT-Fd1"/>
-                                                <constraint firstAttribute="height" priority="250" constant="59" id="Moh-Z4-tMC"/>
+                                                <constraint firstAttribute="height" constant="47" id="Moh-Z4-tMC"/>
                                                 <constraint firstItem="cBe-K6-hJm" firstAttribute="leading" secondItem="VnM-W1-y4h" secondAttribute="trailing" id="N5i-Ch-ipS"/>
                                                 <constraint firstItem="SuO-p5-Iam" firstAttribute="top" secondItem="kgL-s6-Tw1" secondAttribute="top" id="OdI-gC-GOP"/>
                                                 <constraint firstAttribute="trailing" secondItem="42r-2q-Fgu" secondAttribute="trailing" multiplier="4" id="OnA-mT-CqR"/>
@@ -1618,13 +1606,15 @@
                                         <constraint firstItem="kgL-s6-Tw1" firstAttribute="leading" secondItem="Pof-Fe-pXQ" secondAttribute="leading" constant="18" id="Keu-1a-90y"/>
                                         <constraint firstItem="9nb-Rg-SZH" firstAttribute="centerY" secondItem="8Jn-T3-gHj" secondAttribute="centerY" constant="-7" id="MI4-6J-zUX"/>
                                         <constraint firstItem="9nb-Rg-SZH" firstAttribute="centerY" secondItem="8Jn-T3-gHj" secondAttribute="centerY" constant="-7" id="PYC-Qp-AjO"/>
-                                        <constraint firstAttribute="bottom" secondItem="kgL-s6-Tw1" secondAttribute="bottom" constant="9" id="Rci-XT-TSc"/>
+                                        <constraint firstAttribute="bottom" secondItem="kgL-s6-Tw1" secondAttribute="bottom" constant="84.5" id="Rci-XT-TSc"/>
+                                        <constraint firstAttribute="bottom" secondItem="kgL-s6-Tw1" secondAttribute="bottom" constant="10" id="Rdr-oL-xRn"/>
                                         <constraint firstItem="8Jn-T3-gHj" firstAttribute="top" secondItem="Pof-Fe-pXQ" secondAttribute="topMargin" id="Yqg-Bd-W0p"/>
                                         <constraint firstItem="kgL-s6-Tw1" firstAttribute="top" secondItem="8Jn-T3-gHj" secondAttribute="bottom" constant="20" id="iyh-UV-IAN"/>
                                         <constraint firstItem="9nb-Rg-SZH" firstAttribute="centerY" secondItem="8Jn-T3-gHj" secondAttribute="centerY" constant="-7" id="jYd-xH-Dfb"/>
                                         <constraint firstAttribute="trailing" secondItem="kgL-s6-Tw1" secondAttribute="trailing" constant="18" id="kGE-mt-xg6"/>
                                         <constraint firstItem="8Jn-T3-gHj" firstAttribute="top" secondItem="Pof-Fe-pXQ" secondAttribute="top" constant="18" id="ndb-sa-LaH"/>
                                         <constraint firstItem="8Jn-T3-gHj" firstAttribute="leading" secondItem="Pof-Fe-pXQ" secondAttribute="leading" constant="18" id="o0J-XZ-Wkc"/>
+                                        <constraint firstAttribute="bottom" secondItem="kgL-s6-Tw1" secondAttribute="bottom" priority="250" constant="8" id="pN6-fG-XPm"/>
                                         <constraint firstItem="9nb-Rg-SZH" firstAttribute="leading" secondItem="8Jn-T3-gHj" secondAttribute="trailing" constant="15" id="uli-ve-LvK"/>
                                     </constraints>
                                     <variation key="default">
@@ -1633,10 +1623,13 @@
                                             <exclude reference="Yqg-Bd-W0p"/>
                                             <exclude reference="MI4-6J-zUX"/>
                                             <exclude reference="PYC-Qp-AjO"/>
+                                            <exclude reference="Rci-XT-TSc"/>
+                                            <exclude reference="Rdr-oL-xRn"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="removeableBottomConstraint" destination="pN6-fG-XPm" id="xCQ-3O-pXj"/>
                                     <outlet property="userDonationsLabel" destination="VwE-pc-9dH" id="jlm-4F-eB5"/>
                                     <outlet property="userFundedLabel" destination="LrW-1E-oCH" id="aES-kb-AhD"/>
                                     <outlet property="userJoinDateLabel" destination="KHV-P0-eA2" id="zCJ-4j-lpO"/>

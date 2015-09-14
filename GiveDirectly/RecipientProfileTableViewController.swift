@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipientProfileTableViewController: UITableViewController {
+class RecipientProfileTableViewController: UITableViewController, RecipientRelatedUpdateCellDelegate {
     
     // prepare variable for receiving data from segue
     var recipientInfo: AnyObject = ""
@@ -17,14 +17,16 @@ class RecipientProfileTableViewController: UITableViewController {
     var numberOfUpdates: Int = 0
     var recipientRelatedUpdateInfo = [AnyObject]()
     var recipientNameData: String = ""
-    let identifierList = ["RecipientStats", "RecipientStories", "RelatedUpdateTableViewCell"]
+    var likes = [Liked]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // test subclassing API call
+//        self.queryForTesting()
+        
         // make the Parse API call
-        self.queryParseForUpdates()
-        //        println(recipientInfo)
+        self.queryForRelatedUpdates()
         
         // set navigation title to match recipient's name
         let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
@@ -36,17 +38,10 @@ class RecipientProfileTableViewController: UITableViewController {
         // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)
         tableView.estimatedRowHeight = 45
         tableView.rowHeight = UITableViewAutomaticDimension
-        
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - Table view data source
-    
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // two static cells (stats + stories) with a dynamic number of updates
@@ -56,10 +51,7 @@ class RecipientProfileTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        // need to create third case that takes care of update cells
-//        let identifier = indexPath.row == 0 ? "RecipientStats" : "RecipientStories"
-//        let identifier = indexPath.row == 0 ? "RecipientStats" : "RelatedUpdateTableViewCell"
-        
+        // determine which cell identifier to return
         var identifier: String = ""
         
         if indexPath.row == 0 {
@@ -78,7 +70,6 @@ class RecipientProfileTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
         
         // configure cells
-        
         if let recipientStatsCell = cell as? RecipientStatsTableViewCell {
             recipientStatsCell.configureStatsCell(recipientInfo)
         }
@@ -89,40 +80,88 @@ class RecipientProfileTableViewController: UITableViewController {
         
         if let recipientUpdateCell = cell as? RecipientRelatedUpdateCell {
             recipientUpdateCell.configureUpdateTableViewCell(recipientNameData, updateData: recipientRelatedUpdateInfo[indexPath.row - 2])
+            recipientUpdateCell.delegate = self
         }
         
         // make separators extend all the way left
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsetsZero
         
+        
         return cell
     }
     
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        // check to see if there's a cell at the tapped row
+//        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+//            
+//            let item: (AnyObject) = recipientRelatedUpdateInfo[indexPath.row]
+////            item.toggleChecked()
+//            
+//        }
+//    }
     
+    // MARK: RelatedUpdateCellDelegate
+    func relatedUpdateCellLikeButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
+        // hello
+        println("Like button has been tapped!")
+    }
     
+    func relatedUpdateCellCommentButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
+        // hi
+        println("Comment button has been tapped!")
+    }
+    
+    func relatedUpdateCellExtraButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
+        // another
+        println("Extra button has been tapped!")
+    }
 }
 
+
+// MARK: Parse API calls
 extension RecipientProfileTableViewController {
     
     // Parse query to determine number of update cells to append to the table view, as well as data for the updates
-    func queryParseForUpdates() {
+    func queryForRelatedUpdates() {
         
+        // return the newest updates that correspond to the selected Recipient, arranged in descending order
         let author = (recipientInfo as AnyObject)["gdid"] as! String
         var query:PFQuery = PFQuery(className: "RecipientUpdates")
         query.whereKey("GDID", equalTo: author)
+        query.orderByDescending("createdAt")
+        query.limit = 30
         query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (updates: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                println(objects!.count)
-                self.numberOfUpdates = objects!.count
-                self.recipientRelatedUpdateInfo = objects!
-                self.tableView?.reloadData()
+//                println(updates!)
+                println("\(updates!.count) updates.")
+                self.numberOfUpdates = updates!.count
+                self.recipientRelatedUpdateInfo = updates!
+                
+                // make API call to determine which updates are liked by currentUser, and total number of likes
+                self.queryForLikes(query)
+                
             } else {
                 // log details of the failure
                 println("Error: \(error!) \(error!.userInfo!)")
             }
         }
-        
     }
     
+    func queryForLikes(updatesQuery: PFQuery) {
+        
+        let likeQuery = Liked.query()
+        likeQuery?.whereKey("likedRecipientUpdate", matchesQuery: updatesQuery)
+        likeQuery?.findObjectsInBackgroundWithBlock {
+            (likes: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                println("\(likes!.count) likes.")
+                self.tableView?.reloadData()
+            } else {
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+    }
 }

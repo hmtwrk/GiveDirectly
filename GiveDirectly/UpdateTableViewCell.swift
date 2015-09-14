@@ -130,6 +130,9 @@ class UpdateTableViewCell: UITableViewCell {
                 // check to see if something exists
                 if let objects = objects as? [PFObject] {
                     for object in objects {
+                        
+//                        println("There are \(objects.count) objects in the newsfeed.")
+                        
                         // if name is pulled
                         if let recipientName = object["firstName"] as? String {
                             self.authorNameLabel.text = recipientName
@@ -157,11 +160,12 @@ class UpdateTableViewCell: UITableViewCell {
         let title:String? = (updateData as AnyObject)["method"] as? String
         let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
         
-        // get the date and format
+        // get the date and format (does this need to be set to optional? App will crash if
+        // the "date" field on RecipientUpdates is nil)
         let date:String = (updateData as AnyObject)["date"] as! String
         var newDate = date.substringToIndex(advance(date.endIndex, -18))
         
-        // assign labels and views
+        // assign labels and views (also needs to be set to optional)
         self.updateTitleLabel.text = title!
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()

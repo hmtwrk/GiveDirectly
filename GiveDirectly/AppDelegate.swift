@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //  UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         
+        // set security settings for Parse users (user can read all public objects, but can only modify objects he or she personally created)
+        let acl = PFACL()
+        acl.setPublicReadAccess(true)
+        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
+        
         // Change appearance of tab bar navigation globally
         let tabBarAppearance = UITabBar.appearance()
         let tabBarItemAppearance = UITabBarItem.appearance()
@@ -39,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navBarAppearance.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
         navBarAppearance.shadowImage = UIImage(named: "TransparentPixel")
         
+        // register Parse subclass (necessary?)
+//        Post.registerSubclass()
+        
         
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
@@ -51,12 +59,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // log in a user
+//        self.easyLogin()
+        
         // Check for user's login status
         self.checkUserStatus()
-        
         self.refreshUserData()
         
-        //            self.easyLogin()
+        
         
         return true
     }
@@ -115,7 +125,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func easyLogin() {
         
-        let parseUsername = "braddourif"
+        let parseUsername = "michaelfaye"
+//        let parseUsername = "seanmoriarity"
         let testPassword = "testpass123"
         
         PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {

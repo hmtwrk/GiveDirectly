@@ -11,6 +11,7 @@ import UIKit
 class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
     var updateData = [AnyObject]()
+    var updates: [Update] = []
     var numberOfUpdates = Int()
     
     override func viewDidLoad() {
@@ -25,7 +26,22 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.rowHeight = UITableViewAutomaticDimension
         
         //
-        self.queryParseForNewsfeedUpdates()
+//        self.queryParseForNewsfeedUpdates()
+        ParseHelper.mostRecentUpdates {
+            (result: [AnyObject]?, error: NSError?) -> Void in
+            self.updates = result as? [Update] ?? []
+            
+            // TODO: load image for corresponding recipient
+//            for update in self.updates {
+//                let data = update.imageFile?.getData()
+//                update.image = UIImage(data: data!, scale: 1.0)
+//            }
+            
+            // does the tableView need to be optional?
+            self.updateData = result!
+            self.numberOfUpdates = result!.count
+            self.tableView?.reloadData()
+        }
         
     }
     
@@ -52,17 +68,18 @@ extension NewsfeedTableViewController {
         return cell
     }
     
-    func queryParseForNewsfeedUpdates() {
-        
-        // construct query to return target recipient
-        let query:PFQuery = PFQuery(className: "RecipientUpdates")
-        query.orderByAscending("createdAt")
-        query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
-            self.updateData = result!
-            self.numberOfUpdates = result!.count
-            self.tableView?.reloadData()
-        }
-    }
+//    func queryParseForNewsfeedUpdates() {
+//        
+//        // construct query to return target recipient
+//        let query:PFQuery = PFQuery(className: "RecipientUpdates")
+//        query.orderByAscending("createdAt")
+//        query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
+//            self.updateData = result!
+//            self.numberOfUpdates = result!.count
+//            self.tableView?.reloadData()
+//        }
+//    }
+    
 }
 
 

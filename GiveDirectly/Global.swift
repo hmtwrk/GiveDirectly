@@ -12,3 +12,5 @@ import UIKit
 var recipientBrowserData = [AnyObject]()
 
 var testData: String = ""
+
+var showDonationTracker = false
