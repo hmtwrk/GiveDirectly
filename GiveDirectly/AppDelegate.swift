@@ -59,12 +59,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // clear out the current user, if one exists
+        PFUser.logOut()
+        
         // log in a user
         self.easyLogin()
         
         // Check for user's login status
-        self.checkUserStatus()
-        self.refreshUserData()
+//        self.checkUserStatus()
+//        self.refreshUserData()
         
         
         
