@@ -106,6 +106,10 @@
 		4AF9507C1B306646004313DC /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9507B1B306646004313DC /* ProfileTableViewController.swift */; };
 		4AF950811B306BCA004313DC /* RecipientUpdatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */; };
 		4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */; };
+		4AFAC7661BA9C07C00A60CEF /* SwiftBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */; };
+		4AFAC7681BA9E89400A60CEF /* CustomBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */; };
+		4AFAC76A1BA9FB2200A60CEF /* GDTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7691BA9FB2200A60CEF /* GDTabBarController.swift */; };
+		4AFAC7A01BAB143300A60CEF /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC79F1BAB143300A60CEF /* RefreshView.swift */; };
 		C43780531B2933080018BD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780521B2933080018BD41 /* AppDelegate.swift */; };
 		C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780541B2933080018BD41 /* RecipientListTableViewController.swift */; };
 		C43780581B2933080018BD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C43780561B2933080018BD41 /* Main.storyboard */; };
@@ -231,6 +235,10 @@
 		4AF9507B1B306646004313DC /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		4AF950801B306BCA004313DC /* RecipientUpdatesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientUpdatesTableViewCell.swift; sourceTree = "<group>"; };
 		4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
+		4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBadge.swift; sourceTree = "<group>"; };
+		4AFAC7691BA9FB2200A60CEF /* GDTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDTabBarController.swift; sourceTree = "<group>"; };
+		4AFAC79F1BAB143300A60CEF /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		C437804D1B2933080018BD41 /* GiveDirectly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiveDirectly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43780511B2933080018BD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C43780521B2933080018BD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -435,6 +443,8 @@
 			children = (
 				4A8435121B823F0B008D5E08 /* Global.swift */,
 				4ADAF11D1B9FC2FD0004D7E9 /* ParseHelper.swift */,
+				4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */,
+				4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -508,6 +518,8 @@
 				4AF9507D1B306672004313DC /* User Profile View */,
 				4A18480E1B4469B5009D6026 /* Company Profile View */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
+				4AFAC79F1BAB143300A60CEF /* RefreshView.swift */,
+				4AFAC7691BA9FB2200A60CEF /* GDTabBarController.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
@@ -652,8 +664,10 @@
 				4A7462B91B3DBC9E00B8555C /* SpringTextView.swift in Sources */,
 				4A8435131B823F0B008D5E08 /* Global.swift in Sources */,
 				4A5A6EE61B5D7726003A1D0F /* MenuViewController.swift in Sources */,
+				4AFAC7661BA9C07C00A60CEF /* SwiftBadge.swift in Sources */,
 				C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */,
 				4A7462A91B3DBC9E00B8555C /* DesignableTextField.swift in Sources */,
+				4AFAC7681BA9E89400A60CEF /* CustomBadge.swift in Sources */,
 				4A7462AA1B3DBC9E00B8555C /* DesignableTextView.swift in Sources */,
 				4ADAF2461BA34FAE0004D7E9 /* DonateViewController.swift in Sources */,
 				4AB36AE61B67E02000ABCE23 /* FriendActivityTableViewCell.swift in Sources */,
@@ -669,12 +683,14 @@
 				4A5A6EED1B5E8CDF003A1D0F /* LatestActivityTableViewCell.swift in Sources */,
 				4A1848121B446D36009D6026 /* old_UpdateTableViewCell.swift in Sources */,
 				4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */,
+				4AFAC7A01BAB143300A60CEF /* RefreshView.swift in Sources */,
 				4AB36AE21B67DB1400ABCE23 /* UserAccountTableViewController.swift in Sources */,
 				4A5A6EE41B580DEB003A1D0F /* DonateesTableViewCell.swift in Sources */,
 				4A7462C71B3F095D00B8555C /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */,
 				4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */,
 				C46E340D1B73FDD2001449E2 /* NSDate+Ago.swift in Sources */,
+				4AFAC76A1BA9FB2200A60CEF /* GDTabBarController.swift in Sources */,
 				4A84350F1B7E605C008D5E08 /* UIImage+Decompression.swift in Sources */,
 				4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */,
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,

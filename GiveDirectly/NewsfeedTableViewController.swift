@@ -8,14 +8,30 @@
 
 import UIKit
 
+private let refreshViewHeight: CGFloat = 200
+
+func delayBySeconds(seconds: Double, delayedCode: ()->() ) {
+    let targetTime = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * seconds))
+    dispatch_after(targetTime, dispatch_get_main_queue()) {
+        delayedCode()
+    }
+}
+
 class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
     var updateData = [AnyObject]()
     var updates: [Update] = []
     var numberOfUpdates = Int()
     
+    var refreshView: RefreshView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
+        refreshView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        refreshView.delegate = self
+        view.insertSubview(refreshView, atIndex: 0)
         
         // turn off the seam on the navigation bar for this page only
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
@@ -25,7 +41,6 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        //
 //        self.queryParseForNewsfeedUpdates()
         ParseHelper.mostRecentUpdates {
             (result: [AnyObject]?, error: NSError?) -> Void in
@@ -37,12 +52,19 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 //                update.image = UIImage(data: data!, scale: 1.0)
 //            }
             
-            // does the tableView need to be optional?
             self.updateData = result!
             self.numberOfUpdates = result!.count
             self.tableView?.reloadData()
         }
         
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        refreshView.scrollViewDidScroll(scrollView)
+    }
+    
+    override func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        refreshView.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,22 +89,24 @@ extension NewsfeedTableViewController {
         }
         return cell
     }
-    
-//    func queryParseForNewsfeedUpdates() {
-//        
-//        // construct query to return target recipient
-//        let query:PFQuery = PFQuery(className: "RecipientUpdates")
-//        query.orderByAscending("createdAt")
-//        query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
-//            self.updateData = result!
-//            self.numberOfUpdates = result!.count
-//            self.tableView?.reloadData()
-//        }
-//    }
-    
 }
 
-
+extension NewsfeedTableViewController: RefreshViewDelegate {
+    func refreshViewDidRefresh(refreshView: RefreshView) {
+        delayBySeconds(1) {
+            self.refreshView.endRefreshing()
+            
+            ParseHelper.mostRecentUpdates {
+                (result: [AnyObject]?, error: NSError?) -> Void in
+                self.updates = result as? [Update] ?? []
+                self.updateData = result!
+                self.numberOfUpdates = result!.count
+                self.tableView?.reloadData()
+            }
+            
+        }
+    }
+}
 
 
 // MARK: UpdateTableViewCellDelegate
