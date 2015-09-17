@@ -50,6 +50,7 @@ class ParseHelper {
     
     static func mostRecentUpdates(completionBlock: PFArrayResultBlock) {
         let query = Update.query()
+        query?.whereKey("isLive", equalTo:true)
         query?.orderByDescending(ParseUpdateCreatedAt)
 //        query?.limit = 20
         query?.findObjectsInBackgroundWithBlock(completionBlock)
