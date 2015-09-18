@@ -40,6 +40,9 @@ class UserAccountTableViewController: UITableViewController {
             println("Matrix reloaded!")
             self.tableView?.reloadData()
             
+            // remove the tab bar badge
+            self.navigationController?.tabBarItem.badgeValue = nil
+            
         }
         
     }

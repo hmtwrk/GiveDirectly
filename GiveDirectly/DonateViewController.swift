@@ -18,13 +18,6 @@ class DonateViewController: UIViewController {
         
         // switch variable to display donationTracker.pdf
         showDonationTracker = true
-        
-        // create a badge on the user profile tab item (after ten-second delay)
-        delayBySeconds(10) {
-        let tabArray = self.tabBarController?.tabBar.items as NSArray!
-        let tabItem = tabArray.objectAtIndex(2) as! UITabBarItem
-        tabItem.badgeValue = " "
-        }
 
         
         // add the webView to the main View
@@ -52,6 +45,14 @@ class DonateViewController: UIViewController {
     
     // increment the user's donation amount by $1000
     override func viewDidAppear(animated: Bool) {
+        
+        // create a badge on the user profile tab item (after ten-second delay)
+        delayBySeconds(10) {
+            let tabArray = self.tabBarController?.tabBar.items as NSArray!
+            let tabItem = tabArray.objectAtIndex(2) as! UITabBarItem
+            tabItem.badgeValue = " "
+        }
+        
         
         let userID = PFUser.currentUser()?.objectId
         let query = PFQuery(className: "_User")
