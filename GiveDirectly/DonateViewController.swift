@@ -19,8 +19,13 @@ class DonateViewController: UIViewController {
         // switch variable to display donationTracker.pdf
         showDonationTracker = true
         
-        // create a badge on the user profile tab item
-        self.navigationController!.tabBarItem.badgeValue = " "
+        // create a badge on the user profile tab item (after ten-second delay)
+        delayBySeconds(10) {
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray.objectAtIndex(2) as! UITabBarItem
+        tabItem.badgeValue = " "
+        }
+
         
         // add the webView to the main View
         view.addSubview(webView)

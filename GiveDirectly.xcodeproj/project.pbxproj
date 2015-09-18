@@ -108,8 +108,9 @@
 		4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */; };
 		4AFAC7661BA9C07C00A60CEF /* SwiftBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */; };
 		4AFAC7681BA9E89400A60CEF /* CustomBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */; };
-		4AFAC76A1BA9FB2200A60CEF /* GDTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7691BA9FB2200A60CEF /* GDTabBarController.swift */; };
+		4AFAC76A1BA9FB2200A60CEF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7691BA9FB2200A60CEF /* TabBarController.swift */; };
 		4AFAC7A01BAB143300A60CEF /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC79F1BAB143300A60CEF /* RefreshView.swift */; };
+		4AFAC7A41BAC69F300A60CEF /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7A31BAC69F300A60CEF /* NotificationModel.swift */; };
 		C43780531B2933080018BD41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780521B2933080018BD41 /* AppDelegate.swift */; };
 		C43780551B2933080018BD41 /* RecipientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780541B2933080018BD41 /* RecipientListTableViewController.swift */; };
 		C43780581B2933080018BD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C43780561B2933080018BD41 /* Main.storyboard */; };
@@ -237,8 +238,9 @@
 		4AF950821B306BE5004313DC /* ProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
 		4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBadge.swift; sourceTree = "<group>"; };
-		4AFAC7691BA9FB2200A60CEF /* GDTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDTabBarController.swift; sourceTree = "<group>"; };
+		4AFAC7691BA9FB2200A60CEF /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4AFAC79F1BAB143300A60CEF /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		4AFAC7A31BAC69F300A60CEF /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		C437804D1B2933080018BD41 /* GiveDirectly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiveDirectly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43780511B2933080018BD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C43780521B2933080018BD41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				4A5711B21B98C39000CF32B0 /* Liked.swift */,
 				4ADAF1141B9E5C110004D7E9 /* Post.swift */,
 				4ADAF11A1B9FB8440004D7E9 /* Update.swift */,
+				4AFAC7A31BAC69F300A60CEF /* NotificationModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -519,7 +522,7 @@
 				4A18480E1B4469B5009D6026 /* Company Profile View */,
 				C43780521B2933080018BD41 /* AppDelegate.swift */,
 				4AFAC79F1BAB143300A60CEF /* RefreshView.swift */,
-				4AFAC7691BA9FB2200A60CEF /* GDTabBarController.swift */,
+				4AFAC7691BA9FB2200A60CEF /* TabBarController.swift */,
 				C43780561B2933080018BD41 /* Main.storyboard */,
 				4ACBA7571B641DDF00F25D74 /* StaticMenuTableViewController.swift */,
 				C43780591B2933080018BD41 /* Images.xcassets */,
@@ -687,10 +690,11 @@
 				4AB36AE21B67DB1400ABCE23 /* UserAccountTableViewController.swift in Sources */,
 				4A5A6EE41B580DEB003A1D0F /* DonateesTableViewCell.swift in Sources */,
 				4A7462C71B3F095D00B8555C /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				4AFAC7A41BAC69F300A60CEF /* NotificationModel.swift in Sources */,
 				4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */,
 				4AF950831B306BE5004313DC /* ProfileSummaryTableViewCell.swift in Sources */,
 				C46E340D1B73FDD2001449E2 /* NSDate+Ago.swift in Sources */,
-				4AFAC76A1BA9FB2200A60CEF /* GDTabBarController.swift in Sources */,
+				4AFAC76A1BA9FB2200A60CEF /* TabBarController.swift in Sources */,
 				4A84350F1B7E605C008D5E08 /* UIImage+Decompression.swift in Sources */,
 				4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */,
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
