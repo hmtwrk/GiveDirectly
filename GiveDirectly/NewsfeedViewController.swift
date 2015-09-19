@@ -51,10 +51,10 @@ class NewsfeedViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     
-    let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
-    println(indexPath.row)
-    println(identifier)
-    return cell
+    let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+    print(indexPath.row)
+    print(identifier)
+    return cell!
     
   }
 

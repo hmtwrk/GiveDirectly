@@ -67,7 +67,7 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
             identifier = "RelatedUpdateTableViewCell"
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) 
         
         // configure cells
         if let recipientStatsCell = cell as? RecipientStatsTableViewCell {
@@ -105,17 +105,17 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
     // MARK: RelatedUpdateCellDelegate
     func relatedUpdateCellLikeButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
         // hello
-        println("Like button has been tapped!")
+        print("Like button has been tapped!")
     }
     
     func relatedUpdateCellCommentButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
         // hi
-        println("Comment button has been tapped!")
+        print("Comment button has been tapped!")
     }
     
     func relatedUpdateCellExtraButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
         // another
-        println("Extra button has been tapped!")
+        print("Extra button has been tapped!")
     }
 }
 
@@ -128,7 +128,7 @@ extension RecipientProfileTableViewController {
         
         // return the newest updates that correspond to the selected Recipient, arranged in descending order
         let author = (recipientInfo as AnyObject)["gdid"] as! String
-        var query:PFQuery = PFQuery(className: "RecipientUpdates")
+        let query:PFQuery = PFQuery(className: "RecipientUpdates")
         query.whereKey("GDID", equalTo: author)
         query.orderByDescending("createdAt")
         query.limit = 30
@@ -136,7 +136,7 @@ extension RecipientProfileTableViewController {
             (updates: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
 //                println(updates!)
-                println("\(updates!.count) updates.")
+                print("\(updates!.count) updates.")
                 self.numberOfUpdates = updates!.count
                 self.recipientRelatedUpdateInfo = updates!
                 
@@ -145,7 +145,7 @@ extension RecipientProfileTableViewController {
                 
             } else {
                 // log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
     }
@@ -157,10 +157,10 @@ extension RecipientProfileTableViewController {
         likeQuery?.findObjectsInBackgroundWithBlock {
             (likes: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                println("\(likes!.count) likes.")
+                print("\(likes!.count) likes.")
                 self.tableView?.reloadData()
             } else {
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
     }

@@ -28,7 +28,7 @@ extension NSDate {
         /* Convert from NSTimeInterval to Int */
         let interval = now.timeIntervalSinceDate( self )
         let nsnumber = NSNumber( double: interval )
-        var seconds = Int( nsnumber )
+        let seconds = Int( nsnumber )
         
         /* switch case */
         switch(seconds){

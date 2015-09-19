@@ -23,7 +23,7 @@ class RefreshView: UIView {
     
     var isRefreshing = false
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         scrollView = UIScrollView()
         assert(false, "user init(frame:scrollView:)")
         super.init(coder: aDecoder)

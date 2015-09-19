@@ -66,7 +66,8 @@ class ProfileTableViewController: UITableViewController {
         
         let identifier = indexPath.row == 0 ? "ProfileSummaryCell" : "RecipientUpdatesCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+        // removed "as! UITableViewCell" from above
         
         
         // configure cells
@@ -79,10 +80,10 @@ class ProfileTableViewController: UITableViewController {
         }
         
         // make separators extend all the way left
-        cell.preservesSuperviewLayoutMargins = false
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell!.preservesSuperviewLayoutMargins = false
+        cell!.layoutMargins = UIEdgeInsetsZero
         
-        return cell
+        return cell!
     }
     
     

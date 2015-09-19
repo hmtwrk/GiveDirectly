@@ -45,8 +45,8 @@ class Post : PFObject, PFSubclassing {
     func uploadPost() {
         
         // 1 — grab photo to be uploaded, then turn it into a PFFile
-        let imageData = UIImageJPEGRepresentation(image, 0.8)
-        let imageFile = PFFile(data: imageData)
+        let imageData = UIImageJPEGRepresentation(image!, 0.8)
+        let imageFile = PFFile(data: imageData!)
         imageFile.saveInBackgroundWithBlock(nil)
         
         // associate any uploaded post with the current user

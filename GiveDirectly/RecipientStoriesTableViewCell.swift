@@ -12,10 +12,14 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var donorImageView: UIImageView!
     @IBOutlet weak var donorNameLabel: UILabel!
-    @IBOutlet weak var paymentTextView: AutoTextView!
-    @IBOutlet weak var goalsTextView: AutoTextView!
-    @IBOutlet weak var hardshipsTextView: AutoTextView!
-    @IBOutlet weak var challengesTextView: AutoTextView!
+    @IBOutlet weak var spendingPlansTextView: UITextView!
+    @IBOutlet weak var achievementsTextView: UITextView!
+    @IBOutlet weak var goalsTextView: UITextView!
+    @IBOutlet weak var hardshipsTextView: UITextView!
+    
+    
+    
+    
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 
     func configureStoriesCell(recipientStories: AnyObject) {
@@ -26,13 +30,13 @@ class RecipientStoriesTableViewCell: UITableViewCell {
         let recipientChallenges:String? = (recipientStories as AnyObject)["challenges"] as? String
         let paymentPhase:Int? = (recipientStories as AnyObject)["phase"] as? Int
         
-        self.paymentTextView.text = recipientPayment
+        self.spendingPlansTextView.text = recipientPayment
 //        self.paymentTextView.sizeToFit()
         self.goalsTextView.text = recipientGoals
 //        self.goalsTextView.sizeToFit()
         self.hardshipsTextView.text = recipientHardships
 //        self.hardshipsTextView.sizeToFit()
-        self.challengesTextView.text = recipientChallenges
+        self.achievementsTextView.text = recipientChallenges
 //        self.challengesTextView.sizeToFit()
         
         // display proper payment phase

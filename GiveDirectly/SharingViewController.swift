@@ -62,7 +62,7 @@ class SharingViewController: UIViewController, UITextViewDelegate {
         let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: text)
         
         submitButton.enabled = (newText.length > 0)
-        println("Text length = \(newText.length).")
+        print("Text length = \(newText.length).")
         return true
         
     }
@@ -77,9 +77,9 @@ class SharingViewController: UIViewController, UITextViewDelegate {
         self.masterView.endEditing(true)
         
         // send the text data to the Parse backend with the comment
-        var newComment:PFObject = PFObject(className: "Comments")
+        let newComment:PFObject = PFObject(className: "Comments")
         
-        var currentUser = PFUser.currentUser()
+        let currentUser = PFUser.currentUser()
         newComment["text"] = self.commentTextView.text
         newComment["author"] = currentUser
         newComment["relatedUpdate"] = PFObject(withoutDataWithClassName: "RecipientUpdate", objectId: respondingToUpdate)
@@ -89,7 +89,7 @@ class SharingViewController: UIViewController, UITextViewDelegate {
             if (success == true) {
                 
                 // comment has been saved successfully
-                println("Now ya done did it!")
+                print("Now ya done did it!")
                 
             } else {
                 

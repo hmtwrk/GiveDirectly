@@ -23,7 +23,7 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
         Recipient.queryParseForRecipients()
         
         collectionView!.backgroundColor = UIColor.whiteColor()
-        let size = CGRectGetWidth(collectionView!.bounds) / 2
+        _ = CGRectGetWidth(collectionView!.bounds) / 2
         
         // configure the insets for each collection view item
         collectionView!.contentInset = UIEdgeInsets(top: -5, left: 5, bottom: 10, right: 5)
@@ -53,7 +53,7 @@ extension RecipientBrowserViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println(recipientBrowserData.count)
+        print(recipientBrowserData.count)
         return recipientBrowserData.count
     }
     
@@ -76,7 +76,7 @@ extension RecipientBrowserViewController {
     }
 }
 
-extension RecipientBrowserViewController: BrowserLayoutDelegate {
+extension RecipientBrowserViewController {
     
     func collectionView(collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         //        let random = arc4random_uniform(4) + 1

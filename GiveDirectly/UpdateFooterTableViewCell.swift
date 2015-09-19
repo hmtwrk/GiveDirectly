@@ -29,11 +29,11 @@ class UpdateFooterTableViewCell: UITableViewCell {
         
         // 1
         let commentText = "Everything is going great." as NSString
-        var attributedComment = NSMutableAttributedString(string: commentText as String)
+        let attributedComment = NSMutableAttributedString(string: commentText as String)
         
         
         // add attributes for the commenting author's name
-        var userCommentAuthorAttributes = [
+        let userCommentAuthorAttributes = [
             NSForegroundColorAttributeName: UIColor.orangeColor(),
 //            NSFontAttributeName:UIFont(name: "Georgia", size: 18.0)!
 //            NSFontAttributeName: UIFont(name: "HelveticaNeueBold", size: 12)
@@ -41,13 +41,13 @@ class UpdateFooterTableViewCell: UITableViewCell {
         ]
         
         // add attributes for a comment from a GiveDirectly representative
-        var GDCommentAuthorAttributes = [
+        _ = [
             NSForegroundColorAttributeName: UIColor.greenColor(),
             NSFontAttributeName: UIFont.boldSystemFontOfSize(12)
         ]
         
         
-        var attributedAuthorName = NSMutableAttributedString(string: authorName, attributes: userCommentAuthorAttributes)
+        let attributedAuthorName = NSMutableAttributedString(string: authorName, attributes: userCommentAuthorAttributes)
 //        attributedAuthorName.
         
         if commentNumber != nil {

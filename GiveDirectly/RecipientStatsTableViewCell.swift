@@ -26,7 +26,7 @@ class RecipientStatsTableViewCell: UITableViewCell {
         let recipientStatus:String? = (recipientStats as AnyObject)["maritalStatus"] as? String
         let recipientLocation:String? = (recipientStats as AnyObject)["village"] as? String
         let recipientGender:String? = (recipientStats as AnyObject)["gender"] as? String
-        var recipientNumberOfChildren:Int? = (recipientStats as AnyObject)["children"] as? Int
+        let recipientNumberOfChildren:Int? = (recipientStats as AnyObject)["children"] as? Int
         
         
         // load an image

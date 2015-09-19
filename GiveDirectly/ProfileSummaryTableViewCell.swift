@@ -32,7 +32,7 @@ class ProfileSummaryTableViewCell: UITableViewCell {
         let recipientAge:Int? = (recipientInfo as AnyObject)["age"] as? Int
         let recipientJob:String? = (recipientInfo as AnyObject)["job"] as? String
         let recipientLocation:String? = (recipientInfo as AnyObject)["village"] as? String
-        var recipientNumberOfChildren:Int? = (recipientInfo as AnyObject)["numberOfChildren"] as? Int
+        let recipientNumberOfChildren:Int? = (recipientInfo as AnyObject)["numberOfChildren"] as? Int
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
         let recipientProfilePhoto = recipientInfo["image"] as! PFFile
         

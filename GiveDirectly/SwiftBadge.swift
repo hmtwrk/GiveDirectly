@@ -22,14 +22,14 @@ class SwiftBadge: UILabel {
         setup()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         setup()
     }
     
     private func setup() {
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
         
         layer.backgroundColor = UIColor.redColor().CGColor
         textColor = UIColor.whiteColor()

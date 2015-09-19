@@ -95,7 +95,7 @@ class ParseHelper {
             
             // how to handle error?
             if let error = error {
-                println(error)
+                print(error)
             }
             
             if let results = results as? [PFObject] {

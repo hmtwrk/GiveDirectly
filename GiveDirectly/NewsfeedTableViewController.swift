@@ -29,7 +29,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         super.viewDidLoad()
         
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
-        refreshView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        refreshView.translatesAutoresizingMaskIntoConstraints = false
         refreshView.delegate = self
         view.insertSubview(refreshView, atIndex: 0)
         
@@ -82,12 +82,12 @@ extension NewsfeedTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let identifier = "UpdateTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         if let updateCell = cell as? UpdateTableViewCell {
             let updateDataForCell: AnyObject = updateData[indexPath.row]
             updateCell.configureUpdateTableViewCell(updateDataForCell)
         }
-        return cell
+        return cell!
     }
 }
 
@@ -110,7 +110,7 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
 
 
 // MARK: UpdateTableViewCellDelegate
-extension NewsfeedTableViewController: UpdateTableViewCellDelegate {
+extension NewsfeedTableViewController {
     
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         // TODO: implement like functionality

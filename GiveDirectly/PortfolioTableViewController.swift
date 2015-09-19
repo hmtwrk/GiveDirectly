@@ -43,15 +43,15 @@ class PortfolioTableViewController: UITableViewController {
     
     let identifier = indexPath.row == 0 ? "DonateesCell" : "ActivityCell"
     
-    let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
     
-    if let donateesCell = cell as? DonateesTableViewCell {
+    if let _ = cell as? DonateesTableViewCell {
       // do configuration stuff
       // this is probably where the UICollectionView stuff will go (final)
       
     }
     
-    if let activityCell = cell as? LatestActivityTableViewCell {
+    if let _ = cell as? LatestActivityTableViewCell {
       // do configuration stuff
       // for now, test the dumb UICollectionView stuff here in this one...
       
@@ -60,7 +60,7 @@ class PortfolioTableViewController: UITableViewController {
   
   // Configure the cell...
   
-    return cell
+    return cell!
   }
   
   

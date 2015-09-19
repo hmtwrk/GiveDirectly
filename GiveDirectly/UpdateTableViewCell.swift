@@ -30,9 +30,10 @@ class UpdateTableViewCell: UITableViewCell {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var updateStoryLabel: UILabel!
     
-    @IBOutlet weak var likeButton: SpringButton!
-    @IBOutlet weak var commentButton: SpringButton!
-    @IBOutlet weak var extraButton: SpringButton!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var extraButton: UIButton!
+    
 
     // TODO: assign Parse data to numberOfLikesLabel and numberOfCommentsLabel
     // TODO: configure labels for number of likes and comments
@@ -55,27 +56,23 @@ class UpdateTableViewCell: UITableViewCell {
     
     // MARK: SpringButton functionality
     @IBAction func likeButtonDidTap(sender: AnyObject) {
-        
-        likeButton.animation = "pop"
-        likeButton.force = buttonForce
-        likeButton.animate()
-        
+
 
         
         // TODO: create unique image for "already liked" icon, and tweak animation timing
         if userHasLikedPost == false {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
             self.numberOfLikes += 1
-            self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
+            self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
             
         } else {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
             self.numberOfLikes -= 1
-            self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
+            self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
         }
         
         userHasLikedPost = !userHasLikedPost
-        println(userHasLikedPost)
+        print(userHasLikedPost)
 
         
         delegate?.updateLikeButtonDidTap(self, sender: sender)
@@ -83,18 +80,10 @@ class UpdateTableViewCell: UITableViewCell {
     
     @IBAction func commentButtonDidTap(sender: AnyObject) {
         
-        commentButton.animation = "pop"
-        commentButton.force = buttonForce
-        commentButton.animate()
-        
         delegate?.updateCommentButtonDidTap(self, sender: sender)
     }
     
     @IBAction func extraButtonDidTap(sender: AnyObject) {
-        
-        extraButton.animation = "pop"
-        extraButton.force = buttonForce
-        extraButton.animate()
         
         delegate?.updateExtraButtonDidTap(self, sender: sender)
     }
@@ -122,7 +111,7 @@ class UpdateTableViewCell: UITableViewCell {
         // configure outlets with Parse data
         let author:String! = (updateData as AnyObject)["GDID"] as! String
         // check Recipients class to mine information
-        var query = PFQuery(className:"Recipients")
+        let query = PFQuery(className:"Recipients")
         query.whereKey("gdid", equalTo: author)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -153,7 +142,7 @@ class UpdateTableViewCell: UITableViewCell {
                 }
             } else {
                 // log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
         
@@ -163,7 +152,7 @@ class UpdateTableViewCell: UITableViewCell {
         // get the date and format (does this need to be set to optional? App will crash if
         // the "date" field on RecipientUpdates is nil)
         let date:String = (updateData as AnyObject)["date"] as! String
-        var newDate = date.substringToIndex(advance(date.endIndex, -18))
+        let newDate = date.substringToIndex(date.endIndex.advancedBy(-18))
         
         // assign labels and views (also needs to be set to optional)
         self.updateTitleLabel.text = title!
@@ -172,6 +161,6 @@ class UpdateTableViewCell: UITableViewCell {
         self.timestampLabel.text = newDate
         
 //        self.likeButton.titleLabel!.text = String(numberOfLikes)
-        self.likeButton.setTitle(toString(numberOfLikes), forState: UIControlState.Normal)
+        self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
     }
 }

@@ -29,7 +29,6 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var commentImageView: UIImageView!
     @IBOutlet weak var recipientNameLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
-    @IBOutlet weak var recipientUpdateTextView: AutoTextView!
     @IBOutlet weak var commentLabel: UILabel!
     
     
@@ -41,7 +40,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         
-        let updateText:String? = (updateInfo as AnyObject)["updateText"] as? String
+
         let updateTopic:String? = (updateInfo as AnyObject)["updateTitle"] as? String
         let recipientName:String? = (recipientInfo as AnyObject)["name"] as? String
         let recipientProfilePhoto = recipientInfo["profileSquarePhoto"] as! PFFile
@@ -70,7 +69,6 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
         self.recipientNameLabel.text = recipientName
         self.timeLabel.text = "31m"
         self.topicLabel.text = updateTopic
-        self.recipientUpdateTextView.text = updateText
         
         
         // make updater's profile image round
@@ -104,11 +102,11 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
     // check if any text exists in the view, and disable the submit button if not
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let oldText: NSString = commentTextField.text
+        let oldText: NSString = commentTextField.text!
         let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: string)
         
         submitButton.enabled = (newText.length > 0)
-        println("Text length = \(newText.length).")
+        print("Text length = \(newText.length).")
         return true
         
     }
@@ -125,9 +123,9 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
 
 
         // send the text data to the Parse backend with the comment
-        var newComment:PFObject = PFObject(className: "Comments")
+        let newComment:PFObject = PFObject(className: "Comments")
         let respondingToUpdate:String? = (updateInfo.objectId)
-        var currentUser = PFUser.currentUser()
+        let currentUser = PFUser.currentUser()
         newComment["text"] = self.commentTextField.text
         newComment["author"] = currentUser
         newComment["relatedUpdate"] = PFObject(withoutDataWithClassName: "RecipientUpdate", objectId: respondingToUpdate)
@@ -137,7 +135,7 @@ class CommentViewController: UIViewController, UITextFieldDelegate {
             if (success == true) {
                 
                 // comment has been saved successfully
-                println("Comment successfully submitted.")
+                print("Comment successfully submitted.")
                 
             } else {
                 

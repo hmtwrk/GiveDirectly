@@ -19,7 +19,7 @@ class DonateesTableViewCell: UITableViewCell, UIScrollViewDelegate {
     // Initialization code
     
     recipientScrollView.contentSize = CGSizeMake(400, 70)
-    println("Hello there, you.")
+    print("Hello there, you.")
     
   }
   

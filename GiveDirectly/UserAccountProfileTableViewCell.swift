@@ -44,15 +44,15 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         imageView.frame = CGRect(x: xPosition, y: (18 + 80 + (75 - 8) ), width: 292, height: 64)
         imageView.contentMode = .Center
         
-        println(contentViewWidth)
-        println(imageWidth)
-        println(xPosition)
+        print(contentViewWidth)
+        print(imageWidth)
+        print(xPosition)
         
         // display donationTracker if GD site was visited
         if willShowDonationTracker == true && donationTrackerHasAppeared == false && contentViewWidth != 0.0 {
             
             removeableBottomConstraint.constant = 72
-            println(contentView)
+            print(contentView)
             
             
 //            let horizontalCenter = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
@@ -93,11 +93,11 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         
         if userDonations != nil {
             
-            var formatter = NSNumberFormatter()
+            let formatter = NSNumberFormatter()
             formatter.numberStyle = .CurrencyStyle
 //            formatter.usesGroupingSeparator = true
             formatter.usesSignificantDigits = true
-            var currencyUserDonations = formatter.stringFromNumber(userDonations!)
+            let currencyUserDonations = formatter.stringFromNumber(userDonations!)
             
             
 //            self.userDonationsLabel.text = String(stringInterpolationSegment: userDonations!)

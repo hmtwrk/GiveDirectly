@@ -34,10 +34,10 @@ class UserAccountTableViewController: UITableViewController {
         // refresh the Parse current user cache and reload tableView
         let currentUser = PFUser.currentUser()
         currentUser?.fetchInBackgroundWithBlock { (object, error) -> Void in
-            println("The current user hath been refreshed!")
+            print("The current user hath been refreshed!")
             
             // reload the tableView so that the data is current
-            println("Matrix reloaded!")
+            print("Matrix reloaded!")
             self.tableView?.reloadData()
             
             // remove the tab bar badge
@@ -70,7 +70,7 @@ class UserAccountTableViewController: UITableViewController {
         // (first three cells are static, whereas cells >= [3] are dynamic newsfeed items
         let identifier = indexPath.row < identifierArray.count ? identifierArray[indexPath.row] : "FriendActivityCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         
         
         if let userProfileCell = cell as? UserAccountProfileTableViewCell {
@@ -87,7 +87,7 @@ class UserAccountTableViewController: UITableViewController {
         }
         
         //        println(indexPath.row)
-        return cell
+        return cell!
     }
     
     

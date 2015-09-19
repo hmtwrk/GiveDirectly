@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarAppearance.barTintColor = UIColor.whiteColor()
         tabBarAppearance.tintColor = UIColor(red: 72.0/255, green: 185.0/255, blue: 163.0/255, alpha: 1.0)
         tabBarAppearance.translucent = false
-        tabBarItemAppearance.setTitleTextAttributes(attributes, forState: .Normal)
+//        tabBarItemAppearance.setTitleTextAttributes(attributes, forState: .Normal)
         
         // Change appearance of navigation bars globally
         let navBarAppearance = UINavigationBar.appearance()
@@ -98,12 +98,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func checkUserStatus() {
         
-        var currentUser = PFUser.currentUser()
+        let currentUser = PFUser.currentUser()
         let currentUserName: AnyObject? = currentUser?.objectForKey("fullName")
         if currentUser != nil {
             
             // do stuff with the user
-            println("You are already logged in as \"\(currentUserName!).\"")
+            print("You are already logged in as \"\(currentUserName!).\"")
             
         } else {
             
@@ -116,10 +116,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if user != nil {
                     
                     // do successful login stuff
-                    println("You have successfully logged in as \"\(parseUsername).\"")
+                    print("You have successfully logged in as \"\(parseUsername).\"")
                 } else {
                     // oh no
-                    println("There was an error of \(error).")
+                    print("There was an error of \(error).")
                 }
             }
         }
@@ -137,10 +137,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if user != nil {
                 
                 // do successful login stuff
-                println("You have successfully logged in as \"\(parseUsername).\"")
+                print("You have successfully logged in as \"\(parseUsername).\"")
             } else {
                 // oh no
-                println("There was an error of \(error).")
+                print("There was an error of \(error).")
             }
         }
     }
@@ -148,9 +148,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func refreshUserData() {
         
         // refresh user data
-        var currentUser = PFUser.currentUser()
+        let currentUser = PFUser.currentUser()
         currentUser?.fetchInBackgroundWithBlock { (object, error) -> Void in
-            println("Refreshed!")
+            print("Refreshed!")
 //            println(currentUser)
         }
         
