@@ -1405,7 +1405,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="bHD-zi-3fC">
             <objects>
-                <tabBarController id="PFn-dI-Y68" customClass="GDTabBarController" customModule="GiveDirectly" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="PFn-dI-Y68" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="S3l-OE-3ee">
