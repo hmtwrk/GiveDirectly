@@ -59,6 +59,12 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        // remove the tab bar badge
+        self.navigationController?.tabBarItem.badgeValue = nil
+    }
+    
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         refreshView.scrollViewDidScroll(scrollView)
     }

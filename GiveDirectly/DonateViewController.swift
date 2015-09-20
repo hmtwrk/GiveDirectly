@@ -49,8 +49,8 @@ class DonateViewController: UIViewController {
         // create a badge on the user profile tab item (after ten-second delay)
         delayBySeconds(10) {
             let tabArray = self.tabBarController?.tabBar.items as NSArray!
-            let tabItem = tabArray.objectAtIndex(2) as! UITabBarItem
-            tabItem.badgeValue = " "
+            let tabItem = tabArray.objectAtIndex(0) as! UITabBarItem
+            tabItem.badgeValue = "1"
         }
         
         
