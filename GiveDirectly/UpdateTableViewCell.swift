@@ -91,59 +91,74 @@ class UpdateTableViewCell: UITableViewCell {
 
     
     // MARK: configuration of cell
+//    func configureUpdateTableViewCell(updateData: AnyObject, recipientDataForCell: PFObject) {
     func configureUpdateTableViewCell(updateData: AnyObject) {
+    
+        // check what's coming to the cell
+//        print(recipientDataForCell)
+//        print(updateData)
         
-        // have to get the updateData[indexPath.row] in table view controller for subscripting to work like below...
+        // change this to if let
+        let recipientData:PFObject = (updateData["recipientAuthor"] as? PFObject)!
+//        print(recipientData)
         
-        // TODO: query Parse to determine if user has already liked the update
-        // need to cast as PFObject to get at the objectId perhaps...
         
-//        if let updateDatas = updateData as? [PFObject] {
-//            println(updateData.objectId)
-//            println(updateDatas)
-//        }
         
-//        println("The object ID is: \(updateData.objectId), homeboy.")
-        
-
-
         
         // configure outlets with Parse data
-        let author:String! = (updateData as AnyObject)["GDID"] as! String
+//        let author:String! = (updateData as AnyObject)["GDID"] as! String
+        
         // check Recipients class to mine information
-        let query = PFQuery(className:"Recipients")
-        query.whereKey("gdid", equalTo: author)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                // check to see if something exists
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        
-//                        println("There are \(objects.count) objects in the newsfeed.")
-                        
-                        // if name is pulled
-                        if let recipientName = object["firstName"] as? String {
-                            self.authorNameLabel.text = recipientName
-                        }
-                        // if image is pulled
-                        if let recipientProfilePhoto = object["image"] as? PFFile {
-                            recipientProfilePhoto.getDataInBackgroundWithBlock {
-                                (imageData: NSData?, error: NSError?) -> Void in
-                                if (error == nil) {
-                                    let image = UIImage(data: imageData!)
-                                    self.authorImageView.image = image
-                                    self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
-                                    self.authorImageView.clipsToBounds = true
-                                }
-                            }
-                        }
-                    }
+//        let query = PFQuery(className:"Recipients")
+//        query.whereKey("gdid", equalTo: author)
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                
+//                // check to see if something exists
+//                if let objects = objects as? [PFObject] {
+//                    for object in objects {
+//
+//                        // if name is pulled
+//                        if let recipientName = object["firstName"] as? String {
+//                            self.authorNameLabel.text = recipientName
+//                        }
+//                        // if image is pulled
+//                        if let recipientProfilePhoto = object["image"] as? PFFile {
+//                            recipientProfilePhoto.getDataInBackgroundWithBlock {
+//                                (imageData: NSData?, error: NSError?) -> Void in
+//                                if (error == nil) {
+//                                    let image = UIImage(data: imageData!)
+//                                    self.authorImageView.image = image
+//                                    self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
+//                                    self.authorImageView.clipsToBounds = true
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                
+//                // log details of the failure
+//                print("Error: \(error!) \(error!.userInfo)")
+//            }
+//        }
+        
+        // load an image
+        if let recipientProfilePhoto = recipientData["image"] as? PFFile {
+            recipientProfilePhoto.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data: imageData!)
+                    self.authorImageView.image = image
+                    self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
+                    self.authorImageView.clipsToBounds = true
                 }
-            } else {
-                // log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
             }
+        } else {
+            self.authorImageView.image = UIImage(named: "blankProfileImage")
+            self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
+            self.authorImageView.clipsToBounds = true
         }
         
         let title:String? = (updateData as AnyObject)["method"] as? String
@@ -153,12 +168,20 @@ class UpdateTableViewCell: UITableViewCell {
         // the "date" field on RecipientUpdates is nil)
         let date:String = (updateData as AnyObject)["date"] as! String
         let newDate = date.substringToIndex(date.endIndex.advancedBy(-18))
+        let recipientName = recipientData["firstName"] as! String
         
         // assign labels and views (also needs to be set to optional)
+        self.authorNameLabel.text = recipientName
         self.updateTitleLabel.text = title!
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()
         self.timestampLabel.text = newDate
+        
+        // load image... move elsewhere eventually
+//        let image = UIImage(data: imageData!)
+//        self.authorImageView.image = image
+//        self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
+//        self.authorImageView.clipsToBounds = true
         
 //        self.likeButton.titleLabel!.text = String(numberOfLikes)
         self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)

@@ -79,7 +79,7 @@ extension RefreshView: UIScrollViewDelegate {
         
         let refreshViewVisibleHeight = max(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))
         progressPercentage = min(1, refreshViewVisibleHeight / sceneHeight)
-        NSLog("progressPercentage = \(progressPercentage)")
+//        NSLog("progressPercentage = \(progressPercentage)")
         
         updateBackgroundColor()
     }

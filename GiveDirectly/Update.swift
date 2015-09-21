@@ -13,10 +13,13 @@ class Update : PFObject, PFSubclassing {
     
     // any variables you wish to access with dot notation
     @NSManaged var imageFile: PFFile?
+    @NSManaged var user: PFUser?
     
     var image: UIImage?
     
 //    var likes = Dynamic<[PFUser]?>(nil)
+    
+    // MARK: PFSubclassing Protocol
     
     static func parseClassName() -> String {
         return "RecipientUpdates"
@@ -32,6 +35,8 @@ class Update : PFObject, PFSubclassing {
             self.registerSubclass()
         }
     }
+    
+    
     
     // TODO: add a function that grabs the corresponding image data for recipient
     // "Adding Code to Display Images"

@@ -46,12 +46,14 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
             (result: [AnyObject]?, error: NSError?) -> Void in
             self.updates = result as? [Update] ?? []
             
-            // TODO: load image for corresponding recipient
 //            for update in self.updates {
 //                let data = update.imageFile?.getData()
 //                update.image = UIImage(data: data!, scale: 1.0)
 //            }
             
+            print(self.updates)
+            
+            // maybe need to change the following to come from the Update class instead?
             self.updateData = result!
             self.numberOfUpdates = result!.count
             self.tableView?.reloadData()
@@ -91,6 +93,12 @@ extension NewsfeedTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         if let updateCell = cell as? UpdateTableViewCell {
             let updateDataForCell: AnyObject = updateData[indexPath.row]
+            
+            // needs to be made safe if nil... maybe unwrap in the cell? An if let...
+//            let recipientDataForCell = updateDataForCell["recipientAuthor"] as! PFObject
+            
+//            updateCell.configureUpdateTableViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell)
+            
             updateCell.configureUpdateTableViewCell(updateDataForCell)
         }
         return cell!
