@@ -44,18 +44,21 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 //        self.queryParseForNewsfeedUpdates()
         ParseHelper.mostRecentUpdates {
             (result: [AnyObject]?, error: NSError?) -> Void in
+            
+            // cast results of API call into local data model (if can't cast, store as nil)
             self.updates = result as? [Update] ?? []
             
+            // loop through each update
 //            for update in self.updates {
 //                let data = update.imageFile?.getData()
 //                update.image = UIImage(data: data!, scale: 1.0)
 //            }
             
-            print(self.updates)
+//            print(self.updates)
             
-            // maybe need to change the following to come from the Update class instead?
-            self.updateData = result!
-            self.numberOfUpdates = result!.count
+            // assign results to local variables (can be optimized further)
+            self.updateData = self.updates
+            self.numberOfUpdates = self.updates.count
             self.tableView?.reloadData()
         }
         
@@ -92,10 +95,36 @@ extension NewsfeedTableViewController {
         let identifier = "UpdateTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         if let updateCell = cell as? UpdateTableViewCell {
-            let updateDataForCell: AnyObject = updateData[indexPath.row]
+            
+//            let updateDataForCell: AnyObject = updateData[indexPath.row]
+            let updateDataForCell: AnyObject = self.updates[indexPath.row]
+            
             
             // needs to be made safe if nil... maybe unwrap in the cell? An if let...
-//            let recipientDataForCell = updateDataForCell["recipientAuthor"] as! PFObject
+            let recipientDataForCell = updateDataForCell["recipientAuthor"] as! PFObject
+            
+            if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
+                recipientProfilePhoto.getDataInBackgroundWithBlock {
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        let image = UIImage(data: imageData!)
+                        updateCell.authorImageView.image = image
+                        updateCell.authorImageView.layer.cornerRadius = updateCell.authorImageView.frame.size.width / 2
+                        updateCell.authorImageView.clipsToBounds = true
+                    } else {
+                        // there was an error
+                        print("There was an error of \(error).")
+                    }
+                }
+            } else {
+                
+                // should be working, but not?
+                updateCell.authorImageView.backgroundColor = UIColor.blackColor()
+                updateCell.authorImageView.image = UIImage(named: "smallBlankProfileImage.pdf")
+                updateCell.authorImageView.layer.cornerRadius = updateCell.authorImageView.frame.size.width / 2
+                updateCell.authorImageView.clipsToBounds = true
+                print("Update item does not have a profile photo.")
+            }
             
 //            updateCell.configureUpdateTableViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell)
             

@@ -59,7 +59,7 @@ class UpdateTableViewCell: UITableViewCell {
 
 
         
-        // TODO: create unique image for "already liked" icon, and tweak animation timing
+        // TODO: migrate the following to the data model, and have the delegate update the model
         if userHasLikedPost == false {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
             self.numberOfLikes += 1
@@ -98,7 +98,7 @@ class UpdateTableViewCell: UITableViewCell {
 //        print(recipientDataForCell)
 //        print(updateData)
         
-        // change this to if let
+        // TODO: modify the following cast to not crash if the recipientAuthor field is nil
         let recipientData:PFObject = (updateData["recipientAuthor"] as? PFObject)!
 //        print(recipientData)
         
@@ -144,22 +144,7 @@ class UpdateTableViewCell: UITableViewCell {
 //            }
 //        }
         
-        // load an image
-        if let recipientProfilePhoto = recipientData["image"] as? PFFile {
-            recipientProfilePhoto.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    let image = UIImage(data: imageData!)
-                    self.authorImageView.image = image
-                    self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
-                    self.authorImageView.clipsToBounds = true
-                }
-            }
-        } else {
-            self.authorImageView.image = UIImage(named: "blankProfileImage")
-            self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
-            self.authorImageView.clipsToBounds = true
-        }
+
         
         let title:String? = (updateData as AnyObject)["method"] as? String
         let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
@@ -176,12 +161,6 @@ class UpdateTableViewCell: UITableViewCell {
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()
         self.timestampLabel.text = newDate
-        
-        // load image... move elsewhere eventually
-//        let image = UIImage(data: imageData!)
-//        self.authorImageView.image = image
-//        self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
-//        self.authorImageView.clipsToBounds = true
         
 //        self.likeButton.titleLabel!.text = String(numberOfLikes)
         self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)

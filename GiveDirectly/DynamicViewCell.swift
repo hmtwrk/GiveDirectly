@@ -46,18 +46,18 @@ class BrowserViewCell: UICollectionViewCell {
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
         let paymentPhase:Int? = (recipientInfo as AnyObject)["phase"] as? Int
         
-        // load an image
-        if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
-            recipientProfilePhoto.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    let image = UIImage(data: imageData!)
-                    self.profileImageView.image = image
-                }
-            }
-        } else {
-            self.profileImageView.image = UIImage(named: "blankProfileImage")
-        }
+//        // load an image
+//        if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
+//            recipientProfilePhoto.getDataInBackgroundWithBlock {
+//                (imageData: NSData?, error: NSError?) -> Void in
+//                if (error == nil) {
+//                    let image = UIImage(data: imageData!)
+//                    self.profileImageView.image = image
+//                }
+//            }
+//        } else {
+//            self.profileImageView.image = UIImage(named: "blankProfileImage")
+//        }
         
         // show phase icon
 

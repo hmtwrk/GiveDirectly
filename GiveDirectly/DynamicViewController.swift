@@ -60,8 +60,31 @@ extension RecipientBrowserViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipientBrowserCell", forIndexPath: indexPath) as! BrowserViewCell
         //        cell.configureCellWithParse(recipients[indexPath.item])
-        cell.recipient = recipientBrowserData[indexPath.item] as? Recipient
-        cell.configureCellWithParse(recipientBrowserData[indexPath.item])
+        
+        
+        let recipientDataForCell = recipientBrowserData[indexPath.item]
+        
+        cell.recipient = recipientDataForCell as? Recipient
+        
+        
+        // load an image
+        if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
+            recipientProfilePhoto.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data: imageData!)
+                    cell.profileImageView.image = image
+                } else {
+                    // there was an error
+                    print("There was an error of \(error).")
+                }
+            }
+        } else {
+            cell.profileImageView.image = UIImage(named: "blankProfileImage")
+        }
+        
+        
+        cell.configureCellWithParse(recipientDataForCell)
         return cell
     }
     
