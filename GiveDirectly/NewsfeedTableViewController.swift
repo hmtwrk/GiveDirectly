@@ -100,8 +100,9 @@ extension NewsfeedTableViewController {
             let updateDataForCell: AnyObject = self.updates[indexPath.row]
             
             
-            // needs to be made safe if nil... maybe unwrap in the cell? An if let...
+            // this bit is dependent on the includeKey data
             let recipientDataForCell = updateDataForCell["recipientAuthor"] as! PFObject
+            
             
             if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
                 recipientProfilePhoto.getDataInBackgroundWithBlock {

@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Change appearance of tab bar navigation globally
         let tabBarAppearance = UITabBar.appearance()
-        let tabBarItemAppearance = UITabBarItem.appearance()
-        let font = UIFont(name: "Helvetica Neue", size: 10)
-        let attributes: [NSObject : AnyObject]? = [ NSFontAttributeName : font! ]
+//        let tabBarItemAppearance = UITabBarItem.appearance()
+//        let font = UIFont(name: "Helvetica Neue", size: 10)
+//        let attributes: [NSObject : AnyObject]? = [ NSFontAttributeName : font! ]
         tabBarAppearance.barTintColor = UIColor.whiteColor()
         tabBarAppearance.tintColor = UIColor(red: 72.0/255, green: 185.0/255, blue: 163.0/255, alpha: 1.0)
         tabBarAppearance.translucent = false
