@@ -119,7 +119,7 @@ extension RecipientBrowserViewController {
         let annotation: (AnyObject) = recipientBrowserData[indexPath.item]
         let story: String? = (annotation as AnyObject)["goals"] as? String
 //        let font = UIFont(name: "HelveticaNeue", size: 13)!
-        let font = UIFont.systemFontOfSize(13)
+        let font = UIFont.systemFontOfSize(14)
         let storyHeight = self.heightForStory(story!, font: font, width: width)
 //        let storyHeight = 68
 //        let height = CGFloat(4 + 17 + 4 + storyHeight + 4)
