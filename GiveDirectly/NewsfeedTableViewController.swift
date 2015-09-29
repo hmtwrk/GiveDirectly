@@ -19,7 +19,7 @@ func delayBySeconds(seconds: Double, delayedCode: ()->() ) {
 
 class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
-    var updateData = [AnyObject]()
+//    var updateData = [AnyObject]()
     var updates: [Update] = []
     var numberOfUpdates = Int()
     
@@ -43,10 +43,16 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         
 //        self.queryParseForNewsfeedUpdates()
         ParseHelper.mostRecentUpdates {
-            (result: [AnyObject]?, error: NSError?) -> Void in
+            (results: [AnyObject]?, error: NSError?) -> Void in
             
             // cast results of API call into local data model (if can't cast, store as nil)
-            self.updates = result as? [Update] ?? []
+            self.updates = results as? [Update] ?? []
+            
+//            for update in self.updates {
+//                
+//                update["userHasLikedUpdate"] = update.userHasLikedUpdate
+//
+//            }
             
             // loop through each update
 //            for update in self.updates {
@@ -57,8 +63,9 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 //            print(self.updates)
             
             // assign results to local variables (can be optimized further)
-            self.updateData = self.updates
+//            self.updateData = self.updates
             self.numberOfUpdates = self.updates.count
+//            print(self.updates)
             self.tableView?.reloadData()
         }
         
@@ -99,10 +106,9 @@ extension NewsfeedTableViewController {
 //            let updateDataForCell: AnyObject = updateData[indexPath.row]
             let updateDataForCell: AnyObject = self.updates[indexPath.row]
             
-            
             // this bit is dependent on the includeKey data
+            // TODO: make safe for nil
             let recipientDataForCell = updateDataForCell["recipientAuthor"] as! PFObject
-            
             
             if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
                 recipientProfilePhoto.getDataInBackgroundWithBlock {
@@ -130,6 +136,7 @@ extension NewsfeedTableViewController {
 //            updateCell.configureUpdateTableViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell)
             
             updateCell.configureUpdateTableViewCell(updateDataForCell)
+            updateCell.delegate = self
         }
         return cell!
     }
@@ -143,7 +150,7 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
             ParseHelper.mostRecentUpdates {
                 (result: [AnyObject]?, error: NSError?) -> Void in
                 self.updates = result as? [Update] ?? []
-                self.updateData = result!
+//                self.updateData = result!
                 self.numberOfUpdates = result!.count
                 self.tableView?.reloadData()
             }
@@ -157,7 +164,8 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
 extension NewsfeedTableViewController {
     
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
-        // TODO: implement like functionality
+        // TODO: needs to change the data model from here, change visuals?
+//        print(cell)
         
         // create a Liked object with the user's objectId
         // that points to the update (fromUser to likedPost)
@@ -165,6 +173,8 @@ extension NewsfeedTableViewController {
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         // TODO: implement comment functionality
+        // needs to have the row and etc.
+        
         
         // create a Comment object with the user's objectId
         // that points to the update (author to relatedUpdate with text)

@@ -18,11 +18,9 @@ class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
     
-    var userHasLikedPost = false
+//    var userHasLikedUpdate = false
     var numberOfLikes: Int = 0
-    
-    let buttonForce: CGFloat = 1.0
-    
+    var userHasLikedUpdate = false
     
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
@@ -37,30 +35,15 @@ class UpdateTableViewCell: UITableViewCell {
 
     // TODO: assign Parse data to numberOfLikesLabel and numberOfCommentsLabel
     // TODO: configure labels for number of likes and comments
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        // code to run when cell appears (from being queued, etc.)
-        
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-        
 
-    }
     
     // MARK: SpringButton functionality
     @IBAction func likeButtonDidTap(sender: AnyObject) {
-
-
-        
+     
         // TODO: migrate the following to the data model, and have the delegate update the model
-        if userHasLikedPost == false {
+        self.userHasLikedUpdate = !userHasLikedUpdate
+        
+        if userHasLikedUpdate == true {
             self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
             self.numberOfLikes += 1
             self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
@@ -70,10 +53,6 @@ class UpdateTableViewCell: UITableViewCell {
             self.numberOfLikes -= 1
             self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
         }
-        
-        userHasLikedPost = !userHasLikedPost
-        print(userHasLikedPost)
-
         
         delegate?.updateLikeButtonDidTap(self, sender: sender)
     }
@@ -91,7 +70,7 @@ class UpdateTableViewCell: UITableViewCell {
 
     
     // MARK: configuration of cell
-//    func configureUpdateTableViewCell(updateData: AnyObject, recipientDataForCell: PFObject) {
+//    func configureUpdateTableViewCell(updateData: AnyObject) {
     func configureUpdateTableViewCell(updateData: AnyObject) {
     
         // check what's coming to the cell
@@ -101,49 +80,6 @@ class UpdateTableViewCell: UITableViewCell {
         // TODO: modify the following cast to not crash if the recipientAuthor field is nil
         let recipientData:PFObject = (updateData["recipientAuthor"] as? PFObject)!
 //        print(recipientData)
-        
-        
-        
-        
-        // configure outlets with Parse data
-//        let author:String! = (updateData as AnyObject)["GDID"] as! String
-        
-        // check Recipients class to mine information
-//        let query = PFQuery(className:"Recipients")
-//        query.whereKey("gdid", equalTo: author)
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [AnyObject]?, error: NSError?) -> Void in
-//            if error == nil {
-//                
-//                // check to see if something exists
-//                if let objects = objects as? [PFObject] {
-//                    for object in objects {
-//
-//                        // if name is pulled
-//                        if let recipientName = object["firstName"] as? String {
-//                            self.authorNameLabel.text = recipientName
-//                        }
-//                        // if image is pulled
-//                        if let recipientProfilePhoto = object["image"] as? PFFile {
-//                            recipientProfilePhoto.getDataInBackgroundWithBlock {
-//                                (imageData: NSData?, error: NSError?) -> Void in
-//                                if (error == nil) {
-//                                    let image = UIImage(data: imageData!)
-//                                    self.authorImageView.image = image
-//                                    self.authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
-//                                    self.authorImageView.clipsToBounds = true
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            } else {
-//                
-//                // log details of the failure
-//                print("Error: \(error!) \(error!.userInfo)")
-//            }
-//        }
-        
 
         
         let title:String? = (updateData as AnyObject)["method"] as? String
@@ -155,12 +91,32 @@ class UpdateTableViewCell: UITableViewCell {
         let newDate = date.substringToIndex(date.endIndex.advancedBy(-18))
         let recipientName = recipientData["firstName"] as! String
         
+        // check status of user has liked
+//        if let likedStatus = updateData["userHasLikedUpdate"] as? Bool {
+//            print(likedStatus)
+//            self.userHasLikedUpdate = likedStatus
+//            print("*****")
+//            print(self.userHasLikedUpdate)
+//        } else {
+//            print("Who knows?")
+//        }
+        
+        
         // assign labels and views (also needs to be set to optional)
         self.authorNameLabel.text = recipientName
         self.updateTitleLabel.text = title!
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()
         self.timestampLabel.text = newDate
+        
+        // set initial state of buttons
+        // TODO: simplify and move the toggling functionality to its own related class (Update)
+        if userHasLikedUpdate {
+            self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+        } else {
+            self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+        }
+        
         
 //        self.likeButton.titleLabel!.text = String(numberOfLikes)
         self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)

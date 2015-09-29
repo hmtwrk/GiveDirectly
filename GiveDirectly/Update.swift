@@ -9,13 +9,14 @@
 import Foundation
 import Parse
 
-class Update : PFObject, PFSubclassing {
+class Update: PFObject, PFSubclassing {
     
     // any variables you wish to access with dot notation
     @NSManaged var imageFile: PFFile?
     @NSManaged var user: PFUser?
     
     var image: UIImage?
+    var userHasLikedUpdate = false
     
 //    var likes = Dynamic<[PFUser]?>(nil)
     

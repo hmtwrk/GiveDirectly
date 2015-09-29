@@ -60,14 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         // clear out the current user, if one exists
-        PFUser.logOut()
+//        PFUser.logOut()
         
         // log in a user
-        self.easyLogin()
+//        self.easyLogin()
         
         // Check for user's login status
-//        self.checkUserStatus()
-//        self.refreshUserData()
+        self.checkUserStatus()
+        self.refreshUserData()
         
         
         
@@ -128,8 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func easyLogin() {
         
-        let parseUsername = "michaelfaye"
+//        let parseUsername = "michaelfaye"
 //        let parseUsername = "seanmoriarity"
+        let parseUsername = "braddourif"
         let testPassword = "testpass123"
         
         PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {

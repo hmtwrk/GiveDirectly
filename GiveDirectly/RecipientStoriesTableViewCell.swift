@@ -18,7 +18,8 @@ class RecipientStoriesTableViewCell: UITableViewCell {
     @IBOutlet weak var hardshipsTextView: UITextView!
     
     
-    
+    // TODO: need to configure the story section labels "HARDSHIPS", "SPENDING PLANS" etc.
+    // to be hidden if there is no associated data
     
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 
