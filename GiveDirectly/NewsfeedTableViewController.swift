@@ -19,15 +19,13 @@ func delayBySeconds(seconds: Double, delayedCode: ()->() ) {
 
 class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
-//    var updateData = [AnyObject]()
     var updates: [Update] = []
-    var numberOfUpdates = Int()
-    
     var refreshView: RefreshView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // pull-to-refresh
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
         refreshView.translatesAutoresizingMaskIntoConstraints = false
         refreshView.delegate = self
@@ -41,41 +39,31 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-//        self.queryParseForNewsfeedUpdates()
+        // Parse API call for recent updates, with completion block
         ParseHelper.mostRecentUpdates {
             (results: [AnyObject]?, error: NSError?) -> Void in
             
-            // cast results of API call into local data model (if can't cast, store as nil)
+            // cast results of API call into local data model (if can't cast, store as nil... but always seems to work)
+            // does this block need to iterate through the individual updates?
             self.updates = results as? [Update] ?? []
             
-//            for update in self.updates {
-//                
-//                update["userHasLikedUpdate"] = update.userHasLikedUpdate
-//
-//            }
+            for update in self.updates {
+                
+                update["userHasLikedUpdate"] = update.userHasLikedUpdate
+
+            }
             
-            // loop through each update
-//            for update in self.updates {
-//                let data = update.imageFile?.getData()
-//                update.image = UIImage(data: data!, scale: 1.0)
-//            }
             
-//            print(self.updates)
-            
-            // assign results to local variables (can be optimized further)
-//            self.updateData = self.updates
-            self.numberOfUpdates = self.updates.count
-//            print(self.updates)
             self.tableView?.reloadData()
         }
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
-        // remove the tab bar badge
-        self.navigationController?.tabBarItem.badgeValue = nil
-    }
+    //    override func viewWillAppear(animated: Bool) {
+    //
+    //        // remove the tab bar badge
+    //        self.navigationController?.tabBarItem.badgeValue = nil
+    //    }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         refreshView.scrollViewDidScroll(scrollView)
@@ -94,7 +82,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 extension NewsfeedTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (numberOfUpdates)
+        return (updates.count)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -103,13 +91,14 @@ extension NewsfeedTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
         if let updateCell = cell as? UpdateTableViewCell {
             
-//            let updateDataForCell: AnyObject = updateData[indexPath.row]
+            //            let updateDataForCell: AnyObject = updateData[indexPath.row]
             let updateDataForCell: AnyObject = self.updates[indexPath.row]
             
             // this bit is dependent on the includeKey data
             // TODO: make safe for nil
             let recipientDataForCell = updateDataForCell["recipientAuthor"] as! PFObject
             
+            // safely pull images without a crash...
             if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
                 recipientProfilePhoto.getDataInBackgroundWithBlock {
                     (imageData: NSData?, error: NSError?) -> Void in
@@ -126,6 +115,7 @@ extension NewsfeedTableViewController {
             } else {
                 
                 // should be working, but not?
+                // TODO: figure out why not
                 updateCell.authorImageView.backgroundColor = UIColor.blackColor()
                 updateCell.authorImageView.image = UIImage(named: "smallBlankProfileImage.pdf")
                 updateCell.authorImageView.layer.cornerRadius = updateCell.authorImageView.frame.size.width / 2
@@ -133,12 +123,29 @@ extension NewsfeedTableViewController {
                 print("Update item does not have a profile photo.")
             }
             
-//            updateCell.configureUpdateTableViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell)
+            //            updateCell.configureUpdateTableViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell)
             
             updateCell.configureUpdateTableViewCell(updateDataForCell)
             updateCell.delegate = self
         }
         return cell!
+    }
+    
+    func configureLikeForCell(cell: UpdateTableViewCell, withUpdate: Update) {
+        
+        let likeButton = cell.likeButton as UIButton
+        
+        likeButton.setTitle(String(withUpdate.numberOfLikes), forState: UIControlState.Normal)
+        
+        if withUpdate.userHasLikedUpdate {
+            // change the image
+            likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+            
+        } else {
+            // image is hollow with unchanged count
+            likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+        }
+        
     }
 }
 
@@ -150,8 +157,6 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
             ParseHelper.mostRecentUpdates {
                 (result: [AnyObject]?, error: NSError?) -> Void in
                 self.updates = result as? [Update] ?? []
-//                self.updateData = result!
-                self.numberOfUpdates = result!.count
                 self.tableView?.reloadData()
             }
             
@@ -164,11 +169,50 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
 extension NewsfeedTableViewController {
     
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
-        // TODO: needs to change the data model from here, change visuals?
-//        print(cell)
         
-        // create a Liked object with the user's objectId
-        // that points to the update (fromUser to likedPost)
+        // update the data model with liked status (has liked, increment # of likes)
+        let indexPath = tableView.indexPathForCell(cell)
+        let update = updates[indexPath!.row]
+
+        // toggle status of like
+        update.userHasLikedUpdate = !update.userHasLikedUpdate
+        
+        // increment or decrement
+        if update.userHasLikedUpdate {
+            update.numberOfLikes += 1
+        } else {
+            update.numberOfLikes -= 1
+        }
+        
+        
+        self.configureLikeForCell(cell, withUpdate: update)
+        
+        //        if update.userHasLikedUpdate {
+        //
+        //            // toggle settings to has liked
+        //            update.numberOfLikes += 1
+        //            cell.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+        //
+        //        } else {
+        //
+        //            // toggle settings to not liked
+        //            update.numberOfLikes -= 1
+        //            cell.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+        //        }
+        
+        //        cell.likeButton.setTitle(String(cell.numberOfLikes), forState: UIControlState.Normal)
+        //        update["userHasLiked"] = update.userHasLikedUpdate
+        
+        // check
+        
+        for update in updates {
+            print(update.userHasLikedUpdate)
+        }
+        print("==========")
+        
+//        print("From data model: \(update.userHasLikedUpdate).")
+//        print("Number of likes: \(update.numberOfLikes).")
+        
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

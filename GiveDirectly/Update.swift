@@ -16,7 +16,10 @@ class Update: PFObject, PFSubclassing {
     @NSManaged var user: PFUser?
     
     var image: UIImage?
+    
+    // doesn't seem like these properties are taking effect?
     var userHasLikedUpdate = false
+    var numberOfLikes = 0
     
 //    var likes = Dynamic<[PFUser]?>(nil)
     
