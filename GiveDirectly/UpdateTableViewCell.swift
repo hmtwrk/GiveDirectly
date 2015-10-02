@@ -27,12 +27,7 @@ class UpdateTableViewCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var extraButton: UIButton!
-    
 
-    // TODO: assign Parse data to numberOfLikesLabel and numberOfCommentsLabel
-    // TODO: configure labels for number of likes and comments
-
-    
     // MARK: SpringButton functionality
     @IBAction func likeButtonDidTap(sender: AnyObject) {
     
@@ -54,13 +49,8 @@ class UpdateTableViewCell: UITableViewCell {
     // MARK: configuration of cell
     func configureUpdateTableViewCell(updateData: AnyObject) {
         
-//        let userHasLikedUpdate:Bool? = updateData["userHasLikedUpdate"] as? Bool
-//        print("From the cell: \(userHasLikedUpdate)")
-        
         // TODO: modify the following cast to not crash if the recipientAuthor field is nil
         let recipientData:PFObject = (updateData["recipientAuthor"] as? PFObject)!
-
-        
         let title:String? = (updateData as AnyObject)["method"] as? String
         let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
         
@@ -69,10 +59,6 @@ class UpdateTableViewCell: UITableViewCell {
         let date:String = (updateData as AnyObject)["date"] as! String
         let newDate = date.substringToIndex(date.endIndex.advancedBy(-18))
         let recipientName = recipientData["firstName"] as! String
-        
-//        let userHasLiked:Bool? = updateData["userHasLikedUpdate"] as? Bool
-//        print(userHasLiked)
-        
 
         // assign labels and views (also needs to be set to optional)
         self.authorNameLabel.text = recipientName
@@ -81,18 +67,19 @@ class UpdateTableViewCell: UITableViewCell {
         self.updateStoryLabel.sizeToFit()
         self.timestampLabel.text = newDate
         
-
+    }
+    
+    func configureLikeForCell(withUpdate: Update) {
         
-        // set initial state of buttons
-        // TODO: simplify and move the toggling functionality to its own related class (Update)
-//        if let userHasLikedUpdate = userHasLikedUpdate {
-//            self.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
-//        } else {
-//            self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
-//        }
+        self.likeButton.setTitle(String(withUpdate.numberOfLikes), forState: UIControlState.Normal)
         
-//        self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
-//        self.likeButton.titleLabel!.text = String(numberOfLikes)
-//        self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
+        if withUpdate.userHasLikedUpdate {
+            // change the image
+            likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+            
+        } else {
+            // image is hollow with unchanged count
+            likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+        }
     }
 }

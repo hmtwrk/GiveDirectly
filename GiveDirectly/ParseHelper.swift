@@ -57,9 +57,38 @@ class ParseHelper {
         query?.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
-    // MARK: Following
+    static func recipientImagesForCell(cell: UpdateTableViewCell, withRecipientData recipientData: PFObject) {
+        // use the includeKey data to grab images, but if nil, use alternate method instead (matching GDID)
+        
+        // safely pull images without a crash... (migrate to helper method)
+        if let recipientProfilePhoto = recipientData["image"] as? PFFile {
+            recipientProfilePhoto.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if (error == nil) {
+                    let image = UIImage(data: imageData!)
+                    cell.authorImageView.image = image
+                    cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+                    cell.authorImageView.clipsToBounds = true
+                } else {
+                    // there was an error
+                    print("There was an error of \(error).")
+                }
+            }
+        } else {
+            
+            // should be working, but not?
+            // TODO: figure out why not
+            cell.authorImageView.backgroundColor = UIColor.blackColor()
+            cell.authorImageView.image = UIImage(named: "smallBlankProfileImage.pdf")
+            cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+            cell.authorImageView.clipsToBounds = true
+            print("Update item does not have a profile photo.")
+        }
+        
+    }
     
-    static func followedUpdatesForCurrentUser(completionBlock: PFArrayResultBlock) {
+    // MARK: Following
+        static func followedUpdatesForCurrentUser(completionBlock: PFArrayResultBlock) {
         let followingQuery = PFQuery(className: ParseFollowClass)
         followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
         
@@ -72,11 +101,8 @@ class ParseHelper {
         
         updatesFromFollowedRecipients?.findObjectsInBackgroundWithBlock(completionBlock)
     }
-    
 
-    
     // MARK: Likes
-    
     static func likeUpdate(user: PFUser, update: Update) {
         let likeObject = PFObject(className: ParseLikeClass)
         likeObject[ParseLikeFromUser] = user
