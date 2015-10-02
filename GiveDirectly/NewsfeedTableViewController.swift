@@ -95,12 +95,14 @@ extension NewsfeedTableViewController {
             
             // this bit is dependent on the includeKey data
             // TODO: make safe for nil case (following code should work)
-//                        let recipientDataForCell:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
+            let recipientData:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
             
             // download corresponding recipient image for each cell
             // TODO: add profile image to data model and cache locally?
-            let recipientData = updateDataForCell["recipientAuthor"] as! PFObject
-            ParseHelper.recipientImagesForCell(cell, withRecipientData: recipientData)
+//            let recipientData = updateDataForCell["recipientAuthor"] as! PFObject
+            
+            // following function takes an optional PFObject as a parameter
+            ParseHelper.recipientImagesForCell(cell, withRecipientData: recipientData, orUpdateData: updateDataForCell)
  
             // configure queued cell with newest data from model
             cell.configureUpdateTableViewCell(updateDataForCell)

@@ -43,7 +43,7 @@ class ParseHelper {
     
     
     // 2 —— in case following functionality is used in the future
-
+    
     // this query will return all the Recipients objectIds the User follows
     
     // MARK: Newsfeed
@@ -53,42 +53,90 @@ class ParseHelper {
         query?.whereKey("isLive", equalTo:true)
         query?.includeKey("recipientAuthor")
         query?.orderByDescending(ParseUpdateCreatedAt)
-//        query?.limit = 20
+        //        query?.limit = 20
         query?.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
-    static func recipientImagesForCell(cell: UpdateTableViewCell, withRecipientData recipientData: PFObject) {
+    static func recipientImagesForCell(cell: UpdateTableViewCell, withRecipientData recipientData: PFObject?, orUpdateData: AnyObject) {
         // use the includeKey data to grab images, but if nil, use alternate method instead (matching GDID)
+        // make recipientData an optional type
         
-        // safely pull images without a crash... (migrate to helper method)
-        if let recipientProfilePhoto = recipientData["image"] as? PFFile {
-            recipientProfilePhoto.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    let image = UIImage(data: imageData!)
-                    cell.authorImageView.image = image
-                    cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
-                    cell.authorImageView.clipsToBounds = true
-                } else {
-                    // there was an error
-                    print("There was an error of \(error).")
+        if let recipientData = recipientData {
+            
+            // safely pull images without a crash
+            if let recipientProfilePhoto = recipientData["image"] as? PFFile {
+                recipientProfilePhoto.getDataInBackgroundWithBlock {
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        let image = UIImage(data: imageData!)
+                        cell.authorImageView.image = image
+                        cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+                        cell.authorImageView.clipsToBounds = true
+                    } else {
+                        // there was an error
+                        print("There was an error of \(error).")
+                    }
                 }
+                
+            } else {
+                
+                // should be working, but not?
+                // TODO: figure out why not
+                cell.authorImageView.backgroundColor = UIColor.blackColor()
+                cell.authorImageView.image = UIImage(named: "smallBlankProfileImage.pdf")
+                cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+                cell.authorImageView.clipsToBounds = true
+                print("Update item does not have a profile photo.")
             }
+            
         } else {
             
-            // should be working, but not?
-            // TODO: figure out why not
-            cell.authorImageView.backgroundColor = UIColor.blackColor()
-            cell.authorImageView.image = UIImage(named: "smallBlankProfileImage.pdf")
-            cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
-            cell.authorImageView.clipsToBounds = true
-            print("Update item does not have a profile photo.")
+            // pointer doesn't exist, so use the older method by matching GDIDs
+            // configure outlets with Parse data
+            let author:String! = (orUpdateData as AnyObject)["GDID"] as! String
+            
+            // check Recipients class to mine information
+            let query = PFQuery(className:"Recipients")
+            query.whereKey("gdid", equalTo: author)
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    
+                    // check to see if something exists
+                    if let objects = objects as? [PFObject] {
+                        for object in objects {
+                            
+                            // if name is pulled
+                            if let recipientName = object["firstName"] as? String {
+                                cell.authorNameLabel.text = recipientName
+                            }
+                            // if image is pulled
+                            if let recipientProfilePhoto = object["image"] as? PFFile {
+                                recipientProfilePhoto.getDataInBackgroundWithBlock {
+                                    (imageData: NSData?, error: NSError?) -> Void in
+                                    if (error == nil) {
+                                        let image = UIImage(data: imageData!)
+                                        cell.authorImageView.image = image
+                                        cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+                                        cell.authorImageView.clipsToBounds = true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                } else {
+                    // log details of the failure
+                    print("There was an error \(error).")
+                }
+            }
+            
         }
         
     }
     
     // MARK: Following
-        static func followedUpdatesForCurrentUser(completionBlock: PFArrayResultBlock) {
+    static func followedUpdatesForCurrentUser(completionBlock: PFArrayResultBlock) {
         let followingQuery = PFQuery(className: ParseFollowClass)
         followingQuery.whereKey(ParseLikeFromUser, equalTo:PFUser.currentUser()!)
         
@@ -101,7 +149,7 @@ class ParseHelper {
         
         updatesFromFollowedRecipients?.findObjectsInBackgroundWithBlock(completionBlock)
     }
-
+    
     // MARK: Likes
     static func likeUpdate(user: PFUser, update: Update) {
         let likeObject = PFObject(className: ParseLikeClass)
