@@ -85,28 +85,36 @@ extension NewsfeedTableViewController {
         return (updates.count)
     }
     
+    
+    // tableView cellForRowAtIndexPath gets called every time a cell is queued,
+    // so the functions inside need to update the cell with the most current
+    // data from the model (configureLike, etc)
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let identifier = "UpdateTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
-        if let updateCell = cell as? UpdateTableViewCell {
+        
+        if let cell = cell as? UpdateTableViewCell {
             
             //            let updateDataForCell: AnyObject = updateData[indexPath.row]
             let updateDataForCell: AnyObject = self.updates[indexPath.row]
             
             // this bit is dependent on the includeKey data
-            // TODO: make safe for nil
+            // TODO: make safe for nil case (following code should work)
+//                        let recipientDataForCell:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
+            
             let recipientDataForCell = updateDataForCell["recipientAuthor"] as! PFObject
             
-            // safely pull images without a crash...
+            // safely pull images without a crash... (migrate to helper method)
             if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
                 recipientProfilePhoto.getDataInBackgroundWithBlock {
                     (imageData: NSData?, error: NSError?) -> Void in
                     if (error == nil) {
                         let image = UIImage(data: imageData!)
-                        updateCell.authorImageView.image = image
-                        updateCell.authorImageView.layer.cornerRadius = updateCell.authorImageView.frame.size.width / 2
-                        updateCell.authorImageView.clipsToBounds = true
+                        cell.authorImageView.image = image
+                        cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+                        cell.authorImageView.clipsToBounds = true
                     } else {
                         // there was an error
                         print("There was an error of \(error).")
@@ -116,25 +124,31 @@ extension NewsfeedTableViewController {
                 
                 // should be working, but not?
                 // TODO: figure out why not
-                updateCell.authorImageView.backgroundColor = UIColor.blackColor()
-                updateCell.authorImageView.image = UIImage(named: "smallBlankProfileImage.pdf")
-                updateCell.authorImageView.layer.cornerRadius = updateCell.authorImageView.frame.size.width / 2
-                updateCell.authorImageView.clipsToBounds = true
+                cell.authorImageView.backgroundColor = UIColor.blackColor()
+                cell.authorImageView.image = UIImage(named: "smallBlankProfileImage.pdf")
+                cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+                cell.authorImageView.clipsToBounds = true
                 print("Update item does not have a profile photo.")
             }
             
-            //            updateCell.configureUpdateTableViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell)
+            //            cell.configureUpdateTableViewCell(updateDataForCell, recipientDataForCell: recipientDataForCell)
             
-            updateCell.configureUpdateTableViewCell(updateDataForCell)
-            updateCell.delegate = self
+            
+            cell.configureUpdateTableViewCell(updateDataForCell)
+            self.configureLikeForCell(cell, withUpdate: updateDataForCell as! Update)
+            cell.delegate = self
         }
         return cell!
     }
     
     func configureLikeForCell(cell: UpdateTableViewCell, withUpdate: Update) {
         
-        let likeButton = cell.likeButton as UIButton
         
+        // must be problem in here, because should send data and let cell update its own appearance
+        
+        // probably this data is wiped away during a dequeue... move it instead within the cell? (make the class responsible for changing itself)
+        
+        let likeButton = cell.likeButton as UIButton
         likeButton.setTitle(String(withUpdate.numberOfLikes), forState: UIControlState.Normal)
         
         if withUpdate.userHasLikedUpdate {
@@ -184,27 +198,10 @@ extension NewsfeedTableViewController {
             update.numberOfLikes -= 1
         }
         
-        
+        // update the view cell
         self.configureLikeForCell(cell, withUpdate: update)
-        
-        //        if update.userHasLikedUpdate {
-        //
-        //            // toggle settings to has liked
-        //            update.numberOfLikes += 1
-        //            cell.likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
-        //
-        //        } else {
-        //
-        //            // toggle settings to not liked
-        //            update.numberOfLikes -= 1
-        //            cell.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
-        //        }
-        
-        //        cell.likeButton.setTitle(String(cell.numberOfLikes), forState: UIControlState.Normal)
-        //        update["userHasLiked"] = update.userHasLikedUpdate
-        
-        // check
-        
+
+        // display status of data model in console
         for update in updates {
             print(update.userHasLikedUpdate)
         }

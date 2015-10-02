@@ -18,9 +18,6 @@ class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
     
-    var numberOfLikes: Int = 0
-
-    
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
@@ -72,10 +69,11 @@ class UpdateTableViewCell: UITableViewCell {
         let date:String = (updateData as AnyObject)["date"] as! String
         let newDate = date.substringToIndex(date.endIndex.advancedBy(-18))
         let recipientName = recipientData["firstName"] as! String
-//        let userHasLiked = recipientData["userHasLikedUpdate"] as! Bool
         
+//        let userHasLiked:Bool? = updateData["userHasLikedUpdate"] as? Bool
 //        print(userHasLiked)
         
+
         // assign labels and views (also needs to be set to optional)
         self.authorNameLabel.text = recipientName
         self.updateTitleLabel.text = title!
@@ -93,7 +91,7 @@ class UpdateTableViewCell: UITableViewCell {
 //            self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
 //        }
         
-        
+//        self.likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
 //        self.likeButton.titleLabel!.text = String(numberOfLikes)
 //        self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
     }
