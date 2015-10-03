@@ -8,14 +8,14 @@
 
 import UIKit
 
-class RecipientProfileTableViewController: UITableViewController, RecipientRelatedUpdateCellDelegate {
+class RecipientProfileTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
     // prepare variable for receiving data from segue
     var recipientInfo: AnyObject = ""
     
     // prepare variable for related Update object
     var numberOfUpdates: Int = 0
-    var recipientRelatedUpdateInfo = [AnyObject]()
+    var updates = [Update]()
     var recipientNameData: String = ""
     var likes = [Liked]()
     
@@ -39,32 +39,57 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
         tableView.estimatedRowHeight = 45
         tableView.rowHeight = UITableViewAutomaticDimension
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        // refresh status of likes
+        self.tableView?.reloadData()
+    }
 
     
     // MARK: - Table view data source
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // two static cells (stats + stories) with a dynamic number of updates
-        return 2 + self.numberOfUpdates
+//        return 2 + self.numberOfUpdates
+//        return 2
+        
+//        if section = 0, then 2 rows
+//        if section = 1, then updates.count
+        
+        if section == 0 {
+            return 2
+        } else {
+            return updates.count
+        }
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // determine which cell identifier to return
-        var identifier: String = ""
+        let identifier: String
         
-        if indexPath.row == 0 {
-            // stats cell
-            identifier = "RecipientStats"
+        // section 0 for the two static cells
+        if indexPath.section == 0 {
             
-        } else if indexPath.row == 1 {
-            // story cell
-            identifier = "RecipientStories"
-            
+            if indexPath.row == 0 {
+                // stats cell
+                identifier = "RecipientStats"
+                
+            } else {
+                // story cell
+                identifier = "RecipientStories"
+            }
         } else {
-            // update cell
-            identifier = "RelatedUpdateTableViewCell"
+            
+            // section 1 for the dynamic number of update cells
+            identifier = "UpdateTableViewCell"
+            print(identifier)
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) 
@@ -78,15 +103,23 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
             recipientStoriesCell.configureStoriesCell(recipientInfo)
         }
         
-        if let recipientUpdateCell = cell as? RecipientRelatedUpdateCell {
-            recipientUpdateCell.configureUpdateTableViewCell(recipientNameData, updateData: recipientRelatedUpdateInfo[indexPath.row - 2])
-            recipientUpdateCell.delegate = self
+        if let recipientUpdatesCell = cell as? UpdateTableViewCell {
+            let updateDataForCell:AnyObject = updates[indexPath.row]
+            recipientUpdatesCell.configureUpdateTableViewCell(updateDataForCell)
+            recipientUpdatesCell.configureLikeForCell(updateDataForCell as! Update)
+            recipientUpdatesCell.delegate = self
+            
+            // this bit is dependent on the includeKey data, and safe if nil
+            let recipientData:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
+            
+            // following function takes an optional PFObject as a parameter
+            ParseHelper.recipientImagesForCell(recipientUpdatesCell, withRecipientData: recipientData, orUpdateData: updateDataForCell)
         }
         
         // make separators extend all the way left
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsetsZero
-        
+        print(indexPath.row)
         
         return cell
     }
@@ -96,7 +129,7 @@ class RecipientProfileTableViewController: UITableViewController, RecipientRelat
 //        // check to see if there's a cell at the tapped row
 //        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
 //            
-//            let item: (AnyObject) = recipientRelatedUpdateInfo[indexPath.row]
+//            let item: (AnyObject) = updates[indexPath.row]
 ////            item.toggleChecked()
 //            
 //        }
@@ -131,17 +164,25 @@ extension RecipientProfileTableViewController {
         let query:PFQuery = PFQuery(className: "RecipientUpdates")
         query.whereKey("GDID", equalTo: author)
         query.orderByDescending("createdAt")
-        query.limit = 30
+//        query.limit = 30
         query.findObjectsInBackgroundWithBlock {
-            (updates: [AnyObject]?, error: NSError?) -> Void in
+            (results: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-//                println(updates!)
-                print("\(updates!.count) updates.")
-                self.numberOfUpdates = updates!.count
-                self.recipientRelatedUpdateInfo = updates!
+                self.numberOfUpdates = results!.count
+                print(self.numberOfUpdates)
+//                self.updates = results!
+                self.updates = results as? [Update] ?? []
+//                print(self.updates)
                 
                 // make API call to determine which updates are liked by currentUser, and total number of likes
-                self.queryForLikes(query)
+//                self.queryForLikes(query)
+                
+                for update in self.updates {
+                    update["userHasLikedUpdate"] = update.userHasLikedUpdate
+                }
+                
+                self.tableView?.reloadData()
+                
                 
             } else {
                 // log details of the failure
@@ -164,4 +205,52 @@ extension RecipientProfileTableViewController {
             }
         }
     }
+}
+
+extension RecipientProfileTableViewController {
+    
+    func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
+        
+        // update the data model with liked status (has liked, increment # of likes)
+        let indexPath = tableView.indexPathForCell(cell)
+        print("The indexPath is \(indexPath!.row).")
+        print("There are \(updates.count) items in the array.")
+        let update = updates[indexPath!.row]
+        
+        // toggle status of like
+        update.userHasLikedUpdate = !update.userHasLikedUpdate
+        
+        // increment or decrement total likes
+        if update.userHasLikedUpdate {
+            update.numberOfLikes += 1
+        } else {
+            update.numberOfLikes -= 1
+        }
+        
+        // update the view cell
+        cell.configureLikeForCell(update)
+        
+        // display status of data model in console (for testing)
+        for update in updates {
+            print(update.userHasLikedUpdate)
+        }
+        print("==========")
+        
+    }
+    
+    func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
+        // TODO: implement comment functionality
+        // needs to have the row and etc.
+        
+        
+        // create a Comment object with the user's objectId
+        // that points to the update (author to relatedUpdate with text)
+    }
+    
+    func updateExtraButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
+        // TODO: implement extra functionality
+        
+        // open a view that allows user to report, share, etc.
+    }
+    
 }

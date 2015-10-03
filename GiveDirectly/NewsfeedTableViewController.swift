@@ -44,6 +44,11 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         ParseHelper.mostRecentUpdates {
             (results: [AnyObject]?, error: NSError?) -> Void in
             
+            // need to handle the case of a recipient's author name not appearing (why bother?)
+            // if includeKey is nil, then do a failsafe query / API call
+            
+
+            
             // cast results of API call into local data model (seems impossible to fail cast)
             self.updates = results as? [Update] ?? []
             
@@ -55,6 +60,10 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
             // reload tableView with Parse data
             self.tableView?.reloadData()
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView?.reloadData()
     }
     
     //    override func viewWillAppear(animated: Bool) {
@@ -93,13 +102,11 @@ extension NewsfeedTableViewController {
             // mine specific data to pass to cell
             let updateDataForCell: AnyObject = self.updates[indexPath.row]
             
-            // this bit is dependent on the includeKey data
-            // TODO: make safe for nil case (following code should work)
+            // this bit is dependent on the includeKey data, and safe if nil
             let recipientData:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
             
             // download corresponding recipient image for each cell
             // TODO: add profile image to data model and cache locally?
-//            let recipientData = updateDataForCell["recipientAuthor"] as! PFObject
             
             // following function takes an optional PFObject as a parameter
             ParseHelper.recipientImagesForCell(cell, withRecipientData: recipientData, orUpdateData: updateDataForCell)
@@ -115,7 +122,7 @@ extension NewsfeedTableViewController {
 
 extension NewsfeedTableViewController: RefreshViewDelegate {
     func refreshViewDidRefresh(refreshView: RefreshView) {
-        delayBySeconds(2) {
+        delayBySeconds(1.5) {
             self.refreshView.endRefreshing()
             
             ParseHelper.mostRecentUpdates {

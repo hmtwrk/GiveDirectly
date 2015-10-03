@@ -57,6 +57,7 @@ class ParseHelper {
         query?.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
+    // make this return a completion block that sets the cell's data from cellForRowAtIndexPath?
     static func recipientImagesForCell(cell: UpdateTableViewCell, withRecipientData recipientData: PFObject?, orUpdateData: AnyObject) {
         // use the includeKey data to grab images, but if nil, use alternate method instead (matching GDID)
         // make recipientData an optional type
@@ -91,48 +92,55 @@ class ParseHelper {
             
         } else {
             
+            // this data goes to a different function entirely
+            
             // pointer doesn't exist, so use the older method by matching GDIDs
             // configure outlets with Parse data
-            let author:String! = (orUpdateData as AnyObject)["GDID"] as! String
-            
-            // check Recipients class to mine information
-            let query = PFQuery(className:"Recipients")
-            query.whereKey("gdid", equalTo: author)
-            query.findObjectsInBackgroundWithBlock {
-                (objects: [AnyObject]?, error: NSError?) -> Void in
-                if error == nil {
-                    
-                    // check to see if something exists
-                    if let objects = objects as? [PFObject] {
-                        for object in objects {
-                            
-                            // if name is pulled
-                            if let recipientName = object["firstName"] as? String {
-                                cell.authorNameLabel.text = recipientName
-                            }
-                            // if image is pulled
-                            if let recipientProfilePhoto = object["image"] as? PFFile {
-                                recipientProfilePhoto.getDataInBackgroundWithBlock {
-                                    (imageData: NSData?, error: NSError?) -> Void in
-                                    if (error == nil) {
-                                        let image = UIImage(data: imageData!)
-                                        cell.authorImageView.image = image
-                                        cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
-                                        cell.authorImageView.clipsToBounds = true
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
-                } else {
-                    // log details of the failure
-                    print("There was an error \(error).")
-                }
-            }
-            
+//            let author:String! = (orUpdateData as AnyObject)["GDID"] as! String
+//            
+//            // check Recipients class to mine information
+//            let query = PFQuery(className:"Recipients")
+//            query.whereKey("gdid", equalTo: author)
+//            query.findObjectsInBackgroundWithBlock {
+//                (objects: [AnyObject]?, error: NSError?) -> Void in
+//                if error == nil {
+//                    
+//                    // check to see if something exists
+//                    if let objects = objects as? [PFObject] {
+//                        for object in objects {
+//                            
+//                            // if name is pulled
+//                            if let recipientName = object["firstName"] as? String {
+//                                cell.authorNameLabel.text = recipientName
+//                            }
+//                            // if image is pulled
+//                            if let recipientProfilePhoto = object["image"] as? PFFile {
+//                                recipientProfilePhoto.getDataInBackgroundWithBlock {
+//                                    (imageData: NSData?, error: NSError?) -> Void in
+//                                    if (error == nil) {
+//                                        let image = UIImage(data: imageData!)
+//                                        cell.authorImageView.image = image
+//                                        cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.size.width / 2
+//                                        cell.authorImageView.clipsToBounds = true
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                    
+//                } else {
+//                    // log details of the failure
+//                    print("There was an error \(error).")
+//                }
+//            }
+//            
         }
         
+    }
+    
+    // MARK: Fail-safe method
+    static func failsafeUpdateWithRecipient(recipient: AnyObject) {
+        print("\(recipient.objectId)! Oh shit.")
     }
     
     // MARK: Following
