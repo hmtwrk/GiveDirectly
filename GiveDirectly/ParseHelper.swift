@@ -140,7 +140,7 @@ class ParseHelper {
     
     // MARK: Fail-safe method
     static func failsafeUpdateWithRecipient(recipient: AnyObject) {
-        print("\(recipient.objectId)! Oh shit.")
+        print("\(recipient.objectId)! doesn't have an author field.")
     }
     
     // MARK: Following
@@ -167,7 +167,7 @@ class ParseHelper {
         likeObject.saveInBackgroundWithBlock(nil)
     }
     
-    static func unlikePost(user: PFUser, update: Update) {
+    static func unlikeUpdate(user: PFUser, update: Update) {
         // 1
         let query = PFQuery(className: ParseLikeClass)
         query.whereKey(ParseLikeFromUser, equalTo: user)
@@ -189,13 +189,14 @@ class ParseHelper {
         }
     }
     
-    static func likesForUpdate(update: Update, completionBlock: PFArrayResultBlock) {
+    static func fetchLikesForUpdate(update: Update, completionBlock: PFArrayResultBlock) {
+        
+//        let currentUserLikes = PFQuery(className: ParseLikeClass)
+//        currentUserLikes.whereKey("fromUser", equalTo: PFUser.currentUser()!)
+        
         let query = PFQuery(className: ParseLikeClass)
         query.whereKey(ParseLikeToUpdate, equalTo: update)
-        
-        // 2
         query.includeKey(ParseLikeFromUser)
-        
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
 }

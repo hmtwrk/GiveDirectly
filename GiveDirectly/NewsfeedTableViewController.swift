@@ -26,6 +26,8 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //        print(updates)
+        
         // pull-to-refresh code
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
         refreshView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,22 +46,45 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         ParseHelper.mostRecentUpdates {
             (results: [AnyObject]?, error: NSError?) -> Void in
             
-            // need to handle the case of a recipient's author name not appearing (why bother?)
-            // if includeKey is nil, then do a failsafe query / API call
-            
-
-            
-            // cast results of API call into local data model (seems impossible to fail cast)
+            // cast results of API call into local data model
             self.updates = results as? [Update] ?? []
             
-            // append dictionary entry for data model's liked status
+            // update the data model for likes, comments
             for update in self.updates {
-                update["userHasLikedUpdate"] = update.userHasLikedUpdate
+                
+                // get like data for each recipient
+                ParseHelper.fetchLikesForUpdate(update) {
+                    (likes: [AnyObject]?, error: NSError?) -> Void in
+                    
+                    if let likes = likes {
+                      
+                        // update model with liked data
+                        update.numberOfLikes = likes.count
+                        
+                        // see if user has liked the update
+                        for like in likes {
+                            
+//                            print(like["fromUser"])
+//                            print(PFUser.currentUser() == like["fromUser"] as? PFObject)
+                        
+                            if like["fromUser"] as? PFObject == PFUser.currentUser() {
+//                                print("Gotcha suckaz.")
+                                update.userHasLikedUpdate = true
+                            } else {
+//                                print("Other kids.")
+                            }
+                            
+                        }
+                    }
+                }
             }
             
             // reload tableView with Parse data
             self.tableView?.reloadData()
+            
         }
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -87,7 +112,7 @@ extension NewsfeedTableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (updates.count)
     }
- 
+    
     // tableView:cellForRowAtIndexPath gets called every time a cell is queued,
     // so the functions inside need to update the cell with the most current
     // data from the model (configureLike, etc)
@@ -105,15 +130,17 @@ extension NewsfeedTableViewController {
             // this bit is dependent on the includeKey data, and safe if nil
             let recipientData:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
             
-            // download corresponding recipient image for each cell
             // TODO: add profile image to data model and cache locally?
             
             // following function takes an optional PFObject as a parameter
             ParseHelper.recipientImagesForCell(cell, withRecipientData: recipientData, orUpdateData: updateDataForCell)
- 
+            
+//            print(updateDataForCell)
+            
             // configure queued cell with newest data from model
             cell.configureUpdateTableViewCell(updateDataForCell)
             cell.configureLikeForCell(updateDataForCell as! Update)
+            
             cell.delegate = self
         }
         return cell!
@@ -125,9 +152,21 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
         delayBySeconds(1.5) {
             self.refreshView.endRefreshing()
             
+            //            ParseHelper.mostRecentUpdates {
+            //                (result: [AnyObject]?, error: NSError?) -> Void in
+            //                self.updates = result as? [Update] ?? []
+            //                self.tableView?.reloadData()
+            //            }
+            
+            // Parse API call for recent updates, with completion block
             ParseHelper.mostRecentUpdates {
-                (result: [AnyObject]?, error: NSError?) -> Void in
-                self.updates = result as? [Update] ?? []
+                (results: [AnyObject]?, error: NSError?) -> Void in
+                
+                
+                // cast results of API call into local data model (seems impossible to fail cast)
+                self.updates = results as? [Update] ?? []
+                
+                // reload tableView with Parse data
                 self.tableView?.reloadData()
             }
         }
@@ -142,26 +181,33 @@ extension NewsfeedTableViewController {
         // update the data model with liked status (has liked, increment # of likes)
         let indexPath = tableView.indexPathForCell(cell)
         let update = updates[indexPath!.row]
-
+        
         // toggle status of like
         update.userHasLikedUpdate = !update.userHasLikedUpdate
         
         // increment or decrement total likes
         if update.userHasLikedUpdate {
             update.numberOfLikes += 1
+            
+            // call Parse function to like update
+            ParseHelper.likeUpdate(PFUser.currentUser()!, update: update)
+            
         } else {
             update.numberOfLikes -= 1
+            
+            // call Parse to unlike update
+            ParseHelper.unlikeUpdate(PFUser.currentUser()!, update: update)
         }
         
         // update the view cell
         cell.configureLikeForCell(update)
-
+        
         // display status of data model in console (for testing)
         for update in updates {
             print(update.userHasLikedUpdate)
         }
         print("==========")
-   
+        
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

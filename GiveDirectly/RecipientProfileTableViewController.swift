@@ -213,8 +213,6 @@ extension RecipientProfileTableViewController {
         
         // update the data model with liked status (has liked, increment # of likes)
         let indexPath = tableView.indexPathForCell(cell)
-        print("The indexPath is \(indexPath!.row).")
-        print("There are \(updates.count) items in the array.")
         let update = updates[indexPath!.row]
         
         // toggle status of like
@@ -223,8 +221,15 @@ extension RecipientProfileTableViewController {
         // increment or decrement total likes
         if update.userHasLikedUpdate {
             update.numberOfLikes += 1
+            
+            // call Parse function to like update
+            ParseHelper.likeUpdate(PFUser.currentUser()!, update: update)
+            
         } else {
             update.numberOfLikes -= 1
+            
+            // call Parse to unlike update
+            ParseHelper.unlikeUpdate(PFUser.currentUser()!, update: update)
         }
         
         // update the view cell

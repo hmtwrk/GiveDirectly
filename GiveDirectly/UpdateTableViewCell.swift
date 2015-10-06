@@ -32,6 +32,9 @@ class UpdateTableViewCell: UITableViewCell {
     @IBAction func likeButtonDidTap(sender: AnyObject) {
     
         delegate?.updateLikeButtonDidTap(self, sender: sender)
+        
+        // trigger the Parse updating in delegate?
+        // basically both delegates will make a call to the Parse helper and have that sync values
     }
     
     @IBAction func commentButtonDidTap(sender: AnyObject) {
@@ -76,6 +79,8 @@ class UpdateTableViewCell: UITableViewCell {
     }
     
     func configureLikeForCell(withUpdate: Update) {
+        
+        print(withUpdate.userHasLikedUpdate)
         
         self.likeButton.setTitle(String(withUpdate.numberOfLikes), forState: UIControlState.Normal)
         
