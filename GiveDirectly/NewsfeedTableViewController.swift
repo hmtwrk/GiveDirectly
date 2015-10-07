@@ -71,7 +71,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 //                                print("Gotcha suckaz.")
                                 update.userHasLikedUpdate = true
                             } else {
-//                                print("Other kids.")
+//                                print("Other kids."
                             }
                             
                         }

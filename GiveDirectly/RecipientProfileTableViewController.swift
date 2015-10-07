@@ -21,10 +21,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // test subclassing API call
-//        self.queryForTesting()
-        
+
         // make the Parse API call
         self.queryForRelatedUpdates()
         
@@ -47,6 +44,8 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
 
     
     // MARK: - Table view data source
+    
+    // first section holds static info cells, and second section holds related updates
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
@@ -54,13 +53,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // two static cells (stats + stories) with a dynamic number of updates
-//        return 2 + self.numberOfUpdates
-//        return 2
-        
-//        if section = 0, then 2 rows
-//        if section = 1, then updates.count
-        
+        // section 0 contains the two static cells, whereas section 1 can hold a dynamic amount
         if section == 0 {
             return 2
         } else {
@@ -74,7 +67,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         // determine which cell identifier to return
         let identifier: String
         
-        // section 0 for the two static cells
+        // determine which static cell to return for first section
         if indexPath.section == 0 {
             
             if indexPath.row == 0 {
@@ -97,6 +90,19 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         // configure cells
         if let recipientStatsCell = cell as? RecipientStatsTableViewCell {
             recipientStatsCell.configureStatsCell(recipientInfo)
+            
+            // load an image (should go in the table controller)
+            if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
+                recipientProfilePhoto.getDataInBackgroundWithBlock {
+                    (imageData: NSData?, error: NSError?) -> Void in
+                    if (error == nil) {
+                        let image = UIImage(data: imageData!)
+                        recipientStatsCell.recipientProfileImageView.image = image
+                    }
+                }
+            } else {
+                recipientStatsCell.recipientProfileImageView.image = UIImage(named: "blankProfileImage")
+            }
         }
         
         if let recipientStoriesCell = cell as? RecipientStoriesTableViewCell {
@@ -112,7 +118,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
             // this bit is dependent on the includeKey data, and safe if nil
             let recipientData:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
             
-            // following function takes an optional PFObject as a parameter
+            // following function takes an optional PFObject as a parameter (for update cell)
             ParseHelper.recipientImagesForCell(recipientUpdatesCell, withRecipientData: recipientData, orUpdateData: updateDataForCell)
         }
         
@@ -123,66 +129,33 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         
         return cell
     }
-    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//        // check to see if there's a cell at the tapped row
-//        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-//            
-//            let item: (AnyObject) = updates[indexPath.row]
-////            item.toggleChecked()
-//            
-//        }
-//    }
-    
-    // MARK: RelatedUpdateCellDelegate
-    func relatedUpdateCellLikeButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
-        // hello
-        print("Like button has been tapped!")
-    }
-    
-    func relatedUpdateCellCommentButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
-        // hi
-        print("Comment button has been tapped!")
-    }
-    
-    func relatedUpdateCellExtraButtonDidTap(cell: RecipientRelatedUpdateCell, sender: AnyObject) {
-        // another
-        print("Extra button has been tapped!")
-    }
 }
 
 
 // MARK: Parse API calls
 extension RecipientProfileTableViewController {
     
+    // TODO: move these delegate actions into own file?
+    
     // Parse query to determine number of update cells to append to the table view, as well as data for the updates
     func queryForRelatedUpdates() {
         
-        // return the newest updates that correspond to the selected Recipient, arranged in descending order
+        // return the newest updates that correspond to the selected Recipient
         let author = (recipientInfo as AnyObject)["gdid"] as! String
-        let query:PFQuery = PFQuery(className: "RecipientUpdates")
-        query.whereKey("GDID", equalTo: author)
-        query.orderByDescending("createdAt")
-//        query.limit = 30
-        query.findObjectsInBackgroundWithBlock {
+        
+        ParseHelper.relatedUpdatesForRecipient(author) {
             (results: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                self.numberOfUpdates = results!.count
+            
+            if let results = results {
+                self.numberOfUpdates = results.count
                 print(self.numberOfUpdates)
-//                self.updates = results!
                 self.updates = results as? [Update] ?? []
-//                print(self.updates)
-                
-                // make API call to determine which updates are liked by currentUser, and total number of likes
-//                self.queryForLikes(query)
                 
                 for update in self.updates {
                     update["userHasLikedUpdate"] = update.userHasLikedUpdate
                 }
                 
                 self.tableView?.reloadData()
-                
                 
             } else {
                 // log details of the failure
@@ -191,20 +164,24 @@ extension RecipientProfileTableViewController {
         }
     }
     
-    func queryForLikes(updatesQuery: PFQuery) {
-        
-        let likeQuery = Liked.query()
-        likeQuery?.whereKey("likedRecipientUpdate", matchesQuery: updatesQuery)
-        likeQuery?.findObjectsInBackgroundWithBlock {
-            (likes: [AnyObject]?, error: NSError?) -> Void in
-            if error == nil {
-                print("\(likes!.count) likes.")
-                self.tableView?.reloadData()
-            } else {
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
-    }
+    // incorporate this code into helper and then delete (might use it later)
+//    func queryForLikes(updatesQuery: PFQuery) {
+//        
+//        let likeQuery = Liked.query()
+//        likeQuery?.whereKey("likedRecipientUpdate", matchesQuery: updatesQuery)
+//        likeQuery?.findObjectsInBackgroundWithBlock {
+//            (likes: [AnyObject]?, error: NSError?) -> Void in
+//            if error == nil {
+//                print("\(likes!.count) likes.")
+//                self.tableView?.reloadData()
+//            } else {
+//                print("Error: \(error!) \(error!.userInfo)")
+//            }
+//        }
+//    }
+
+    
+    
 }
 
 extension RecipientProfileTableViewController {
@@ -245,17 +222,15 @@ extension RecipientProfileTableViewController {
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         // TODO: implement comment functionality
-        // needs to have the row and etc.
         
+        // open a segue to a comment-entry screen and save results to Parse
         
-        // create a Comment object with the user's objectId
-        // that points to the update (author to relatedUpdate with text)
     }
     
     func updateExtraButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         // TODO: implement extra functionality
         
-        // open a view that allows user to report, share, etc.
+        // open a view that allows user to report, share, follow?, etc.
     }
     
 }

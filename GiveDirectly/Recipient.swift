@@ -10,56 +10,10 @@ import UIKit
 
 class Recipient {
     
-//    class func getRecipients() -> [Recipient] {
-//        
-//        // creates an array of Recipient objects... take data from global variable for now?
-//        var recipientData = [Recipient]()
-//        
-//        if let recipientsFromParse = recipientBrowserData {
-//            for recipientItem in recipientsFromParse {
-//                let recipient = Recipient(recipient: recipient as! NSDictionary)
-//                recipientData.append(recipient)
-//            }
-//        }
-    
-        
-        
-//        if let URL = NSBundle.mainBundle().URLForResource("Recipients", withExtension: "plist") {
-//            if let recipientsFromPlist = NSArray(contentsOfURL: URL) {
-//                for dictionary in recipientsFromPlist {
-//                    let recipient = Recipient(dictionary: dictionary as! NSDictionary)
-//                    recipientData.append(recipient)
-//                }
-//            }
-//        }
-//        
-//        return recipientData
-//    }
-    
-    //    var recipientName: String
-    //    var timeStamp: String
-    //    var recipientStory: String
-    //    var recipientImage: UIImage
-    //    var paymentPhaseImage: UIImage
-    
     var recipientInfo: [AnyObject]
     var caption: String
     var comment: String
     var image: UIImage
-    
-    //    init(
-    //        recipientName: String,
-    //        timeStamp: String,
-    //        recipientStory: String,
-    //        recipientImage: UIImage,
-    //        paymentPhaseImage: UIImage
-    //        ) {
-    //            self.recipientName = recipientName
-    //            self.timeStamp = timeStamp
-    //            self.recipientStory = recipientStory
-    //            self.recipientImage = recipientImage
-    //            self.paymentPhaseImage = paymentPhaseImage
-    //    }
     
     init(recipientInfo: [AnyObject], caption: String, comment: String, image: UIImage) {
         self.recipientInfo = recipientInfo
@@ -79,19 +33,14 @@ class Recipient {
     
     class func queryParseForRecipients() {
         
-        //         Parse API call to return target recipient
+        // Parse API call to return target recipient
         let query:PFQuery = PFQuery(className: "Recipients")
         query.orderByAscending("createdAt")
-        // the Parse default query limit is 100 (there are now almost 300 recipients)
-//        query.limit = 20
+        
+        // query.limit = 20 (default = 100)
         query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
             recipientBrowserData = result!
             NSNotificationCenter.defaultCenter().postNotificationName("refreshRecipientCollectionView", object: nil)
         }
     }
-    
-//    func heightForStory(font: UIFont, width: CGFloat) -> CGFloat {
-//        let rect = NSString(string: comment).boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-//        return ceil(rect.height)
-//    }
 }

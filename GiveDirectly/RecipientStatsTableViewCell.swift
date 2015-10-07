@@ -27,22 +27,7 @@ class RecipientStatsTableViewCell: UITableViewCell {
         let recipientLocation:String? = (recipientStats as AnyObject)["village"] as? String
         let recipientGender:String? = (recipientStats as AnyObject)["gender"] as? String
         let recipientNumberOfChildren:Int? = (recipientStats as AnyObject)["children"] as? Int
-        
-        
-        // load an image
-        if let recipientProfilePhoto = recipientStats["image"] as? PFFile {
-            recipientProfilePhoto.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    let image = UIImage(data: imageData!)
-                    self.recipientProfileImageView.image = image
-                }
-            }
-        } else {
-            self.recipientProfileImageView.image = UIImage(named: "blankProfileImage")
-        }
-        
-        
+
         // safely convert Int to String without "Optional" appearing
         if recipientAge != nil {
             self.recipientAgeLabel.text = String(stringInterpolationSegment: recipientAge!)
@@ -82,11 +67,5 @@ class RecipientStatsTableViewCell: UITableViewCell {
         recipientProfileImageView.layer.borderWidth = 2.0
         recipientProfileImageView.layer.borderColor = UIColor.clearColor().CGColor
         recipientProfileImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
-        
-        
-    }
-    
-    
-    
-    
+    }  
 }

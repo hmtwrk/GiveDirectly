@@ -16,18 +16,7 @@ class BrowserViewCell: UICollectionViewCell {
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 //  @IBOutlet weak var timeLabel: UILabel!
-    
-//    var recipient: Recipient? {
-//        didSet {
-//            if let recipient = recipient {
-//                nameLabel.text = recipient.recipientName
-//                storyLabel.text = recipient.recipientStory
-//                profileImageView.image = recipient.recipientImage
-//                paymentPhaseImageView.image = recipient.paymentPhaseImage
-//                timeLabel.text = recipient.timeStamp
-//            }
-//        }
-//    }
+
     
     var recipient: Recipient? {
         didSet {
@@ -45,21 +34,6 @@ class BrowserViewCell: UICollectionViewCell {
         let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
         let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
         let paymentPhase:Int? = (recipientInfo as AnyObject)["phase"] as? Int
-        
-//        // load an image
-//        if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
-//            recipientProfilePhoto.getDataInBackgroundWithBlock {
-//                (imageData: NSData?, error: NSError?) -> Void in
-//                if (error == nil) {
-//                    let image = UIImage(data: imageData!)
-//                    self.profileImageView.image = image
-//                }
-//            }
-//        } else {
-//            self.profileImageView.image = UIImage(named: "blankProfileImage")
-//        }
-        
-        // show phase icon
 
         switch paymentPhase! {
         case 1:
@@ -69,14 +43,6 @@ class BrowserViewCell: UICollectionViewCell {
         default:
             self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
         }
-        
-        // make image round
-        /**
-        paymentPhaseImageView.layer.cornerRadius = self.paymentPhaseImageView.frame.size.width / 2
-        paymentPhaseImageView.clipsToBounds = true
-        paymentPhaseImageView.layer.borderWidth = 2.0
-        paymentPhaseImageView.layer.borderColor = UIColor.clearColor().CGColor
-        **/
         
         // assign constants to labels
         self.nameLabel.text = recipientName

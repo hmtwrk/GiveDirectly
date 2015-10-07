@@ -94,7 +94,6 @@ extension RecipientBrowserViewController {
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
             let recipientInfo: (AnyObject) = recipientBrowserData[indexPath!.item]
             toView.recipientInfo = recipientInfo
-            //            println(recipientInfo)
         }
     }
 }
