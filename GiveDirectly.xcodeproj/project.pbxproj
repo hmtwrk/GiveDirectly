@@ -25,6 +25,12 @@
 		4A7462C81B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462C21B3F095D00B8555C /* TPKeyboardAvoidingScrollView.m */; };
 		4A7462C91B3F095D00B8555C /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462C41B3F095D00B8555C /* TPKeyboardAvoidingTableView.m */; };
 		4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7462C61B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		4A7A3B6D1BC876CE00B304C6 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A7A3B6B1BC876CE00B304C6 /* GoogleSignIn.bundle */; settings = {ASSET_TAGS = (); }; };
+		4A7A3B6E1BC876CE00B304C6 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7A3B6C1BC876CE00B304C6 /* GoogleSignIn.framework */; settings = {ASSET_TAGS = (); }; };
+		4A7A3B701BC8772F00B304C6 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7A3B6F1BC8772F00B304C6 /* AddressBook.framework */; };
+		4A7A3B721BC8781900B304C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A7A3B711BC8781900B304C6 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
+		4A7A3B741BC87F4200B304C6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A3B731BC87F4200B304C6 /* SignInViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		4A7A3B751BC8853A00B304C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A7A3B711BC8781900B304C6 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
 		4A84350F1B7E605C008D5E08 /* UIImage+Decompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */; };
 		4A8435131B823F0B008D5E08 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8435121B823F0B008D5E08 /* Global.swift */; };
 		4AB19B131B3B538100B3E973 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB19B0D1B3B538100B3E973 /* Parse.framework */; };
@@ -105,6 +111,11 @@
 		4A7462C41B3F095D00B8555C /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		4A7462C51B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		4A7462C61B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		4A7A3B6B1BC876CE00B304C6 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		4A7A3B6C1BC876CE00B304C6 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		4A7A3B6F1BC8772F00B304C6 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		4A7A3B711BC8781900B304C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A7A3B731BC87F4200B304C6 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Decompression.swift"; sourceTree = "<group>"; };
 		4A8435121B823F0B008D5E08 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4AB19B0D1B3B538100B3E973 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -162,11 +173,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD91CBC1B2B30BB00A9FB23 /* SystemConfiguration.framework in Frameworks */,
+				4AD91CBE1B2B30C100A9FB23 /* StoreKit.framework in Frameworks */,
+				4A7A3B701BC8772F00B304C6 /* AddressBook.framework in Frameworks */,
 				4A47C6311BC8668700707B04 /* libsqlite3.tbd in Frameworks */,
 				4A47C62F1BC8667100707B04 /* libz.tbd in Frameworks */,
 				4AD91CB41B2B306F00A9FB23 /* AudioToolbox.framework in Frameworks */,
 				4AD91CB61B2B307A00A9FB23 /* CFNetwork.framework in Frameworks */,
 				4AB19B221B3B6C7900B3E973 /* FBSDKLoginKit.framework in Frameworks */,
+				4A7A3B6E1BC876CE00B304C6 /* GoogleSignIn.framework in Frameworks */,
 				4AD91CC81B2B30EB00A9FB23 /* CoreGraphics.framework in Frameworks */,
 				4AD91CC61B2B30E500A9FB23 /* CoreLocation.framework in Frameworks */,
 				4AB19B241B3B6C7900B3E973 /* FBSDKShareKit.framework in Frameworks */,
@@ -180,8 +195,6 @@
 				4AB19B231B3B6C7900B3E973 /* FBSDKMessengerShareKit.framework in Frameworks */,
 				4AB19B161B3B538100B3E973 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				4AD91CC01B2B30C900A9FB23 /* Security.framework in Frameworks */,
-				4AD91CBE1B2B30C100A9FB23 /* StoreKit.framework in Frameworks */,
-				4AD91CBC1B2B30BB00A9FB23 /* SystemConfiguration.framework in Frameworks */,
 				4AB19B201B3B6C7900B3E973 /* FBAudienceNetwork.framework in Frameworks */,
 				4AB19B281B3B714800B3E973 /* Bolts.framework in Frameworks */,
 			);
@@ -253,6 +266,9 @@
 		4AD91CC91B2B310E00A9FB23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A7A3B6F1BC8772F00B304C6 /* AddressBook.framework */,
+				4A7A3B6B1BC876CE00B304C6 /* GoogleSignIn.bundle */,
+				4A7A3B6C1BC876CE00B304C6 /* GoogleSignIn.framework */,
 				4A47C6301BC8668700707B04 /* libsqlite3.tbd */,
 				4A47C62E1BC8667100707B04 /* libz.tbd */,
 				4A7462BE1B3F095D00B8555C /* TPKeyboardAvoiding */,
@@ -311,6 +327,14 @@
 			name = "Donate View";
 			sourceTree = "<group>";
 		};
+		4AEB52791BCC27AB0005C908 /* Sign-in View */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A3B731BC87F4200B304C6 /* SignInViewController.swift */,
+			);
+			name = "Sign-in View";
+			sourceTree = "<group>";
+		};
 		4AF9507D1B306672004313DC /* User Profile View */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +380,7 @@
 		C437804F1B2933080018BD41 /* GiveDirectly */ = {
 			isa = PBXGroup;
 			children = (
+				4AEB52791BCC27AB0005C908 /* Sign-in View */,
 				4ADAF2441BA34F7F0004D7E9 /* Donate View */,
 				4ADAF11C1B9FC2E50004D7E9 /* Helpers */,
 				4ADAF1131B9E5BA80004D7E9 /* Models */,
@@ -381,6 +406,7 @@
 		C43780501B2933080018BD41 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4A7A3B711BC8781900B304C6 /* GoogleService-Info.plist */,
 				C43780511B2933080018BD41 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -486,9 +512,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A7A3B6D1BC876CE00B304C6 /* GoogleSignIn.bundle in Resources */,
 				C43780581B2933080018BD41 /* Main.storyboard in Resources */,
 				C437805D1B2933080018BD41 /* LaunchScreen.xib in Resources */,
 				C437805A1B2933080018BD41 /* Images.xcassets in Resources */,
+				4A7A3B721BC8781900B304C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +524,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A7A3B751BC8853A00B304C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +563,7 @@
 				4ADAF11B1B9FB8440004D7E9 /* Update.swift in Sources */,
 				4ADAF11E1B9FC2FD0004D7E9 /* ParseHelper.swift in Sources */,
 				4ADAF1151B9E5C110004D7E9 /* Post.swift in Sources */,
+				4A7A3B741BC87F4200B304C6 /* SignInViewController.swift in Sources */,
 				4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4A1BAF821B7AA9B500BEFCC9 /* DynamicLayout.swift in Sources */,
@@ -681,6 +711,10 @@
 				);
 				INFOPLIST_FILE = GiveDirectly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					GoogleSignIn.framework/GoogleSignIn,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.givedirectly.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -702,6 +736,10 @@
 				);
 				INFOPLIST_FILE = GiveDirectly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					GoogleSignIn.framework/GoogleSignIn,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.givedirectly.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

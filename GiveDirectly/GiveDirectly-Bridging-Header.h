@@ -12,6 +12,7 @@
 #import <Bolts/Bolts.h>
 #import <ParseUI/ParseUI.h>
 #import <Parse/PFObject+Subclass.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 
 #endif

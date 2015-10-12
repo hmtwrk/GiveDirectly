@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PFn-dI-Y68">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TCn-P6-brB">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -2031,6 +2031,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IF3-zn-aAX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3021" y="279"/>
+        </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="veR-Ys-QiH">
+            <objects>
+                <viewController id="TCn-P6-brB" customClass="SignInViewController" customModule="GiveDirectly" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hLV-lt-bMO"/>
+                        <viewControllerLayoutGuide type="bottom" id="kYq-wf-mBU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WT4-r9-GO4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ykp-Rv-G0s" customClass="GIDSignInButton">
+                                <rect key="frame" x="80" y="259" width="160" height="49"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="49" id="2bO-c2-dJo"/>
+                                    <constraint firstAttribute="height" constant="100" id="3Jx-EE-lgn"/>
+                                    <constraint firstAttribute="height" constant="49" id="I00-Tn-Ixf"/>
+                                    <constraint firstAttribute="width" secondItem="Ykp-Rv-G0s" secondAttribute="height" multiplier="160:49" id="UMh-tL-orK"/>
+                                    <constraint firstAttribute="width" constant="160" id="hSs-YP-qeF"/>
+                                    <constraint firstAttribute="width" constant="160" id="p2P-NO-XnZ"/>
+                                    <constraint firstAttribute="width" secondItem="Ykp-Rv-G0s" secondAttribute="height" multiplier="8:5" id="zRI-s0-Vse"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3Jx-EE-lgn"/>
+                                        <exclude reference="I00-Tn-Ixf"/>
+                                        <exclude reference="UMh-tL-orK"/>
+                                        <exclude reference="hSs-YP-qeF"/>
+                                        <exclude reference="zRI-s0-Vse"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNy-U0-vsp">
+                                <rect key="frame" x="195" y="356" width="110" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.68235294120000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="BBU-Bo-Iht"/>
+                                </constraints>
+                                <state key="normal" title="DISCONNECT"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiI-Yl-EWU">
+                                <rect key="frame" x="15" y="356" width="110" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.68235294120000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="SIGN-OUT"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWw-wP-0Tl">
+                                <rect key="frame" x="87" y="143" width="147.5" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cNy-U0-vsp" secondAttribute="trailing" constant="15" id="57Z-nV-lgJ"/>
+                            <constraint firstItem="rWw-wP-0Tl" firstAttribute="centerX" secondItem="WT4-r9-GO4" secondAttribute="centerX" id="Gf9-S1-vsG"/>
+                            <constraint firstItem="rWw-wP-0Tl" firstAttribute="top" secondItem="hLV-lt-bMO" secondAttribute="bottom" constant="123" id="K7j-Cp-FRx"/>
+                            <constraint firstItem="Ykp-Rv-G0s" firstAttribute="centerX" secondItem="WT4-r9-GO4" secondAttribute="centerX" id="Sdc-Bm-Gjg"/>
+                            <constraint firstItem="cNy-U0-vsp" firstAttribute="top" secondItem="Ykp-Rv-G0s" secondAttribute="bottom" constant="48" id="Wvv-Us-pdP"/>
+                            <constraint firstItem="Ykp-Rv-G0s" firstAttribute="centerY" secondItem="WT4-r9-GO4" secondAttribute="centerY" id="m1n-fQ-XjI"/>
+                            <constraint firstItem="SiI-Yl-EWU" firstAttribute="top" secondItem="Ykp-Rv-G0s" secondAttribute="bottom" constant="47.5" id="n6r-Ye-0w8"/>
+                            <constraint firstItem="SiI-Yl-EWU" firstAttribute="leading" secondItem="WT4-r9-GO4" secondAttribute="leading" constant="15" id="ovZ-gu-1Ng"/>
+                            <constraint firstItem="cNy-U0-vsp" firstAttribute="width" secondItem="SiI-Yl-EWU" secondAttribute="width" id="t9T-Un-igk"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZM7-vL-hbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3858" y="968"/>
         </scene>
         <!--Donate-->
         <scene sceneID="4vC-fS-60o">
