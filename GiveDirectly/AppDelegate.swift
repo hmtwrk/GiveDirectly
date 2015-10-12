@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         
         // initialize Google sign-in
+        // "No registered handler for URL scheme" errors refer to other apps that may be installed on the device
         var configureError: NSError?
 //        GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
