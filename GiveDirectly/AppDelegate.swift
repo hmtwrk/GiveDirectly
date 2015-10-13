@@ -11,7 +11,7 @@ import Parse
 import Bolts
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
     
@@ -44,9 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navBarAppearance.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
         navBarAppearance.shadowImage = UIImage(named: "TransparentPixel")
         
-        // register Parse subclass (necessary?)
-//        Post.registerSubclass()
-        
         
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
@@ -59,6 +56,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // Configure Google Sign-in
+        GIDSignIn.sharedInstance().clientID = "568617369900-o0t0a9jmjmtt07i1ueaic5moe5lnuv34.apps.googleusercontent.com"
+        
+        
+        // initialize Google sign-in
+        // "No registered handler for URL scheme" errors refer to other apps that may be installed on the device
+//        var configureError: NSError?
+        
+        // the following line is only necessary when using Cocoapods?
+        // the values are handled directly through GIDSignIn just above
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+        
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        GIDSignIn.sharedInstance().delegate = self
+
+        
+        
+        
         // clear out the current user, if one exists
 //        PFUser.logOut()
         
@@ -68,12 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Check for user's login status
         self.checkUserStatus()
         self.refreshUserData()
-        
-        
-        
         return true
     }
     
+    // MARK: app life-cycle functions
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -96,6 +110,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    // MARK: Google sign-in
+    
+    // For Google sign-in to work, GiveDirectly > Targets > GiveDirectly > Build Settings
+    // > Other Linker Flags must be set to -force_load GoogleSignIn.framework/GoogleSignIn
+    // (setting that field to -ObjC will break Parse-related functionality)
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                    // for client-side use only!
+            let idToken = user.authentication.idToken   // safe to send to the server
+            let name = user.profile.name
+            let email = user.profile.email
+            
+            // "ToggleAuthUINotification" is the aName, of type String
+            NSNotificationCenter.defaultCenter().postNotificationName(
+                "ToggleAuthUINotification",
+                object: nil,
+                userInfo: ["statusText": "Signed in user: \(name)"])
+            
+            print(userId)
+            print(idToken)
+            print(name)
+            print(email)
+            
+        } else {
+            print("\(error.localizedDescription)")
+            NSNotificationCenter.defaultCenter().postNotificationName(
+                "ToggleAuthUINotification", object: nil, userInfo: nil)
+        }
+    }
+    
+    
+    // IMPORTANT: if you need to pass the currently signed-in user to a backend server, send the user's ID token to your backend server and validate the token on the server.
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
+        // perform any operations when the user disconnects from app here
+        NSNotificationCenter.defaultCenter().postNotificationName("ToggleAuthUINotification", object: nil, userInfo: ["statusText": "User has disconnected."])
+        
+    }
+    
+    // MARK: Parse-related sign-in
     func checkUserStatus() {
         
         let currentUser = PFUser.currentUser()
