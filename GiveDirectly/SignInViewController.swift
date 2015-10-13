@@ -26,11 +26,8 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
         
         self.statusText.text = "Hang out with Google."
         
-        // Uncomment to automatically sign in the user.
-        //GIDSignIn.sharedInstance().signInSilently()
-        
-        // TODO(developer) Configure the sign-in button look/feel
-        // ...
+        // if a token is already stored on the device, the user won't have to login again
+        GIDSignIn.sharedInstance().signInSilently()
         
         // the colon after receiveToggleAuthUINotification is extremely important
         NSNotificationCenter.defaultCenter().addObserver(self,
