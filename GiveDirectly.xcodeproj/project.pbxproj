@@ -69,6 +69,8 @@
 		C437805A1B2933080018BD41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43780591B2933080018BD41 /* Images.xcassets */; };
 		C437805D1B2933080018BD41 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437805B1B2933080018BD41 /* LaunchScreen.xib */; };
 		C43780691B2933080018BD41 /* GiveDirectlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780681B2933080018BD41 /* GiveDirectlyTests.swift */; };
+		C46DAB621BCC04FD00F2BC97 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46DAB541BCC018400F2BC97 /* Alamofire.framework */; };
+		C46DAB631BCC04FD00F2BC97 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C46DAB541BCC018400F2BC97 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C46E340D1B73FDD2001449E2 /* NSDate+Ago.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +118,20 @@
 			remoteInfo = "Alamofire OSX Tests";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C46DAB661BCC04FD00F2BC97 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C46DAB631BCC04FD00F2BC97 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4A1848141B44A375009D6026 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A47C6311BC8668700707B04 /* libsqlite3.tbd in Frameworks */,
+				C46DAB621BCC04FD00F2BC97 /* Alamofire.framework in Frameworks */,
 				4A47C62F1BC8667100707B04 /* libz.tbd in Frameworks */,
 				4AD91CB41B2B306F00A9FB23 /* AudioToolbox.framework in Frameworks */,
 				4AD91CB61B2B307A00A9FB23 /* CFNetwork.framework in Frameworks */,
@@ -462,6 +479,7 @@
 				C43780491B2933080018BD41 /* Sources */,
 				C437804A1B2933080018BD41 /* Frameworks */,
 				C437804B1B2933080018BD41 /* Resources */,
+				C46DAB661BCC04FD00F2BC97 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -768,6 +786,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -789,6 +808,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

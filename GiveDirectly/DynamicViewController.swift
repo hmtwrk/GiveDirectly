@@ -9,6 +9,7 @@
 
 import UIKit
 import AVFoundation
+import Alamofire
 
 class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutDelegate {
     
@@ -19,6 +20,22 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // AlamoFire requests
+        let user = "admin"
+        let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
+        
+        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        print(base64Credentials)
+        
+        Alamofire.request(.GET, "https://mobile-backend.givedirectly.org/api/v1/recipients/", headers: headers)
+            .responseJSON { response in
+                debugPrint(response)
+        }
+
+
         // make Parse API call from Recipient class
         Recipient.queryParseForRecipients()
         
