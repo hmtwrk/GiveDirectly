@@ -56,15 +56,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        // Configure Google Sign-in (don't need this because configured manually?)
+        // Configure Google Sign-in
         GIDSignIn.sharedInstance().clientID = "568617369900-o0t0a9jmjmtt07i1ueaic5moe5lnuv34.apps.googleusercontent.com"
         
         
         // initialize Google sign-in
         // "No registered handler for URL scheme" errors refer to other apps that may be installed on the device
-        var configureError: NSError?
+//        var configureError: NSError?
+        
+        // the following line is only necessary when using Cocoapods?
+        // the values are handled directly through GIDSignIn just above
 //        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
         GIDSignIn.sharedInstance().delegate = self
 
@@ -124,16 +128,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let name = user.profile.name
             let email = user.profile.email
             
-            // ...
-            // silence the warnings above by completing code that uses those constants
-            // what to do after user signs in?
+            // "ToggleAuthUINotification" is the aName, of type String
+            NSNotificationCenter.defaultCenter().postNotificationName(
+                "ToggleAuthUINotification",
+                object: nil,
+                userInfo: ["statusText": "Signed in user: \(name)"])
             
-            // 1) send the token to Parse
-            // 2) populate the auth field similar to how Facebook signin does
-            
+            print(userId)
+            print(idToken)
+            print(name)
+            print(email)
             
         } else {
             print("\(error.localizedDescription)")
+            NSNotificationCenter.defaultCenter().postNotificationName(
+                "ToggleAuthUINotification", object: nil, userInfo: nil)
         }
     }
     
@@ -142,6 +151,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
         // perform any operations when the user disconnects from app here
+        NSNotificationCenter.defaultCenter().postNotificationName("ToggleAuthUINotification", object: nil, userInfo: ["statusText": "User has disconnected."])
+        
     }
     
     // MARK: Parse-related sign-in

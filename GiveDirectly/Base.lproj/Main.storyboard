@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TCn-P6-brB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PFn-dI-Y68">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -1525,7 +1525,13 @@
                             <outlet property="delegate" destination="8q9-9F-fKg" id="y4m-Jg-xzv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Newsfeed" id="wb8-Cs-dzl"/>
+                    <navigationItem key="navigationItem" title="Newsfeed" id="wb8-Cs-dzl">
+                        <barButtonItem key="leftBarButtonItem" title="Sign in" id="G13-Vz-edg">
+                            <connections>
+                                <segue destination="TCn-P6-brB" kind="show" id="2jE-81-wEj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXK-Jk-08l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2075,15 +2081,21 @@
                                     <constraint firstAttribute="width" constant="110" id="BBU-Bo-Iht"/>
                                 </constraints>
                                 <state key="normal" title="DISCONNECT"/>
+                                <connections>
+                                    <action selector="didTapDisconnect:" destination="TCn-P6-brB" eventType="touchUpInside" id="DRo-1w-0BQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiI-Yl-EWU">
                                 <rect key="frame" x="15" y="356" width="110" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.68235294120000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="SIGN-OUT"/>
+                                <connections>
+                                    <action selector="didTapSignOut:" destination="TCn-P6-brB" eventType="touchUpInside" id="qn0-Ku-e1k"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWw-wP-0Tl">
-                                <rect key="frame" x="87" y="143" width="147.5" height="20.5"/>
+                                <rect key="frame" x="87" y="187" width="147.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2105,10 +2117,16 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="disconnectButton" destination="cNy-U0-vsp" id="iz1-Bl-meN"/>
+                        <outlet property="signInButton" destination="Ykp-Rv-G0s" id="CBp-5C-7D4"/>
+                        <outlet property="signOutButton" destination="SiI-Yl-EWU" id="A3a-ew-Yhe"/>
+                        <outlet property="statusText" destination="rWw-wP-0Tl" id="bBA-NY-7Ah"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZM7-vL-hbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3858" y="968"/>
+            <point key="canvasLocation" x="-2623" y="-1039"/>
         </scene>
         <!--Donate-->
         <scene sceneID="4vC-fS-60o">
