@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class Recipient {
     
@@ -32,6 +33,42 @@ class Recipient {
     }
     
     class func queryParseForRecipients() {
+        // AlamoFire requests
+        let user = "admin"
+        let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
+        
+        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        print(base64Credentials)
+        
+        /**
+        // Get a list of all recipients
+        Alamofire.request(.GET, "https://mobile-backend.givedirectly.org/api/v1/recipients/", headers: headers)
+        .responseJSON { response in
+        let json = response.result.value as! NSDictionary
+        print (json)
+        }
+        **/
+        
+        // Query for a specific recipient
+        Alamofire.request(.GET, "https://mobile-backend.givedirectly.org/api/v1/recipients/gd-10017093", headers: headers)
+            .responseJSON { response in
+            if let value: AnyObject = response.result.value {
+                let json = JSON(value)
+                print(json)
+                if let recipientName = json["recipient"]["firstName"].string {
+                    print(recipientName)
+                }
+                if let spendingPlans = json["recipient"]["spendingPlans"].string {
+                    print(spendingPlans)
+                }
+                if let phase = json["recipient"]["phase"].string {
+                    print(phase)
+                }
+            }
+        }
         
         // Parse API call to return target recipient
         let query:PFQuery = PFQuery(className: "Recipients")

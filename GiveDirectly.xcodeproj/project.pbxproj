@@ -76,6 +76,7 @@
 		C437805D1B2933080018BD41 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C437805B1B2933080018BD41 /* LaunchScreen.xib */; };
 		C43780691B2933080018BD41 /* GiveDirectlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43780681B2933080018BD41 /* GiveDirectlyTests.swift */; };
 		C46E340D1B73FDD2001449E2 /* NSDate+Ago.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */; };
+		C4DC37E81BD53ADF009B04D4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC37E71BD53ADF009B04D4 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +216,7 @@
 		C43780671B2933080018BD41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C43780681B2933080018BD41 /* GiveDirectlyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveDirectlyTests.swift; sourceTree = "<group>"; };
 		C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Ago.swift"; sourceTree = "<group>"; };
+		C4DC37E71BD53ADF009B04D4 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +373,7 @@
 		4ADAF11C1B9FC2E50004D7E9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C4DC37E71BD53ADF009B04D4 /* SwiftyJSON.swift */,
 				C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */,
 				4A8435121B823F0B008D5E08 /* Global.swift */,
 				4ADAF11D1B9FC2FD0004D7E9 /* ParseHelper.swift */,
@@ -666,6 +669,7 @@
 				4A6A60B31B6AB97A00C3F142 /* UpdateTableViewCell.swift in Sources */,
 				4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4A6A60B71B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift in Sources */,
+				C4DC37E81BD53ADF009B04D4 /* SwiftyJSON.swift in Sources */,
 				4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */,
 				4ADAF11B1B9FB8440004D7E9 /* Update.swift in Sources */,
 				4ADAF11E1B9FC2FD0004D7E9 /* ParseHelper.swift in Sources */,
