@@ -21,12 +21,15 @@ class RecipientStatsTableViewCell: UITableViewCell {
     
     func configureStatsCell(recipientStats: JSON) {
         
-        let recipientName:String? = recipientStats["recipients"]["firstName"].string
-        let recipientAge:Int? = recipientStats["recipients"]["age"].int
-        let recipientStatus:String? = recipientStats["recipients"]["maritalStatus"].string
-        let recipientLocation:String? = recipientStats["recipients"]["village"].string
-        let recipientGender:String? = recipientStats["recipients"]["gender"].string
-        let recipientNumberOfChildren:Int? = recipientStats["recipients"]["children"].int
+        print("ready now?")
+        print("The stats are: \(recipientStats).")
+        
+        let recipientName:String? = recipientStats["firstName"].string
+        let recipientAge:Int? = recipientStats["age"].int
+        let recipientStatus:String? = recipientStats["maritalStatus"].string
+        let recipientLocation:String? = recipientStats["village"].string
+        let recipientGender:String? = recipientStats["gender"].string
+        let recipientNumberOfChildren:Int? = recipientStats["children"].int
 
         // safely convert Int to String without "Optional" appearing
         if recipientAge != nil {

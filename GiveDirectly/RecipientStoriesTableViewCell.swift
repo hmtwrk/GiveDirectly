@@ -25,11 +25,12 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 
     func configureStoriesCell(recipientStories: JSON) {
         
-        let recipientPayment:String? = recipientStories["recipients"]["spending"].string
-        let recipientGoals:String? = recipientStories["recipients"]["goals"].string
-        let recipientHardships:String? = recipientStories["recipients"]["achievement"].string
-        let recipientChallenges:String? = recipientStories["recipients"]["challenges"].string
-        let paymentPhase:Int? = recipientStories["recipients"]["phase"].int
+        
+        let recipientPayment:String? = recipientStories["spending"].string
+        let recipientGoals:String? = recipientStories["goals"].string
+        let recipientHardships:String? = recipientStories["achievement"].string
+        let recipientChallenges:String? = recipientStories["challenges"].string
+        let paymentPhase:Int? = recipientStories["phase"].int
         
         self.spendingPlansTextView.text = recipientPayment
 //        self.paymentTextView.sizeToFit()
@@ -40,15 +41,20 @@ class RecipientStoriesTableViewCell: UITableViewCell {
         self.achievementsTextView.text = recipientChallenges
 //        self.challengesTextView.sizeToFit()
         
+        
+        print("===============")
+        print(recipientStories["phase"])
+        print(paymentPhase)
+        
         // display proper payment phase
-        switch paymentPhase! {
-        case 1:
-            self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
-        case 2:
-            self.paymentPhaseImageView.image = UIImage(named: "phaseComplete")
-        default:
-            self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
-        }
+//        switch paymentPhase! {
+//        case 1:
+//            self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
+//        case 2:
+//            self.paymentPhaseImageView.image = UIImage(named: "phaseComplete")
+//        default:
+//            self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
+//        }
         
         donorImageView.layer.cornerRadius = self.donorImageView.frame.size.width / 2
         donorImageView.clipsToBounds = true
