@@ -11,7 +11,8 @@ import UIKit
 class RecipientProfileTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
     // prepare variable for receiving data from segue
-    var recipientInfo: AnyObject = ""
+//    var recipientInfo: AnyObject = ""
+    var recipientInfo: JSON = ""
     
     // prepare variable for related Update object
     var numberOfUpdates: Int = 0
@@ -23,11 +24,12 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         super.viewDidLoad()
 
         // make the Parse API call
-        self.queryForRelatedUpdates()
+//        self.queryForRelatedUpdates()
         
         // set navigation title to match recipient's name
-        let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
-        self.recipientNameData = recipientName!
+        let recipientName = recipientInfo["firstName"].string!
+//        print(recipientInfo["firstName"])
+        self.recipientNameData = recipientName
         
         // Fill the navigation title with the recipient's name (from Parse query)
         self.navigationItem.title = recipientName
@@ -138,31 +140,31 @@ extension RecipientProfileTableViewController {
     // TODO: move these delegate actions into own file?
     
     // Parse query to determine number of update cells to append to the table view, as well as data for the updates
-    func queryForRelatedUpdates() {
-        
-        // return the newest updates that correspond to the selected Recipient
-        let author = (recipientInfo as AnyObject)["gdid"] as! String
-        
-        ParseHelper.relatedUpdatesForRecipient(author) {
-            (results: [AnyObject]?, error: NSError?) -> Void in
-            
-            if let results = results {
-                self.numberOfUpdates = results.count
-                print(self.numberOfUpdates)
-                self.updates = results as? [Update] ?? []
-                
-                for update in self.updates {
-                    update["userHasLikedUpdate"] = update.userHasLikedUpdate
-                }
-                
-                self.tableView?.reloadData()
-                
-            } else {
-                // log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
-    }
+//    func queryForRelatedUpdates() {
+//        
+//        // return the newest updates that correspond to the selected Recipient
+//        let author = (recipientInfo as AnyObject)["gdid"] as! String
+//        
+//        ParseHelper.relatedUpdatesForRecipient(author) {
+//            (results: [AnyObject]?, error: NSError?) -> Void in
+//            
+//            if let results = results {
+//                self.numberOfUpdates = results.count
+//                print(self.numberOfUpdates)
+//                self.updates = results as? [Update] ?? []
+//                
+//                for update in self.updates {
+//                    update["userHasLikedUpdate"] = update.userHasLikedUpdate
+//                }
+//                
+//                self.tableView?.reloadData()
+//                
+//            } else {
+//                // log details of the failure
+//                print("Error: \(error!) \(error!.userInfo)")
+//            }
+//        }
+//    }
     
     // incorporate this code into helper and then delete (might use it later)
 //    func queryForLikes(updatesQuery: PFQuery) {

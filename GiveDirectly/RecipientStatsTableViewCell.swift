@@ -19,14 +19,14 @@ class RecipientStatsTableViewCell: UITableViewCell {
     @IBOutlet weak var recipientLocationLabel: UILabel!
     
     
-    func configureStatsCell(recipientStats: AnyObject) {
+    func configureStatsCell(recipientStats: JSON) {
         
-        let recipientName:String? = (recipientStats as AnyObject)["firstName"] as? String
-        let recipientAge:Int? = (recipientStats as AnyObject)["age"] as? Int
-        let recipientStatus:String? = (recipientStats as AnyObject)["maritalStatus"] as? String
-        let recipientLocation:String? = (recipientStats as AnyObject)["village"] as? String
-        let recipientGender:String? = (recipientStats as AnyObject)["gender"] as? String
-        let recipientNumberOfChildren:Int? = (recipientStats as AnyObject)["children"] as? Int
+        let recipientName:String? = recipientStats["recipients"]["firstName"].string
+        let recipientAge:Int? = recipientStats["recipients"]["age"].int
+        let recipientStatus:String? = recipientStats["recipients"]["maritalStatus"].string
+        let recipientLocation:String? = recipientStats["recipients"]["village"].string
+        let recipientGender:String? = recipientStats["recipients"]["gender"].string
+        let recipientNumberOfChildren:Int? = recipientStats["recipients"]["children"].int
 
         // safely convert Int to String without "Optional" appearing
         if recipientAge != nil {

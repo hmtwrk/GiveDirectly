@@ -10,6 +10,8 @@ import UIKit
 
 // initial recipient collection view data
 var recipientBrowserData = [AnyObject]()
+//var dynamicRecipientData = [JSON]()
+var dynamicRecipientData: JSON = ""
 
 var testData: String = ""
 

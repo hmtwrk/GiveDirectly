@@ -12,15 +12,14 @@ import AVFoundation
 
 class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutDelegate {
     
-    // Uncomment this code when Parse is wired up.
-    //    var recipients = [AnyObject]()
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // make Parse API call from Recipient class
-        Recipient.queryParseForRecipients()
+//        Recipient.queryParseForRecipients()
+        
+        // get JSON data from API
+        Recipient.retrieveJSON()
         
         collectionView!.backgroundColor = UIColor.whiteColor()
         _ = CGRectGetWidth(collectionView!.bounds) / 2
@@ -37,14 +36,17 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
     }
     
     override func viewDidAppear(animated: Bool) {
-//        println(recipientBrowserData)
+        
     }
 }
 
+// MARK: Collection View Data Source
 extension RecipientBrowserViewController {
     
     func refreshCollection(notification: NSNotification) {
+//        print("Reload activated.")
         self.collectionView?.reloadData()
+//        print(dynamicRecipientData["recipients"].count)
     }
     
     func heightForStory(story: String, font: UIFont, width: CGFloat) -> CGFloat {
@@ -53,8 +55,11 @@ extension RecipientBrowserViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(recipientBrowserData.count)
-        return recipientBrowserData.count
+//        print(recipientBrowserData.count)
+//        return recipientBrowserData.count
+//        print("There are \(dynamicRecipientData.count) items in the section.")
+//        return dynamicRecipientData.count
+        return dynamicRecipientData["recipients"].count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -62,29 +67,34 @@ extension RecipientBrowserViewController {
         //        cell.configureCellWithParse(recipients[indexPath.item])
         
         
-        let recipientDataForCell = recipientBrowserData[indexPath.item]
+//        let recipientDataForCell = recipientBrowserData[indexPath.item]
+        let recipientDataForCell = dynamicRecipientData["recipients"][indexPath.item]
+//        let JSONindex = dynamicRecipientData.count
+//        print("The index is: \(JSONindex).")
         
-        cell.recipient = recipientDataForCell as? Recipient
-        
+        // TODO: check this out... is this even needed anymore?
+//        cell.recipient = recipientDataForCell as? Recipient
         
         // load an image
-        if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
-            recipientProfilePhoto.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    let image = UIImage(data: imageData!)
-                    cell.profileImageView.image = image
-                } else {
-                    // there was an error
-                    print("There was an error of \(error).")
-                }
-            }
-        } else {
-            cell.profileImageView.image = UIImage(named: "blankProfileImage")
-        }
+//        if let recipientProfilePhoto = recipientDataForCell["image"] as? PFFile {
+//            recipientProfilePhoto.getDataInBackgroundWithBlock {
+//                (imageData: NSData?, error: NSError?) -> Void in
+//                if (error == nil) {
+//                    let image = UIImage(data: imageData!)
+//                    cell.profileImageView.image = image
+//                } else {
+//                    // there was an error
+//                    print("There was an error of \(error).")
+//                }
+//            }
+//        } else {
+//            cell.profileImageView.image = UIImage(named: "blankProfileImage")
+//        }
         
         
-        cell.configureCellWithParse(recipientDataForCell)
+//        cell.configureCellWithParse(recipientDataForCell)
+        cell.configureCellWithData(recipientDataForCell)
+//        print(indexPath.item)
         return cell
     }
     
@@ -92,7 +102,7 @@ extension RecipientBrowserViewController {
         if segue.identifier == "RecipientProfileSegue" {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
-            let recipientInfo: (AnyObject) = recipientBrowserData[indexPath!.item]
+            let recipientInfo = dynamicRecipientData["recipients"][indexPath!.item]
             toView.recipientInfo = recipientInfo
         }
     }
@@ -115,15 +125,20 @@ extension RecipientBrowserViewController {
     
     func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         
-        let annotation: (AnyObject) = recipientBrowserData[indexPath.item]
-        let story: String? = (annotation as AnyObject)["goals"] as? String
+        let annotation = dynamicRecipientData["recipients"][indexPath.item]["spendingPlans"]
+//        print("Annotation is:\(annotation).")
+//        let annotation: (String) = dynamicRecipientData[0]
+        
+        let story = annotation.string
+//        print("The story is: \(story!)")
+//        let story = dynamicRecipientData["recipient"]["spendingPlans"].string
 //        let font = UIFont(name: "HelveticaNeue", size: 13)!
         let font = UIFont.systemFontOfSize(14)
         let storyHeight = self.heightForStory(story!, font: font, width: width)
-//        let storyHeight = 68
-//        let height = CGFloat(4 + 17 + 4 + storyHeight + 4)
+//        let storyHeight = 68//        let height = CGFloat(4 + 17 + 4 + storyHeight + 4)
         let height = 4 + 17 + 4 + storyHeight + 4
         return height
     }
+
     
 }

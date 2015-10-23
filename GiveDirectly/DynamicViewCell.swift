@@ -16,6 +16,8 @@ class BrowserViewCell: UICollectionViewCell {
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 //  @IBOutlet weak var timeLabel: UILabel!
+    
+    var displayName: String = ""
 
     
     var recipient: Recipient? {
@@ -29,13 +31,27 @@ class BrowserViewCell: UICollectionViewCell {
         }
     }
     
-    func configureCellWithParse(recipientInfo: AnyObject) {
+    // TODO: this function would have a parameter type of JSON:
+     func configureCellWithData(data: JSON) {
+//    func configureCellWithParse(recipientInfo: AnyObject) {
+    
+        // Ming To style:
+        // let displayName = data["firstName"].string!
+        // (using implicitly unwrapped optional will crash if data is nil, however) solve this way:
+        // let displayName = data["firstName"].string ?? ""
         
-        let recipientName:String? = (recipientInfo as AnyObject)["firstName"] as? String
-        let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
-        let paymentPhase:Int? = (recipientInfo as AnyObject)["phase"] as? Int
+//        print(data)
+        
+        let recipientName = data["firstName"].string ?? "Kangaroo"
+        let recipientStory = data["goals"].string ?? "jumpin' around"
+        let paymentPhase = data["phase"].int ?? 0
+//        let recipientName:String? = recipientInfo["firstName"] as? String
+//        let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
+//        let paymentPhase:Int? = (recipientInfo as AnyObject)["phase"] as? Int
+        
+        
 
-        switch paymentPhase! {
+        switch paymentPhase {
         case 1:
             self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
         case 2:
@@ -46,10 +62,9 @@ class BrowserViewCell: UICollectionViewCell {
         
         // assign constants to labels
         self.nameLabel.text = recipientName
-        self.storyLabel.text = recipientProfileStory
+//        self.storyLabel.text = recipientProfileStory
+        self.storyLabel.text = recipientStory
         
-//      self.timeLabel.text = "0d"
-//      self.profileImageView.image = image
     }
     
     

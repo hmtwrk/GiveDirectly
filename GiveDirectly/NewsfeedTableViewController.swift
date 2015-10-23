@@ -68,10 +68,9 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 //                            print(PFUser.currentUser() == like["fromUser"] as? PFObject)
                         
                             if like["fromUser"] as? PFObject == PFUser.currentUser() {
-//                                print("Gotcha suckaz.")
                                 update.userHasLikedUpdate = true
                             } else {
-//                                print("Other kids."
+                                //
                             }
                             
                         }
@@ -203,10 +202,10 @@ extension NewsfeedTableViewController {
         cell.configureLikeForCell(update)
         
         // display status of data model in console (for testing)
-        for update in updates {
-            print(update.userHasLikedUpdate)
-        }
-        print("==========")
+//        for update in updates {
+//            print(update.userHasLikedUpdate)
+//        }
+//        print("==========")
         
     }
     

@@ -23,13 +23,13 @@ class RecipientStoriesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 
-    func configureStoriesCell(recipientStories: AnyObject) {
+    func configureStoriesCell(recipientStories: JSON) {
         
-        let recipientPayment:String? = (recipientStories as AnyObject)["spending"] as? String
-        let recipientGoals:String? = (recipientStories as AnyObject)["goals"] as? String
-        let recipientHardships:String? = (recipientStories as AnyObject)["achievement"] as? String
-        let recipientChallenges:String? = (recipientStories as AnyObject)["challenges"] as? String
-        let paymentPhase:Int? = (recipientStories as AnyObject)["phase"] as? Int
+        let recipientPayment:String? = recipientStories["recipients"]["spending"].string
+        let recipientGoals:String? = recipientStories["recipients"]["goals"].string
+        let recipientHardships:String? = recipientStories["recipients"]["achievement"].string
+        let recipientChallenges:String? = recipientStories["recipients"]["challenges"].string
+        let paymentPhase:Int? = recipientStories["recipients"]["phase"].int
         
         self.spendingPlansTextView.text = recipientPayment
 //        self.paymentTextView.sizeToFit()

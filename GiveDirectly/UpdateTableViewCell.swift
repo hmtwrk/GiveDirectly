@@ -80,7 +80,7 @@ class UpdateTableViewCell: UITableViewCell {
     
     func configureLikeForCell(withUpdate: Update) {
         
-        print(withUpdate.userHasLikedUpdate)
+//        print(withUpdate.userHasLikedUpdate)
         
         self.likeButton.setTitle(String(withUpdate.numberOfLikes), forState: UIControlState.Normal)
         
