@@ -125,14 +125,11 @@ extension RecipientBrowserViewController {
     
     func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         
+        // calculates the size of the text by using the content from spendingPlans
         let annotation = dynamicRecipientData["recipients"][indexPath.item]["spendingPlans"]
 //        print("Annotation is:\(annotation).")
-//        let annotation: (String) = dynamicRecipientData[0]
         
         let story = annotation.string
-//        print("The story is: \(story!)")
-//        let story = dynamicRecipientData["recipient"]["spendingPlans"].string
-//        let font = UIFont(name: "HelveticaNeue", size: 13)!
         let font = UIFont.systemFontOfSize(14)
         let storyHeight = self.heightForStory(story!, font: font, width: width)
 //        let storyHeight = 68//        let height = CGFloat(4 + 17 + 4 + storyHeight + 4)

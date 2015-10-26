@@ -26,7 +26,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="204"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T" customClass="AsyncImageView" customModule="GiveDirectly" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,7 +88,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="2jz-FJ-jy9" id="lAZ-hg-DvF"/>
                                     <outlet property="paymentPhaseImageView" destination="oNA-Dd-MyZ" id="ugY-E5-96r"/>
-                                    <outlet property="profileImageView" destination="gzL-fq-p5T" id="d9D-hT-L3M"/>
+                                    <outlet property="profileImageView" destination="gzL-fq-p5T" id="5fW-ng-3d4"/>
                                     <outlet property="profileImageViewHeightLayoutConstraint" destination="NmN-QI-3Ze" id="jCb-uq-rPI"/>
                                     <outlet property="storyLabel" destination="hs7-4K-xgN" id="hN5-BV-5Zu"/>
                                     <segue destination="Sr0-ms-ssZ" kind="show" identifier="RecipientProfileSegue" id="tD2-Jh-GhK"/>

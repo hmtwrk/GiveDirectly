@@ -12,7 +12,7 @@ class BrowserViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var storyLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: AsyncImageView!
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 //  @IBOutlet weak var timeLabel: UILabel!
@@ -20,16 +20,16 @@ class BrowserViewCell: UICollectionViewCell {
     var displayName: String = ""
 
     
-    var recipient: Recipient? {
-        didSet {
-            if let recipient = recipient {
-                profileImageView.image = recipient.image
-                nameLabel.text = recipient.caption
-                storyLabel.text = recipient.comment
-//              timeLabel.text = "0d"
-            }
-        }
-    }
+//    var recipient: Recipient? {
+//        didSet {
+//            if let recipient = recipient {
+//                profileImageView.image = recipient.image
+//                nameLabel.text = recipient.caption
+//                storyLabel.text = recipient.comment
+//                timeLabel.text = "0d"
+//            }
+//        }
+//    }
     
     // TODO: this function would have a parameter type of JSON:
      func configureCellWithData(data: JSON) {
@@ -42,12 +42,28 @@ class BrowserViewCell: UICollectionViewCell {
         
 //        print(data)
         
-        let recipientName = data["firstName"].string ?? "Kangaroo"
-        let recipientStory = data["goals"].string ?? "jumpin' around"
+        // assign values or use default
+        let recipientName = data["firstName"].string ?? ""
+        let recipientStory = data["spendingPlans"].string ?? ""
         let paymentPhase = data["phase"].int ?? 0
+//        let urlWithGDID = "1444302935315" + ".jpg"
+//        let photoURL = "https://mobile-backend.givedirectly.org/api/v1/images/cropped_face-" + urlWithGDID
+//        let profileImage = data["photos"][photoURL]
+//        let userPortraitUrl = data["photos"][0]["url"].string
+        
+//        profileImageView.url = userPortraitUrl?.toURL()
+//        print(profileImageView.url!)
+//        profileImageView.placeholderImage = UIImage(named: "blankProfileImage")
+        
+        
+//        print(data)
+//        print(data["phase"])
+//        print(data)
 //        let recipientName:String? = recipientInfo["firstName"] as? String
 //        let recipientProfileStory:String? = (recipientInfo as AnyObject)["goals"] as? String
 //        let paymentPhase:Int? = (recipientInfo as AnyObject)["phase"] as? Int
+        
+        
         
         
 

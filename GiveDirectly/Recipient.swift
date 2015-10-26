@@ -64,7 +64,7 @@ class Recipient {
         
         
         // Get a list of all recipients (the "recipients" key will hold an array of GDID objects)
-        let constraint = "?sort=enrollDate&order=desc&limit=20" // set amount of recipients to return
+        let constraint = "?sort=enrollDate&order=desc&phase=1&limit=20" // set amount of recipients to return
         let url = "https://mobile-backend.givedirectly.org/api/v1/recipients/" + constraint
         
         // API call... need to 
