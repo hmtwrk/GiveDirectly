@@ -22,11 +22,12 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     
     var updates: [Update] = []
     var refreshView: RefreshView!
+    var updatesJSON: JSON = []
+    var updatesList: [JSON] = []
+    var numberOfUpdates = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        print(updates)
         
         // pull-to-refresh code
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
@@ -42,59 +43,36 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // Parse API call for recent updates, with completion block
-        ParseHelper.mostRecentUpdates {
-            (results: [AnyObject]?, error: NSError?) -> Void in
+        // just testing
+        Recipient.testUsersFilter()
+        
+        // make the Alamofire API call with completion block, to set the variable updatesJSON in this class
+        Update.retrieveUpdates() { responseObject, error in
             
-            // cast results of API call into local data model
-            self.updates = results as? [Update] ?? []
-            
-            // update the data model for likes, comments
-            for update in self.updates {
+            if let value: AnyObject = responseObject {
+                let json = JSON(value)
+                self.updatesJSON = json
+//                print(json)
+//                print(json["user"]["following"])
+                self.numberOfUpdates = self.countUpdates(json["user"]["following"])
+//                print(self.numberOfUpdates)
+                self.tableView?.reloadData()
+                //                print(self.updatesJSON)
                 
-                // get like data for each recipient
-                ParseHelper.fetchLikesForUpdate(update) {
-                    (likes: [AnyObject]?, error: NSError?) -> Void in
-                    
-                    if let likes = likes {
-                      
-                        // update model with liked data
-                        update.numberOfLikes = likes.count
-                        
-                        // see if user has liked the update
-                        for like in likes {
-                            
-//                            print(like["fromUser"])
-//                            print(PFUser.currentUser() == like["fromUser"] as? PFObject)
-                        
-                            if like["fromUser"] as? PFObject == PFUser.currentUser() {
-                                update.userHasLikedUpdate = true
-                            } else {
-                                //
-                            }
-                            
-                        }
-                    }
-                }
+                // isolate the newsfeed items and make an array of JSON
+//                for index in 0..<self.numberOfUpdates {
+//                    print(index) // 68 updates should return "67"
+//                }
+                
+                
+                
             }
-            
-            // reload tableView with Parse data
-            self.tableView?.reloadData()
-            
         }
-        
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         self.tableView?.reloadData()
     }
-    
-    //    override func viewWillAppear(animated: Bool) {
-    //
-    //        // remove the tab bar badge
-    //        self.navigationController?.tabBarItem.badgeValue = nil
-    //    }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         refreshView.scrollViewDidScroll(scrollView)
@@ -108,8 +86,28 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 // MARK: - Table View Data Source
 extension NewsfeedTableViewController {
     
+    // iterate through the recipients "newsfeeds" and count the items within
+    func countUpdates(recipients: JSON) -> Int {
+        var totalUpdates = 0
+        for index in 0..<recipients.count {
+            totalUpdates += recipients[index]["newsfeeds"].count
+            
+            // extract each item and append it to the array
+            let newsfeedIndex = recipients[index]["newsfeeds"].count
+            for itemIndex in 0..<newsfeedIndex {
+                updatesList.append(recipients[index]["newsfeeds"][itemIndex])
+            }
+        }
+        
+        print(updatesList[2])
+        return totalUpdates
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (updates.count)
+        //        return (updates.count)
+        //        print(updatesJSON["user"]["following"].count)
+        //        return updatesJSON["user"]["following"].count
+        return numberOfUpdates
     }
     
     // tableView:cellForRowAtIndexPath gets called every time a cell is queued,
@@ -123,22 +121,17 @@ extension NewsfeedTableViewController {
         // cast to specific class
         if let cell = cell as? UpdateTableViewCell {
             
-            // mine specific data to pass to cell
-            let updateDataForCell: AnyObject = self.updates[indexPath.row]
+            // need to pull a single update from a model that may have several
+            // 1) extract a single update from model
+            // 2) append that update to array
+            // 3) once entire array is built, sort by descending
+            // 4) send each item to cell via indexPath.row
             
-            // this bit is dependent on the includeKey data, and safe if nil
-            let recipientData:PFObject? = updateDataForCell["recipientAuthor"] as? PFObject
-            
-            // TODO: add profile image to data model and cache locally?
-            
-            // following function takes an optional PFObject as a parameter
-            ParseHelper.recipientImagesForCell(cell, withRecipientData: recipientData, orUpdateData: updateDataForCell)
-            
-//            print(updateDataForCell)
+            let updateDataForCell: JSON = self.updatesJSON["user"]["following"][indexPath.row]
             
             // configure queued cell with newest data from model
             cell.configureUpdateTableViewCell(updateDataForCell)
-            cell.configureLikeForCell(updateDataForCell as! Update)
+            //            cell.configureLikeForCell(updateDataForCell as! Update)
             
             cell.delegate = self
         }
@@ -151,23 +144,7 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
         delayBySeconds(1.5) {
             self.refreshView.endRefreshing()
             
-            //            ParseHelper.mostRecentUpdates {
-            //                (result: [AnyObject]?, error: NSError?) -> Void in
-            //                self.updates = result as? [Update] ?? []
-            //                self.tableView?.reloadData()
-            //            }
-            
-            // Parse API call for recent updates, with completion block
-            ParseHelper.mostRecentUpdates {
-                (results: [AnyObject]?, error: NSError?) -> Void in
-                
-                
-                // cast results of API call into local data model (seems impossible to fail cast)
-                self.updates = results as? [Update] ?? []
-                
-                // reload tableView with Parse data
-                self.tableView?.reloadData()
-            }
+            // TODO: make an Alamofire refresh with completion block
         }
     }
 }
@@ -202,10 +179,10 @@ extension NewsfeedTableViewController {
         cell.configureLikeForCell(update)
         
         // display status of data model in console (for testing)
-//        for update in updates {
-//            print(update.userHasLikedUpdate)
-//        }
-//        print("==========")
+        //        for update in updates {
+        //            print(update.userHasLikedUpdate)
+        //        }
+        //        print("==========")
         
     }
     

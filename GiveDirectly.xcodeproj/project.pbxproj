@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0235281BE13A0B00891768 /* GDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0235271BE13A0B00891768 /* GDService.swift */; settings = {ASSET_TAGS = (); }; };
+		4A02352F1BE2774D00891768 /* GDBackendAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02352E1BE2774D00891768 /* GDBackendAPIManager.swift */; settings = {ASSET_TAGS = (); }; };
 		4A1848151B44A375009D6026 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848141B44A375009D6026 /* CommentViewController.swift */; };
 		4A1848171B472952009D6026 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848161B472952009D6026 /* SharingViewController.swift */; };
 		4A1848191B473A44009D6026 /* UpdateFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */; };
@@ -167,6 +169,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A0235271BE13A0B00891768 /* GDService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GDService.swift; path = ../GDService.swift; sourceTree = "<group>"; };
+		4A02352E1BE2774D00891768 /* GDBackendAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDBackendAPIManager.swift; sourceTree = "<group>"; };
 		4A1848141B44A375009D6026 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		4A1848161B472952009D6026 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		4A1848181B473A44009D6026 /* UpdateFooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateFooterTableViewCell.swift; sourceTree = "<group>"; };
@@ -339,7 +343,6 @@
 		4A1BAF7E1B7A91F800BEFCC9 /* Dynamic Collection */ = {
 			isa = PBXGroup;
 			children = (
-				4AC663F11B7D4177008AF19F /* Recipient.swift */,
 				4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */,
 				4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */,
 				4AC663F31B7D58C0008AF19F /* DynamicViewCell.swift */,
@@ -422,6 +425,8 @@
 		4ADAF1131B9E5BA80004D7E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4AC663F11B7D4177008AF19F /* Recipient.swift */,
+				4A0235271BE13A0B00891768 /* GDService.swift */,
 				4A5711B21B98C39000CF32B0 /* Liked.swift */,
 				4ADAF1141B9E5C110004D7E9 /* Post.swift */,
 				4ADAF11A1B9FB8440004D7E9 /* Update.swift */,
@@ -434,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				C4DC37E71BD53ADF009B04D4 /* SwiftyJSON.swift */,
+				4A02352E1BE2774D00891768 /* GDBackendAPIManager.swift */,
 				C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */,
 				4A8435121B823F0B008D5E08 /* Global.swift */,
 				4ADAF11D1B9FC2FD0004D7E9 /* ParseHelper.swift */,
@@ -756,6 +762,7 @@
 				4AE8C0541BDDE0F9007540DE /* AsyncButton.swift in Sources */,
 				4AE8C06B1BDDE0F9007540DE /* SpringTextField.swift in Sources */,
 				4AB36AE41B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift in Sources */,
+				4A02352F1BE2774D00891768 /* GDBackendAPIManager.swift in Sources */,
 				4AC663F21B7D4177008AF19F /* Recipient.swift in Sources */,
 				4AE8C05F1BDDE0F9007540DE /* ImageLoader.swift in Sources */,
 				4A6A60BB1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift in Sources */,
@@ -787,6 +794,7 @@
 				4AE8C0661BDDE0F9007540DE /* Spring.swift in Sources */,
 				4AE8C06D1BDDE0F9007540DE /* SpringView.swift in Sources */,
 				4AE8C0561BDDE0F9007540DE /* AutoTextView.swift in Sources */,
+				4A0235281BE13A0B00891768 /* GDService.swift in Sources */,
 				4AE8C0691BDDE0F9007540DE /* SpringImageView.swift in Sources */,
 				4AE8C0671BDDE0F9007540DE /* SpringAnimation.swift in Sources */,
 				4AE8C0651BDDE0F9007540DE /* SoundPlayer.swift in Sources */,

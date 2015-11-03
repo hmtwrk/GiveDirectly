@@ -114,6 +114,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
+    // MARK: GiveDirectly sign-in
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        GDBackendAPIManager.sharedInstance.processOAuthStep1Response(url)
+        return true
+    }
+    
     // MARK: Google sign-in
     
     // For Google sign-in to work, GiveDirectly > Targets > GiveDirectly > Build Settings
@@ -154,6 +160,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName("ToggleAuthUINotification", object: nil, userInfo: ["statusText": "User has disconnected."])
         
     }
+    
+    // MARK: Alamofire user login
+    // AlamoFire requests
+    
+    
     
     // MARK: Parse-related sign-in
     func checkUserStatus() {

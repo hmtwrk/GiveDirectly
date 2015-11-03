@@ -11,7 +11,9 @@ import UIKit
 // initial recipient collection view data
 var recipientBrowserData = [AnyObject]()
 //var dynamicRecipientData = [JSON]()
-var dynamicRecipientData: JSON = ""
+
+// JSON initialization should be an empty array (as below)
+var dynamicRecipientData: JSON = []
 
 var testData: String = ""
 

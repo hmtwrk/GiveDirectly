@@ -113,7 +113,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         
         if let recipientUpdatesCell = cell as? UpdateTableViewCell {
             let updateDataForCell:AnyObject = updates[indexPath.row]
-            recipientUpdatesCell.configureUpdateTableViewCell(updateDataForCell)
+//            recipientUpdatesCell.configureUpdateTableViewCell(updateDataForCell)
             recipientUpdatesCell.configureLikeForCell(updateDataForCell as! Update)
             recipientUpdatesCell.delegate = self
             

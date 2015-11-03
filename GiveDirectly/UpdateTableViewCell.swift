@@ -50,31 +50,27 @@ class UpdateTableViewCell: UITableViewCell {
 
     
     // MARK: configuration of cell
-    func configureUpdateTableViewCell(updateData: AnyObject) {
+    func configureUpdateTableViewCell(updateData: JSON) {
         
-        let title:String? = (updateData as AnyObject)["method"] as? String
-        let updateText:String? = (updateData as AnyObject)["life_difference"] as? String
+//        print(updateData)
         
-        // TODO: modify the following cast to not crash if the recipientAuthor field is nil
-        if let recipientData:PFObject = updateData["recipientAuthor"] as? PFObject {
-            let recipientName = recipientData["firstName"] as! String
-            self.authorNameLabel.text = recipientName
-        }
-        
-        
-        
+        let firstName: String? = updateData["firstName"].string
+        let title: String? = updateData["surveyMethod"].string
+        let updateText: String? = updateData["life_difference"].string
+     
         // get the date and format (does this need to be set to optional? App will crash if
         // the "date" field on RecipientUpdates is nil)
-        let date:String = (updateData as AnyObject)["date"] as! String
-        let newDate = date.substringToIndex(date.endIndex.advancedBy(-18))
-        
+        let date:String? = updateData["date"].string
+        if let date = date {
+            self.timestampLabel.text = date.substringToIndex(date.endIndex.advancedBy(-18))
+        }
 
         // assign labels and views (also needs to be set to optional)
 //        self.authorNameLabel.text = recipientName
-        self.updateTitleLabel.text = title!
+        self.authorNameLabel.text = firstName ?? "Buck Bumble"
+        self.updateTitleLabel.text = title ?? "FAX"
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()
-        self.timestampLabel.text = newDate
         
     }
     
