@@ -23,7 +23,8 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     var updates: [Update] = []
     var refreshView: RefreshView!
     var updatesJSON: JSON = []
-    var updatesList: [JSON] = []
+    var updatesList: [JSON] = [] // which one?
+//    var updatesList: [[String:AnyObject]] = [[:]] // oh boy
     var numberOfUpdates = 0
     
     override func viewDidLoad() {
@@ -45,6 +46,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         
         // just testing
         Recipient.testUsersFilter()
+
         
         // make the Alamofire API call with completion block, to set the variable updatesJSON in this class
         Update.retrieveUpdates() { responseObject, error in
@@ -54,18 +56,11 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
                 self.updatesJSON = json
 //                print(json)
 //                print(json["user"]["following"])
-                self.numberOfUpdates = self.countUpdates(json["user"]["following"])
+                self.numberOfUpdates = self.buildUpdates(json["user"]["following"])
 //                print(self.numberOfUpdates)
                 self.tableView?.reloadData()
                 //                print(self.updatesJSON)
-                
-                // isolate the newsfeed items and make an array of JSON
-//                for index in 0..<self.numberOfUpdates {
-//                    print(index) // 68 updates should return "67"
-//                }
-                
-                
-                
+
             }
         }
     }
@@ -87,19 +82,33 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 extension NewsfeedTableViewController {
     
     // iterate through the recipients "newsfeeds" and count the items within
-    func countUpdates(recipients: JSON) -> Int {
+    func buildUpdates(recipients: JSON) -> Int {
         var totalUpdates = 0
-        for index in 0..<recipients.count {
-            totalUpdates += recipients[index]["newsfeeds"].count
+        for recipientIndex in 0..<recipients.count {
+            totalUpdates += recipients[recipientIndex]["newsfeeds"].count
             
             // extract each item and append it to the array
-            let newsfeedIndex = recipients[index]["newsfeeds"].count
-            for itemIndex in 0..<newsfeedIndex {
-                updatesList.append(recipients[index]["newsfeeds"][itemIndex])
+            let newsfeedObjects = recipients[recipientIndex]["newsfeeds"].count
+            
+            for itemIndex in 0..<newsfeedObjects {
+                
+                // extract recipient biodata from recipient object
+                let displayName = recipients[recipientIndex]["firstName"].string?.capitalizedString ?? ""
+                let village = recipients[recipientIndex]["village"].string?.capitalizedString ?? ""
+                
+                // attach recipient biodata to newsfeed update object
+                var newsfeedItem = recipients[recipientIndex]["newsfeeds"][itemIndex]
+                newsfeedItem["displayName"] = JSON(displayName)
+                newsfeedItem["village"] = JSON(village)
+                
+                updatesList.append(newsfeedItem)
             }
         }
         
-        print(updatesList[2])
+        // sort the finished array of dictionaries by survey date
+        updatesList.sortInPlace({$0["surveyDate"] > $1["surveyDate"]})
+
+        // return the count of update objects
         return totalUpdates
     }
     
