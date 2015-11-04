@@ -23,8 +23,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     var updates: [Update] = []
     var refreshView: RefreshView!
     var updatesJSON: JSON = []
-    var updatesList: [JSON] = [] // which one?
-//    var updatesList: [[String:AnyObject]] = [[:]] // oh boy
+    var updatesList: [JSON] = []
     var numberOfUpdates = 0
     
     override func viewDidLoad() {
@@ -136,12 +135,12 @@ extension NewsfeedTableViewController {
             // 3) once entire array is built, sort by descending
             // 4) send each item to cell via indexPath.row
             
-            let updateDataForCell: JSON = self.updatesJSON["user"]["following"][indexPath.row]
+//            let updateDataForCell: JSON = self.updatesJSON["user"]["following"][indexPath.row]
+            let updateDataForCell: JSON = self.updatesList[indexPath.row]
             
             // configure queued cell with newest data from model
             cell.configureUpdateTableViewCell(updateDataForCell)
-            //            cell.configureLikeForCell(updateDataForCell as! Update)
-            
+
             cell.delegate = self
         }
         return cell!

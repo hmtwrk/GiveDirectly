@@ -52,11 +52,12 @@ class UpdateTableViewCell: UITableViewCell {
     // MARK: configuration of cell
     func configureUpdateTableViewCell(updateData: JSON) {
         
-//        print(updateData)
+        print(updateData)
+        print("AYY LMAO AYY LMAO AYY LMAO")
         
-        let firstName: String? = updateData["firstName"].string
+        let displayName: String? = updateData["displayName"].string
         let title: String? = updateData["surveyMethod"].string
-        let updateText: String? = updateData["life_difference"].string
+        let updateText: String? = updateData["update"].string
      
         // get the date and format (does this need to be set to optional? App will crash if
         // the "date" field on RecipientUpdates is nil)
@@ -67,7 +68,7 @@ class UpdateTableViewCell: UITableViewCell {
 
         // assign labels and views (also needs to be set to optional)
 //        self.authorNameLabel.text = recipientName
-        self.authorNameLabel.text = firstName ?? "Buck Bumble"
+        self.authorNameLabel.text = displayName ?? "Buck Bumble"
         self.updateTitleLabel.text = title ?? "FAX"
         self.updateStoryLabel.text = updateText
         self.updateStoryLabel.sizeToFit()
