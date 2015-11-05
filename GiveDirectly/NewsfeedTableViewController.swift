@@ -97,6 +97,7 @@ extension NewsfeedTableViewController {
 
                 // iterate through photos in recipients["photos"] and return the object
                 // in which "type" = "face", to get the recipient's profile image
+                // would be a little more efficient as do...while loop maybe
                 for photoIndex in 0..<recipients[recipientIndex]["photos"].count {
                     
                     if recipients[recipientIndex]["photos"][photoIndex]["type"] == "face" {

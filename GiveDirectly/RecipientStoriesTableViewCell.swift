@@ -38,9 +38,9 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 
         
         
-        print("===============")
-        print(recipientStories["phase"])
-        print(paymentPhase)
+//        print("===============")
+//        print(recipientStories["phase"])
+//        print(paymentPhase)
         
         // display proper payment phase
 //        switch paymentPhase! {

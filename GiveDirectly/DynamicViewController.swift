@@ -26,7 +26,7 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
                 dynamicRecipientData = json
             }
             
-            print(dynamicRecipientData)
+//            print(dynamicRecipientData)
             
             NSNotificationCenter.defaultCenter().postNotificationName("refreshRecipientCollectionView", object: nil)
         }

@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 protocol UpdateTableViewCellDelegate: class {
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject)
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject)
@@ -61,7 +58,7 @@ class UpdateTableViewCell: UITableViewCell {
         let displayName: String? = updateData["displayName"].string
         let title: String? = updateData["surveyMethod"].string
         let updateText: String? = updateData["update"].string
-        let authorPortraitURL = updateData["recipientAvatar"].string
+//        let authorPortraitURL = updateData["recipientAvatar"].string
         
 //        if let imageURL: NSURL = NSURL(string: authorPortraitURL!)! {
 //            imageRequest(imageURL)
