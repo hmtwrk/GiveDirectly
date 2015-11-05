@@ -24,8 +24,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // make the Parse API call
-//        self.queryForRelatedUpdates()
+        print(recipientInfo)
         
         // set navigation title to match recipient's name
         let recipientName = recipientInfo["firstName"].string ?? ""
