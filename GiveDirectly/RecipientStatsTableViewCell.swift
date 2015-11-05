@@ -20,10 +20,7 @@ class RecipientStatsTableViewCell: UITableViewCell {
     
     
     func configureStatsCell(recipientStats: JSON) {
-        
-        print("ready now?")
-        print("The stats are: \(recipientStats).")
-        
+
         let recipientName:String? = recipientStats["firstName"].string
         let recipientAge:Int? = recipientStats["age"].int
         let recipientStatus:String? = recipientStats["maritalStatus"].string

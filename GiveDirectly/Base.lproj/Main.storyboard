@@ -1509,7 +1509,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="authorImageView" destination="jq8-nq-2uZ" id="hyW-g6-h8g"/>
+                                    <outlet property="authorImageView" destination="jq8-nq-2uZ" id="5EM-IA-xEL"/>
                                     <outlet property="authorNameLabel" destination="U3D-YZ-LzC" id="R6C-4p-jz9"/>
                                     <outlet property="commentButton" destination="YVD-ZE-foc" id="PrT-aV-MaF"/>
                                     <outlet property="extraButton" destination="r3u-j3-IIl" id="xtP-Xh-cJA"/>

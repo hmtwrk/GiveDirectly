@@ -16,30 +16,26 @@ class RecipientStoriesTableViewCell: UITableViewCell {
     @IBOutlet weak var achievementsTextView: UITextView!
     @IBOutlet weak var goalsTextView: UITextView!
     @IBOutlet weak var hardshipsTextView: UITextView!
-    
-    
-    // TODO: need to configure the story section labels "HARDSHIPS", "SPENDING PLANS" etc.
-    // to be hidden if there is no associated data
-    
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 
     func configureStoriesCell(recipientStories: JSON) {
         
         
-        let recipientPayment:String? = recipientStories["spending"].string
+        let recipientSpendingPlans:String? = recipientStories["spendingPlans"].string
         let recipientGoals:String? = recipientStories["goals"].string
-        let recipientHardships:String? = recipientStories["achievement"].string
+        let recipientAchievements:String? = recipientStories["achievements"].string
         let recipientChallenges:String? = recipientStories["challenges"].string
         let paymentPhase:Int? = recipientStories["phase"].int
         
-        self.spendingPlansTextView.text = recipientPayment
+        self.spendingPlansTextView.text = recipientSpendingPlans
 //        self.paymentTextView.sizeToFit()
         self.goalsTextView.text = recipientGoals
 //        self.goalsTextView.sizeToFit()
-        self.hardshipsTextView.text = recipientHardships
-//        self.hardshipsTextView.sizeToFit()
-        self.achievementsTextView.text = recipientChallenges
+        self.achievementsTextView.text = recipientAchievements
 //        self.challengesTextView.sizeToFit()
+        self.hardshipsTextView.text = recipientChallenges
+//        self.hardshipsTextView.sizeToFit()
+
         
         
         print("===============")

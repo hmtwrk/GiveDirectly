@@ -44,7 +44,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // just testing
-        Recipient.testUsersFilter()
+//        Recipient.testUsersFilter()
 
         
         // make the Alamofire API call with completion block, to set the variable updatesJSON in this class
@@ -53,13 +53,8 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
             if let value: AnyObject = responseObject {
                 let json = JSON(value)
                 self.updatesJSON = json
-//                print(json)
-//                print(json["user"]["following"])
                 self.numberOfUpdates = self.buildUpdates(json["user"]["following"])
-//                print(self.numberOfUpdates)
                 self.tableView?.reloadData()
-                //                print(self.updatesJSON)
-
             }
         }
     }
@@ -99,10 +94,23 @@ extension NewsfeedTableViewController {
                 var newsfeedItem = recipients[recipientIndex]["newsfeeds"][itemIndex]
                 newsfeedItem["displayName"] = JSON(displayName)
                 newsfeedItem["village"] = JSON(village)
+
+                // iterate through photos in recipients["photos"] and return the object
+                // in which "type" = "face", to get the recipient's profile image
+                for photoIndex in 0..<recipients[recipientIndex]["photos"].count {
+                    
+                    if recipients[recipientIndex]["photos"][photoIndex]["type"] == "face" {
+                        let recipientAvatar = recipients[recipientIndex]["photos"][photoIndex]["url"].string ?? ""
+                        newsfeedItem["recipientAvatar"] = JSON(recipientAvatar)
+                    }
+                }
                 
                 updatesList.append(newsfeedItem)
             }
         }
+        
+//        print(recipients[0])
+//        print(updatesList[0])
         
         // sort the finished array of dictionaries by survey date
         updatesList.sortInPlace({$0["surveyDate"] > $1["surveyDate"]})

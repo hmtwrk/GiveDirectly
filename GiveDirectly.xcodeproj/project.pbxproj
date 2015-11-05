@@ -96,6 +96,9 @@
 		4AE8C06E1BDDE0F9007540DE /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0511BDDE0F9007540DE /* TransitionManager.swift */; settings = {ASSET_TAGS = (); }; };
 		4AE8C06F1BDDE0F9007540DE /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0521BDDE0F9007540DE /* TransitionZoom.swift */; settings = {ASSET_TAGS = (); }; };
 		4AE8C0701BDDE0F9007540DE /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0531BDDE0F9007540DE /* UnwindSegue.swift */; settings = {ASSET_TAGS = (); }; };
+		4AF323361BEAC6230060D766 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; };
+		4AF323371BEAC6230060D766 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4AF3233B1BEBB64A0060D766 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3233A1BEBB64A0060D766 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		4AFAC7661BA9C07C00A60CEF /* SwiftBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */; };
 		4AFAC7681BA9E89400A60CEF /* CustomBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */; };
 		4AFAC76A1BA9FB2200A60CEF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7691BA9FB2200A60CEF /* TabBarController.swift */; };
@@ -146,6 +149,13 @@
 			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
 			remoteInfo = "Alamofire OSX Tests";
 		};
+		4AF323381BEAC6230060D766 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A694DDD1BCD7C9300BEEF02 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 		C43780631B2933080018BD41 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C43780451B2933080018BD41 /* Project object */;
@@ -162,6 +172,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4AF323371BEAC6230060D766 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +275,8 @@
 		4AE8C0511BDDE0F9007540DE /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		4AE8C0521BDDE0F9007540DE /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		4AE8C0531BDDE0F9007540DE /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
+		4AF322AC1BEAB8ED0060D766 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		4AF3233A1BEBB64A0060D766 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
 		4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBadge.swift; sourceTree = "<group>"; };
 		4AFAC7691BA9FB2200A60CEF /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -302,6 +315,7 @@
 				4AB19B141B3B538100B3E973 /* ParseCrashReporting.framework in Frameworks */,
 				4AD91CC41B2B30DE00A9FB23 /* MobileCoreServices.framework in Frameworks */,
 				4AB19B131B3B538100B3E973 /* Parse.framework in Frameworks */,
+				4AF323361BEAC6230060D766 /* Alamofire.framework in Frameworks */,
 				4AB19B211B3B6C7900B3E973 /* FBSDKCoreKit.framework in Frameworks */,
 				4AB19B151B3B538100B3E973 /* ParseFacebookUtils.framework in Frameworks */,
 				4AB19B171B3B538100B3E973 /* ParseUI.framework in Frameworks */,
@@ -391,6 +405,7 @@
 		4AD91CC91B2B310E00A9FB23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4AF322AC1BEAB8ED0060D766 /* ImageIO.framework */,
 				4AE8C0351BDDE0F9007540DE /* Spring */,
 				4A7A3B6F1BC8772F00B304C6 /* AddressBook.framework */,
 				4A7A3B6B1BC876CE00B304C6 /* GoogleSignIn.bundle */,
@@ -431,6 +446,7 @@
 				4ADAF1141B9E5C110004D7E9 /* Post.swift */,
 				4ADAF11A1B9FB8440004D7E9 /* Update.swift */,
 				4AFAC7A31BAC69F300A60CEF /* NotificationModel.swift */,
+				4AF3233A1BEBB64A0060D766 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -612,6 +628,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4AF323391BEAC6230060D766 /* PBXTargetDependency */,
 			);
 			name = GiveDirectly;
 			productName = GiveDirectly;
@@ -818,6 +835,7 @@
 				4A6A60B11B6AB81A00C3F142 /* NewsfeedTableViewController.swift in Sources */,
 				4AE8C0551BDDE0F9007540DE /* AsyncImageView.swift in Sources */,
 				4A1848171B472952009D6026 /* SharingViewController.swift in Sources */,
+				4AF3233B1BEBB64A0060D766 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +850,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4AF323391BEAC6230060D766 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 4AF323381BEAC6230060D766 /* PBXContainerItemProxy */;
+		};
 		C43780641B2933080018BD41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C437804C1B2933080018BD41 /* GiveDirectly */;

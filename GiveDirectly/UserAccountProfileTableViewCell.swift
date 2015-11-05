@@ -22,51 +22,16 @@ class UserAccountProfileTableViewCell: UITableViewCell {
     var donationTrackerHasAppeared = false
     
     
-    func configureUserProfileCell(userData: AnyObject, willShowDonationTracker: Bool) {
-        
-//        println(userData)
+    func configureUserProfileCell(userData: JSON, willShowDonationTracker: Bool) {
 
-        let userName:String? = (userData as AnyObject)["fullName"] as? String
-        let userMessage:String? = (userData as AnyObject)["message"] as? String
-        let userJoinDate:String? = (userData as AnyObject)["createdAt"] as? String
-        let userDonations:Int? = (userData as AnyObject)["donations"] as? Int
-        let userFunded:Int? = (userData as AnyObject)["funded"] as? Int
-        let userLocation:String? = (userData as AnyObject)["location"] as? String
-        
-        let imageName = "donationTracker.pdf"
-        let image = UIImage(named: imageName)
-        let imageView = UIImageView(image: image!)
-        
-        let imageWidth = imageView.frame.size.width
-        let contentViewWidth = contentView.bounds.size.width
-        let xPosition = ( (contentViewWidth - imageWidth) / 2.0)
-        
-        imageView.frame = CGRect(x: xPosition, y: (18 + 80 + (75 - 8) ), width: 292, height: 64)
-        imageView.contentMode = .Center
-        
-        print(contentViewWidth)
-        print(imageWidth)
-        print(xPosition)
-        
-        // display donationTracker if GD site was visited
-        if willShowDonationTracker == true && donationTrackerHasAppeared == false && contentViewWidth != 0.0 {
-            
-            removeableBottomConstraint.constant = 72
-            print(contentView)
-            
-            
-//            let horizontalCenter = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: contentView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0.0)
-            
-            self.addSubview(imageView)
-            donationTrackerHasAppeared = true
-            
-            
-//            self.layoutIfNeeded()
-            
-        }
-
-        
-        
+        let firstName:String? = userData["firstName"].string ?? ""
+        let lastName:String? = userData["lastName"].string ?? ""
+        let profileMessage:String? = userData["profileMessage"].string ?? ""
+        let joinedDate:String? = userData["joinedDate"].string ?? ""
+        let donationsYTD:Int? = userData["donationsYTD"].int ?? 0
+        let userFunded:Int? = userData["funded"].int ?? 0 // TODO: add field for total funded
+        let location:String? = userData["location"].string ?? "N/A"
+ 
         // configure round profile image
         userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.width / 2
         userPhotoImageView.clipsToBounds = true
@@ -75,31 +40,19 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         userPhotoImageView.layer.borderColor = UIColor.clearColor().CGColor
         userPhotoImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
         
-
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let displayDate = dateFormatter.dateFromString(joinedDate!)
         
-        // load profile photo
-        // TODO: move this code into helper method
-        if let userProfilePhoto = userData["profilePhoto"] as? PFFile {
-            userProfilePhoto.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if (error == nil) {
-                    let image = UIImage(data: imageData!)
-                    self.userPhotoImageView.image = image
-                }
-            }
-        } else {
-            self.userPhotoImageView.image = UIImage(named: "blankProfileImage")
-        }
         
-        if userDonations != nil {
+        if donationsYTD != nil {
             
             let formatter = NSNumberFormatter()
             formatter.numberStyle = .CurrencyStyle
 //            formatter.usesGroupingSeparator = true
             formatter.usesSignificantDigits = true
-            let currencyUserDonations = formatter.stringFromNumber(userDonations!)
-            
-            
+            let currencyUserDonations = formatter.stringFromNumber(donationsYTD!)
+
 //            self.userDonationsLabel.text = String(stringInterpolationSegment: userDonations!)
             self.userDonationsLabel.text = currencyUserDonations
         }
@@ -109,10 +62,10 @@ class UserAccountProfileTableViewCell: UITableViewCell {
             self.userFundedLabel.text = String(stringInterpolationSegment: userFunded!)
         }
         
-        self.userNameLabel.text = userName
-        self.userJoinDateLabel.text = userJoinDate
-        self.userLocationLabel.text = userLocation
-        self.userMessageLabel.text = userMessage
+        self.userNameLabel.text = firstName! + " " + lastName!
+        self.userJoinDateLabel.text = displayDate?.ago
+        self.userLocationLabel.text = location
+        self.userMessageLabel.text = profileMessage
 
         
     }

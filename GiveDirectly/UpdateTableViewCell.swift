@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 protocol UpdateTableViewCellDelegate: class {
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject)
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject)
@@ -17,7 +20,8 @@ protocol UpdateTableViewCellDelegate: class {
 class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
-    
+
+
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
@@ -31,7 +35,7 @@ class UpdateTableViewCell: UITableViewCell {
     // MARK: SpringButton functionality
     @IBAction func likeButtonDidTap(sender: AnyObject) {
     
-        delegate?.updateLikeButtonDidTap(self, sender: sender)
+//        delegate?.updateLikeButtonDidTap(self, sender: sender)
         
         // trigger the Parse updating in delegate?
         // basically both delegates will make a call to the Parse helper and have that sync values
@@ -39,12 +43,12 @@ class UpdateTableViewCell: UITableViewCell {
     
     @IBAction func commentButtonDidTap(sender: AnyObject) {
         
-        delegate?.updateCommentButtonDidTap(self, sender: sender)
+//        delegate?.updateCommentButtonDidTap(self, sender: sender)
     }
     
     @IBAction func extraButtonDidTap(sender: AnyObject) {
         
-        delegate?.updateExtraButtonDidTap(self, sender: sender)
+//        delegate?.updateExtraButtonDidTap(self, sender: sender)
     }
     
 
@@ -52,25 +56,40 @@ class UpdateTableViewCell: UITableViewCell {
     // MARK: configuration of cell
     func configureUpdateTableViewCell(updateData: JSON) {
         
-        print(updateData)
-        print("AYY LMAO AYY LMAO AYY LMAO")
+//        print(updateData)
         
         let displayName: String? = updateData["displayName"].string
         let title: String? = updateData["surveyMethod"].string
         let updateText: String? = updateData["update"].string
+        let authorPortraitURL = updateData["recipientAvatar"].string
+        
+//        if let imageURL: NSURL = NSURL(string: authorPortraitURL!)! {
+//            imageRequest(imageURL)
+//            print(imageURL)
+//        }
+        
+//        print(recipientPortraitURL!)
      
+        
         // get the date and format (does this need to be set to optional? App will crash if
         // the "date" field on RecipientUpdates is nil)
-        let date:String? = updateData["date"].string
-        if let date = date {
-            self.timestampLabel.text = date.substringToIndex(date.endIndex.advancedBy(-18))
-        }
+        let JSONdate:String = updateData["surveyDate"].string ?? ""
+        let date: NSDateFormatter = NSDateFormatter()
+        date.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let displayDate: NSDate? = date.dateFromString(JSONdate)
+//        print(displayDate!.ago)
+        
+//        self.authorImageView.url = authorPortraitURL?.toURL()
+//        self.authorImageView.placeholderImage = UIImage(named: "blankProfileImage")
+        self.timestampLabel.text = displayDate!.ago
+
+//        self.timestampLabel.text = date.substringToIndex(date.endIndex.advancedBy(-18))
 
         // assign labels and views (also needs to be set to optional)
 //        self.authorNameLabel.text = recipientName
-        self.authorNameLabel.text = displayName ?? "Buck Bumble"
-        self.updateTitleLabel.text = title ?? "FAX"
-        self.updateStoryLabel.text = updateText
+        self.authorNameLabel.text = displayName ?? ""
+        self.updateTitleLabel.text = title ?? ""
+        self.updateStoryLabel.text = updateText ?? ""
         self.updateStoryLabel.sizeToFit()
         
     }
@@ -90,4 +109,25 @@ class UpdateTableViewCell: UITableViewCell {
             likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
         }
     }
+    
+//    func imageRequest(urlweb: NSURL) {
+//        let requestURL: NSURL = urlweb
+//        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
+//        let session = NSURLSession.sharedSession()
+//        let task = session.dataTaskWithRequest(urlRequest) {
+//            (data, response, error) -> Void in
+//            
+//            if error == nil {
+//                NSLog("Success!")
+////                self.authorImageView?.image.setImage(UIImage(data: data!))
+//                self.authorImageView?.image = UIImage(data: data!)
+//            } else {
+//                
+//                NSLog("Fail.")
+//            }
+//        }
+//        
+//        task.resume()
+//    }
+    
 }

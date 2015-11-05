@@ -94,17 +94,17 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
             recipientStatsCell.configureStatsCell(recipientInfo)
             
             // load an image (should go in the table controller)
-            if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
-                recipientProfilePhoto.getDataInBackgroundWithBlock {
-                    (imageData: NSData?, error: NSError?) -> Void in
-                    if (error == nil) {
-                        let image = UIImage(data: imageData!)
-                        recipientStatsCell.recipientProfileImageView.image = image
-                    }
-                }
-            } else {
-                recipientStatsCell.recipientProfileImageView.image = UIImage(named: "blankProfileImage")
-            }
+//            if let recipientProfilePhoto = recipientInfo["image"] as? PFFile {
+//                recipientProfilePhoto.getDataInBackgroundWithBlock {
+//                    (imageData: NSData?, error: NSError?) -> Void in
+//                    if (error == nil) {
+//                        let image = UIImage(data: imageData!)
+//                        recipientStatsCell.recipientProfileImageView.image = image
+//                    }
+//                }
+//            } else {
+//                recipientStatsCell.recipientProfileImageView.image = UIImage(named: "blankProfileImage")
+//            }
         }
         
         if let recipientStoriesCell = cell as? RecipientStoriesTableViewCell {
