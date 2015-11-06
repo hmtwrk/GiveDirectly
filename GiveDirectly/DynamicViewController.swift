@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import Alamofire
 import AVFoundation
 
 class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutDelegate {
@@ -64,31 +65,59 @@ extension RecipientBrowserViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipientBrowserCell", forIndexPath: indexPath) as! BrowserViewCell
         
         let recipientDataForCell = dynamicRecipientData[indexPath.item]
-        var recipientImageURL = ""
+        var recipientImageURL: String!
         
         for photoIndex in 0..<dynamicRecipientData[indexPath.item]["photos"].count {
             
             if dynamicRecipientData[indexPath.item]["photos"][photoIndex]["type"] == "face" {
-                recipientImageURL = dynamicRecipientData[indexPath.item]["photos"][photoIndex]["url"].string!
-//                print(recipientImageURL)
+                recipientImageURL = dynamicRecipientData[indexPath.item]["photos"][photoIndex]["url"].string
+                
+                //                recipientImageURL = "http://chestofbooks.com/crafts/children/Paper-Folding/images/I-The-Square-7.jpg"
+                //                recipientImageURL = "http://gdr.typepad.com/photos/uncategorized/james_clar_square2k6_b1.jpg"
+                
+                //                print(recipientImageURL)
             }
         }
         
+        let user = "admin"
+        let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
+        
+        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        // API call
+        Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
+            (_, _, data, _) in
+            
+            
+            let image = UIImage(data: data!)
+            cell.profileImageView.image = image
+        }
+        
         cell.configureCellWithData(recipientDataForCell, andRecipientImageURL: recipientImageURL)
+        //        cell.profileImageView.imageFromUrl(recipientImageURL)
+        //        cell.profileImageView.downloadImage(recipientImageURL)
+        
         return cell
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "RecipientProfileSegue" {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
             let recipientInfo = dynamicRecipientData[indexPath!.item]
+//            let recipientImageURL =
             toView.recipientInfo = recipientInfo
+//            toView.recipientImageURL = recipientImageURL
         }
     }
 }
 
 extension RecipientBrowserViewController {
+    
     
     func collectionView(collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         

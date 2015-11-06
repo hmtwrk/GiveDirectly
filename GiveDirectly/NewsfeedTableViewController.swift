@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 private let refreshViewHeight: CGFloat = 200
 
@@ -146,6 +147,24 @@ extension NewsfeedTableViewController {
             
 //            let updateDataForCell: JSON = self.updatesJSON["user"]["following"][indexPath.row]
             let updateDataForCell: JSON = self.updatesList[indexPath.row]
+            
+            let user = "admin"
+            let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
+            let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
+            
+            let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+            let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+            
+            let headers = ["Authorization": "Basic \(base64Credentials)"]
+            
+            // API call
+            Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
+                (_, _, data, _) in
+                
+                
+                let image = UIImage(data: data!)
+                cell.authorImageView.image = image
+            }
             
             // configure queued cell with newest data from model
             cell.configureUpdateTableViewCell(updateDataForCell)

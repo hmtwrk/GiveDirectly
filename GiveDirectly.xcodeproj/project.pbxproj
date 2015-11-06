@@ -99,6 +99,7 @@
 		4AF323361BEAC6230060D766 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; };
 		4AF323371BEAC6230060D766 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AF3233B1BEBB64A0060D766 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3233A1BEBB64A0060D766 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		4AF3233F1BEC31A20060D766 /* UIImageViewAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3233E1BEC31A20060D766 /* UIImageViewAsync.swift */; settings = {ASSET_TAGS = (); }; };
 		4AFAC7661BA9C07C00A60CEF /* SwiftBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */; };
 		4AFAC7681BA9E89400A60CEF /* CustomBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */; };
 		4AFAC76A1BA9FB2200A60CEF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFAC7691BA9FB2200A60CEF /* TabBarController.swift */; };
@@ -277,6 +278,7 @@
 		4AE8C0531BDDE0F9007540DE /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
 		4AF322AC1BEAB8ED0060D766 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4AF3233A1BEBB64A0060D766 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4AF3233E1BEC31A20060D766 /* UIImageViewAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewAsync.swift; sourceTree = "<group>"; };
 		4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
 		4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBadge.swift; sourceTree = "<group>"; };
 		4AFAC7691BA9FB2200A60CEF /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				4ADAF11D1B9FC2FD0004D7E9 /* ParseHelper.swift */,
 				4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */,
 				4AFAC7671BA9E89400A60CEF /* CustomBadge.swift */,
+				4AF3233E1BEC31A20060D766 /* UIImageViewAsync.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				4ADAF11E1B9FC2FD0004D7E9 /* ParseHelper.swift in Sources */,
 				4ADAF1151B9E5C110004D7E9 /* Post.swift in Sources */,
 				4A7A3B741BC87F4200B304C6 /* SignInViewController.swift in Sources */,
+				4AF3233F1BEC31A20060D766 /* UIImageViewAsync.swift in Sources */,
 				4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4AE8C0571BDDE0F9007540DE /* BlurView.swift in Sources */,

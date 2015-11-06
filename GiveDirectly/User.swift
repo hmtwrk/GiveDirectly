@@ -35,4 +35,22 @@ class User {
         }
         
     }
+    
+//    class func downloadImageWithURL(url: String, andCompletionBlock completionBlock: (NSDictionary?, NSError?) -> () ) {
+//        
+//        let user = "admin"
+//        let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
+//        
+//        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+//        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+//        
+//        let headers = ["Authorization": "Basic \(base64Credentials)"]
+//        
+//        // API call
+//        Alamofire.request(.GET, url, headers: headers).response() {
+//            (_, _, data, _) in
+//        
+//                completionBlock(responseObject.result.value as? NSData, response.result.error)
+//        }
+//    }
 }

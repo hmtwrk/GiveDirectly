@@ -12,7 +12,10 @@ class BrowserViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var storyLabel: UILabel!
-    @IBOutlet weak var profileImageView: AsyncImageView!
+//    @IBOutlet weak var profileImageView: AsyncImageView!
+//    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageViewAsync!
+    
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 //  @IBOutlet weak var timeLabel: UILabel!
@@ -27,6 +30,7 @@ class BrowserViewCell: UICollectionViewCell {
         let paymentPhase = data["phase"].int ?? 0
 
         print(recipientImageURL)
+        
 
         switch paymentPhase {
         case 1:

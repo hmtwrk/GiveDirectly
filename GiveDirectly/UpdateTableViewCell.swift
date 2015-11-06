@@ -66,6 +66,12 @@ class UpdateTableViewCell: UITableViewCell {
 //        }
         
 //        print(recipientPortraitURL!)
+        
+        authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
+        authorImageView.clipsToBounds = true
+        authorImageView.layer.borderWidth = 2.0
+        authorImageView.layer.borderColor = UIColor.clearColor().CGColor
+        authorImageView.layer.backgroundColor = UIColor.clearColor().CGColor
      
         
         // get the date and format (does this need to be set to optional? App will crash if
@@ -88,7 +94,6 @@ class UpdateTableViewCell: UITableViewCell {
         self.updateTitleLabel.text = title ?? ""
         self.updateStoryLabel.text = updateText ?? ""
         self.updateStoryLabel.sizeToFit()
-        
     }
     
     func configureLikeForCell(withUpdate: Update) {
@@ -106,25 +111,4 @@ class UpdateTableViewCell: UITableViewCell {
             likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
         }
     }
-    
-//    func imageRequest(urlweb: NSURL) {
-//        let requestURL: NSURL = urlweb
-//        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-//        let session = NSURLSession.sharedSession()
-//        let task = session.dataTaskWithRequest(urlRequest) {
-//            (data, response, error) -> Void in
-//            
-//            if error == nil {
-//                NSLog("Success!")
-////                self.authorImageView?.image.setImage(UIImage(data: data!))
-//                self.authorImageView?.image = UIImage(data: data!)
-//            } else {
-//                
-//                NSLog("Fail.")
-//            }
-//        }
-//        
-//        task.resume()
-//    }
-    
 }

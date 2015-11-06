@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RecipientProfileTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
@@ -14,16 +15,22 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
 //    var recipientInfo: AnyObject = ""
     var recipientInfo: JSON = ""
     var updatesList: [JSON] = []
+//    var recipientImageURL: String = ""
+    
+
+    
     
     // prepare variable for related Update object
     var numberOfUpdates: Int = 0
     var updates = [Update]()
     var recipientNameData: String = ""
     var likes = [Liked]()
+    var recipientImageURL: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("BUCK BUMBLE")
         print(recipientInfo)
         
         // set navigation title to match recipient's name
@@ -36,6 +43,14 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)
         tableView.estimatedRowHeight = 45
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // find the profile image
+        for photoIndex in 0..<recipientInfo["photos"].count {
+            
+            if recipientInfo["photos"][photoIndex]["type"] == "face" {
+                recipientImageURL = recipientInfo["photos"][photoIndex]["url"].string ?? ""
+            }
+        }
         
         self.buildUpdates()
     }
@@ -95,6 +110,24 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         if let recipientStatsCell = cell as? RecipientStatsTableViewCell {
             recipientStatsCell.configureStatsCell(recipientInfo)
             
+            // Alamofire stuff
+            let user = "admin"
+            let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
+            let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+            let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+            
+            let headers = ["Authorization": "Basic \(base64Credentials)"]
+            
+            // API call
+            Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
+                (_, _, data, _) in
+                
+                
+                let image = UIImage(data: data!)
+                recipientStatsCell.recipientProfileImageView.image = image
+                
+            }
+            
         }
         
         if let recipientStoriesCell = cell as? RecipientStoriesTableViewCell {
@@ -103,11 +136,33 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         
         if let recipientUpdatesCell = cell as? UpdateTableViewCell {
             
+            print(updatesList[indexPath.row])
+//            let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
+            
+            // Alamofire stuff
+            let user = "admin"
+            let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
+            let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+            let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+            
+            let headers = ["Authorization": "Basic \(base64Credentials)"]
+            
+            // API call
+            Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
+                (_, _, data, _) in
+                
+                
+                let image = UIImage(data: data!)
+                recipientUpdatesCell.authorImageView.image = image
+
+            }
+            
             let updateDataForCell = updatesList[indexPath.row]
             recipientUpdatesCell.configureUpdateTableViewCell(updateDataForCell)
 //            recipientUpdatesCell.configureLikeForCell(updateDataForCell as! Update)
             recipientUpdatesCell.delegate = self
         }
+        
 
         
         // make separators extend all the way left
@@ -145,9 +200,6 @@ extension RecipientProfileTableViewController {
         // sort the finished array of dictionaries by survey date
         updatesList.sortInPlace({$0["surveyDate"] > $1["surveyDate"]})
         
-        
-        print("STAR WARS WAS A DARKSIDE JOB")
-        print(updatesList)
 
     }
     
