@@ -200,26 +200,12 @@ extension NewsfeedTableViewController {
         // increment or decrement total likes
         if update.userHasLikedUpdate {
             update.numberOfLikes += 1
-            
-            // call Parse function to like update
-            ParseHelper.likeUpdate(PFUser.currentUser()!, update: update)
-            
         } else {
             update.numberOfLikes -= 1
-            
-            // call Parse to unlike update
-            ParseHelper.unlikeUpdate(PFUser.currentUser()!, update: update)
         }
         
         // update the view cell
         cell.configureLikeForCell(update)
-        
-        // display status of data model in console (for testing)
-        //        for update in updates {
-        //            print(update.userHasLikedUpdate)
-        //        }
-        //        print("==========")
-        
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

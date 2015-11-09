@@ -71,11 +71,6 @@ extension RecipientBrowserViewController {
             
             if dynamicRecipientData[indexPath.item]["photos"][photoIndex]["type"] == "face" {
                 recipientImageURL = dynamicRecipientData[indexPath.item]["photos"][photoIndex]["url"].string
-                
-                //                recipientImageURL = "http://chestofbooks.com/crafts/children/Paper-Folding/images/I-The-Square-7.jpg"
-                //                recipientImageURL = "http://gdr.typepad.com/photos/uncategorized/james_clar_square2k6_b1.jpg"
-                
-                //                print(recipientImageURL)
             }
         }
         

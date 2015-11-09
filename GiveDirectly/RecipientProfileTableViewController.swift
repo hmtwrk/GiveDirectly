@@ -212,15 +212,8 @@ extension RecipientProfileTableViewController {
         // increment or decrement total likes
         if update.userHasLikedUpdate {
             update.numberOfLikes += 1
-            
-            // call Parse function to like update
-            ParseHelper.likeUpdate(PFUser.currentUser()!, update: update)
-            
         } else {
             update.numberOfLikes -= 1
-            
-            // call Parse to unlike update
-            ParseHelper.unlikeUpdate(PFUser.currentUser()!, update: update)
         }
         
         // update the view cell

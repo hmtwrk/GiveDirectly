@@ -36,20 +36,6 @@ class Recipient {
         self.init(recipientData: recipientData!, recipientInfo: recipientInfo!, caption: caption!, comment: comment!, image: image!)
     }
     
-    class func queryParseForRecipients() {
-        
-        
-        // Parse API call to return target recipient
-        let query:PFQuery = PFQuery(className: "Recipients")
-        query.orderByAscending("createdAt")
-        
-        // query.limit = 20 (default = 100)
-        query.findObjectsInBackgroundWithBlock { (result: [AnyObject]?, error: NSError?) -> Void in
-            recipientBrowserData = result!
-            NSNotificationCenter.defaultCenter().postNotificationName("refreshRecipientCollectionView", object: nil)
-        }
-    }
-    
     class func retrieveJSON() {
         
         // check for OAuth token

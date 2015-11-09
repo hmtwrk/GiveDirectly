@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import Bolts
 
 @UIApplicationMain
@@ -42,14 +41,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
-        Parse.enableLocalDatastore()
+//        Parse.enableLocalDatastore()
         
         // Initialize Parse (these keys are for app "GiveDirectlyDataStructure"
-        Parse.setApplicationId("Aze1UzP0FL1GRtT6E44T0ehscBQKyjl61vP0lO4I",
-            clientKey: "hojda4HJ5PXLzH68R0l8Q6uCT2T38SxbRYbURVjK")
+//        Parse.setApplicationId("Aze1UzP0FL1GRtT6E44T0ehscBQKyjl61vP0lO4I",
+//            clientKey: "hojda4HJ5PXLzH68R0l8Q6uCT2T38SxbRYbURVjK")
         
         // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         // Configure Google Sign-in
         GIDSignIn.sharedInstance().clientID = "568617369900-o0t0a9jmjmtt07i1ueaic5moe5lnuv34.apps.googleusercontent.com"

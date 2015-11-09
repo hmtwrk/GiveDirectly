@@ -16,11 +16,7 @@ class DonateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // switch variable to display donationTracker.pdf
-        showDonationTracker = true
-
-        
-        // add the webView to the main View
+        // add the webView to the main view
         view.addSubview(webView)
         
         // disable auto-generated constraints, then define custom height and width constraints
@@ -34,7 +30,6 @@ class DonateViewController: UIViewController {
         let url = NSURL(string: "https://www.givedirectly.org/give-now.php")
         let request = NSURLRequest(URL: url!)
         webView.loadRequest(request)
-
     }
     
     // initialize the web view with frame of size zero
@@ -42,43 +37,4 @@ class DonateViewController: UIViewController {
         self.webView = WKWebView(frame: CGRectZero)
         super.init(coder: aDecoder)
     }
-    
-    // increment the user's donation amount by $1000
-//    override func viewDidAppear(animated: Bool) {
-    
-        // create a badge on the user profile tab item (after ten-second delay)
-//        delayBySeconds(10) {
-//            let tabArray = self.tabBarController?.tabBar.items as NSArray!
-//            let tabItem = tabArray.objectAtIndex(0) as! UITabBarItem
-//            tabItem.badgeValue = "1"
-//        }
-        
-        
-//        let userID = PFUser.currentUser()?.objectId
-//        let query = PFQuery(className: "_User")
-//        query.getObjectInBackgroundWithId(userID!) {
-//            (donations: PFObject?, error: NSError?) -> Void in
-//            if error != nil {
-//                print(error)
-//            } else if let donations = donations {
-//                donations.incrementKey("donations", byAmount: 1000)
-//                donations.incrementKey("funded", byAmount: 1)
-//                donations.saveInBackgroundWithBlock {
-//                    (success: Bool, error: NSError?) -> Void in
-//                    if (success) {
-//                        // the donations key has been incremented
-//                        print("Looks like it worked.")
-//                    } else {
-//                        // there was a problem
-//                        print("Looks like there was a problem.")
-//                    }
-//                }
-//            }
-//        }
-        
-        
-
-//        }
-
-
 }

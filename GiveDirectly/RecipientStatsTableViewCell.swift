@@ -20,9 +20,6 @@ class RecipientStatsTableViewCell: UITableViewCell {
     
     
     func configureStatsCell(recipientStats: JSON) {
-        
-//        print("AYY LMAO")
-//        print(recipientStats)
 
         let recipientName:String? = recipientStats["firstName"].string
         let recipientAge:Int? = recipientStats["age"].int

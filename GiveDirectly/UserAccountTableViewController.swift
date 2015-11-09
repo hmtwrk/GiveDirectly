@@ -41,19 +41,7 @@ class UserAccountTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        // refresh the Parse current user cache and reload tableView
-//        let currentUser = PFUser.currentUser()
-//        currentUser?.fetchInBackgroundWithBlock { (object, error) -> Void in
-//            
-//            // reload the tableView so that the data is current
-//            print("Matrix reloaded!")
-//            self.tableView?.reloadData()
-//            
-//            // remove the tab bar badge
-//            self.navigationController?.tabBarItem.badgeValue = nil
-//            
-//        }
+
         
     }
     
@@ -85,7 +73,6 @@ class UserAccountTableViewController: UITableViewController {
         
         
         if let userProfileCell = cell as? UserAccountProfileTableViewCell {
-//            let userData = PFUser.currentUser()
             let userData = userJSON["user"]
             
             // the userData! syntax might be causing random crashes

@@ -7,39 +7,15 @@
 //
 
 import Foundation
-import Parse
 import Alamofire
 
-class Update: PFObject, PFSubclassing {
-    
-    // any variables you wish to access with dot notation
-    @NSManaged var imageFile: PFFile?
-    @NSManaged var user: PFUser?
+class Update {
     
     var image: UIImage?
     
     // doesn't seem like these properties are taking effect?
     var userHasLikedUpdate = false
     var numberOfLikes = 0
-    
-    //    var likes = Dynamic<[PFUser]?>(nil)
-    
-    // MARK: PFSubclassing Protocol
-    
-    static func parseClassName() -> String {
-        return "RecipientUpdates"
-    }
-    
-    override init () {
-        super.init()
-    }
-    
-    override class func initialize() {
-        var onceToken: dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            self.registerSubclass()
-        }
-    }
     
     // TODO: pass completion block as parameter, to be handled in newsfeed view controller
     class func retrieveUpdates(completionBlock: (NSDictionary?, NSError?) -> () ) {
@@ -55,8 +31,8 @@ class Update: PFObject, PFSubclassing {
         print("Base64 credentials:\(base64Credentials).")
         
         // Get a list of all recipients (the "recipients" key will hold an array of GDID objects)
-//        let constraint = "?sort=order=desc&limit=20" // set amount of recipients to return
-//        let constraint = ""
+        //        let constraint = "?sort=order=desc&limit=20" // set amount of recipients to return
+        //        let constraint = ""
         let url = "https://mobile-backend.givedirectly.org/api/v1/users/SUPERADMINISTRATOR"
         
         // API call
@@ -65,10 +41,4 @@ class Update: PFObject, PFSubclassing {
                 completionBlock(response.result.value as? NSDictionary, response.result.error)
         }
     }
-    
-
-    
-    // TODO: add a function that grabs the corresponding image data for recipient
-    // "Adding Code to Display Images"
-    // https://www.makeschool.com/tutorials/build-a-photo-sharing-app-part-1/custom-table-view-cell-post
 }

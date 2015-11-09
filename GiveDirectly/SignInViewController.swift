@@ -8,10 +8,6 @@
 
 import UIKit
 
-// have no idea what this line does "match the ObjC symbol name inside Main.storyboard"
-// essentially, the name in parenthesis must match the VC class... ugh
-//@objc(SignInViewController)
-
 class SignInViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var statusText: UILabel!
