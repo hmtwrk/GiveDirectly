@@ -61,7 +61,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.tableView?.reloadData()
+//        self.tableView?.reloadData()
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {

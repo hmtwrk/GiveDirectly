@@ -22,11 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Override point for customization after application launch.
         //  UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         
-        // set security settings for Parse users (user can read all public objects, but can only modify objects he or she personally created)
-        let acl = PFACL()
-        acl.setPublicReadAccess(true)
-        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
-        
         // Change appearance of tab bar navigation globally
         let tabBarAppearance = UITabBar.appearance()
 //        let tabBarItemAppearance = UITabBarItem.appearance()
@@ -72,18 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance().delegate = self
 
-        
-        
-        
-        // clear out the current user, if one exists
-//        PFUser.logOut()
-        
-        // log in a user
-//        self.easyLogin()
-        
-        // Check for user's login status
-        self.checkUserStatus()
-        self.refreshUserData()
         return true
     }
     
@@ -163,70 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     // MARK: Alamofire user login
     // AlamoFire requests
-    
-    
-    
-    // MARK: Parse-related sign-in
-    func checkUserStatus() {
-        
-        let currentUser = PFUser.currentUser()
-        let currentUserName: AnyObject? = currentUser?.objectForKey("fullName")
-        if currentUser != nil {
-            
-            // do stuff with the user
-            print("You are already logged in as \"\(currentUserName!).\"")
-            
-        } else {
-            
-            // show the signup or login screen
-            let parseUsername = "braddourif"
-            let testPassword = "testpass123"
-            
-            PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {
-                (user: PFUser?, error: NSError?) -> Void in
-                if user != nil {
-                    
-                    // do successful login stuff
-                    print("You have successfully logged in as \"\(parseUsername).\"")
-                } else {
-                    // oh no
-                    print("There was an error of \(error).")
-                }
-            }
-        }
-        
-    }
-    
-    func easyLogin() {
-        
-//        let parseUsername = "michaelfaye"
-//        let parseUsername = "seanmoriarity"
-        let parseUsername = "braddourif"
-        let testPassword = "testpass123"
-        
-        PFUser.logInWithUsernameInBackground(parseUsername, password: testPassword) {
-            (user: PFUser?, error: NSError?) -> Void in
-            if user != nil {
-                
-                // do successful login stuff
-                print("You have successfully logged in as \"\(parseUsername).\"")
-            } else {
-                // oh no
-                print("There was an error of \(error).")
-            }
-        }
-    }
-    
-    func refreshUserData() {
-        
-        // refresh user data
-        let currentUser = PFUser.currentUser()
-        currentUser?.fetchInBackgroundWithBlock { (object, error) -> Void in
-            print("Refreshed!")
-//            println(currentUser)
-        }
-        
-    }
+
     
 }
 

@@ -30,9 +30,6 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("BUCK BUMBLE")
-        print(recipientInfo)
-        
         // set navigation title to match recipient's name
         let recipientName = recipientInfo["firstName"].string ?? ""
         self.recipientNameData = recipientName
