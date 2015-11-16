@@ -51,16 +51,16 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>mobile-backend.givedirectly.org</key>
+			<key>files.parsetfss.com</key>
 			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 				<key>NSTemporaryExceptionMinimumTLSVersion</key>
 				<string>TLSv1.1</string>
-				<key>NSIncludesSubdomains</key>
-				<true/>
 			</dict>
-			<key>files.parsetfss.com</key>
+			<key>mobile-backend.givedirectly.org</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

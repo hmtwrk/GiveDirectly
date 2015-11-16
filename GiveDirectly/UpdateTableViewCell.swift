@@ -17,79 +17,101 @@ protocol UpdateTableViewCellDelegate: class {
 class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
-
-
+    
+    
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var updateStoryLabel: UILabel!
     
-    @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var commentButton: UIButton!
-    @IBOutlet weak var extraButton: UIButton!
-
+    @IBOutlet weak var likeButton: SpringButton!
+    @IBOutlet weak var commentButton: SpringButton!
+    @IBOutlet weak var extraButton: SpringButton!
+    
     // MARK: SpringButton functionality
     @IBAction func likeButtonDidTap(sender: AnyObject) {
-    
-//        delegate?.updateLikeButtonDidTap(self, sender: sender)
         
-        // trigger the Parse updating in delegate?
-        // basically both delegates will make a call to the Parse helper and have that sync values
+        likeButton.animation = "pop"
+        likeButton.force = 3
+        likeButton.animate()
+        
+        //        delegate?.updateLikeButtonDidTap(self, sender: sender)
+        print("Like has been tapped.")
     }
     
     @IBAction func commentButtonDidTap(sender: AnyObject) {
         
-//        delegate?.updateCommentButtonDidTap(self, sender: sender)
+        commentButton.animation = "pop"
+        commentButton.force = 3
+        commentButton.animate()
+        
+        //        delegate?.updateCommentButtonDidTap(self, sender: sender)
     }
     
     @IBAction func extraButtonDidTap(sender: AnyObject) {
         
-//        delegate?.updateExtraButtonDidTap(self, sender: sender)
+        extraButton.animation = "pop"
+        extraButton.force = 3
+        extraButton.animate()
+        
+        //        delegate?.updateExtraButtonDidTap(self, sender: sender)
     }
     
-
+    
+    
     
     // MARK: configuration of cell
     func configureUpdateTableViewCell(updateData: JSON) {
         
-//        print(updateData)
+        //        print(updateData)
         
         let displayName: String? = updateData["displayName"].string
-        let title: String? = updateData["surveyMethod"].string
+        // title should be a curated and unique field for each update
+        let title: String? = updateData["title"].string
         let updateText: String? = updateData["update"].string
-//        let authorPortraitURL = updateData["recipientAvatar"].string
+        //        let authorPortraitURL = updateData["recipientAvatar"].string
         
-//        if let imageURL: NSURL = NSURL(string: authorPortraitURL!)! {
-//            imageRequest(imageURL)
-//            print(imageURL)
-//        }
+        //        if let imageURL: NSURL = NSURL(string: authorPortraitURL!)! {
+        //            imageRequest(imageURL)
+        //            print(imageURL)
+        //        }
         
-//        print(recipientPortraitURL!)
+        //        print(recipientPortraitURL!)
         
         authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
         authorImageView.clipsToBounds = true
         authorImageView.layer.borderWidth = 2.0
         authorImageView.layer.borderColor = UIColor.clearColor().CGColor
         authorImageView.layer.backgroundColor = UIColor.clearColor().CGColor
-     
+        
         
         // get the date and format (does this need to be set to optional? App will crash if
         // the "date" field on RecipientUpdates is nil)
         let JSONdate:String = updateData["surveyDate"].string ?? ""
-        let date: NSDateFormatter = NSDateFormatter()
-        date.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let displayDate: NSDate? = date.dateFromString(JSONdate)
-//        print(displayDate!.ago)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+//        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        let displayDate: NSDate? = dateFormatter.dateFromString(JSONdate)
+
         
-//        self.authorImageView.url = authorPortraitURL?.toURL()
-//        self.authorImageView.placeholderImage = UIImage(named: "blankProfileImage")
-        self.timestampLabel.text = displayDate!.ago
+//        self.timestampLabel.text = dateFormatter.stringFromDate(displayDate!
+        
+//        self.timestampLabel.text = displayDate!.ago
+        self.timestampLabel.text = JSONdate
 
-//        self.timestampLabel.text = date.substringToIndex(date.endIndex.advancedBy(-18))
-
+        
+        //        print(displayDate!.ago)
+        
+        //        self.authorImageView.url = authorPortraitURL?.toURL()
+        //        self.authorImageView.placeholderImage = UIImage(named: "blankProfileImage")
+        //        self.timestampLabel.text = displayDate!.ago
+        
+        
+        //        self.timestampLabel.text = date.substringToIndex(date.endIndex.advancedBy(-18))
+        
         // assign labels and views (also needs to be set to optional)
-//        self.authorNameLabel.text = recipientName
+        //        self.authorNameLabel.text = recipientName
         self.authorNameLabel.text = displayName ?? ""
         self.updateTitleLabel.text = title ?? ""
         self.updateStoryLabel.text = updateText ?? ""
@@ -98,7 +120,7 @@ class UpdateTableViewCell: UITableViewCell {
     
     func configureLikeForCell(withUpdate: Update) {
         
-//        print(withUpdate.userHasLikedUpdate)
+        //        print(withUpdate.userHasLikedUpdate)
         
         self.likeButton.setTitle(String(withUpdate.numberOfLikes), forState: UIControlState.Normal)
         

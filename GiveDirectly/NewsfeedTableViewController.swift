@@ -22,6 +22,7 @@ func delayBySeconds(seconds: Double, delayedCode: ()->() ) {
 class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
     var updates: [Update] = []
+    var likes: [Liked] = []
     var refreshView: RefreshView!
     var updatesJSON: JSON = []
     var updatesList: [JSON] = []
@@ -36,6 +37,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         refreshView.delegate = self
         view.insertSubview(refreshView, atIndex: 0)
         
+        
         // turn off the seam on the navigation bar for this page only
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "TransparentPixel")
@@ -44,15 +46,13 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // just testing
-//        Recipient.testUsersFilter()
-
-        
         // make the Alamofire API call with completion block, to set the variable updatesJSON in this class
-        Update.retrieveUpdates() { responseObject, error in
-            
+//        Update.retrieveUpdates() { responseObject, error in
+        GDService.updatesForNewsfeed() { responseObject, error in
+        
             if let value: AnyObject = responseObject {
                 let json = JSON(value)
+                print(json)
                 self.updatesJSON = json
                 self.numberOfUpdates = self.buildUpdates(json["user"]["following"])
                 self.tableView?.reloadData()
@@ -60,8 +60,15 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         }
     }
     
+    
+    override func didReceiveMemoryWarning() {
+        print("MEMORY WARNING!")
+    }
+    
     override func viewDidAppear(animated: Bool) {
-//        self.tableView?.reloadData()
+//        super.viewDidAppear(true)
+//        view.showLoading()
+//        
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -78,8 +85,12 @@ extension NewsfeedTableViewController {
     
     // iterate through the recipients "newsfeeds" and count the items within
     func buildUpdates(recipients: JSON) -> Int {
+        
+        // need to cast this data to an Update model (from JSON)
+        
         var totalUpdates = 0
-        for recipientIndex in 0..<recipients.count {
+        //        for recipientIndex in 0..<recipients.count {
+        for recipientIndex in 0..<5 {
             totalUpdates += recipients[recipientIndex]["newsfeeds"].count
             
             // extract each item and append it to the array
@@ -95,7 +106,7 @@ extension NewsfeedTableViewController {
                 var newsfeedItem = recipients[recipientIndex]["newsfeeds"][itemIndex]
                 newsfeedItem["displayName"] = JSON(displayName)
                 newsfeedItem["village"] = JSON(village)
-
+                
                 // iterate through photos in recipients["photos"] and return the object
                 // in which "type" = "face", to get the recipient's profile image
                 // would be a little more efficient as do...while loop maybe
@@ -111,12 +122,12 @@ extension NewsfeedTableViewController {
             }
         }
         
-//        print(recipients[0])
-//        print(updatesList[0])
-        
         // sort the finished array of dictionaries by survey date
         updatesList.sortInPlace({$0["surveyDate"] > $1["surveyDate"]})
-
+        
+        // cast the updatesList into an array of Update objects
+//        updatesList
+        
         // return the count of update objects
         return totalUpdates
     }
@@ -128,13 +139,10 @@ extension NewsfeedTableViewController {
         return numberOfUpdates
     }
     
-    // tableView:cellForRowAtIndexPath gets called every time a cell is queued,
-    // so the functions inside need to update the cell with the most current
-    // data from the model (configureLike, etc)
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let identifier = "UpdateTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier)
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
         
         // cast to specific class
         if let cell = cell as? UpdateTableViewCell {
@@ -145,9 +153,9 @@ extension NewsfeedTableViewController {
             // 3) once entire array is built, sort by descending
             // 4) send each item to cell via indexPath.row
             
-//            let updateDataForCell: JSON = self.updatesJSON["user"]["following"][indexPath.row]
+            //            let updateDataForCell: JSON = self.updatesJSON["user"]["following"][indexPath.row]
             let updateDataForCell: JSON = self.updatesList[indexPath.row]
-            
+            //
             let user = "admin"
             let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
             let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
@@ -157,7 +165,7 @@ extension NewsfeedTableViewController {
             
             let headers = ["Authorization": "Basic \(base64Credentials)"]
             
-            // API call
+            //             API call for images
             Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
                 (_, _, data, _) in
                 
@@ -168,16 +176,17 @@ extension NewsfeedTableViewController {
             
             // configure queued cell with newest data from model
             cell.configureUpdateTableViewCell(updateDataForCell)
-
+            
             cell.delegate = self
         }
-        return cell!
+        return cell
     }
 }
 
 extension NewsfeedTableViewController: RefreshViewDelegate {
     func refreshViewDidRefresh(refreshView: RefreshView) {
         delayBySeconds(1.5) {
+            
             self.refreshView.endRefreshing()
             
             // TODO: make an Alamofire refresh with completion block
@@ -192,6 +201,7 @@ extension NewsfeedTableViewController {
         
         // update the data model with liked status (has liked, increment # of likes)
         let indexPath = tableView.indexPathForCell(cell)
+        print(indexPath!.row)
         let update = updates[indexPath!.row]
         
         // toggle status of like
@@ -204,7 +214,7 @@ extension NewsfeedTableViewController {
             update.numberOfLikes -= 1
         }
         
-        // update the view cell
+        //        // update the view cell
         cell.configureLikeForCell(update)
     }
     

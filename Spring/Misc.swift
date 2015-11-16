@@ -46,14 +46,14 @@ public func degreesToRadians(degrees: CGFloat) -> CGFloat {
     return degrees * CGFloat(M_PI / 180)
 }
 
-public func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
-}
+//public func delay(delay:Double, closure:()->()) {
+//    dispatch_after(
+//        dispatch_time(
+//            DISPATCH_TIME_NOW,
+//            Int64(delay * Double(NSEC_PER_SEC))
+//        ),
+//        dispatch_get_main_queue(), closure)
+//}
 
 public func imageFromURL(URL: String) -> UIImage {
     let url = NSURL(string: URL)

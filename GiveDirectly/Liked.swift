@@ -12,6 +12,9 @@ class Liked {
     
     // default state = not liked
     var liked = false
+    
+    // number of likes
+    // var totalLkes = 0 
 
     func toggleLiked() {
         liked = !liked

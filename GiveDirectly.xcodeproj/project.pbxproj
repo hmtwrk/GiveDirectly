@@ -16,6 +16,14 @@
 		4A47C62F1BC8667100707B04 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C62E1BC8667100707B04 /* libz.tbd */; };
 		4A47C6311BC8668700707B04 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C6301BC8668700707B04 /* libsqlite3.tbd */; };
 		4A5711B31B98C39000CF32B0 /* Liked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5711B21B98C39000CF32B0 /* Liked.swift */; };
+		4A6A14B21BF6A17E00730E3C /* Array+RemoveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14A91BF6A17E00730E3C /* Array+RemoveObject.swift */; };
+		4A6A14B31BF6A17E00730E3C /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14AA1BF6A17E00730E3C /* Delay.swift */; };
+		4A6A14B41BF6A17E00730E3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A14AB1BF6A17E00730E3C /* Info.plist */; };
+		4A6A14B51BF6A17E00730E3C /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14AD1BF6A17E00730E3C /* DismissSegue.swift */; };
+		4A6A14B61BF6A17E00730E3C /* KeyboardNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14AE1BF6A17E00730E3C /* KeyboardNotificationHandler.swift */; };
+		4A6A14B71BF6A17E00730E3C /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14AF1BF6A17E00730E3C /* TextView.swift */; };
+		4A6A14B81BF6A17E00730E3C /* TimelineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14B01BF6A17E00730E3C /* TimelineComponent.swift */; };
+		4A6A14B91BF6A17E00730E3C /* UIViewController+PresentAnywhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14B11BF6A17E00730E3C /* UIViewController+PresentAnywhere.swift */; };
 		4A6A60B11B6AB81A00C3F142 /* NewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */; };
 		4A6A60B31B6AB97A00C3F142 /* UpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */; };
 		4A6A60B71B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A60B61B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift */; };
@@ -186,6 +194,15 @@
 		4A47C6301BC8668700707B04 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		4A5711B21B98C39000CF32B0 /* Liked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Liked.swift; sourceTree = "<group>"; };
 		4A694DDD1BCD7C9300BEEF02 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		4A6A14A71BF6A17E00730E3C /* ConvenienceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceKit.h; sourceTree = "<group>"; };
+		4A6A14A91BF6A17E00730E3C /* Array+RemoveObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+RemoveObject.swift"; path = "Foundation/Array+RemoveObject.swift"; sourceTree = "<group>"; };
+		4A6A14AA1BF6A17E00730E3C /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Delay.swift; path = Foundation/Delay.swift; sourceTree = "<group>"; };
+		4A6A14AB1BF6A17E00730E3C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A6A14AD1BF6A17E00730E3C /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DismissSegue.swift; path = UIKit/DismissSegue.swift; sourceTree = "<group>"; };
+		4A6A14AE1BF6A17E00730E3C /* KeyboardNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationHandler.swift; path = UIKit/KeyboardNotificationHandler.swift; sourceTree = "<group>"; };
+		4A6A14AF1BF6A17E00730E3C /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextView.swift; path = UIKit/TextView.swift; sourceTree = "<group>"; };
+		4A6A14B01BF6A17E00730E3C /* TimelineComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelineComponent.swift; path = UIKit/TimelineComponent.swift; sourceTree = "<group>"; };
+		4A6A14B11BF6A17E00730E3C /* UIViewController+PresentAnywhere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+PresentAnywhere.swift"; path = "UIKit/UIViewController+PresentAnywhere.swift"; sourceTree = "<group>"; };
 		4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTableViewCell.swift; sourceTree = "<group>"; };
 		4A6A60B61B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +386,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4A6A14A61BF6A17E00730E3C /* ConvenienceKit */ = {
+			isa = PBXGroup;
+			children = (
+				4A6A14A91BF6A17E00730E3C /* Array+RemoveObject.swift */,
+				4A6A14AA1BF6A17E00730E3C /* Delay.swift */,
+				4A6A14A71BF6A17E00730E3C /* ConvenienceKit.h */,
+				4A6A14AD1BF6A17E00730E3C /* DismissSegue.swift */,
+				4A6A14AE1BF6A17E00730E3C /* KeyboardNotificationHandler.swift */,
+				4A6A14AF1BF6A17E00730E3C /* TextView.swift */,
+				4A6A14B01BF6A17E00730E3C /* TimelineComponent.swift */,
+				4A6A14B11BF6A17E00730E3C /* UIViewController+PresentAnywhere.swift */,
+				4A6A14AB1BF6A17E00730E3C /* Info.plist */,
+			);
+			path = ConvenienceKit;
+			sourceTree = "<group>";
+		};
 		4A7462BE1B3F095D00B8555C /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +420,7 @@
 		4AD91CC91B2B310E00A9FB23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A6A14A61BF6A17E00730E3C /* ConvenienceKit */,
 				4AF322AC1BEAB8ED0060D766 /* ImageIO.framework */,
 				4AE8C0351BDDE0F9007540DE /* Spring */,
 				4A7A3B6F1BC8772F00B304C6 /* AddressBook.framework */,
@@ -722,6 +756,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A6A14B41BF6A17E00730E3C /* Info.plist in Resources */,
 				4A7A3B6D1BC876CE00B304C6 /* GoogleSignIn.bundle in Resources */,
 				C43780581B2933080018BD41 /* Main.storyboard in Resources */,
 				4AE8C0601BDDE0F9007540DE /* Info.plist in Resources */,
@@ -747,8 +782,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A6A14B81BF6A17E00730E3C /* TimelineComponent.swift in Sources */,
 				4AE8C05A1BDDE0F9007540DE /* DesignableLabel.swift in Sources */,
 				4A8435131B823F0B008D5E08 /* Global.swift in Sources */,
+				4A6A14B21BF6A17E00730E3C /* Array+RemoveObject.swift in Sources */,
 				4AFAC7661BA9C07C00A60CEF /* SwiftBadge.swift in Sources */,
 				4AE8C0641BDDE0F9007540DE /* Misc.swift in Sources */,
 				4AE8C05D1BDDE0F9007540DE /* DesignableTextView.swift in Sources */,
@@ -763,6 +800,7 @@
 				4AE8C05F1BDDE0F9007540DE /* ImageLoader.swift in Sources */,
 				4A6A60BB1B6ECA9800C3F142 /* RecipientStatsTableViewCell.swift in Sources */,
 				4AE8C0611BDDE0F9007540DE /* KeyboardLayoutConstraint.swift in Sources */,
+				4A6A14B61BF6A17E00730E3C /* KeyboardNotificationHandler.swift in Sources */,
 				4AE8C06A1BDDE0F9007540DE /* SpringLabel.swift in Sources */,
 				4A5711B31B98C39000CF32B0 /* Liked.swift in Sources */,
 				4AE8C0701BDDE0F9007540DE /* UnwindSegue.swift in Sources */,
@@ -788,10 +826,12 @@
 				4A7462CA1B3F095D00B8555C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				4AE8C0661BDDE0F9007540DE /* Spring.swift in Sources */,
 				4AE8C06D1BDDE0F9007540DE /* SpringView.swift in Sources */,
+				4A6A14B51BF6A17E00730E3C /* DismissSegue.swift in Sources */,
 				4AE8C0561BDDE0F9007540DE /* AutoTextView.swift in Sources */,
 				4A0235281BE13A0B00891768 /* GDService.swift in Sources */,
 				4AE8C0691BDDE0F9007540DE /* SpringImageView.swift in Sources */,
 				4AE8C0671BDDE0F9007540DE /* SpringAnimation.swift in Sources */,
+				4A6A14B31BF6A17E00730E3C /* Delay.swift in Sources */,
 				4AE8C0651BDDE0F9007540DE /* SoundPlayer.swift in Sources */,
 				4A6A60B71B6ECA2F00C3F142 /* RecipientProfileTableViewController.swift in Sources */,
 				C4DC37E81BD53ADF009B04D4 /* SwiftyJSON.swift in Sources */,
@@ -802,6 +842,7 @@
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4AE8C0571BDDE0F9007540DE /* BlurView.swift in Sources */,
 				4A2CE81F1BED22B000FC03B5 /* RequestRouter.swift in Sources */,
+				4A6A14B71BF6A17E00730E3C /* TextView.swift in Sources */,
 				4A1BAF821B7AA9B500BEFCC9 /* DynamicLayout.swift in Sources */,
 				4A1BAF801B7A922E00BEFCC9 /* DynamicViewController.swift in Sources */,
 				4A6A60BD1B6EDA0D00C3F142 /* RecipientStoriesTableViewCell.swift in Sources */,
@@ -810,6 +851,7 @@
 				4A7462C91B3F095D00B8555C /* TPKeyboardAvoidingTableView.m in Sources */,
 				4AE8C06C1BDDE0F9007540DE /* SpringTextView.swift in Sources */,
 				4A6A60B11B6AB81A00C3F142 /* NewsfeedTableViewController.swift in Sources */,
+				4A6A14B91BF6A17E00730E3C /* UIViewController+PresentAnywhere.swift in Sources */,
 				4AE8C0551BDDE0F9007540DE /* AsyncImageView.swift in Sources */,
 				4AF3233B1BEBB64A0060D766 /* User.swift in Sources */,
 			);
@@ -960,7 +1002,7 @@
 					"-force_load",
 					GoogleSignIn.framework/GoogleSignIn,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.givedirectly.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.givedirectly.GiveDirectly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GiveDirectly/GiveDirectly-Bridging-Header.h";
@@ -986,7 +1028,7 @@
 					"-force_load",
 					GoogleSignIn.framework/GoogleSignIn,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.givedirectly.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.givedirectly.GiveDirectly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GiveDirectly/GiveDirectly-Bridging-Header.h";
