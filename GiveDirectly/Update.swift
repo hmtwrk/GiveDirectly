@@ -33,7 +33,7 @@ class Update {
         // Get a list of all recipients (the "recipients" key will hold an array of GDID objects)
         //        let constraint = "?sort=order=desc&limit=20" // set amount of recipients to return
         //        let constraint = ""
-        let url = "https://mobile-backend.givedirectly.org/api/v1/users/SUPERADMINISTRATOR"
+        let url = "https://mobile-backend.givedirectly.org/api/v1/users/SUPERADMINISTRATOR?limit=20"
         
         // API call
         Alamofire.request(.GET, url, headers: headers)

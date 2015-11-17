@@ -12,10 +12,7 @@ class BrowserViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var storyLabel: UILabel!
-//    @IBOutlet weak var profileImageView: AsyncImageView!
-//    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageViewAsync!
-    
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
 //  @IBOutlet weak var timeLabel: UILabel!
@@ -23,13 +20,14 @@ class BrowserViewCell: UICollectionViewCell {
     var displayName: String = ""
 
     func configureCellWithData(data: JSON, andRecipientImageURL recipientImageURL: String) {
+//        print(data)
         
         // assign values or use default
         let recipientName = data["firstName"].string ?? ""
         let recipientStory = data["spendingPlans"].string ?? ""
         let paymentPhase = data["phase"].int ?? 0
 
-        print(recipientImageURL)
+//        print(recipientImageURL)
         
 
         switch paymentPhase {

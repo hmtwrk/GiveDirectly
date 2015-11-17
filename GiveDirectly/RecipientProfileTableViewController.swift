@@ -14,11 +14,9 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
     // prepare variable for receiving data from segue
 //    var recipientInfo: AnyObject = ""
     var recipientInfo: JSON = ""
+    var updatesInfo: [JSON] = []
     var updatesList: [JSON] = []
-//    var recipientImageURL: String = ""
-    
 
-    
     
     // prepare variable for related Update object
     var numberOfUpdates: Int = 0
@@ -31,10 +29,10 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         super.viewDidLoad()
 
         // set navigation title to match recipient's name
-        let recipientName = recipientInfo["firstName"].string ?? ""
+        let recipientName = recipientInfo["recipient"]["firstName"].string ?? ""
         self.recipientNameData = recipientName
         
-        // Fill the navigation title with the recipient's name (from Parse query)
+        // Fill the navigation title with the recipient's name
         self.navigationItem.title = recipientName
         
         // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)
@@ -42,10 +40,11 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // find the profile image
-        for photoIndex in 0..<recipientInfo["photos"].count {
+        let photoPath = recipientInfo["recipient"]["photos"]
+        for photoIndex in 0..<photoPath.count {
             
-            if recipientInfo["photos"][photoIndex]["type"] == "face" {
-                recipientImageURL = recipientInfo["photos"][photoIndex]["url"].string ?? ""
+            if photoPath[photoIndex]["type"] == "face" {
+                recipientImageURL = photoPath[photoIndex]["url"].string ?? ""
             }
         }
         
@@ -105,7 +104,8 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         
         // configure cells
         if let recipientStatsCell = cell as? RecipientStatsTableViewCell {
-            recipientStatsCell.configureStatsCell(recipientInfo)
+//            recipientStatsCell.configureStatsCell(recipientInfo["recipient"])
+            recipientStatsCell.configureStatsCell(recipientInfo["recipient"])
             
             // Alamofire stuff
             let user = "admin"
@@ -128,7 +128,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         }
         
         if let recipientStoriesCell = cell as? RecipientStoriesTableViewCell {
-            recipientStoriesCell.configureStoriesCell(recipientInfo)
+            recipientStoriesCell.configureStoriesCell(recipientInfo["recipient"])
         }
         
         if let recipientUpdatesCell = cell as? UpdateTableViewCell {
@@ -176,11 +176,9 @@ extension RecipientProfileTableViewController {
     
     func buildUpdates() {
         
-        // iterate through all newsfeed items, append biodata, sort by date added
-        
         // extract biodata from recipient object
-        let displayName = recipientInfo["firstName"].string?.capitalizedString ?? ""
-        let village = recipientInfo["village"].string?.capitalizedString ?? ""
+        let displayName = recipientInfo["recipient"]["firstName"].string?.capitalizedString ?? ""
+        let village = recipientInfo["recipient"]["village"].string?.capitalizedString ?? ""
         
         // iterate through newsfeed items
         for itemIndex in 0..<recipientInfo["newsfeeds"].count {
@@ -204,20 +202,20 @@ extension RecipientProfileTableViewController {
         
         // update the data model with liked status (has liked, increment # of likes)
         let indexPath = tableView.indexPathForCell(cell)
-        let update = updates[indexPath!.row]
+//        let update = updates[indexPath!.row]
         
         // toggle status of like
-        update.userHasLikedUpdate = !update.userHasLikedUpdate
+//        update.userHasLikedUpdate = !update.userHasLikedUpdate
         
         // increment or decrement total likes
-        if update.userHasLikedUpdate {
-            update.numberOfLikes += 1
-        } else {
-            update.numberOfLikes -= 1
-        }
+//        if update.userHasLikedUpdate {
+//            update.numberOfLikes += 1
+//        } else {
+//            update.numberOfLikes -= 1
+//        }
         
         // update the view cell
-        cell.configureLikeForCell(update)
+//        cell.configureLikeForCell(update)
 
         
     }

@@ -27,6 +27,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     var updatesJSON: JSON = []
     var updatesList: [JSON] = []
     var numberOfUpdates = 0
+    var recipientInfoForSegue: JSON = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,17 +53,12 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         
             if let value: AnyObject = responseObject {
                 let json = JSON(value)
-                print(json)
+//                print(json)
                 self.updatesJSON = json
                 self.numberOfUpdates = self.buildUpdates(json["user"]["following"])
                 self.tableView?.reloadData()
             }
         }
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        print("MEMORY WARNING!")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -89,33 +85,43 @@ extension NewsfeedTableViewController {
         // need to cast this data to an Update model (from JSON)
         
         var totalUpdates = 0
-        //        for recipientIndex in 0..<recipients.count {
-        for recipientIndex in 0..<5 {
+//        for recipientIndex in 0..<recipients.count {
+        // the recipient number could be paginated?
+        // otherwise the total amount of updates could be cast and then paginated
+        
+        // download the whole block and cache, then send 10-part chunks to the cells
+            for recipientIndex in 0..<10 {
             totalUpdates += recipients[recipientIndex]["newsfeeds"].count
             
-            // extract each item and append it to the array
+            // extract each item and append it to the array (get all newsfeed items at first, then display what's needed?)
             let newsfeedObjects = recipients[recipientIndex]["newsfeeds"].count
             
             for itemIndex in 0..<newsfeedObjects {
                 
                 // extract recipient biodata from recipient object
-                let displayName = recipients[recipientIndex]["firstName"].string?.capitalizedString ?? ""
-                let village = recipients[recipientIndex]["village"].string?.capitalizedString ?? ""
+                let displayName = recipients[recipientIndex]["recipient"]["firstName"].string?.capitalizedString ?? ""
+                let village = recipients[recipientIndex]["recipient"]["village"].string?.capitalizedString ?? ""
+                let biodata = recipients[recipientIndex]["recipient"]
+                let userHasLikedUpdate = false
                 
                 // attach recipient biodata to newsfeed update object
                 var newsfeedItem = recipients[recipientIndex]["newsfeeds"][itemIndex]
                 newsfeedItem["displayName"] = JSON(displayName)
                 newsfeedItem["village"] = JSON(village)
+                newsfeedItem["biodata"] = biodata
+                newsfeedItem["userHasLikedUpdate"] = JSON(userHasLikedUpdate)
                 
                 // iterate through photos in recipients["photos"] and return the object
                 // in which "type" = "face", to get the recipient's profile image
                 // would be a little more efficient as do...while loop maybe
-                for photoIndex in 0..<recipients[recipientIndex]["photos"].count {
+                let photoPath = recipients[recipientIndex]["recipient"]["photos"]
+                for photoIndex in 0..<photoPath.count {
+//                for photoIndex in 0..<recipients[recipientIndex]["recipient"]["photos"].count {
                     
-                    if recipients[recipientIndex]["photos"][photoIndex]["type"] == "face" {
-                        let recipientAvatar = recipients[recipientIndex]["photos"][photoIndex]["url"].string ?? ""
+                    if photoPath[photoIndex]["type"] == "face" {
+                        let recipientAvatar = photoPath[photoIndex]["url"].string ?? ""
                         newsfeedItem["recipientAvatar"] = JSON(recipientAvatar)
-                    }
+                    } 
                 }
                 
                 updatesList.append(newsfeedItem)
@@ -136,6 +142,9 @@ extension NewsfeedTableViewController {
         //        return (updates.count)
         //        print(updatesJSON["user"]["following"].count)
         //        return updatesJSON["user"]["following"].count
+        
+        // this number would probably need to be a range, with an intial value and an append value
+        print(updatesList.count)
         return numberOfUpdates
     }
     
@@ -181,6 +190,42 @@ extension NewsfeedTableViewController {
         }
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "NewsfeedProfileSegue" {
+            let toView = segue.destinationViewController as! RecipientProfileTableViewController
+            let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
+//            let updatesInfo = updatesList[indexPath!.item]
+            var recipientInfo = updatesList[indexPath!.item]
+            
+            self.matchUpdateWithRecipientGDID(recipientInfo["biodata"]["gdid"].string!)
+//            print(recipientInfo["biodata"]["gdid"])
+//            print(recipientInfo)
+//            print(updatesInfo)
+            print(recipientInfoForSegue)
+            toView.recipientInfo = recipientInfoForSegue
+//            toView.updatesInfo = updatesList
+            //            toView.recipientImageURL = recipientImageURL
+        }
+    }
+    
+    func matchUpdateWithRecipientGDID(GDID: String) {
+        let JSONcount = updatesJSON["user"]["following"].count
+        
+        for recipientIndex in 0..<JSONcount {
+            
+            print(updatesJSON["user"]["following"][recipientIndex]["recipient"]["gdid"])
+            print(GDID)
+
+            if updatesJSON["user"]["following"][recipientIndex]["recipient"]["gdid"].string == GDID {
+                self.recipientInfoForSegue = updatesJSON["user"]["following"][recipientIndex]
+                return
+            }
+        }
+        
+        
+    }
+
 }
 
 extension NewsfeedTableViewController: RefreshViewDelegate {
@@ -200,22 +245,28 @@ extension NewsfeedTableViewController {
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         
         // update the data model with liked status (has liked, increment # of likes)
-        let indexPath = tableView.indexPathForCell(cell)
-        print(indexPath!.row)
-        let update = updates[indexPath!.row]
+//        let indexPath = tableView.indexPathForCell(cell)
+//        let like = Liked()
+//        self.likes[indexPath!.row].toggleLiked()
+//        print(likes[indexPath!.row])
         
-        // toggle status of like
-        update.userHasLikedUpdate = !update.userHasLikedUpdate
+//        print(indexPath!.row)
+//        var update = self.updatesList[indexPath!.row]
         
-        // increment or decrement total likes
-        if update.userHasLikedUpdate {
-            update.numberOfLikes += 1
-        } else {
-            update.numberOfLikes -= 1
-        }
+
+//        // toggle status of like
+//        update["userHasLikedUpdate"] = JSON(!userHasLikedUpdate)
+        
+//
+//        // increment or decrement total likes
+//        if update.userHasLikedUpdate {
+//            update.numberOfLikes += 1
+//        } else {
+//            update.numberOfLikes -= 1
+//        }
         
         //        // update the view cell
-        cell.configureLikeForCell(update)
+//        cell.configureLikeForCell(update)
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

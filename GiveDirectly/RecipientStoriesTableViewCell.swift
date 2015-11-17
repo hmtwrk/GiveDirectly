@@ -20,12 +20,12 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 
     func configureStoriesCell(recipientStories: JSON) {
         
-        
-        let recipientSpendingPlans:String? = recipientStories["spendingPlans"].string
-        let recipientGoals:String? = recipientStories["goals"].string
-        let recipientAchievements:String? = recipientStories["achievements"].string
-        let recipientChallenges:String? = recipientStories["challenges"].string
-        let paymentPhase:Int? = recipientStories["phase"].int
+        print("The recipient stories are: \(recipientStories).")
+        let recipientSpendingPlans:String? = recipientStories["spendingPlans"].string ?? ""
+        let recipientGoals:String? = recipientStories["goals"].string ?? ""
+        let recipientAchievements:String? = recipientStories["achievements"].string ?? ""
+        let recipientChallenges:String? = recipientStories["challenges"].string ?? ""
+        let paymentPhase:String? = recipientStories["phase"].string ?? ""
         
         self.spendingPlansTextView.text = recipientSpendingPlans
 //        self.paymentTextView.sizeToFit()

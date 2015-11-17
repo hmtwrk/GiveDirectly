@@ -64,13 +64,14 @@ extension RecipientBrowserViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipientBrowserCell", forIndexPath: indexPath) as! BrowserViewCell
         
-        let recipientDataForCell = dynamicRecipientData[indexPath.item]
+        let recipientDataForCell = dynamicRecipientData[indexPath.item]["recipient"]
         var recipientImageURL: String!
+        let photoPath = dynamicRecipientData[indexPath.item]["recipient"]["photos"]
         
-        for photoIndex in 0..<dynamicRecipientData[indexPath.item]["photos"].count {
+        for photoIndex in 0..<photoPath.count {
             
-            if dynamicRecipientData[indexPath.item]["photos"][photoIndex]["type"] == "face" {
-                recipientImageURL = dynamicRecipientData[indexPath.item]["photos"][photoIndex]["url"].string
+            if photoPath[photoIndex]["type"] == "face" {
+                recipientImageURL = photoPath[photoIndex]["url"].string
             }
         }
         
@@ -104,7 +105,7 @@ extension RecipientBrowserViewController {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
             let recipientInfo = dynamicRecipientData[indexPath!.item]
-//            let recipientImageURL =
+            print(recipientInfo)
             toView.recipientInfo = recipientInfo
 //            toView.recipientImageURL = recipientImageURL
         }
@@ -123,7 +124,7 @@ extension RecipientBrowserViewController {
     func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         
         // calculates the size of the text by using the content from spendingPlans
-        let annotation = dynamicRecipientData[indexPath.item]["spendingPlans"]
+        let annotation = dynamicRecipientData[indexPath.item]["recipient"]["spendingPlans"]
         
         let story = annotation.string
         let font = UIFont.systemFontOfSize(14)

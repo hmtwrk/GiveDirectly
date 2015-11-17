@@ -18,8 +18,12 @@ class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
     
+    var userHasLiked = false
+    var numberOfLikes = 0
     
-    @IBOutlet weak var authorImageView: UIImageView!
+//    @IBOutlet weak var authorImageView: UIImageView!
+    
+    @IBOutlet weak var authorImageView: AsyncImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
@@ -36,7 +40,19 @@ class UpdateTableViewCell: UITableViewCell {
         likeButton.force = 3
         likeButton.animate()
         
-        //        delegate?.updateLikeButtonDidTap(self, sender: sender)
+        self.userHasLiked = !userHasLiked
+        
+        if userHasLiked {
+            likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+            self.numberOfLikes += 1
+        } else {
+            likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+            self.numberOfLikes -= 1
+        }
+        
+        
+//        delegate?.updateLikeButtonDidTap(self, sender: sender)
+        self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
         print("Like has been tapped.")
     }
     
@@ -89,16 +105,23 @@ class UpdateTableViewCell: UITableViewCell {
         // get the date and format (does this need to be set to optional? App will crash if
         // the "date" field on RecipientUpdates is nil)
         let JSONdate:String = updateData["surveyDate"].string ?? ""
+        
+        // turn string into NSDate
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
 //        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        let displayDate: NSDate? = dateFormatter.dateFromString(JSONdate)
+        let displayDate = dateFormatter.dateFromString(JSONdate)
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        let dateString = dateFormatter.stringFromDate(displayDate!)
 
         
 //        self.timestampLabel.text = dateFormatter.stringFromDate(displayDate!
         
 //        self.timestampLabel.text = displayDate!.ago
-        self.timestampLabel.text = JSONdate
+        self.timestampLabel.text = dateString
+        print(JSONdate)
+        print(displayDate)
 
         
         //        print(displayDate!.ago)
@@ -118,19 +141,23 @@ class UpdateTableViewCell: UITableViewCell {
         self.updateStoryLabel.sizeToFit()
     }
     
-    func configureLikeForCell(withUpdate: Update) {
-        
+//    func configureLikeForCell(withUpdate: Update) {
+    func configureLikeForCell(withNumberOfLikes: Int) {
+    
         //        print(withUpdate.userHasLikedUpdate)
+        self.userHasLiked = !userHasLiked
+        print(self.userHasLiked)
         
-        self.likeButton.setTitle(String(withUpdate.numberOfLikes), forState: UIControlState.Normal)
+        self.likeButton.setTitle(String(withNumberOfLikes), forState: UIControlState.Normal)
+//        
+//        if withUpdate.userHasLikedUpdate {
+//            // change the image
         
-        if withUpdate.userHasLikedUpdate {
-            // change the image
-            likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
-            
-        } else {
-            // image is hollow with unchanged count
-            likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
-        }
+//            likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+//
+//        } else {
+//            // image is hollow with unchanged count
+//            likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+//        }
     }
 }
