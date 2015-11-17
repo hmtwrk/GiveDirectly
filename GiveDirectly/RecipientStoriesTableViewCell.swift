@@ -20,12 +20,12 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 
     func configureStoriesCell(recipientStories: JSON) {
         
-        print("The recipient stories are: \(recipientStories).")
+        print(recipientStories["phase"])
         let recipientSpendingPlans:String? = recipientStories["spendingPlans"].string ?? ""
         let recipientGoals:String? = recipientStories["goals"].string ?? ""
         let recipientAchievements:String? = recipientStories["achievements"].string ?? ""
         let recipientChallenges:String? = recipientStories["challenges"].string ?? ""
-        let paymentPhase:String? = recipientStories["phase"].string ?? ""
+        let paymentPhase:Int? = recipientStories["phase"].int ?? 0
         
         self.spendingPlansTextView.text = recipientSpendingPlans
 //        self.paymentTextView.sizeToFit()
@@ -43,14 +43,14 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 //        print(paymentPhase)
         
         // display proper payment phase
-//        switch paymentPhase! {
-//        case 1:
-//            self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
-//        case 2:
-//            self.paymentPhaseImageView.image = UIImage(named: "phaseComplete")
-//        default:
-//            self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
-//        }
+        switch paymentPhase! {
+        case 1:
+            self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
+        case 2:
+            self.paymentPhaseImageView.image = UIImage(named: "phaseComplete")
+        default:
+            self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
+        }
         
         donorImageView.layer.cornerRadius = self.donorImageView.frame.size.width / 2
         donorImageView.clipsToBounds = true

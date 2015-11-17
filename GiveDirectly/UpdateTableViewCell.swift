@@ -12,6 +12,7 @@ protocol UpdateTableViewCellDelegate: class {
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject)
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject)
     func updateExtraButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject)
+    func recipientImageDidTap(cell: UpdateTableViewCell, sender: AnyObject)
 }
 
 class UpdateTableViewCell: UITableViewCell {
@@ -20,9 +21,7 @@ class UpdateTableViewCell: UITableViewCell {
     
     var userHasLiked = false
     var numberOfLikes = 0
-    
-//    @IBOutlet weak var authorImageView: UIImageView!
-    
+
     @IBOutlet weak var authorImageView: AsyncImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
@@ -32,6 +31,7 @@ class UpdateTableViewCell: UITableViewCell {
     @IBOutlet weak var likeButton: SpringButton!
     @IBOutlet weak var commentButton: SpringButton!
     @IBOutlet weak var extraButton: SpringButton!
+    
     
     // MARK: SpringButton functionality
     @IBAction func likeButtonDidTap(sender: AnyObject) {
@@ -62,7 +62,7 @@ class UpdateTableViewCell: UITableViewCell {
         commentButton.force = 3
         commentButton.animate()
         
-        //        delegate?.updateCommentButtonDidTap(self, sender: sender)
+        delegate?.updateCommentButtonDidTap(self, sender: sender)
     }
     
     @IBAction func extraButtonDidTap(sender: AnyObject) {
@@ -74,6 +74,10 @@ class UpdateTableViewCell: UITableViewCell {
         //        delegate?.updateExtraButtonDidTap(self, sender: sender)
     }
     
+    func recipientImageTapped(sender: AnyObject) {
+
+        delegate?.recipientImageDidTap(self, sender: sender)
+    }
     
     
     
@@ -81,6 +85,10 @@ class UpdateTableViewCell: UITableViewCell {
     func configureUpdateTableViewCell(updateData: JSON) {
         
         //        print(updateData)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("recipientImageTapped:"))
+        authorImageView?.userInteractionEnabled = true
+        authorImageView?.addGestureRecognizer(tapGestureRecognizer)
         
         let displayName: String? = updateData["displayName"].string
         // title should be a curated and unique field for each update
@@ -106,13 +114,12 @@ class UpdateTableViewCell: UITableViewCell {
         // the "date" field on RecipientUpdates is nil)
         let JSONdate:String = updateData["surveyDate"].string ?? ""
         
-        // turn string into NSDate
+        // turn string into NSDate (.MediumStyle better for the dateStyle?)
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         let displayDate = dateFormatter.dateFromString(JSONdate)
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         let dateString = dateFormatter.stringFromDate(displayDate!)
 
         

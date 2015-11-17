@@ -21,8 +21,6 @@ class RecipientStatsTableViewCell: UITableViewCell {
     
     func configureStatsCell(recipientStats: JSON) {
         
-        print(recipientStats)
-        
         let recipientName:String? = recipientStats["firstName"].string
         let recipientAge:Int? = recipientStats["age"].int
         let recipientStatus:String? = recipientStats["maritalStatus"].string
@@ -40,7 +38,7 @@ class RecipientStatsTableViewCell: UITableViewCell {
         }
         
         // assign variables and constants to labels
-        self.recipientNameLabel.text = recipientName
+        self.recipientNameLabel.text = recipientName?.capitalizedString
         
         // determine martial status
         var maritalStatus:String!

@@ -62,9 +62,10 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     }
     
     override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(true)
+        super.viewDidAppear(true)
+
 //        view.showLoading()
-//        
+
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -191,24 +192,29 @@ extension NewsfeedTableViewController {
         return cell
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        // segue from newsfeed item to recipient profile view
         if segue.identifier == "NewsfeedProfileSegue" {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
-//            let updatesInfo = updatesList[indexPath!.item]
             var recipientInfo = updatesList[indexPath!.item]
-            
             self.matchUpdateWithRecipientGDID(recipientInfo["biodata"]["gdid"].string!)
-//            print(recipientInfo["biodata"]["gdid"])
-//            print(recipientInfo)
-//            print(updatesInfo)
             print(recipientInfoForSegue)
             toView.recipientInfo = recipientInfoForSegue
-//            toView.updatesInfo = updatesList
-            //            toView.recipientImageURL = recipientImageURL
+        }
+        
+        // segue from comment to expanded comment view
+        if segue.identifier == "CommentsSegue" {
+            let toView = segue.destinationViewController as! CommentTableViewController
+            let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
+            let selectedUpdate = updatesList[indexPath!.item]
+            toView.update = selectedUpdate
         }
     }
-    
+
+    // drill through recipient list to find the GDID that matches the update, and retrieve that data
     func matchUpdateWithRecipientGDID(GDID: String) {
         let JSONcount = updatesJSON["user"]["following"].count
         
@@ -222,10 +228,7 @@ extension NewsfeedTableViewController {
                 return
             }
         }
-        
-        
     }
-
 }
 
 extension NewsfeedTableViewController: RefreshViewDelegate {
@@ -241,6 +244,10 @@ extension NewsfeedTableViewController: RefreshViewDelegate {
 
 // MARK: UpdateTableViewCellDelegate
 extension NewsfeedTableViewController {
+    
+    func recipientImageDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
+        print("Well, howdy do!")
+    }
     
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         
@@ -270,12 +277,7 @@ extension NewsfeedTableViewController {
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
-        // TODO: implement comment functionality
-        // needs to have the row and etc.
-        
-        
-        // create a Comment object with the user's objectId
-        // that points to the update (author to relatedUpdate with text)
+        performSegueWithIdentifier("CommentsSegue", sender: cell)
     }
     
     func updateExtraButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

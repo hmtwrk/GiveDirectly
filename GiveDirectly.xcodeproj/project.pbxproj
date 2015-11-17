@@ -101,6 +101,7 @@
 		4AE8C06E1BDDE0F9007540DE /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0511BDDE0F9007540DE /* TransitionManager.swift */; };
 		4AE8C06F1BDDE0F9007540DE /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0521BDDE0F9007540DE /* TransitionZoom.swift */; };
 		4AE8C0701BDDE0F9007540DE /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0531BDDE0F9007540DE /* UnwindSegue.swift */; };
+		4AF292221BFB7D89003651E3 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */; };
 		4AF323361BEAC6230060D766 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; };
 		4AF323371BEAC6230060D766 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AF3233B1BEBB64A0060D766 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3233A1BEBB64A0060D766 /* User.swift */; };
@@ -285,6 +286,7 @@
 		4AE8C0511BDDE0F9007540DE /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		4AE8C0521BDDE0F9007540DE /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		4AE8C0531BDDE0F9007540DE /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
+		4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		4AF322AC1BEAB8ED0060D766 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4AF3233A1BEBB64A0060D766 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			children = (
 				4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */,
 				4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */,
+				4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */,
 			);
 			name = "Newsfeed View";
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				4ADAF11B1B9FB8440004D7E9 /* Update.swift in Sources */,
 				4A7A3B741BC87F4200B304C6 /* SignInViewController.swift in Sources */,
 				4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */,
+				4AF292221BFB7D89003651E3 /* CommentTableViewController.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4AE8C0571BDDE0F9007540DE /* BlurView.swift in Sources */,
 				4A2CE81F1BED22B000FC03B5 /* RequestRouter.swift in Sources */,

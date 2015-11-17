@@ -26,6 +26,9 @@ class BrowserViewCell: UICollectionViewCell {
         let recipientName = data["firstName"].string ?? ""
         let recipientStory = data["spendingPlans"].string ?? ""
         let paymentPhase = data["phase"].int ?? 0
+        
+//        print(data["phase"])
+//        print("The payment phase is: \(paymentPhase).")
 
 //        print(recipientImageURL)
         
@@ -40,7 +43,7 @@ class BrowserViewCell: UICollectionViewCell {
         }
         
         // assign constants to labels
-        self.nameLabel.text = recipientName
+        self.nameLabel.text = recipientName.capitalizedString
 //        self.storyLabel.text = recipientProfileStory
         self.storyLabel.text = recipientStory
         

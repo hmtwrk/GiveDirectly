@@ -133,7 +133,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         
         if let recipientUpdatesCell = cell as? UpdateTableViewCell {
             
-            print(updatesList[indexPath.row])
+
 //            let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
             
             // Alamofire stuff
@@ -198,10 +198,14 @@ extension RecipientProfileTableViewController {
 
     }
     
+    func recipientImageDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
+        print("Well, I'll be danged!")
+    }
+    
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         
         // update the data model with liked status (has liked, increment # of likes)
-        let indexPath = tableView.indexPathForCell(cell)
+//        let indexPath = tableView.indexPathForCell(cell)
 //        let update = updates[indexPath!.row]
         
         // toggle status of like
