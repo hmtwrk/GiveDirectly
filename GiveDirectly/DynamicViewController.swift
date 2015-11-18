@@ -24,6 +24,8 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
                 dynamicRecipientData = json
             }
             
+//            print(dynamicRecipientData)
+            
             // strip the user information
             dynamicRecipientData = dynamicRecipientData["user"]["following"]
             
@@ -70,7 +72,7 @@ extension RecipientBrowserViewController {
         
         for photoIndex in 0..<photoPath.count {
             
-            if photoPath[photoIndex]["type"] == "face" {
+            if photoPath[photoIndex]["type"] == "house" {
                 recipientImageURL = photoPath[photoIndex]["url"].string
             }
         }
@@ -124,11 +126,11 @@ extension RecipientBrowserViewController {
     func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         
         // calculates the size of the text by using the content from spendingPlans
-        let annotation = dynamicRecipientData[indexPath.item]["recipient"]["spendingPlans"]
-        
-        let story = annotation.string
+        let annotation = dynamicRecipientData[indexPath.item]["recipient"]["spendingPlans"] ?? ""
+        print(annotation)
+        let story = annotation.string ?? ""
         let font = UIFont.systemFontOfSize(14)
-        let storyHeight = self.heightForStory(story!, font: font, width: width)
+        let storyHeight = self.heightForStory(story, font: font, width: width)
         let height = 4 + 17 + 4 + storyHeight + 4
         return height
     }

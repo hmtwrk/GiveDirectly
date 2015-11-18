@@ -67,6 +67,15 @@ struct GDService {
         }
     }
     
+    static func downloadImage(imageURL: String, completionBlock: (NSData) -> () ) {
+        
+        Alamofire.request(.GET, imageURL, headers: headers).response() {
+            (_, _, data, _) in
+            
+            completionBlock(data!)
+        }
+    }
+    
     static func likeUpdateWithID(updateID: Int, token: String, response: (successful: Bool) -> () ) {
         let urlString = baseURL + ResourcePath.UpdateLike(updateId: updateID).description
         likeWithURLString(urlString, token: token, response: response)

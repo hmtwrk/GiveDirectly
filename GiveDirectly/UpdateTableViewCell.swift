@@ -84,7 +84,7 @@ class UpdateTableViewCell: UITableViewCell {
     // MARK: configuration of cell
     func configureUpdateTableViewCell(updateData: JSON) {
         
-        //        print(updateData)
+//        print(updateData)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("recipientImageTapped:"))
         authorImageView?.userInteractionEnabled = true
@@ -127,8 +127,8 @@ class UpdateTableViewCell: UITableViewCell {
         
 //        self.timestampLabel.text = displayDate!.ago
         self.timestampLabel.text = dateString
-        print(JSONdate)
-        print(displayDate)
+//        print(JSONdate)
+//        print(displayDate)
 
         
         //        print(displayDate!.ago)

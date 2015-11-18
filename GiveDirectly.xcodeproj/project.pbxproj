@@ -354,7 +354,6 @@
 			children = (
 				4A6A60B01B6AB81A00C3F142 /* NewsfeedTableViewController.swift */,
 				4A6A60B21B6AB97A00C3F142 /* UpdateTableViewCell.swift */,
-				4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */,
 			);
 			name = "Newsfeed View";
 			sourceTree = "<group>";
@@ -460,7 +459,6 @@
 			isa = PBXGroup;
 			children = (
 				4AC663F11B7D4177008AF19F /* Recipient.swift */,
-				4A0235271BE13A0B00891768 /* GDService.swift */,
 				4A5711B21B98C39000CF32B0 /* Liked.swift */,
 				4ADAF11A1B9FB8440004D7E9 /* Update.swift */,
 				4AFAC7A31BAC69F300A60CEF /* NotificationModel.swift */,
@@ -472,6 +470,7 @@
 		4ADAF11C1B9FC2E50004D7E9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4A0235271BE13A0B00891768 /* GDService.swift */,
 				C4DC37E71BD53ADF009B04D4 /* SwiftyJSON.swift */,
 				4A02352E1BE2774D00891768 /* GDBackendAPIManager.swift */,
 				C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */,
@@ -536,6 +535,14 @@
 			name = "Sign-in View";
 			sourceTree = "<group>";
 		};
+		4AF292271BFBAB0F003651E3 /* Comment View */ = {
+			isa = PBXGroup;
+			children = (
+				4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */,
+			);
+			name = "Comment View";
+			sourceTree = "<group>";
+		};
 		4AF9507D1B306672004313DC /* User Profile View */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,6 +589,7 @@
 		C437804F1B2933080018BD41 /* GiveDirectly */ = {
 			isa = PBXGroup;
 			children = (
+				4AF292271BFBAB0F003651E3 /* Comment View */,
 				4AEB52791BCC27AB0005C908 /* Sign-in View */,
 				4ADAF2441BA34F7F0004D7E9 /* Donate View */,
 				4ADAF11C1B9FC2E50004D7E9 /* Helpers */,

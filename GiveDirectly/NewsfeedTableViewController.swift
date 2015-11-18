@@ -38,7 +38,6 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         refreshView.delegate = self
         view.insertSubview(refreshView, atIndex: 0)
         
-        
         // turn off the seam on the navigation bar for this page only
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Pixel"), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "TransparentPixel")
@@ -47,25 +46,16 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // make the Alamofire API call with completion block, to set the variable updatesJSON in this class
-//        Update.retrieveUpdates() { responseObject, error in
+        // Alamofire API to return newsfeed objects
         GDService.updatesForNewsfeed() { responseObject, error in
-        
+            
             if let value: AnyObject = responseObject {
                 let json = JSON(value)
-//                print(json)
                 self.updatesJSON = json
                 self.numberOfUpdates = self.buildUpdates(json["user"]["following"])
                 self.tableView?.reloadData()
             }
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-
-//        view.showLoading()
-
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -86,12 +76,12 @@ extension NewsfeedTableViewController {
         // need to cast this data to an Update model (from JSON)
         
         var totalUpdates = 0
-//        for recipientIndex in 0..<recipients.count {
+        //        for recipientIndex in 0..<recipients.count {
         // the recipient number could be paginated?
         // otherwise the total amount of updates could be cast and then paginated
         
         // download the whole block and cache, then send 10-part chunks to the cells
-            for recipientIndex in 0..<10 {
+        for recipientIndex in 0..<10 {
             totalUpdates += recipients[recipientIndex]["newsfeeds"].count
             
             // extract each item and append it to the array (get all newsfeed items at first, then display what's needed?)
@@ -117,12 +107,12 @@ extension NewsfeedTableViewController {
                 // would be a little more efficient as do...while loop maybe
                 let photoPath = recipients[recipientIndex]["recipient"]["photos"]
                 for photoIndex in 0..<photoPath.count {
-//                for photoIndex in 0..<recipients[recipientIndex]["recipient"]["photos"].count {
+                    //                for photoIndex in 0..<recipients[recipientIndex]["recipient"]["photos"].count {
                     
                     if photoPath[photoIndex]["type"] == "face" {
                         let recipientAvatar = photoPath[photoIndex]["url"].string ?? ""
                         newsfeedItem["recipientAvatar"] = JSON(recipientAvatar)
-                    } 
+                    }
                 }
                 
                 updatesList.append(newsfeedItem)
@@ -133,7 +123,7 @@ extension NewsfeedTableViewController {
         updatesList.sortInPlace({$0["surveyDate"] > $1["surveyDate"]})
         
         // cast the updatesList into an array of Update objects
-//        updatesList
+        //        updatesList
         
         // return the count of update objects
         return totalUpdates
@@ -157,36 +147,19 @@ extension NewsfeedTableViewController {
         // cast to specific class
         if let cell = cell as? UpdateTableViewCell {
             
-            // need to pull a single update from a model that may have several
-            // 1) extract a single update from model
-            // 2) append that update to array
-            // 3) once entire array is built, sort by descending
-            // 4) send each item to cell via indexPath.row
-            
-            //            let updateDataForCell: JSON = self.updatesJSON["user"]["following"][indexPath.row]
             let updateDataForCell: JSON = self.updatesList[indexPath.row]
-            //
-            let user = "admin"
-            let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
             let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
             
-            let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-            let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-            
-            let headers = ["Authorization": "Basic \(base64Credentials)"]
-            
-            //             API call for images
-            Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
-                (_, _, data, _) in
+            // download associated image for cell
+            GDService.downloadImage(recipientImageURL) { data in
                 
-                
-                let image = UIImage(data: data!)
+                let image = UIImage(data: data)
                 cell.authorImageView.image = image
+                
             }
             
             // configure queued cell with newest data from model
             cell.configureUpdateTableViewCell(updateDataForCell)
-            
             cell.delegate = self
         }
         return cell
@@ -194,7 +167,7 @@ extension NewsfeedTableViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        
         // segue from newsfeed item to recipient profile view
         if segue.identifier == "NewsfeedProfileSegue" {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
@@ -210,22 +183,22 @@ extension NewsfeedTableViewController {
             let toView = segue.destinationViewController as! CommentTableViewController
             let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
             let selectedUpdate = updatesList[indexPath!.item]
+            //            print(selectedUpdate)
             toView.update = selectedUpdate
         }
     }
-
+    
     // drill through recipient list to find the GDID that matches the update, and retrieve that data
     func matchUpdateWithRecipientGDID(GDID: String) {
         let JSONcount = updatesJSON["user"]["following"].count
         
         for recipientIndex in 0..<JSONcount {
-            
             print(updatesJSON["user"]["following"][recipientIndex]["recipient"]["gdid"])
             print(GDID)
-
+            
             if updatesJSON["user"]["following"][recipientIndex]["recipient"]["gdid"].string == GDID {
                 self.recipientInfoForSegue = updatesJSON["user"]["following"][recipientIndex]
-                return
+                break
             }
         }
     }
@@ -247,33 +220,34 @@ extension NewsfeedTableViewController {
     
     func recipientImageDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         print("Well, howdy do!")
+        performSegueWithIdentifier("NewsfeedProfileSegue", sender: cell)
     }
     
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         
         // update the data model with liked status (has liked, increment # of likes)
-//        let indexPath = tableView.indexPathForCell(cell)
-//        let like = Liked()
-//        self.likes[indexPath!.row].toggleLiked()
-//        print(likes[indexPath!.row])
+        //        let indexPath = tableView.indexPathForCell(cell)
+        //        let like = Liked()
+        //        self.likes[indexPath!.row].toggleLiked()
+        //        print(likes[indexPath!.row])
         
-//        print(indexPath!.row)
-//        var update = self.updatesList[indexPath!.row]
+        //        print(indexPath!.row)
+        //        var update = self.updatesList[indexPath!.row]
         
-
-//        // toggle status of like
-//        update["userHasLikedUpdate"] = JSON(!userHasLikedUpdate)
         
-//
-//        // increment or decrement total likes
-//        if update.userHasLikedUpdate {
-//            update.numberOfLikes += 1
-//        } else {
-//            update.numberOfLikes -= 1
-//        }
+        //        // toggle status of like
+        //        update["userHasLikedUpdate"] = JSON(!userHasLikedUpdate)
+        
+        //
+        //        // increment or decrement total likes
+        //        if update.userHasLikedUpdate {
+        //            update.numberOfLikes += 1
+        //        } else {
+        //            update.numberOfLikes -= 1
+        //        }
         
         //        // update the view cell
-//        cell.configureLikeForCell(update)
+        //        cell.configureLikeForCell(update)
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

@@ -174,6 +174,16 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
 
 extension RecipientProfileTableViewController {
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // segue from comment to expanded comment view
+        if segue.identifier == "CommentsSegue" {
+            let toView = segue.destinationViewController as! CommentTableViewController
+            let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
+            let selectedUpdate = updatesList[indexPath!.item]
+            toView.update = selectedUpdate
+        }
+    }
+    
     func buildUpdates() {
         
         // extract biodata from recipient object
@@ -199,6 +209,7 @@ extension RecipientProfileTableViewController {
     }
     
     func recipientImageDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
+        // default action would be to segue to this very view, so no action required
         print("Well, I'll be danged!")
     }
     
@@ -228,6 +239,7 @@ extension RecipientProfileTableViewController {
         // TODO: implement comment functionality
         
         // open a segue to a comment-entry screen and save results to Parse
+        performSegueWithIdentifier("CommentsSegue", sender: cell)
         
     }
     
