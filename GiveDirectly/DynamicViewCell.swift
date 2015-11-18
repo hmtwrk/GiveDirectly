@@ -15,24 +15,18 @@ class BrowserViewCell: UICollectionViewCell {
     @IBOutlet weak var profileImageView: UIImageViewAsync!
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentPhaseImageView: UIImageView!
-//  @IBOutlet weak var timeLabel: UILabel!
+    //  @IBOutlet weak var timeLabel: UILabel!
     
     var displayName: String = ""
-
+    
     func configureCellWithData(data: JSON, andRecipientImageURL recipientImageURL: String) {
-//        print(data)
         
         // assign values or use default
         let recipientName = data["firstName"].string ?? ""
         let recipientStory = data["spendingPlans"].string ?? ""
         let paymentPhase = data["phase"].int ?? 0
         
-//        print(data["phase"])
-//        print("The payment phase is: \(paymentPhase).")
-
-//        print(recipientImageURL)
-        
-
+        // select proper phase to display
         switch paymentPhase {
         case 1:
             self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
@@ -44,11 +38,10 @@ class BrowserViewCell: UICollectionViewCell {
         
         // assign constants to labels
         self.nameLabel.text = recipientName.capitalizedString
-//        self.storyLabel.text = recipientProfileStory
         self.storyLabel.text = recipientStory
         
     }
-
+    
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         super.applyLayoutAttributes(layoutAttributes)
         

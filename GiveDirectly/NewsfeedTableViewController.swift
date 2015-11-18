@@ -32,6 +32,8 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(updatesJSON)
+        
         // pull-to-refresh code
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: CGRectGetWidth(view.bounds), height: refreshViewHeight), scrollView: tableView)
         refreshView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +53,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
             
             if let value: AnyObject = responseObject {
                 let json = JSON(value)
+                print(json)
                 self.updatesJSON = json
                 self.numberOfUpdates = self.buildUpdates(json["user"]["following"])
                 self.tableView?.reloadData()
@@ -76,12 +79,12 @@ extension NewsfeedTableViewController {
         // need to cast this data to an Update model (from JSON)
         
         var totalUpdates = 0
-        //        for recipientIndex in 0..<recipients.count {
+//        for recipientIndex in 0..<recipients.count {
         // the recipient number could be paginated?
         // otherwise the total amount of updates could be cast and then paginated
         
         // download the whole block and cache, then send 10-part chunks to the cells
-        for recipientIndex in 0..<10 {
+        for recipientIndex in 0..<15 {
             totalUpdates += recipients[recipientIndex]["newsfeeds"].count
             
             // extract each item and append it to the array (get all newsfeed items at first, then display what's needed?)
@@ -174,7 +177,7 @@ extension NewsfeedTableViewController {
             let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
             var recipientInfo = updatesList[indexPath!.item]
             self.matchUpdateWithRecipientGDID(recipientInfo["biodata"]["gdid"].string!)
-            print(recipientInfoForSegue)
+//            print(recipientInfoForSegue)
             toView.recipientInfo = recipientInfoForSegue
         }
         
@@ -193,8 +196,8 @@ extension NewsfeedTableViewController {
         let JSONcount = updatesJSON["user"]["following"].count
         
         for recipientIndex in 0..<JSONcount {
-            print(updatesJSON["user"]["following"][recipientIndex]["recipient"]["gdid"])
-            print(GDID)
+//            print(updatesJSON["user"]["following"][recipientIndex]["recipient"]["gdid"])
+//            print(GDID)
             
             if updatesJSON["user"]["following"][recipientIndex]["recipient"]["gdid"].string == GDID {
                 self.recipientInfoForSegue = updatesJSON["user"]["following"][recipientIndex]

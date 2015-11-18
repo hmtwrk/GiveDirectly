@@ -37,11 +37,6 @@ class RecipientStoriesTableViewCell: UITableViewCell {
 //        self.hardshipsTextView.sizeToFit()
 
         
-        
-//        print("===============")
-//        print(recipientStories["phase"])
-//        print(paymentPhase)
-        
         // display proper payment phase
         switch paymentPhase! {
         case 1:
@@ -52,12 +47,7 @@ class RecipientStoriesTableViewCell: UITableViewCell {
             self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
         }
         
-        donorImageView.layer.cornerRadius = self.donorImageView.frame.size.width / 2
-        donorImageView.clipsToBounds = true
-        donorImageView.layer.borderWidth = 2.0
-        donorImageView.layer.borderColor = UIColor.clearColor().CGColor
-        donorImageView.layer.backgroundColor = UIColor.clearColor().CGColor
-        
+        donorImageView.makeRound()
     }
 
 }

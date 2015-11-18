@@ -17,14 +17,12 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
         super.viewDidLoad()
         
         // get JSON data from API
-        User.retrieveUser() { responseObject, error in
+        GDService.profilesForRecipients() { responseObject, error in
             
             if let value: AnyObject = responseObject {
                 let json = JSON(value)
                 dynamicRecipientData = json
             }
-            
-//            print(dynamicRecipientData)
             
             // strip the user information
             dynamicRecipientData = dynamicRecipientData["user"]["following"]
@@ -70,28 +68,21 @@ extension RecipientBrowserViewController {
         var recipientImageURL: String!
         let photoPath = dynamicRecipientData[indexPath.item]["recipient"]["photos"]
         
+        recipientImageURL = ""
+        
         for photoIndex in 0..<photoPath.count {
             
-            if photoPath[photoIndex]["type"] == "house" {
+            if photoPath[photoIndex]["type"] == "action" {
                 recipientImageURL = photoPath[photoIndex]["url"].string
             }
         }
         
-        let user = "admin"
-        let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
-        
-        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-        
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
-        
-        // API call
-        Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
-            (_, _, data, _) in
+        // download associated image for cell
+        GDService.downloadImage(recipientImageURL) { data in
             
-            
-            let image = UIImage(data: data!)
+            let image = UIImage(data: data)
             cell.profileImageView.image = image
+            
         }
         
         cell.configureCellWithData(recipientDataForCell, andRecipientImageURL: recipientImageURL)
@@ -127,7 +118,6 @@ extension RecipientBrowserViewController {
         
         // calculates the size of the text by using the content from spendingPlans
         let annotation = dynamicRecipientData[indexPath.item]["recipient"]["spendingPlans"] ?? ""
-        print(annotation)
         let story = annotation.string ?? ""
         let font = UIFont.systemFontOfSize(14)
         let storyHeight = self.heightForStory(story, font: font, width: width)

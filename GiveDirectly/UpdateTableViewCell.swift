@@ -103,12 +103,7 @@ class UpdateTableViewCell: UITableViewCell {
         
         //        print(recipientPortraitURL!)
         
-        authorImageView.layer.cornerRadius = self.authorImageView.frame.size.width / 2
-        authorImageView.clipsToBounds = true
-        authorImageView.layer.borderWidth = 2.0
-        authorImageView.layer.borderColor = UIColor.clearColor().CGColor
-        authorImageView.layer.backgroundColor = UIColor.clearColor().CGColor
-        
+        authorImageView.makeRound()
         
         // get the date and format (does this need to be set to optional? App will crash if
         // the "date" field on RecipientUpdates is nil)

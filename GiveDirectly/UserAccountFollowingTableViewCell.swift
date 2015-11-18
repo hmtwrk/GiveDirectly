@@ -15,11 +15,7 @@ class UserAccountFollowingTableViewCell: UITableViewCell {
     
     func configureYourNetworkCell() {
         
-        userFollowingImageView.layer.cornerRadius = self.userFollowingImageView.frame.size.width / 2
-        userFollowingImageView.clipsToBounds = true
-        userFollowingImageView.layer.borderWidth = 2.0
-        userFollowingImageView.layer.borderColor = UIColor.clearColor().CGColor
-        userFollowingImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+        userFollowingImageView.makeRound()
         
     }
     

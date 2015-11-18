@@ -27,7 +27,7 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         let firstName:String? = userData["firstName"].string ?? ""
         let lastName:String? = userData["lastName"].string ?? ""
         let profileMessage:String? = userData["profileMessage"].string ?? ""
-        let joinedDate:String? = userData["joinedDate"].string ?? ""
+        let joinedDate:String = userData["joinedDate"].string ?? ""
         let donationsYTD:Int? = userData["donationsYTD"].int ?? 0
         let userFunded:Int? = userData["funded"].int ?? 0 // TODO: add field for total funded
         let location:String? = userData["location"].string ?? "N/A"
@@ -42,8 +42,14 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let displayDate = dateFormatter.dateFromString(joinedDate!)
+        let displayDate = dateFormatter.dateFromString(joinedDate)
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         
+        if let displayDate = displayDate {
+            
+            let dateString = dateFormatter.stringFromDate(displayDate)
+            self.userJoinDateLabel.text = dateString
+        }
         
         if donationsYTD != nil {
             
@@ -63,7 +69,8 @@ class UserAccountProfileTableViewCell: UITableViewCell {
         }
         
         self.userNameLabel.text = firstName! + " " + lastName!
-        self.userJoinDateLabel.text = displayDate?.ago
+//        self.userJoinDateLabel.text = displayDate?.ago
+//        self.userJoinDateLabel.text = dateString
         self.userLocationLabel.text = location
         self.userMessageLabel.text = profileMessage
 

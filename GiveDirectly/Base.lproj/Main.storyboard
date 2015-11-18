@@ -26,7 +26,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="204"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T" customClass="UIImageViewAsync" customModule="GiveDirectly" customModuleProvider="target">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-fq-p5T" customClass="UIImageViewAsync" customModule="GiveDirectly" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -2218,7 +2218,7 @@
                                     <action selector="didTapSignOut:" destination="TCn-P6-brB" eventType="touchUpInside" id="qn0-Ku-e1k"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWw-wP-0Tl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWw-wP-0Tl">
                                 <rect key="frame" x="87" y="187" width="147.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2309,7 +2309,7 @@
         <image name="tab_recipients" width="15" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tD2-Jh-GhK"/>
         <segue reference="dBx-mO-uYq"/>
-        <segue reference="4oH-eb-ei5"/>
     </inferredMetricsTieBreakers>
 </document>

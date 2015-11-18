@@ -24,9 +24,9 @@ class User {
         print("Base64 credentials:\(base64Credentials).")
         
         // Get a list of all recipients (the "recipients" key will hold an array of GDID objects)
-        let constraint = "SUPERADMINISTRATOR" // set amount of recipients to return
+        let constraint = "?filter=limit%3D20" // set amount of recipients to return
 //        let constraint = "?filter=firstName%3DSean"
-        let url = "https://mobile-backend.givedirectly.org/api/v1/users/" + constraint
+        let url = "https://mobile-backend.givedirectly.org/api/v1/users/SUPERADMINISTRATOR" + constraint
         
         // API call
         Alamofire.request(.GET, url, headers: headers)

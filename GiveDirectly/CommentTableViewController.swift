@@ -66,9 +66,18 @@ class CommentTableViewController: UITableViewController, UpdateTableViewCellDele
             
             // send data to cell
             let updateDataForCell: JSON = self.update
+            let recipientImageURL = self.update
             print(updateDataForCell)
             cell.configureUpdateTableViewCell(updateDataForCell)
             cell.delegate = self
+            
+            // download associated image for cell
+//            GDService.downloadImage(recipientImageURL) { data in
+//                
+//                let image = UIImage(data: data)
+//                cell.authorImageView.image = image
+//                
+//            }
         }
         
         return cell

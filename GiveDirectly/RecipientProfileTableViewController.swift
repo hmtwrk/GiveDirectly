@@ -104,23 +104,12 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         
         // configure cells
         if let recipientStatsCell = cell as? RecipientStatsTableViewCell {
-//            recipientStatsCell.configureStatsCell(recipientInfo["recipient"])
             recipientStatsCell.configureStatsCell(recipientInfo["recipient"])
             
-            // Alamofire stuff
-            let user = "admin"
-            let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
-            let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-            let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-            
-            let headers = ["Authorization": "Basic \(base64Credentials)"]
-            
-            // API call
-            Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
-                (_, _, data, _) in
+            // download associated image for cell
+            GDService.downloadImage(recipientImageURL) { data in
                 
-                
-                let image = UIImage(data: data!)
+                let image = UIImage(data: data)
                 recipientStatsCell.recipientProfileImageView.image = image
                 
             }

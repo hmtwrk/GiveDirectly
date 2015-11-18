@@ -25,7 +25,8 @@ struct GDService {
     private static let headers = ["Authorization": "Basic \(base64Credentials)"]
     private static let userID = "SUPERADMINISTRATOR"
     
-    private static let url = "https://mobile-backend.givedirectly.org/api/v1/users/SUPERADMINISTRATOR"
+    private static let workingURL = "https://mobile-backend.givedirectly.org/api/v1/users/SUPERADMINISTRATOR"
+    private static let testURL = "https://mobile-backend.givedirectly.org/api/v1/recipients/users/SUPERADMINISTRATOR"
 
     private enum ResourcePath: CustomStringConvertible {
         case Login
@@ -42,8 +43,8 @@ struct GDService {
             switch self {
             case .Login: return "/oauth/token"
             case .Signup: return "/api/v1/signup"
-            case .Recipients: return "/api/vi/recipients/"
-            case .Updates: return "/api/v1/users/"
+            case .Recipients: return "/api/vi/recipients/users"
+            case .Updates: return "/api/v1/newsfeeds/users"
             case .UpdateId(let id): return "/api/vi/updates/\(id)"
             case .UpdateLike(let id): return "/api/vi/updates/\(id)/like"
             case .UpdateReply(let id): return "/api/vi/updates/\(id)/reply"
@@ -54,18 +55,39 @@ struct GDService {
     }
     
     static func updatesForNewsfeed(completionBlock: (NSDictionary?, NSError?) -> () ) {
-        let urlString = baseURL + ResourcePath.Updates.description + "/" + userID
+        let filter = "?limit=15"
+        let URLString = baseURL + ResourcePath.Updates.description + "/" + userID + filter
         //        let parameters = [
         //            "page": String(page)
         //            "client_id": clientID
         //        ]
         
-        Alamofire.request(.GET, urlString, headers: headers)
+        print(URLString)
+        
+        Alamofire.request(.GET, URLString, headers: headers)
             .responseJSON { response in
                 completionBlock(response.result.value as? NSDictionary, response.result.error)
-                
         }
     }
+
+    
+    static func profilesForRecipients(completionBlock: (NSDictionary?, NSError?) -> () ) {
+        let filter = "?limit=15"
+        let URLString = baseURL + ResourcePath.Recipients.description + "/" + userID + filter
+        //        let parameters = [
+        //            "page": String(page)
+        //            "client_id": clientID
+        //        ]
+        
+        print(URLString)
+        
+        Alamofire.request(.GET, URLString, headers: headers)
+            .responseJSON { response in
+                completionBlock(response.result.value as? NSDictionary, response.result.error)
+        }
+    }
+    
+    
     
     static func downloadImage(imageURL: String, completionBlock: (NSData) -> () ) {
         
@@ -85,14 +107,8 @@ struct GDService {
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         request.HTTPMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    
-//        Alamofire.request(request).responseJSON { urlResponse in
-//            let successful = urlResponse.status
-//            response(successful: successful)
-//            
-//        }
-    }
 
+    }
     
-    //    static func recipientsForCollection
+//    static func recipientsForCollection
 }

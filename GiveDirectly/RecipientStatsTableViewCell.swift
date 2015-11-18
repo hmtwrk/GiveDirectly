@@ -62,10 +62,6 @@ class RecipientStatsTableViewCell: UITableViewCell {
         self.recipientLocationLabel.text = recipientLocation?.capitalizedString
         
         // make profile image round
-        recipientProfileImageView.layer.cornerRadius = self.recipientProfileImageView.frame.size.width / 2
-        recipientProfileImageView.clipsToBounds = true
-        recipientProfileImageView.layer.borderWidth = 2.0
-        recipientProfileImageView.layer.borderColor = UIColor.clearColor().CGColor
-        recipientProfileImageView.layer.backgroundColor = UIColor.lightGrayColor().CGColor
-    }  
+        recipientProfileImageView.makeRound()
+    }
 }

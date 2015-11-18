@@ -12,7 +12,6 @@
 		4A1BAF801B7A922E00BEFCC9 /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */; };
 		4A1BAF821B7AA9B500BEFCC9 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */; };
 		4A231BB01BF1011300227B0D /* UIImageViewAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A231BAF1BF1011300227B0D /* UIImageViewAsync.swift */; };
-		4A2CE81F1BED22B000FC03B5 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2CE81E1BED22B000FC03B5 /* RequestRouter.swift */; };
 		4A47C62F1BC8667100707B04 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C62E1BC8667100707B04 /* libz.tbd */; };
 		4A47C6311BC8668700707B04 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C6301BC8668700707B04 /* libsqlite3.tbd */; };
 		4A5711B31B98C39000CF32B0 /* Liked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5711B21B98C39000CF32B0 /* Liked.swift */; };
@@ -102,6 +101,7 @@
 		4AE8C06F1BDDE0F9007540DE /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0521BDDE0F9007540DE /* TransitionZoom.swift */; };
 		4AE8C0701BDDE0F9007540DE /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8C0531BDDE0F9007540DE /* UnwindSegue.swift */; };
 		4AF292221BFB7D89003651E3 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */; };
+		4AF292291BFCF740003651E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF292281BFCF740003651E3 /* Extensions.swift */; };
 		4AF323361BEAC6230060D766 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; };
 		4AF323371BEAC6230060D766 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AF3233B1BEBB64A0060D766 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3233A1BEBB64A0060D766 /* User.swift */; };
@@ -190,7 +190,6 @@
 		4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
 		4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
 		4A231BAF1BF1011300227B0D /* UIImageViewAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewAsync.swift; sourceTree = "<group>"; };
-		4A2CE81E1BED22B000FC03B5 /* RequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		4A47C62E1BC8667100707B04 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4A47C6301BC8668700707B04 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		4A5711B21B98C39000CF32B0 /* Liked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Liked.swift; sourceTree = "<group>"; };
@@ -287,6 +286,7 @@
 		4AE8C0521BDDE0F9007540DE /* TransitionZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionZoom.swift; sourceTree = "<group>"; };
 		4AE8C0531BDDE0F9007540DE /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
 		4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
+		4AF292281BFCF740003651E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4AF322AC1BEAB8ED0060D766 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4AF3233A1BEBB64A0060D766 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
@@ -371,7 +371,6 @@
 				4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */,
 				4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */,
 				4AC663F31B7D58C0008AF19F /* DynamicViewCell.swift */,
-				4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */,
 			);
 			name = "Dynamic Collection";
 			sourceTree = "<group>";
@@ -476,8 +475,9 @@
 				C46E340C1B73FDD2001449E2 /* NSDate+Ago.swift */,
 				4A8435121B823F0B008D5E08 /* Global.swift */,
 				4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */,
-				4A2CE81E1BED22B000FC03B5 /* RequestRouter.swift */,
 				4A231BAF1BF1011300227B0D /* UIImageViewAsync.swift */,
+				4A84350E1B7E605C008D5E08 /* UIImage+Decompression.swift */,
+				4AF292281BFCF740003651E3 /* Extensions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -804,6 +804,7 @@
 				4AB36AE61B67E02000ABCE23 /* FriendActivityTableViewCell.swift in Sources */,
 				4A6A60BF1B7001D800C3F142 /* RecentActivityTableViewCell.swift in Sources */,
 				4AE8C0541BDDE0F9007540DE /* AsyncButton.swift in Sources */,
+				4AF292291BFCF740003651E3 /* Extensions.swift in Sources */,
 				4AE8C06B1BDDE0F9007540DE /* SpringTextField.swift in Sources */,
 				4AB36AE41B67DFFF00ABCE23 /* UserAccountProfileTableViewCell.swift in Sources */,
 				4A02352F1BE2774D00891768 /* GDBackendAPIManager.swift in Sources */,
@@ -853,7 +854,6 @@
 				4AF292221BFB7D89003651E3 /* CommentTableViewController.swift in Sources */,
 				4ACBA7581B641DDF00F25D74 /* StaticMenuTableViewController.swift in Sources */,
 				4AE8C0571BDDE0F9007540DE /* BlurView.swift in Sources */,
-				4A2CE81F1BED22B000FC03B5 /* RequestRouter.swift in Sources */,
 				4A6A14B71BF6A17E00730E3C /* TextView.swift in Sources */,
 				4A1BAF821B7AA9B500BEFCC9 /* DynamicLayout.swift in Sources */,
 				4A1BAF801B7A922E00BEFCC9 /* DynamicViewController.swift in Sources */,
