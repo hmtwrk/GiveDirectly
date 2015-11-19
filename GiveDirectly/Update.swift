@@ -11,34 +11,22 @@ import Alamofire
 
 class Update {
     
-    var image: UIImage?
+    // properties list
+    var profileImageURL: String = ""
+    var recipientDisplayName: String = ""
+    var updateTitle: String = ""
+    var date: String = ""
+    var text: String = ""
+    var userHasLikedUpdate: Bool = false
+    var numberOfLikes: Int = 0
+    var numberOfComments: Int = 0
+    var isFlagged: Bool = false
+    var commments = [Comment]()
     
-    // doesn't seem like these properties are taking effect?
-    var userHasLikedUpdate = false
-    var numberOfLikes = 0
+    var type: String = ""
+    var gdid: String = ""
+    var fromGD: Bool = false
+    var isPinned: Bool = false
     
-    // TODO: pass completion block as parameter, to be handled in newsfeed view controller
-    class func retrieveUpdates(completionBlock: (NSDictionary?, NSError?) -> () ) {
-        
-        // AlamoFire requests
-        let user = "admin"
-        let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
-        
-        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-        
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
-        print("Base64 credentials:\(base64Credentials).")
-        
-        // Get a list of all recipients (the "recipients" key will hold an array of GDID objects)
-        //        let constraint = "?sort=order=desc&limit=20" // set amount of recipients to return
-        //        let constraint = ""
-        let url = "https://mobile-backend.givedirectly.org/api/v1/users/SUPERADMINISTRATOR?limit=20"
-        
-        // API call
-        Alamofire.request(.GET, url, headers: headers)
-            .responseJSON { response in
-                completionBlock(response.result.value as? NSDictionary, response.result.error)
-        }
-    }
+
 }

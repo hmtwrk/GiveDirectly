@@ -43,19 +43,20 @@ struct GDService {
             switch self {
             case .Login: return "/oauth/token"
             case .Signup: return "/api/v1/signup"
-            case .Recipients: return "/api/vi/recipients/users"
+            case .Recipients: return "/api/v1/recipients/users"
             case .Updates: return "/api/v1/newsfeeds/users"
-            case .UpdateId(let id): return "/api/vi/updates/\(id)"
-            case .UpdateLike(let id): return "/api/vi/updates/\(id)/like"
-            case .UpdateReply(let id): return "/api/vi/updates/\(id)/reply"
-            case .CommentLike(let id): return "/api/vi/comments/\(id)/like"
-            case .CommentReply(let id): return "/api/vi/updates/\(id)/reply"
+            case .UpdateId(let id): return "/api/v1/updates/\(id)"
+            case .UpdateLike(let id): return "/api/v1/updates/\(id)/like"
+            case .UpdateReply(let id): return "/api/v1/updates/\(id)/reply"
+            case .CommentLike(let id): return "/api/v1/comments/\(id)/like"
+            case .CommentReply(let id): return "/api/v1/updates/\(id)/reply"
             }
         }
     }
     
     static func updatesForNewsfeed(completionBlock: (NSDictionary?, NSError?) -> () ) {
-        let filter = "?limit=15"
+        let limit = 10
+        let filter = "?limit=" + String(limit)
         let URLString = baseURL + ResourcePath.Updates.description + "/" + userID + filter
         //        let parameters = [
         //            "page": String(page)
@@ -63,7 +64,7 @@ struct GDService {
         //        ]
         
         print(URLString)
-        
+
         Alamofire.request(.GET, URLString, headers: headers)
             .responseJSON { response in
                 completionBlock(response.result.value as? NSDictionary, response.result.error)
@@ -72,7 +73,8 @@ struct GDService {
 
     
     static func profilesForRecipients(completionBlock: (NSDictionary?, NSError?) -> () ) {
-        let filter = "?limit=15"
+        let limit = ""
+        let filter = "" + String(limit)
         let URLString = baseURL + ResourcePath.Recipients.description + "/" + userID + filter
         //        let parameters = [
         //            "page": String(page)
@@ -80,7 +82,7 @@ struct GDService {
         //        ]
         
         print(URLString)
-        
+
         Alamofire.request(.GET, URLString, headers: headers)
             .responseJSON { response in
                 completionBlock(response.result.value as? NSDictionary, response.result.error)
