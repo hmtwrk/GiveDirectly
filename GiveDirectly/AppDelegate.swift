@@ -86,6 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        // TODO: update the newsfeed interface with fresh API calls (only newsfeed? maybe both recipient / newsfeed for now)
     }
     
     func applicationWillTerminate(application: UIApplication) {

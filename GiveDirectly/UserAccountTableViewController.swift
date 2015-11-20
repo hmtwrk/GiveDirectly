@@ -27,7 +27,7 @@ class UserAccountTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
         // retrieve user object from backend
-        User.retrieveUser() { responseObject, error in
+        GDService.updatesForNewsfeed() { responseObject, error in
             
             if let value: AnyObject = responseObject {
                 let json = JSON(value)

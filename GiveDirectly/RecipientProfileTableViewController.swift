@@ -22,7 +22,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
     var numberOfUpdates: Int = 0
     var updates = [Update]()
     var recipientNameData: String = ""
-    var likes = [Liked]()
+//    var likes = [Liked]()
     var recipientImageURL: String = ""
     
     override func viewDidLoad() {

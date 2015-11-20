@@ -21,9 +21,9 @@ func delayBySeconds(seconds: Double, delayedCode: ()->() ) {
 
 class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
-    var recipients: JSON = []
-    var updates: JSON = []
-//    var updates: [Update] = []
+    // property list
+    var recipients = [Recipient]()
+    var updates: [Update] = []
 //    var likes: [Liked] = [] // is it necessary to have an array of likes?
     var refreshView: RefreshView!
 //    var updatesJSON: JSON = []
@@ -51,21 +51,127 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         GDService.profilesForRecipients() { responseObject, error in
             
             if let value: AnyObject = responseObject {
-                let json = JSON(value)
-                self.recipients = json["recipients"]
+                var json = JSON(value)
+                json = json["recipients"]
+                
+                for recipientIndex in 0..<json.count {
+                    
+                    let recipient = Recipient()
+                    let path = json[recipientIndex]["recipient"]
+                    
+                    // retrieve related model data from API call results
+                    let gdid = path["gdid"].string ?? ""
+                    let firstName = path["firstName"].string?.capitalizedString ?? ""
+                    let lastName = path["lastName"].string?.capitalizedString ?? ""
+                    let age = path["age"].int ?? 0
+                    let gender = path["gender"].string ?? ""
+                    let maritalStatus = path["maritalStatus"].string ?? ""
+                    let numberOfChildren = path["numberOfChildren"].int ?? 0
+                    let phase = path["phase"].string ?? ""
+                    let village = path["village"].string?.capitalizedString ?? ""
+                    
+                    let spendingPlans = path["spendingPlans"].string ?? ""
+                    let goals = path["goals"].string ?? ""
+                    let achievements = path["achievements"].string ?? ""
+                    let challenges = path["challenges"].string ?? ""
+                    
+                    
+                    // assign data to model variables
+                    recipient.gdid = gdid
+                    recipient.firstName = firstName
+                    recipient.lastName = lastName
+                    recipient.age = age
+                    recipient.gender = gender
+                    recipient.maritalStatus = maritalStatus
+                    recipient.numberOfChildren = numberOfChildren
+                    recipient.paymentPhase = phase
+                    recipient.village = village
+                    
+                    recipient.spendingPlans = spendingPlans
+                    recipient.goals = goals
+                    recipient.achievements = achievements
+                    recipient.challenges = challenges
+                    
+                    
+                    // append model to array
+                    self.recipients.append(recipient)
+                    
+                }
+                
+                // API call to return newsfeed objects
+                GDService.updatesForNewsfeed() { responseObject, error in
+                    
+                    if let value: AnyObject = responseObject {
+                        var json = JSON(value)
+                        json = json["newsfeeds"]
+                        
+                        
+                        for updateIndex in 0..<json.count {
+                            
+                            let update = Update()
+                            let path = json[updateIndex]
+                            
+                            // retrieve related model data from API call results
+                            let text = path["update"].string ?? ""
+                            let date = path["date"].string ?? ""
+                            let numberOfLikes = path["likes"].int ?? 0
+                            let numberOfComments = path["comments"].int ?? 0
+                            let isFlagged = path["isFlagged"].bool ?? false
+                            let gdid = path["gdid"].string ?? ""
+                            
+                            // assign data to model variables
+                            update.text = text
+                            update.date = date
+                            update.numberOfLikes = numberOfLikes
+                            update.numberOfComments = numberOfComments
+                            update.isFlagged = isFlagged
+                            update.gdid = gdid
+                            
+                            // append model to array
+                            self.updates.append(update)
+                            
+                        }
+                        
+                        self.testPrintUpdateWithIndex(8)
+                        self.tableView?.reloadData()
+                    }
+                }
+                
             }
-        }
-
-        // API call to return newsfeed objects
-        GDService.updatesForNewsfeed() { responseObject, error in
             
-            if let value: AnyObject = responseObject {
-                let json = JSON(value)
-                self.updates = json["newsfeeds"]
-                self.attachRecipientDataToUpdates()
-                self.tableView?.reloadData()
-            }
+            // check results
+//            self.testPrintRecipientWithIndex(24)
+            
         }
+    }
+    
+    func testPrintUpdateWithIndex(index: Int) {
+        
+        // print property values of updates
+        print(self.updates[index].text)
+        print(self.updates[index].date)
+        print(self.updates[index].numberOfLikes)
+        print(self.updates[index].numberOfComments)
+        print(self.updates[index].isFlagged)
+        print(self.updates[index].gdid)
+    }
+    
+    func testPrintRecipientWithIndex(index: Int) {
+        
+        // print property values of recipients
+        print(self.recipients[index].gdid)
+        print(self.recipients[index].firstName)
+        print(self.recipients[index].lastName)
+        print(self.recipients[index].age)
+        print(self.recipients[index].gender)
+        print(self.recipients[index].maritalStatus)
+        print(self.recipients[index].numberOfChildren)
+        print(self.recipients[index].paymentPhase)
+        print(self.recipients[index].village)
+        print(self.recipients[index].spendingPlans)
+        print(self.recipients[index].goals)
+        print(self.recipients[index].achievements)
+        print(self.recipients[index].challenges)
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -80,17 +186,6 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
 // MARK: - Table View Data Source
 extension NewsfeedTableViewController {
     
-    // append recipient data to corresponding newsfeed objects
-    func attachRecipientDataToUpdates() {
-
-        // iterate through each update and extract GDID
-        for update in 0..<updates.count {
-            
-            let gdid = updates[update]["gdid"].string ?? ""
-            print("Thy GDID is: \(gdid)!")
-            
-        }
-    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.updates.count
@@ -122,6 +217,7 @@ extension NewsfeedTableViewController {
         return cell
     }
     
+    // TODO: if possible, configure the segue to move from Newsfeed to Recipients > Profile View, when the recipient's avatar image is tapped
     
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     

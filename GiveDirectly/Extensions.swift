@@ -18,3 +18,13 @@ extension UIImageView {
 //        layer.backgroundColor = UIColor.clearColor().CGColor
     }
 }
+
+protocol PropertyNames {
+    func propertyNames() -> [String]
+}
+
+extension PropertyNames {
+    func propertyNames() -> [String] {
+        return Mirror(reflecting: self).children.filter { $0.label != nil }.map { $0.label! }
+    }
+}

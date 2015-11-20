@@ -12,6 +12,7 @@ import Alamofire
 class Recipient {
     
     // property list
+    var gdid: String = ""
     var firstName: String = ""
     var lastName: String = ""
     var recipientViewAnnotation: String = ""
@@ -27,12 +28,5 @@ class Recipient {
     var challenges: String = ""
     
     var photos = [String]()
-    
-}
-
-class Photo {
-    
-    // property list
-    var 
     
 }

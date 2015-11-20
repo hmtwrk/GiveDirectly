@@ -28,5 +28,9 @@ class Update {
     var fromGD: Bool = false
     var isPinned: Bool = false
     
+    // if function is called from within the class "func" alone is OK; otherwise it should be "class func"
+    func toggleLiked() {
+        userHasLikedUpdate = !userHasLikedUpdate
+    }
 
 }

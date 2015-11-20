@@ -14,7 +14,7 @@
 		4A231BB01BF1011300227B0D /* UIImageViewAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A231BAF1BF1011300227B0D /* UIImageViewAsync.swift */; };
 		4A47C62F1BC8667100707B04 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C62E1BC8667100707B04 /* libz.tbd */; };
 		4A47C6311BC8668700707B04 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C6301BC8668700707B04 /* libsqlite3.tbd */; };
-		4A5711B31B98C39000CF32B0 /* Liked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5711B21B98C39000CF32B0 /* Liked.swift */; };
+		4A5711B31B98C39000CF32B0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5711B21B98C39000CF32B0 /* Like.swift */; };
 		4A6A14B21BF6A17E00730E3C /* Array+RemoveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14A91BF6A17E00730E3C /* Array+RemoveObject.swift */; };
 		4A6A14B31BF6A17E00730E3C /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A14AA1BF6A17E00730E3C /* Delay.swift */; };
 		4A6A14B41BF6A17E00730E3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A14AB1BF6A17E00730E3C /* Info.plist */; };
@@ -103,6 +103,7 @@
 		4AF292221BFB7D89003651E3 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */; };
 		4AF292291BFCF740003651E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF292281BFCF740003651E3 /* Extensions.swift */; };
 		4AF2922B1BFE47FF003651E3 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF2922A1BFE47FF003651E3 /* Comment.swift */; };
+		4AF2922D1BFE4898003651E3 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF2922C1BFE4898003651E3 /* Photo.swift */; };
 		4AF323361BEAC6230060D766 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; };
 		4AF323371BEAC6230060D766 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A694DE61BCD7C9300BEEF02 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4AF3233B1BEBB64A0060D766 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3233A1BEBB64A0060D766 /* User.swift */; };
@@ -192,7 +193,7 @@
 		4A231BAF1BF1011300227B0D /* UIImageViewAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewAsync.swift; sourceTree = "<group>"; };
 		4A47C62E1BC8667100707B04 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4A47C6301BC8668700707B04 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		4A5711B21B98C39000CF32B0 /* Liked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Liked.swift; sourceTree = "<group>"; };
+		4A5711B21B98C39000CF32B0 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		4A694DDD1BCD7C9300BEEF02 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		4A6A14A71BF6A17E00730E3C /* ConvenienceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvenienceKit.h; sourceTree = "<group>"; };
 		4A6A14A91BF6A17E00730E3C /* Array+RemoveObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+RemoveObject.swift"; path = "Foundation/Array+RemoveObject.swift"; sourceTree = "<group>"; };
@@ -288,6 +289,7 @@
 		4AF292211BFB7D89003651E3 /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		4AF292281BFCF740003651E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4AF2922A1BFE47FF003651E3 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		4AF2922C1BFE4898003651E3 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		4AF322AC1BEAB8ED0060D766 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4AF3233A1BEBB64A0060D766 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4AFAC7651BA9C07C00A60CEF /* SwiftBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftBadge.swift; sourceTree = "<group>"; };
@@ -460,8 +462,9 @@
 				4AF3233A1BEBB64A0060D766 /* User.swift */,
 				4AC663F11B7D4177008AF19F /* Recipient.swift */,
 				4ADAF11A1B9FB8440004D7E9 /* Update.swift */,
-				4A5711B21B98C39000CF32B0 /* Liked.swift */,
+				4A5711B21B98C39000CF32B0 /* Like.swift */,
 				4AF2922A1BFE47FF003651E3 /* Comment.swift */,
+				4AF2922C1BFE4898003651E3 /* Photo.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -814,7 +817,7 @@
 				4AE8C0611BDDE0F9007540DE /* KeyboardLayoutConstraint.swift in Sources */,
 				4A6A14B61BF6A17E00730E3C /* KeyboardNotificationHandler.swift in Sources */,
 				4AE8C06A1BDDE0F9007540DE /* SpringLabel.swift in Sources */,
-				4A5711B31B98C39000CF32B0 /* Liked.swift in Sources */,
+				4A5711B31B98C39000CF32B0 /* Like.swift in Sources */,
 				4AE8C0701BDDE0F9007540DE /* UnwindSegue.swift in Sources */,
 				4AE8C0621BDDE0F9007540DE /* LoadingView.swift in Sources */,
 				4AFAC7A01BAB143300A60CEF /* RefreshView.swift in Sources */,
@@ -831,6 +834,7 @@
 				C46E340D1B73FDD2001449E2 /* NSDate+Ago.swift in Sources */,
 				4AFAC76A1BA9FB2200A60CEF /* TabBarController.swift in Sources */,
 				4A84350F1B7E605C008D5E08 /* UIImage+Decompression.swift in Sources */,
+				4AF2922D1BFE4898003651E3 /* Photo.swift in Sources */,
 				C43780531B2933080018BD41 /* AppDelegate.swift in Sources */,
 				4A6A60B31B6AB97A00C3F142 /* UpdateTableViewCell.swift in Sources */,
 				4AE8C05E1BDDE0F9007540DE /* DesignableView.swift in Sources */,

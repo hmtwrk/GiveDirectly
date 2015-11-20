@@ -13,6 +13,6 @@ class TabBarController: UITabBarController {
     // can configure the badges?
     
     // probably should connect to a model here
-    var notificationItem = NotificationModel()
+
 
 }

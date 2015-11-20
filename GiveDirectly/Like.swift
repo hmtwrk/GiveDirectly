@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Liked {
+class Like {
+    
+    // not sure if this class is still necessary...
     
     // default state = not liked
     var liked = false
-    
-    // number of likes
-    // var totalLkes = 0 
+
 
     func toggleLiked() {
         liked = !liked
