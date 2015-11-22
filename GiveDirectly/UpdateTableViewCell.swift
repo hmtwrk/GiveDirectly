@@ -82,7 +82,7 @@ class UpdateTableViewCell: UITableViewCell {
     
     
     // MARK: configuration of cell
-    func configureUpdateTableViewCell(updateData: JSON) {
+    func configureUpdateTableViewCell(update: Update) {
         
 //        print(updateData)
         
@@ -90,53 +90,27 @@ class UpdateTableViewCell: UITableViewCell {
         authorImageView?.userInteractionEnabled = true
         authorImageView?.addGestureRecognizer(tapGestureRecognizer)
         
-        let displayName: String? = updateData["displayName"].string
-        // title should be a curated and unique field for each update
-        let title: String? = updateData["title"].string
-        let updateText: String? = updateData["update"].string
-        //        let authorPortraitURL = updateData["recipientAvatar"].string
-        
-        //        if let imageURL: NSURL = NSURL(string: authorPortraitURL!)! {
-        //            imageRequest(imageURL)
-        //            print(imageURL)
-        //        }
-        
-        //        print(recipientPortraitURL!)
+        let displayName: String? = update.recipientDisplayName ?? ""
+        let title: String? = update.updateTitle ?? ""
+        let updateText: String? = update.text ?? ""
         
         authorImageView.makeRound()
-        
-        // get the date and format (does this need to be set to optional? App will crash if
-        // the "date" field on RecipientUpdates is nil)
-        let JSONdate:String = updateData["surveyDate"].string ?? ""
-        
-        // turn string into NSDate (.MediumStyle better for the dateStyle?)
+
+        // format date as human-readable
+        let date:String = update.date ?? ""
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let displayDate = dateFormatter.dateFromString(JSONdate)
+        let displayDate = dateFormatter.dateFromString(date)
+        
+        // can choose between LongStyle, MediumStyle, and ShortStyle
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        
+        // TODO: figure out how to make this line fail gracefully if date is nil
         let dateString = dateFormatter.stringFromDate(displayDate!)
 
-        
-//        self.timestampLabel.text = dateFormatter.stringFromDate(displayDate!
-        
-//        self.timestampLabel.text = displayDate!.ago
+        // assign UI fields
         self.timestampLabel.text = dateString
-//        print(JSONdate)
-//        print(displayDate)
-
-        
-        //        print(displayDate!.ago)
-        
-        //        self.authorImageView.url = authorPortraitURL?.toURL()
-        //        self.authorImageView.placeholderImage = UIImage(named: "blankProfileImage")
-        //        self.timestampLabel.text = displayDate!.ago
-        
-        
-        //        self.timestampLabel.text = date.substringToIndex(date.endIndex.advancedBy(-18))
-        
-        // assign labels and views (also needs to be set to optional)
-        //        self.authorNameLabel.text = recipientName
         self.authorNameLabel.text = displayName ?? ""
         self.updateTitleLabel.text = title ?? ""
         self.updateStoryLabel.text = updateText ?? ""

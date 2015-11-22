@@ -15,6 +15,7 @@ class Recipient {
     var gdid: String = ""
     var firstName: String = ""
     var lastName: String = ""
+    var displayName: String = ""
     var recipientViewAnnotation: String = ""
     var age: Int = 0
     var gender: String = ""
@@ -27,6 +28,6 @@ class Recipient {
     var goals: String = ""
     var challenges: String = ""
     
-    var photos = [String]()
+    var avatarURL: String = ""
     
 }

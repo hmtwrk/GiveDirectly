@@ -651,8 +651,8 @@
                                             </state>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="eDn-Gp-jAs"/>
                                                     <exclude reference="0MF-ar-d4B"/>
+                                                    <exclude reference="eDn-Gp-jAs"/>
                                                 </mask>
                                             </variation>
                                             <connections>
@@ -678,9 +678,9 @@
                                             </state>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="iGm-E7-6v2"/>
-                                                    <exclude reference="eP3-08-FYA"/>
                                                     <exclude reference="Qjl-jR-642"/>
+                                                    <exclude reference="eP3-08-FYA"/>
+                                                    <exclude reference="iGm-E7-6v2"/>
                                                     <exclude reference="s1O-01-kI5"/>
                                                 </mask>
                                             </variation>
@@ -749,27 +749,27 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="86B-ff-fsf"/>
                                             <exclude reference="B42-RI-Zc6"/>
                                             <exclude reference="hhY-9Q-nLp"/>
-                                            <exclude reference="86B-ff-fsf"/>
-                                            <exclude reference="rP2-dB-5Pn"/>
                                             <exclude reference="aQn-Ri-c0N"/>
                                             <exclude reference="qCn-ot-h87"/>
+                                            <exclude reference="rP2-dB-5Pn"/>
                                             <exclude reference="vtw-f1-RKC"/>
-                                            <exclude reference="myf-ts-us3"/>
                                             <exclude reference="1bZ-V3-DKY"/>
-                                            <exclude reference="C66-mI-ulW"/>
+                                            <exclude reference="myf-ts-us3"/>
                                             <exclude reference="AQZ-Qp-s3o"/>
+                                            <exclude reference="BWq-3u-1lA"/>
+                                            <exclude reference="C66-mI-ulW"/>
                                             <exclude reference="tgx-8Z-SVv"/>
                                             <exclude reference="yUj-vB-KVH"/>
-                                            <exclude reference="BWq-3u-1lA"/>
-                                            <exclude reference="UNR-Sv-CRa"/>
                                             <exclude reference="5BH-MM-0os"/>
-                                            <exclude reference="BfJ-3Y-mUc"/>
-                                            <exclude reference="acR-RH-5da"/>
-                                            <exclude reference="MPj-kH-l7f"/>
-                                            <exclude reference="nne-BX-hhg"/>
+                                            <exclude reference="UNR-Sv-CRa"/>
                                             <exclude reference="789-by-PnK"/>
+                                            <exclude reference="BfJ-3Y-mUc"/>
+                                            <exclude reference="MPj-kH-l7f"/>
+                                            <exclude reference="acR-RH-5da"/>
+                                            <exclude reference="nne-BX-hhg"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

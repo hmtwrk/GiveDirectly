@@ -11,7 +11,7 @@ import UIKit
 class CommentTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
     // variable to hold passed info from segue
-    var update: JSON = []
+    var update: Update = Update()
     var comments: JSON = []
     
     override func viewDidLoad() {
@@ -57,30 +57,28 @@ class CommentTableViewController: UITableViewController, UpdateTableViewCellDele
         if let cell = cell as? UpdateTableViewCell {
             
             // download image from cache / Alamofire
-//            GDService.downloadImage(recipientImageURL) { data in
-//                
-//                let image = UIImage(data: data)
-//                cell.authorImageView.image = image
-//            }
+            //            GDService.downloadImage(recipientImageURL) { data in
+            //
+            //                let image = UIImage(data: data)
+            //                cell.authorImageView.image = image
+            //            }
             
             
             // send data to cell
-            let updateDataForCell: JSON = self.update
-            let recipientImageURL = self.update
-            print(updateDataForCell)
-            cell.configureUpdateTableViewCell(updateDataForCell)
+            cell.configureUpdateTableViewCell(update)
             cell.delegate = self
             
             // download associated image for cell
-//            GDService.downloadImage(recipientImageURL) { data in
-//                
-//                let image = UIImage(data: data)
-//                cell.authorImageView.image = image
-//                
-//            }
+            //            GDService.downloadImage(recipientImageURL) { data in
+            //
+            //                let image = UIImage(data: data)
+            //                cell.authorImageView.image = image
+            //
+            //            }
         }
         
         return cell
+        
     }
 }
 
@@ -94,7 +92,7 @@ extension CommentTableViewController {
     
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         
-
+        
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

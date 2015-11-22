@@ -10,6 +10,8 @@ import UIKit
 
 class RecipientStatsTableViewCell: UITableViewCell {
     
+    var recipient = Recipient()
+    
     @IBOutlet weak var recipientProfileImageView: UIImageView!
     @IBOutlet weak var recipientNameLabel: UILabel!
     @IBOutlet weak var numberOfFollowersLabel: UILabel!
@@ -19,36 +21,22 @@ class RecipientStatsTableViewCell: UITableViewCell {
     @IBOutlet weak var recipientLocationLabel: UILabel!
     
     
-    func configureStatsCell(recipientStats: JSON) {
+    func configureStatsCell(recipient: Recipient) {
         
-        let recipientName:String? = recipientStats["firstName"].string
-        let recipientAge:Int? = recipientStats["age"].int
-        let recipientStatus:String? = recipientStats["maritalStatus"].string
-        let recipientLocation:String? = recipientStats["village"].string
-        let recipientGender:String? = recipientStats["gender"].string
-        let recipientNumberOfChildren:Int? = recipientStats["children"].int
-
-        // safely convert Int to String without "Optional" appearing
-        if recipientAge != nil {
-            self.recipientAgeLabel.text = String(stringInterpolationSegment: recipientAge!)
-        }
-        
-        if recipientNumberOfChildren != nil {
-            self.recipientNumberOfChildrenLabel.text = String(stringInterpolationSegment: recipientNumberOfChildren!)
-        }
-        
-        // assign variables and constants to labels
-        self.recipientNameLabel.text = recipientName?.capitalizedString
+        // assign data to labels
+        self.recipientNameLabel.text = self.recipient.displayName
+        self.recipientAgeLabel.text = String(self.recipient.age)
+        self.recipientNumberOfChildrenLabel.text = String(self.recipient.numberOfChildren)
         
         // determine martial status
         var maritalStatus:String!
-        switch recipientStatus! {
+        switch self.recipient.maritalStatus {
         case "single":
             maritalStatus = "Single"
         case "couple":
             maritalStatus = "Married"
         case "widow_widower":
-            if recipientGender == "female" {
+            if self.recipient.gender == "f" {
                 maritalStatus = "Widow"
             } else {
                 maritalStatus = "Widower"
@@ -58,8 +46,9 @@ class RecipientStatsTableViewCell: UITableViewCell {
         default:
             maritalStatus = "N/A"
         }
+        
         self.recipientStatusLabel.text = maritalStatus
-        self.recipientLocationLabel.text = recipientLocation?.capitalizedString
+        self.recipientLocationLabel.text = self.recipient.village.capitalizedString
         
         // make profile image round
         recipientProfileImageView.makeRound()

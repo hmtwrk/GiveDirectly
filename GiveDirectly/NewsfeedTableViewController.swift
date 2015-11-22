@@ -24,10 +24,7 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     // property list
     var recipients = [Recipient]()
     var updates: [Update] = []
-//    var likes: [Liked] = [] // is it necessary to have an array of likes?
     var refreshView: RefreshView!
-//    var updatesJSON: JSON = []
-    var updatesList: [JSON] = []
     var recipientInfoForSegue: JSON = []
     
     override func viewDidLoad() {
@@ -47,13 +44,18 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        // TODO: migrate app's initial API calls (recipients, first 10 updates) to appDelegate
+        
         // API call to return related recipient objects
         GDService.profilesForRecipients() { responseObject, error in
             
             if let value: AnyObject = responseObject {
                 var json = JSON(value)
                 json = json["recipients"]
+                print("RECIPIENTS:")
+                print(json)
                 
+                // iterate through each JSON entry and map the results to the local model
                 for recipientIndex in 0..<json.count {
                     
                     let recipient = Recipient()
@@ -93,6 +95,15 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
                     recipient.challenges = challenges
                     
                     
+                    // extract photo URLs from internal array
+                    for photoIndex in 0..<path["photos"].count {
+                        
+                        if path["photos"][photoIndex] == "face" {
+                            recipient.avatarURL = path["photos"][photoIndex]["url"].string ?? ""
+                        }
+                        
+                    }
+                    
                     // append model to array
                     self.recipients.append(recipient)
                     
@@ -104,6 +115,8 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
                     if let value: AnyObject = responseObject {
                         var json = JSON(value)
                         json = json["newsfeeds"]
+                        print("NEWSFEEDS:")
+                        print(json)
                         
                         
                         for updateIndex in 0..<json.count {
@@ -118,6 +131,8 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
                             let numberOfComments = path["comments"].int ?? 0
                             let isFlagged = path["isFlagged"].bool ?? false
                             let gdid = path["gdid"].string ?? ""
+                            let fromGD = path["from_gd"].bool ?? false
+                            let isPinned = path["pinned"].bool ?? false
                             
                             // assign data to model variables
                             update.text = text
@@ -126,21 +141,54 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
                             update.numberOfComments = numberOfComments
                             update.isFlagged = isFlagged
                             update.gdid = gdid
+                            update.fromGD = fromGD
+                            update.isPinned = isPinned
                             
                             // append model to array
                             self.updates.append(update)
                             
                         }
                         
-                        self.testPrintUpdateWithIndex(8)
+                        // match GDID of update with recipient, and set properties with the results
+                        for update in self.updates {
+                            
+                            let gdid = update.gdid
+                            
+                            // scan recipient objects for matching GDID
+                            for recipient in self.recipients {
+                                
+                                if recipient.gdid == gdid {
+                                    
+                                    print("You have activated my trap card!")
+                                    print("Recipient ID = \(recipient.gdid).")
+                                    print("Update ID = \(update.gdid).")
+                                    update.profileImageURL = recipient.avatarURL ?? ""
+                                    update.recipientDisplayName = recipient.firstName ?? ""
+                                    update.relatedRecipient = recipient
+                                    
+                                    break
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                        // both models are mapped, insert additional code here for completion
+                        // use the results of the GDID matching to assign the remaining properties:
+                        // update.profileImageURL
+                        // update.recipientDisplayName
+                        
+                        
+                        //                        self.testPrintRecipientWithIndex(8)
+                        //                        print("======================")
+                        //                        self.testPrintUpdateWithIndex(8)
                         self.tableView?.reloadData()
                     }
                 }
-                
             }
             
             // check results
-//            self.testPrintRecipientWithIndex(24)
+            //            self.testPrintRecipientWithIndex(24)
             
         }
     }
@@ -199,19 +247,19 @@ extension NewsfeedTableViewController {
         // cast to specific class
         if let cell = cell as? UpdateTableViewCell {
             
-//            let updateDataForCell: JSON = self.updates[indexPath.row]
-//            let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
+            let updateDataForCell = self.updates[indexPath.row]
+            //            let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
             
             // download associated image for cell
-//            GDService.downloadImage(recipientImageURL) { data in
-//                
-//                let image = UIImage(data: data)
-//                cell.authorImageView.image = image
-//                
-//            }
+            //            GDService.downloadImage(recipientImageURL) { data in
+            //
+            //                let image = UIImage(data: data)
+            //                cell.authorImageView.image = image
+            //
+            //            }
             
             // configure queued cell with newest data from model
-//            cell.configureUpdateTableViewCell(updateDataForCell)
+            cell.configureUpdateTableViewCell(updateDataForCell)
             cell.delegate = self
         }
         return cell
@@ -219,27 +267,26 @@ extension NewsfeedTableViewController {
     
     // TODO: if possible, configure the segue to move from Newsfeed to Recipients > Profile View, when the recipient's avatar image is tapped
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
-        // segue from newsfeed item to recipient profile view
-//        if segue.identifier == "NewsfeedProfileSegue" {
-//            let toView = segue.destinationViewController as! RecipientProfileTableViewController
-//            let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
-//            var recipientInfo = updatesList[indexPath!.item]
-//            self.matchUpdateWithRecipientGDID(recipientInfo["biodata"]["gdid"].string!)
-////            print(recipientInfoForSegue)
-//            toView.recipientInfo = recipientInfoForSegue
-//        }
-        
-        // segue from comment to expanded comment view
-//        if segue.identifier == "CommentsSegue" {
-//            let toView = segue.destinationViewController as! CommentTableViewController
-//            let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
-//            let selectedUpdate = updatesList[indexPath!.item]
-//            //            print(selectedUpdate)
-//            toView.update = selectedUpdate
-//        }
-//    }
+            // segue from newsfeed item to recipient profile view
+            if segue.identifier == "NewsfeedProfileSegue" {
+                let toView = segue.destinationViewController as! RecipientProfileTableViewController
+                let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
+                let recipient = updates[indexPath!.item].relatedRecipient
+                toView.recipient = recipient
+            }
+    
+            // segue from comment to expanded comment view
+            if segue.identifier == "CommentsSegue" {
+                let toView = segue.destinationViewController as! CommentTableViewController
+                let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
+                let update = updates[indexPath!.item]
+                toView.update = update
+            }
+        }
+    
+    
 }
 
 extension NewsfeedTableViewController: RefreshViewDelegate {
@@ -263,7 +310,7 @@ extension NewsfeedTableViewController {
     
     func updateLikeButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {
         
-
+        
     }
     
     func updateCommentButtonDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

@@ -11,44 +11,24 @@ import Alamofire
 
 class RecipientProfileTableViewController: UITableViewController, UpdateTableViewCellDelegate {
     
-    // prepare variable for receiving data from segue
-//    var recipientInfo: AnyObject = ""
-    var recipientInfo: JSON = ""
-    var updatesInfo: [JSON] = []
-    var updatesList: [JSON] = []
-
-    
-    // prepare variable for related Update object
-    var numberOfUpdates: Int = 0
+    // property list
+    var recipient = Recipient()
     var updates = [Update]()
-    var recipientNameData: String = ""
-//    var likes = [Liked]()
-    var recipientImageURL: String = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // set navigation title to match recipient's name
-        let recipientName = recipientInfo["recipient"]["firstName"].string ?? ""
-        self.recipientNameData = recipientName
-        
         // Fill the navigation title with the recipient's name
-        self.navigationItem.title = recipientName
+        recipient.displayName = recipient.firstName
+        self.navigationItem.title = recipient.displayName
         
         // changing the row height does nothing, but needs to be explicitly set to a value (default = 44)
         tableView.estimatedRowHeight = 45
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // find the profile image
-        let photoPath = recipientInfo["recipient"]["photos"]
-        for photoIndex in 0..<photoPath.count {
-            
-            if photoPath[photoIndex]["type"] == "face" {
-                recipientImageURL = photoPath[photoIndex]["url"].string ?? ""
-            }
-        }
         
-        self.buildUpdates()
+        self.fetchUpdates()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,7 +52,8 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         if section == 0 {
             return 2
         } else {
-            return recipientInfo["newsfeeds"].count
+            // TODO: make an API call for all the newsfeeds from this recipient
+            return updates.count
         }
     }
     
@@ -104,10 +85,10 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         
         // configure cells
         if let recipientStatsCell = cell as? RecipientStatsTableViewCell {
-            recipientStatsCell.configureStatsCell(recipientInfo["recipient"])
+            recipientStatsCell.configureStatsCell(self.recipient)
             
             // download associated image for cell
-            GDService.downloadImage(recipientImageURL) { data in
+            GDService.downloadImage(recipient.avatarURL) { data in
                 
                 let image = UIImage(data: data)
                 recipientStatsCell.recipientProfileImageView.image = image
@@ -117,39 +98,25 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         }
         
         if let recipientStoriesCell = cell as? RecipientStoriesTableViewCell {
-            recipientStoriesCell.configureStoriesCell(recipientInfo["recipient"])
+            
+            recipientStoriesCell.configureStoriesCell(self.recipient)
+            
         }
         
         if let recipientUpdatesCell = cell as? UpdateTableViewCell {
-            
 
-//            let recipientImageURL = self.updatesList[indexPath.row]["recipientAvatar"].string ?? ""
-            
-            // Alamofire stuff
-            let user = "admin"
-            let password = "8PLXLNuyyS6g2AsCAZNiyjF7"
-            let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
-            let base64Credentials = credentialData.base64EncodedStringWithOptions([])
-            
-            let headers = ["Authorization": "Basic \(base64Credentials)"]
-            
-            // API call
-            Alamofire.request(.GET, recipientImageURL, headers: headers).response() {
-                (_, _, data, _) in
-                
-                
-                let image = UIImage(data: data!)
+            // API call for image
+            GDService.downloadImage(recipient.avatarURL) { data in
+             
+                let image = UIImage(data: data)
                 recipientUpdatesCell.authorImageView.image = image
-
+                
             }
-            
-            let updateDataForCell = updatesList[indexPath.row]
-            recipientUpdatesCell.configureUpdateTableViewCell(updateDataForCell)
-//            recipientUpdatesCell.configureLikeForCell(updateDataForCell as! Update)
+
+            let update = updates[indexPath.row]
+            recipientUpdatesCell.configureUpdateTableViewCell(update)
             recipientUpdatesCell.delegate = self
         }
-        
-
         
         // make separators extend all the way left
         cell.preservesSuperviewLayoutMargins = false
@@ -168,33 +135,16 @@ extension RecipientProfileTableViewController {
         if segue.identifier == "CommentsSegue" {
             let toView = segue.destinationViewController as! CommentTableViewController
             let indexPath = tableView?.indexPathForCell(sender as! UITableViewCell)
-            let selectedUpdate = updatesList[indexPath!.item]
-            toView.update = selectedUpdate
+            let update = self.updates[indexPath!.item]
+            toView.update = update
         }
     }
     
-    func buildUpdates() {
+    func fetchUpdates() {
         
-        // extract biodata from recipient object
-        let displayName = recipientInfo["recipient"]["firstName"].string?.capitalizedString ?? ""
-        let village = recipientInfo["recipient"]["village"].string?.capitalizedString ?? ""
+        // TODO: make a unique API call that fetches all updates related to this recipient
+        // Possible to make an API call that is filtered to just one GDID?
         
-        // iterate through newsfeed items
-        for itemIndex in 0..<recipientInfo["newsfeeds"].count {
-            
-            // attach biodata to update object
-            var newsfeedItem = recipientInfo["newsfeeds"][itemIndex]
-            newsfeedItem["displayName"] = JSON(displayName)
-            newsfeedItem["village"] = JSON(village)
-            
-            // append the newsfeed updates list
-            updatesList.append(newsfeedItem)
-        }
-        
-        // sort the finished array of dictionaries by survey date
-        updatesList.sortInPlace({$0["surveyDate"] > $1["surveyDate"]})
-        
-
     }
     
     func recipientImageDidTap(cell: UpdateTableViewCell, sender: AnyObject) {

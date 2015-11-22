@@ -21,14 +21,18 @@ class Update {
     var numberOfLikes: Int = 0
     var numberOfComments: Int = 0
     var isFlagged: Bool = false
-    var commments = [Comment]()
+    
+    var relatedRecipient: Recipient = Recipient()
     
     var type: String = ""
     var gdid: String = ""
     var fromGD: Bool = false
     var isPinned: Bool = false
     
-    // if function is called from within the class "func" alone is OK; otherwise it should be "class func"
+    // handle commenting
+    var commments = [Comment]()
+    
+    // control liked status
     func toggleLiked() {
         userHasLikedUpdate = !userHasLikedUpdate
     }

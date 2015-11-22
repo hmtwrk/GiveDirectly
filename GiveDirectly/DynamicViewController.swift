@@ -97,9 +97,8 @@ extension RecipientBrowserViewController {
         if segue.identifier == "RecipientProfileSegue" {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
-            let recipientInfo = dynamicRecipientData[indexPath!.item]
-            print(recipientInfo)
-            toView.recipientInfo = recipientInfo
+            let recipient = dynamicRecipientData[indexPath!.item]
+            toView.recipient = recipient
 //            toView.recipientImageURL = recipientImageURL
         }
     }
