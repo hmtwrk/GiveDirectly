@@ -24,6 +24,8 @@ class Update {
     
     var relatedRecipient: Recipient = Recipient()
     
+    var avatarImage: UIImage?
+    
     var type: String = ""
     var gdid: String = ""
     var fromGD: Bool = false

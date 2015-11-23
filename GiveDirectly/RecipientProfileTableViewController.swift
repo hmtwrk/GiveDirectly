@@ -88,7 +88,7 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
             recipientStatsCell.configureStatsCell(self.recipient)
             
             // download associated image for cell
-            GDService.downloadImage(recipient.avatarURL) { data in
+            GDService.downloadImage(self.recipient.avatarURL) { data in
                 
                 let image = UIImage(data: data)
                 recipientStatsCell.recipientProfileImageView.image = image

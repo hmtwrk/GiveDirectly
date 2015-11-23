@@ -94,6 +94,7 @@ class UpdateTableViewCell: UITableViewCell {
         let title: String? = update.updateTitle ?? ""
         let updateText: String? = update.text ?? ""
         
+        
         authorImageView.makeRound()
 
         // format date as human-readable
@@ -110,6 +111,7 @@ class UpdateTableViewCell: UITableViewCell {
         let dateString = dateFormatter.stringFromDate(displayDate!)
 
         // assign UI fields
+        self.authorImageView.image = update.avatarImage
         self.timestampLabel.text = dateString
         self.authorNameLabel.text = displayName ?? ""
         self.updateTitleLabel.text = title ?? ""

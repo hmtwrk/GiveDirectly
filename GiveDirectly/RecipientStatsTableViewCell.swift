@@ -10,7 +10,7 @@ import UIKit
 
 class RecipientStatsTableViewCell: UITableViewCell {
     
-    var recipient = Recipient()
+//    var recipient = Recipient()
     
     @IBOutlet weak var recipientProfileImageView: UIImageView!
     @IBOutlet weak var recipientNameLabel: UILabel!
@@ -23,20 +23,23 @@ class RecipientStatsTableViewCell: UITableViewCell {
     
     func configureStatsCell(recipient: Recipient) {
         
+        print("TRAP CARD TRAP CARD")
+        print(recipient.avatarURL)
+        
         // assign data to labels
-        self.recipientNameLabel.text = self.recipient.displayName
-        self.recipientAgeLabel.text = String(self.recipient.age)
-        self.recipientNumberOfChildrenLabel.text = String(self.recipient.numberOfChildren)
+        self.recipientNameLabel.text = recipient.firstName
+        self.recipientAgeLabel.text = String(recipient.age)
+        self.recipientNumberOfChildrenLabel.text = String(recipient.numberOfChildren)
         
         // determine martial status
         var maritalStatus:String!
-        switch self.recipient.maritalStatus {
+        switch recipient.maritalStatus {
         case "single":
             maritalStatus = "Single"
         case "couple":
             maritalStatus = "Married"
         case "widow_widower":
-            if self.recipient.gender == "f" {
+            if recipient.gender == "f" {
                 maritalStatus = "Widow"
             } else {
                 maritalStatus = "Widower"
@@ -48,7 +51,7 @@ class RecipientStatsTableViewCell: UITableViewCell {
         }
         
         self.recipientStatusLabel.text = maritalStatus
-        self.recipientLocationLabel.text = self.recipient.village.capitalizedString
+        self.recipientLocationLabel.text = recipient.village.capitalizedString
         
         // make profile image round
         recipientProfileImageView.makeRound()

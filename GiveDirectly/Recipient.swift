@@ -29,5 +29,9 @@ class Recipient {
     var challenges: String = ""
     
     var avatarURL: String = ""
+    var actionURL: String = ""
+
+    var avatarImage: UIImage?
+    var actionImage: UIImage?
     
 }

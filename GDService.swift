@@ -89,6 +89,23 @@ struct GDService {
         }
     }
     
+    static func profilesForRecipientsView(completionBlock: (NSDictionary?, NSError?) -> () ) {
+        let limit = "12"
+        let filter = "?limit=" + limit
+        let URLString = baseURL + ResourcePath.Recipients.description + "/" + userID + filter
+        //        let parameters = [
+        //            "page": String(page)
+        //            "client_id": clientID
+        //        ]
+        
+        print(URLString)
+        
+        Alamofire.request(.GET, URLString, headers: headers)
+            .responseJSON { response in
+                completionBlock(response.result.value as? NSDictionary, response.result.error)
+        }
+    }
+    
     
     
     static func downloadImage(imageURL: String, completionBlock: (NSData) -> () ) {

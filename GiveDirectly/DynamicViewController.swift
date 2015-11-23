@@ -13,21 +13,92 @@ import AVFoundation
 
 class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutDelegate {
     
+    // property list
+    var recipients = [Recipient]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // get JSON data from API
-        GDService.profilesForRecipients() { responseObject, error in
+        GDService.profilesForRecipientsView() { responseObject, error in
             
             if let value: AnyObject = responseObject {
-                let json = JSON(value)
-                dynamicRecipientData = json
+                var json = JSON(value)
+                json = json["recipients"]
+//                print(json)
+                
+                
+                // iterate through each JSON entry and map the results to the local model
+                for recipientIndex in 0..<json.count {
+                    
+                    let recipient = Recipient()
+                    let path = json[recipientIndex]["recipient"]
+                    
+                    // retrieve related model data from API call results
+                    let gdid = path["gdid"].string ?? ""
+                    let firstName = path["firstName"].string?.capitalizedString ?? ""
+                    let lastName = path["lastName"].string?.capitalizedString ?? ""
+                    let age = path["age"].int ?? 0
+                    let gender = path["gender"].string ?? ""
+                    let maritalStatus = path["maritalStatus"].string ?? ""
+                    let numberOfChildren = path["numberOfChildren"].int ?? 0
+                    let phase = path["phase"].string ?? ""
+                    let village = path["village"].string?.capitalizedString ?? ""
+                    
+                    let spendingPlans = path["spendingPlans"].string ?? ""
+                    let goals = path["goals"].string ?? ""
+                    let achievements = path["achievements"].string ?? ""
+                    let challenges = path["challenges"].string ?? ""
+                    
+                    
+                    // assign data to model variables
+                    recipient.gdid = gdid
+                    recipient.firstName = firstName
+                    recipient.lastName = lastName
+                    recipient.age = age
+                    recipient.gender = gender
+                    recipient.maritalStatus = maritalStatus
+                    recipient.numberOfChildren = numberOfChildren
+                    recipient.paymentPhase = phase
+                    recipient.village = village
+                    
+                    recipient.spendingPlans = spendingPlans
+                    recipient.goals = goals
+                    recipient.achievements = achievements
+                    recipient.challenges = challenges
+                    
+                    
+                    // extract photo URLs from internal array
+                    for photoIndex in 0..<path["photos"].count {
+                        
+                        if path["photos"][photoIndex]["type"] == "action" {
+                            recipient.actionURL = path["photos"][photoIndex]["url"].string ?? ""
+                        }
+                        
+                        if path["photos"][photoIndex]["type"] == "face" {
+                            recipient.avatarURL = path["photos"][photoIndex]["url"].string ?? ""
+                        }
+                    }
+                    
+                    // seems to be better performance when download starts earlier
+                    GDService.downloadImage(recipient.actionURL) { data in
+                        
+                        let image = UIImage(data: data)
+                        recipient.actionImage = image
+                        
+                    }
+                    
+                    // append model to array
+                    self.recipients.append(recipient)
+                    
+                }
             }
             
-            // strip the user information
-            dynamicRecipientData = dynamicRecipientData["user"]["following"]
+            //            NSNotificationCenter.defaultCenter().postNotificationName("refreshRecipientCollectionView", object: nil)
             
-            NSNotificationCenter.defaultCenter().postNotificationName("refreshRecipientCollectionView", object: nil)
+//            print(self.recipients[3].firstName)
+            self.collectionView?.reloadData()
+            
         }
         
         collectionView!.backgroundColor = UIColor.whiteColor()
@@ -58,34 +129,27 @@ extension RecipientBrowserViewController {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return dynamicRecipientData.count
+        //        return dynamicRecipientData.count
+        return self.recipients.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecipientBrowserCell", forIndexPath: indexPath) as! BrowserViewCell
         
-        let recipientDataForCell = dynamicRecipientData[indexPath.item]["recipient"]
-        var recipientImageURL: String!
-        let photoPath = dynamicRecipientData[indexPath.item]["recipient"]["photos"]
-        
-        recipientImageURL = ""
-        
-        for photoIndex in 0..<photoPath.count {
-            
-            if photoPath[photoIndex]["type"] == "action" {
-                recipientImageURL = photoPath[photoIndex]["url"].string
-            }
-        }
+        //        let recipientDataForCell = dynamicRecipientData[indexPath.item]["recipient"]
+        let recipient = self.recipients[indexPath.item]
         
         // download associated image for cell
-        GDService.downloadImage(recipientImageURL) { data in
+        GDService.downloadImage(recipient.actionURL) { data in
             
             let image = UIImage(data: data)
             cell.profileImageView.image = image
             
         }
         
-        cell.configureCellWithData(recipientDataForCell, andRecipientImageURL: recipientImageURL)
+//        cell.profileImageView.image = recipient.actionImage
+        
+        cell.configureCellWithData(recipient)
         //        cell.profileImageView.imageFromUrl(recipientImageURL)
         //        cell.profileImageView.downloadImage(recipientImageURL)
         
@@ -97,9 +161,10 @@ extension RecipientBrowserViewController {
         if segue.identifier == "RecipientProfileSegue" {
             let toView = segue.destinationViewController as! RecipientProfileTableViewController
             let indexPath = collectionView?.indexPathForCell(sender as! UICollectionViewCell)
-            let recipient = dynamicRecipientData[indexPath!.item]
+            //            let recipient = dynamicRecipientData[indexPath!.item]
+            let recipient = self.recipients[indexPath!.item]
             toView.recipient = recipient
-//            toView.recipientImageURL = recipientImageURL
+            //            toView.recipientImageURL = recipientImageURL
         }
     }
 }
@@ -116,10 +181,10 @@ extension RecipientBrowserViewController {
     func collectionView(collectionView: UICollectionView, heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         
         // calculates the size of the text by using the content from spendingPlans
-        let annotation = dynamicRecipientData[indexPath.item]["recipient"]["spendingPlans"] ?? ""
-        let story = annotation.string ?? ""
+        let annotation = self.recipients[indexPath.item].spendingPlans
+        //        let story = annotation.string ?? ""
         let font = UIFont.systemFontOfSize(14)
-        let storyHeight = self.heightForStory(story, font: font, width: width)
+        let storyHeight = self.heightForStory(annotation, font: font, width: width)
         let height = 4 + 17 + 4 + storyHeight + 4
         return height
     }

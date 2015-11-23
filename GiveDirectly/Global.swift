@@ -13,7 +13,7 @@ var recipientBrowserData = [AnyObject]()
 //var dynamicRecipientData = [JSON]()
 
 // JSON initialization should be an empty array (as below)
-var dynamicRecipientData: JSON = []
+var dynamicRecipientData = [Recipient]()
 
 var testData: String = ""
 

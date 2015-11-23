@@ -65,6 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
         GIDSignIn.sharedInstance().delegate = self
+        
+        // download all 
+        // download recipients object
+        
+        // download first ten updates
 
         return true
     }

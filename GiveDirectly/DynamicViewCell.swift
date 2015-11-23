@@ -19,18 +19,18 @@ class BrowserViewCell: UICollectionViewCell {
     
     var displayName: String = ""
     
-    func configureCellWithData(data: JSON, andRecipientImageURL recipientImageURL: String) {
+    func configureCellWithData(recipient: Recipient) {
         
         // assign values or use default
-        let recipientName = data["firstName"].string ?? ""
-        let recipientStory = data["spendingPlans"].string ?? ""
-        let paymentPhase = data["phase"].int ?? 0
+        let recipientName = recipient.firstName
+        let recipientStory = recipient.spendingPlans
+        let paymentPhase = recipient.paymentPhase
         
         // select proper phase to display
         switch paymentPhase {
-        case 1:
+        case "1":
             self.paymentPhaseImageView.image = UIImage(named: "phasePayment")
-        case 2:
+        case "2":
             self.paymentPhaseImageView.image = UIImage(named: "phaseComplete")
         default:
             self.paymentPhaseImageView.image = UIImage(named: "phaseRegistration")
@@ -39,6 +39,7 @@ class BrowserViewCell: UICollectionViewCell {
         // assign constants to labels
         self.nameLabel.text = recipientName.capitalizedString
         self.storyLabel.text = recipientStory
+//        self.profileImageView.image = recipient.actionImage
         
     }
     
