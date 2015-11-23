@@ -63,13 +63,30 @@ struct GDService {
         //            "client_id": clientID
         //        ]
         
-        print(URLString)
-
         Alamofire.request(.GET, URLString, headers: headers)
             .responseJSON { response in
                 completionBlock(response.result.value as? NSDictionary, response.result.error)
         }
     }
+    
+    static func updatesForNewsfeedScrolling(offset: Int, completionBlock: (NSDictionary?, NSError?) -> () ) {
+        let limit = 10
+        let filter = "?offset=" + String(offset) + "&limit=" + String(limit)
+        let URLString = baseURL + ResourcePath.Updates.description + "/" + userID + filter
+        //        let parameters = [
+        //            "page": String(page)
+        //            "client_id": clientID
+        //        ]
+        
+        print(offset)
+        print(URLString)
+        
+        Alamofire.request(.GET, URLString, headers: headers)
+            .responseJSON { response in
+                completionBlock(response.result.value as? NSDictionary, response.result.error)
+        }
+    }
+
 
     
     static func profilesForRecipients(completionBlock: (NSDictionary?, NSError?) -> () ) {

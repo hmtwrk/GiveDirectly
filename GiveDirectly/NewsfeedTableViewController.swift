@@ -27,6 +27,8 @@ class NewsfeedTableViewController: UITableViewController, UpdateTableViewCellDel
     var refreshView: RefreshView!
     var recipientInfoForSegue: JSON = []
     
+    var isFirstTime = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -252,21 +254,111 @@ extension NewsfeedTableViewController {
             let update = self.updates[indexPath.row]
             let recipientImageURL = self.updates[indexPath.row].profileImageURL
             
-//            download associated image for cell (redundant, but cached anyway?)
-                GDService.downloadImage(recipientImageURL) { data in
-                    
-                    let image = UIImage(data: data)
-                    cell.authorImageView.image = image
-                    
+            //            download associated image for cell (redundant, but cached anyway?)
+            GDService.downloadImage(recipientImageURL) { data in
+                
+                let image = UIImage(data: data)
+                cell.authorImageView.image = image
+                
             }
             
             // configure queued cell with newest data from model
-//            cell.authorImageView.image = update.avatarImage
+            //            cell.authorImageView.image = update.avatarImage
             cell.configureUpdateTableViewCell(update)
             cell.delegate = self
         }
         return cell
     }
+    
+    // trigger the next API call (when indexPath.row reaches a certain value)
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // use this code to keep from triggering upon initialization
+        if indexPath.row + 1 == self.updates.count {
+            
+            if isFirstTime == false {
+                print("The count is this much: \(self.updates.count).")
+                print("And indexPath.row is this much: \(indexPath.row).")
+                
+                // 1) make next API call (next ten entries)
+                GDService.updatesForNewsfeedScrolling(self.updates.count) { responseObject, error in
+                    
+                    if let value: AnyObject = responseObject {
+                        var json = JSON(value)
+                        json = json["newsfeeds"]
+                        //                        print("NEWSFEEDS:")
+                        //                        print(json)
+                        
+                        
+                        for updateIndex in 0..<json.count {
+                            
+                            let update = Update()
+                            let path = json[updateIndex]
+                            
+                            // retrieve related model data from API call results
+                            let text = path["update"].string ?? ""
+                            let date = path["date"].string ?? ""
+                            let numberOfLikes = path["likes"].int ?? 0
+                            let numberOfComments = path["comments"].int ?? 0
+                            let isFlagged = path["isFlagged"].bool ?? false
+                            let gdid = path["gdid"].string ?? ""
+                            let fromGD = path["from_gd"].bool ?? false
+                            let isPinned = path["pinned"].bool ?? false
+                            
+                            // assign data to model variables
+                            update.text = text
+                            update.date = date
+                            update.numberOfLikes = numberOfLikes
+                            update.numberOfComments = numberOfComments
+                            update.isFlagged = isFlagged
+                            update.gdid = gdid
+                            update.fromGD = fromGD
+                            update.isPinned = isPinned
+                            
+                            // append model to array
+                            self.updates.append(update)
+                            
+                        }
+                        
+                        // match GDID of update with recipient, and set properties with the results
+                        for update in self.updates {
+                            
+                            let gdid = update.gdid
+                            
+                            // scan recipient objects for matching GDID (linear search)
+                            for recipient in self.recipients {
+                                
+                                if recipient.gdid == gdid {
+                                    
+                                    update.profileImageURL = recipient.avatarURL ?? ""
+                                    update.recipientDisplayName = recipient.firstName ?? ""
+                                    update.relatedRecipient = recipient
+                                    
+                                    break
+                                    
+                                }
+                                
+                            }
+                            
+                            GDService.downloadImage(update.profileImageURL) { data in
+                                
+                                let image = UIImage(data: data)
+                                update.avatarImage = image
+                            }
+                        }
+                    }
+                    
+                    // refresh the view
+                    self.tableView?.reloadData()
+                }
+            }
+            
+            isFirstTime = false
+            
+        }
+        
+    }
+    
     
     // TODO: if possible, configure the segue to move from Newsfeed to Recipients > Profile View, when the recipient's avatar image is tapped
     
