@@ -254,7 +254,7 @@ extension NewsfeedTableViewController {
             let update = self.updates[indexPath.row]
             let recipientImageURL = self.updates[indexPath.row].profileImageURL
             
-            //            download associated image for cell (redundant, but cached anyway?)
+            // download associated image for cell (seems this has to go here)
             GDService.downloadImage(recipientImageURL) { data in
                 
                 let image = UIImage(data: data)
@@ -337,14 +337,13 @@ extension NewsfeedTableViewController {
                                     break
                                     
                                 }
-                                
                             }
                             
-                            GDService.downloadImage(update.profileImageURL) { data in
-                                
-                                let image = UIImage(data: data)
-                                update.avatarImage = image
-                            }
+                            //                            GDService.downloadImage(update.profileImageURL) { data in
+                            //
+                            //                                let image = UIImage(data: data)
+                            //                                update.avatarImage = image
+                            //                            }
                         }
                     }
                     

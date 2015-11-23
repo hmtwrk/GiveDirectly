@@ -25,8 +25,6 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
             if let value: AnyObject = responseObject {
                 var json = JSON(value)
                 json = json["recipients"]
-//                print(json)
-                
                 
                 // iterate through each JSON entry and map the results to the local model
                 for recipientIndex in 0..<json.count {
@@ -71,7 +69,7 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
                     // extract photo URLs from internal array
                     for photoIndex in 0..<path["photos"].count {
                         
-                        if path["photos"][photoIndex]["type"] == "action" {
+                        if path["photos"][photoIndex]["type"] == "family" {
                             recipient.actionURL = path["photos"][photoIndex]["url"].string ?? ""
                         }
                         
@@ -81,12 +79,12 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
                     }
                     
                     // seems to be better performance when download starts earlier
-                    GDService.downloadImage(recipient.actionURL) { data in
-                        
-                        let image = UIImage(data: data)
-                        recipient.actionImage = image
-                        
-                    }
+//                    GDService.downloadImage(recipient.actionURL) { data in
+//                        
+//                        let image = UIImage(data: data)
+//                        recipient.actionImage = image
+//                        
+//                    }
                     
                     // append model to array
                     self.recipients.append(recipient)
@@ -97,6 +95,7 @@ class RecipientBrowserViewController: UICollectionViewController, BrowserLayoutD
             //            NSNotificationCenter.defaultCenter().postNotificationName("refreshRecipientCollectionView", object: nil)
             
 //            print(self.recipients[3].firstName)
+            
             self.collectionView?.reloadData()
             
         }
@@ -129,8 +128,94 @@ extension RecipientBrowserViewController {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        //        return dynamicRecipientData.count
+        print("Here are the number of recipients to display:")
+        print(self.recipients.count)
         return self.recipients.count
+    }
+    
+    // detect whether user has scrolled to bottom of cells, and if needs to trigger an API call
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.item + 1 == self.recipients.count {
+            print("We gonna need more recipients!")
+            
+            GDService.profilesForRecipientsViewScrolling(self.recipients.count) { responseObject, error in
+                
+                if let value: AnyObject = responseObject {
+                    var json = JSON(value)
+                    json = json["recipients"]
+                    
+                    // iterate through each JSON entry and map the results to the local model
+                    for recipientIndex in 0..<json.count {
+                        
+                        let recipient = Recipient()
+                        let path = json[recipientIndex]["recipient"]
+                        
+                        // retrieve related model data from API call results
+                        let gdid = path["gdid"].string ?? ""
+                        let firstName = path["firstName"].string?.capitalizedString ?? ""
+                        let lastName = path["lastName"].string?.capitalizedString ?? ""
+                        let age = path["age"].int ?? 0
+                        let gender = path["gender"].string ?? ""
+                        let maritalStatus = path["maritalStatus"].string ?? ""
+                        let numberOfChildren = path["numberOfChildren"].int ?? 0
+                        let phase = path["phase"].string ?? ""
+                        let village = path["village"].string?.capitalizedString ?? ""
+                        
+                        let spendingPlans = path["spendingPlans"].string ?? ""
+                        let goals = path["goals"].string ?? ""
+                        let achievements = path["achievements"].string ?? ""
+                        let challenges = path["challenges"].string ?? ""
+                        
+                        
+                        // assign data to model variables
+                        recipient.gdid = gdid
+                        recipient.firstName = firstName
+                        recipient.lastName = lastName
+                        recipient.age = age
+                        recipient.gender = gender
+                        recipient.maritalStatus = maritalStatus
+                        recipient.numberOfChildren = numberOfChildren
+                        recipient.paymentPhase = phase
+                        recipient.village = village
+                        
+                        recipient.spendingPlans = spendingPlans
+                        recipient.goals = goals
+                        recipient.achievements = achievements
+                        recipient.challenges = challenges
+                        
+                        
+                        // extract photo URLs from internal array
+                        for photoIndex in 0..<path["photos"].count {
+                            
+                            if path["photos"][photoIndex]["type"] == "family" {
+                                recipient.actionURL = path["photos"][photoIndex]["url"].string ?? ""
+                            }
+                            
+                            if path["photos"][photoIndex]["type"] == "face" {
+                                recipient.avatarURL = path["photos"][photoIndex]["url"].string ?? ""
+                            }
+                        }
+                        
+                        // seems to be better performance when download starts earlier
+//                        GDService.downloadImage(recipient.actionURL) { data in
+//                            
+//                            let image = UIImage(data: data)
+//                            recipient.actionImage = image
+//                            
+//                        }
+                        
+                        // append model to array
+                        self.recipients.append(recipient)
+                        
+                    }
+                }
+                
+                // seems like this code is not working?
+                self.collectionView?.reloadData()
+            
+            }
+        }
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -143,6 +228,7 @@ extension RecipientBrowserViewController {
         GDService.downloadImage(recipient.actionURL) { data in
             
             let image = UIImage(data: data)
+            print(recipient.actionURL)
             cell.profileImageView.image = image
             
         }

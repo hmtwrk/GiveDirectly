@@ -22,7 +22,11 @@ class UpdateTableViewCell: UITableViewCell {
     var userHasLiked = false
     var numberOfLikes = 0
 
-    @IBOutlet weak var authorImageView: AsyncImageView!
+    @IBOutlet weak var authorImageView: AsyncImageView! {
+        didSet {
+            print("A newsfeed item's profile image was set.")
+        }
+    }
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!

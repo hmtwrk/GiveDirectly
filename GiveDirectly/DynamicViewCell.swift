@@ -14,8 +14,15 @@ class BrowserViewCell: UICollectionViewCell {
     @IBOutlet weak var storyLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageViewAsync!
     @IBOutlet weak var profileImageViewHeightLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var paymentPhaseImageView: UIImageView!
-    //  @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var paymentPhaseImageView: UIImageView! {
+        
+        didSet {
+            // just testing the observable functionality
+            print("A dynamic view cell image has been set!")
+        }
+        
+    }
+
     
     var displayName: String = ""
     
@@ -39,7 +46,7 @@ class BrowserViewCell: UICollectionViewCell {
         // assign constants to labels
         self.nameLabel.text = recipientName.capitalizedString
         self.storyLabel.text = recipientStory
-//        self.profileImageView.image = recipient.actionImage
+        self.profileImageView.image = recipient.actionImage
         
     }
     
