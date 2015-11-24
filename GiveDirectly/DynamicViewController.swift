@@ -227,7 +227,7 @@ extension RecipientBrowserViewController {
         // download associated image for cell
         GDService.downloadImage(recipient.actionURL) { data in
             
-            let image = UIImage(data: data)
+            let image = UIImage(data: data!)
             print(recipient.actionURL)
             cell.profileImageView.image = image
             

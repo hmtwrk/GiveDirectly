@@ -88,12 +88,12 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
             recipientStatsCell.configureStatsCell(self.recipient)
             
             // download associated image for cell
-            GDService.downloadImage(self.recipient.avatarURL) { data in
-                
-                let image = UIImage(data: data)
-                recipientStatsCell.recipientProfileImageView.image = image
-                
-            }
+//            GDService.downloadImage(self.recipient.avatarURL) { data in
+//                
+//                let image = UIImage(data: data)
+//                recipientStatsCell.recipientProfileImageView.image = image
+//                
+//            }
             
         }
         
@@ -106,12 +106,12 @@ class RecipientProfileTableViewController: UITableViewController, UpdateTableVie
         if let recipientUpdatesCell = cell as? UpdateTableViewCell {
 
             // API call for image
-            GDService.downloadImage(recipient.avatarURL) { data in
-             
-                let image = UIImage(data: data)
-                recipientUpdatesCell.authorImageView.image = image
-                
-            }
+//            GDService.downloadImage(recipient.avatarURL) { data in
+//             
+//                let image = UIImage(data: data)
+//                recipientUpdatesCell.authorImageView.image = image
+//                
+//            }
 
             let update = updates[indexPath.row]
             recipientUpdatesCell.configureUpdateTableViewCell(update)

@@ -63,6 +63,8 @@ struct GDService {
         //            "client_id": clientID
         //        ]
         
+        print("This is the URL string I'm sending: \(URLString).")
+        
         Alamofire.request(.GET, URLString, headers: headers)
             .responseJSON { response in
                 completionBlock(response.result.value as? NSDictionary, response.result.error)
@@ -142,12 +144,12 @@ struct GDService {
     
     
     
-    static func downloadImage(imageURL: String, completionBlock: (NSData) -> () ) {
+    static func downloadImage(imageURL: String, completionBlock: (NSData?) -> () ) {
         
         Alamofire.request(.GET, imageURL, headers: headers).response() {
             (_, _, data, _) in
             
-            completionBlock(data!)
+            completionBlock(data)
         }
     }
     

@@ -19,14 +19,43 @@ class UpdateTableViewCell: UITableViewCell {
     
     weak var delegate: UpdateTableViewCellDelegate?
     
-    var userHasLiked = false
-    var numberOfLikes = 0
-
-    @IBOutlet weak var authorImageView: AsyncImageView! {
+    // property list
+    var update: Update? {
         didSet {
-            print("A newsfeed item's profile image was set.")
+            
+            updateDisposable?.dispose()
+            
+            //            if let update = update {
+            
+            //                updateDisposable = update.avatarImage.bindTo(authorImageView.bnd_image)
+            
+            // free memory of image stored with post that is no longer displayed
+            // 1 (!= doesn't work, but "non-identical" !== seems to)
+            // !== seems to check if the references are different (the same reference, object instance)
+            
+            // the following code works appropriately, but the behavior is being disrupted by the API call and the initial configuration of the cells
+            if let oldValue = oldValue where oldValue !== update {
+                print("🍕🍕🍕🍕🍕🍕🍕🍕🍕🍕🍕🍕🍕")
+                print("The old value was: \(oldValue.text),")
+//                print("🍮🍮🍮🍮🍮🍮🍮🍮🍮🍮🍮🍮🍮")
+//                print("...and the new one is: \(update?.text).")
+//                oldValue.avatarImage.value = nil
+//                print("A secret white mailbox has been discovered and publicized.")
+            }
+            
+            if let update = update {
+                updateDisposable = update.avatarImage.bindTo(authorImageView.bnd_image)
+            }
+            
         }
     }
+    
+    var updateDisposable: DisposableType?
+    
+    var userHasLiked = false
+    var numberOfLikes = 0
+    
+    @IBOutlet weak var authorImageView: AsyncImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updateTitleLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
@@ -55,7 +84,7 @@ class UpdateTableViewCell: UITableViewCell {
         }
         
         
-//        delegate?.updateLikeButtonDidTap(self, sender: sender)
+        //        delegate?.updateLikeButtonDidTap(self, sender: sender)
         self.likeButton.setTitle(String(numberOfLikes), forState: UIControlState.Normal)
         print("Like has been tapped.")
     }
@@ -79,28 +108,29 @@ class UpdateTableViewCell: UITableViewCell {
     }
     
     func recipientImageTapped(sender: AnyObject) {
-
+        
         delegate?.recipientImageDidTap(self, sender: sender)
     }
     
     
     
     // MARK: configuration of cell
+    // instead of calling a function, should TVC just set the property and allow cell to set itself?
     func configureUpdateTableViewCell(update: Update) {
         
-//        print(updateData)
+        //        print(updateData)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("recipientImageTapped:"))
         authorImageView?.userInteractionEnabled = true
         authorImageView?.addGestureRecognizer(tapGestureRecognizer)
         
-        let displayName: String? = update.recipientDisplayName ?? ""
+        let displayName: String? = update.recipientFirstName ?? ""
         let title: String? = update.updateTitle ?? ""
         let updateText: String? = update.text ?? ""
         
         
         authorImageView.makeRound()
-
+        
         // format date as human-readable
         let date:String = update.date ?? ""
         let dateFormatter = NSDateFormatter()
@@ -113,9 +143,9 @@ class UpdateTableViewCell: UITableViewCell {
         
         // TODO: figure out how to make this line fail gracefully if date is nil
         let dateString = dateFormatter.stringFromDate(displayDate!)
-
+        
         // assign UI fields
-        self.authorImageView.image = update.avatarImage
+        //        self.authorImageView.image.value = update.avatarImage
         self.timestampLabel.text = dateString
         self.authorNameLabel.text = displayName ?? ""
         self.updateTitleLabel.text = title ?? ""
@@ -123,23 +153,23 @@ class UpdateTableViewCell: UITableViewCell {
         self.updateStoryLabel.sizeToFit()
     }
     
-//    func configureLikeForCell(withUpdate: Update) {
+    //    func configureLikeForCell(withUpdate: Update) {
     func configureLikeForCell(withNumberOfLikes: Int) {
-    
+        
         //        print(withUpdate.userHasLikedUpdate)
         self.userHasLiked = !userHasLiked
         print(self.userHasLiked)
         
         self.likeButton.setTitle(String(withNumberOfLikes), forState: UIControlState.Normal)
-//        
-//        if withUpdate.userHasLikedUpdate {
-//            // change the image
+        //
+        //        if withUpdate.userHasLikedUpdate {
+        //            // change the image
         
-//            likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
-//
-//        } else {
-//            // image is hollow with unchanged count
-//            likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
-//        }
+        //            likeButton.setImage(UIImage(named: "icon_thumbsup-selected.pdf"), forState: UIControlState.Normal)
+        //
+        //        } else {
+        //            // image is hollow with unchanged count
+        //            likeButton.setImage(UIImage(named: "icon_thumbsup.pdf"), forState: UIControlState.Normal)
+        //        }
     }
 }

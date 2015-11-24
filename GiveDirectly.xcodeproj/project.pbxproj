@@ -12,6 +12,7 @@
 		4A1BAF801B7A922E00BEFCC9 /* DynamicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */; };
 		4A1BAF821B7AA9B500BEFCC9 /* DynamicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */; };
 		4A231BB01BF1011300227B0D /* UIImageViewAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A231BAF1BF1011300227B0D /* UIImageViewAsync.swift */; };
+		4A2C11801C04D61200F502FE /* NSCacheSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C117F1C04D61200F502FE /* NSCacheSwift.swift */; };
 		4A47C62F1BC8667100707B04 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C62E1BC8667100707B04 /* libz.tbd */; };
 		4A47C6311BC8668700707B04 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A47C6301BC8668700707B04 /* libsqlite3.tbd */; };
 		4A5711B31B98C39000CF32B0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5711B21B98C39000CF32B0 /* Like.swift */; };
@@ -232,6 +233,7 @@
 		4A1BAF7F1B7A922E00BEFCC9 /* DynamicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicViewController.swift; sourceTree = "<group>"; };
 		4A1BAF811B7AA9B500BEFCC9 /* DynamicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayout.swift; sourceTree = "<group>"; };
 		4A231BAF1BF1011300227B0D /* UIImageViewAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewAsync.swift; sourceTree = "<group>"; };
+		4A2C117F1C04D61200F502FE /* NSCacheSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCacheSwift.swift; sourceTree = "<group>"; };
 		4A47C62E1BC8667100707B04 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4A47C6301BC8668700707B04 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		4A5711B21B98C39000CF32B0 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				4A6A14A71BF6A17E00730E3C /* ConvenienceKit.h */,
 				4A6A14AD1BF6A17E00730E3C /* DismissSegue.swift */,
 				4A6A14AE1BF6A17E00730E3C /* KeyboardNotificationHandler.swift */,
+				4A2C117F1C04D61200F502FE /* NSCacheSwift.swift */,
 				4A6A14AF1BF6A17E00730E3C /* TextView.swift */,
 				4A6A14B01BF6A17E00730E3C /* TimelineComponent.swift */,
 				4A6A14B11BF6A17E00730E3C /* UIViewController+PresentAnywhere.swift */,
@@ -1041,6 +1044,7 @@
 				4AB36AE81B680A4700ABCE23 /* UserAccountStatsTableViewCell.swift in Sources */,
 				4ADAF11B1B9FB8440004D7E9 /* Update.swift in Sources */,
 				4AECB7AB1C03B19900B2AA93 /* UINavigationItem+Bond.swift in Sources */,
+				4A2C11801C04D61200F502FE /* NSCacheSwift.swift in Sources */,
 				4A7A3B741BC87F4200B304C6 /* SignInViewController.swift in Sources */,
 				4AF2922B1BFE47FF003651E3 /* Comment.swift in Sources */,
 				4AC663F41B7D58C0008AF19F /* DynamicViewCell.swift in Sources */,

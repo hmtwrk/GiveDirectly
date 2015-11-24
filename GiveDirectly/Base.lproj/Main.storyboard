@@ -626,13 +626,6 @@
                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipient story text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBp-oe-F5n">
-                                            <rect key="frame" x="15" y="43" width="290" height="40"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQn-3I-DYc" userLabel="Like Button" customClass="SpringButton" customModule="GiveDirectly" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="83" width="55" height="30"/>
                                             <animations/>
@@ -703,7 +696,6 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="Lpl-eB-KJT" firstAttribute="leading" secondItem="UbC-Zg-Yot" secondAttribute="trailing" constant="8" id="1bZ-V3-DKY"/>
-                                        <constraint firstItem="yBp-oe-F5n" firstAttribute="top" secondItem="Jao-cf-fXg" secondAttribute="bottom" constant="5" id="4dR-eH-TUu"/>
                                         <constraint firstItem="XIP-SH-POs" firstAttribute="bottom" secondItem="Lpl-eB-KJT" secondAttribute="bottom" id="5BH-MM-0os"/>
                                         <constraint firstItem="UbC-Zg-Yot" firstAttribute="centerY" secondItem="Jao-cf-fXg" secondAttribute="centerY" constant="1" id="789-by-PnK"/>
                                         <constraint firstItem="Lpl-eB-KJT" firstAttribute="leading" secondItem="Jao-cf-fXg" secondAttribute="trailing" constant="12" id="7Fh-9n-VN4"/>
@@ -711,15 +703,11 @@
                                         <constraint firstItem="UbC-Zg-Yot" firstAttribute="leading" secondItem="XIP-SH-POs" secondAttribute="trailing" constant="3" id="9w7-le-EX9"/>
                                         <constraint firstAttribute="bottom" secondItem="tQn-3I-DYc" secondAttribute="bottom" constant="8" id="AQZ-Qp-s3o"/>
                                         <constraint firstItem="Jao-cf-fXg" firstAttribute="top" secondItem="bMi-ni-TSg" secondAttribute="top" constant="8" id="Ayl-6Y-VW5"/>
-                                        <constraint firstItem="Jao-cf-fXg" firstAttribute="leading" secondItem="yBp-oe-F5n" secondAttribute="leading" id="B42-RI-Zc6"/>
                                         <constraint firstItem="tQn-3I-DYc" firstAttribute="leading" secondItem="Jao-cf-fXg" secondAttribute="leading" id="BWq-3u-1lA"/>
-                                        <constraint firstItem="UbC-Zg-Yot" firstAttribute="trailing" secondItem="yBp-oe-F5n" secondAttribute="trailing" id="BfJ-3Y-mUc"/>
                                         <constraint firstAttribute="bottom" secondItem="tQn-3I-DYc" secondAttribute="bottom" constant="1" id="BnI-VI-nPS"/>
                                         <constraint firstAttribute="bottom" secondItem="tQn-3I-DYc" secondAttribute="bottom" constant="7.5" id="C66-mI-ulW"/>
                                         <constraint firstItem="CS3-jU-T0j" firstAttribute="leading" secondItem="tQn-3I-DYc" secondAttribute="trailing" id="Fhn-TU-7lz"/>
                                         <constraint firstItem="Jao-cf-fXg" firstAttribute="leading" secondItem="bMi-ni-TSg" secondAttribute="leading" constant="15" id="HMZ-Oq-mBk"/>
-                                        <constraint firstItem="tQn-3I-DYc" firstAttribute="top" secondItem="yBp-oe-F5n" secondAttribute="bottom" id="Hgj-VH-0m4"/>
-                                        <constraint firstAttribute="trailing" secondItem="yBp-oe-F5n" secondAttribute="trailing" constant="15" id="LOg-g6-Pmy"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="UbC-Zg-Yot" secondAttribute="trailing" id="MPj-kH-l7f"/>
                                         <constraint firstItem="XIP-SH-POs" firstAttribute="baseline" secondItem="Lpl-eB-KJT" secondAttribute="baseline" id="QLg-lh-1NS"/>
                                         <constraint firstItem="UbC-Zg-Yot" firstAttribute="baseline" secondItem="Lpl-eB-KJT" secondAttribute="baseline" id="Sp2-MS-O7a"/>
@@ -727,7 +715,6 @@
                                         <constraint firstItem="XIP-SH-POs" firstAttribute="centerY" secondItem="Jao-cf-fXg" secondAttribute="centerY" id="UNR-Sv-CRa"/>
                                         <constraint firstItem="tQn-3I-DYc" firstAttribute="leading" secondItem="bMi-ni-TSg" secondAttribute="leading" id="XBa-jH-X41"/>
                                         <constraint firstAttribute="trailing" secondItem="UbC-Zg-Yot" secondAttribute="trailing" constant="15" id="Z7J-HZ-hRj"/>
-                                        <constraint firstItem="yBp-oe-F5n" firstAttribute="leading" secondItem="bMi-ni-TSg" secondAttribute="leading" constant="8" id="aQn-Ri-c0N"/>
                                         <constraint firstItem="UbC-Zg-Yot" firstAttribute="trailing" secondItem="qwz-ty-wMV" secondAttribute="trailing" id="acR-RH-5da"/>
                                         <constraint firstItem="Lpl-eB-KJT" firstAttribute="centerY" secondItem="Jao-cf-fXg" secondAttribute="centerY" id="fVf-jE-xFJ"/>
                                         <constraint firstAttribute="trailing" secondItem="qwz-ty-wMV" secondAttribute="trailing" id="gnx-nl-oMA"/>
@@ -738,11 +725,7 @@
                                         <constraint firstItem="qwz-ty-wMV" firstAttribute="height" secondItem="tQn-3I-DYc" secondAttribute="height" id="jyW-vc-ySg"/>
                                         <constraint firstItem="Lpl-eB-KJT" firstAttribute="bottom" secondItem="UbC-Zg-Yot" secondAttribute="bottom" id="myf-ts-us3"/>
                                         <constraint firstAttribute="trailing" secondItem="UbC-Zg-Yot" secondAttribute="trailing" constant="8" id="nne-BX-hhg"/>
-                                        <constraint firstItem="yBp-oe-F5n" firstAttribute="leading" secondItem="bMi-ni-TSg" secondAttribute="leadingMargin" id="qCn-ot-h87"/>
-                                        <constraint firstAttribute="trailing" secondItem="yBp-oe-F5n" secondAttribute="trailing" constant="8" id="rP2-dB-5Pn"/>
-                                        <constraint firstItem="yBp-oe-F5n" firstAttribute="leading" secondItem="bMi-ni-TSg" secondAttribute="leading" constant="15" id="rge-Ox-YFl"/>
                                         <constraint firstAttribute="bottom" secondItem="tQn-3I-DYc" secondAttribute="bottom" constant="11" id="tgx-8Z-SVv"/>
-                                        <constraint firstItem="yBp-oe-F5n" firstAttribute="trailing" secondItem="bMi-ni-TSg" secondAttribute="trailingMargin" id="vtw-f1-RKC"/>
                                         <constraint firstItem="CS3-jU-T0j" firstAttribute="width" secondItem="tQn-3I-DYc" secondAttribute="width" id="w8X-a8-KXa"/>
                                         <constraint firstItem="CS3-jU-T0j" firstAttribute="top" secondItem="tQn-3I-DYc" secondAttribute="top" id="wo7-NB-z0C"/>
                                         <constraint firstItem="tQn-3I-DYc" firstAttribute="centerY" secondItem="qwz-ty-wMV" secondAttribute="centerY" id="yUj-vB-KVH"/>
@@ -750,12 +733,7 @@
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="86B-ff-fsf"/>
-                                            <exclude reference="B42-RI-Zc6"/>
                                             <exclude reference="hhY-9Q-nLp"/>
-                                            <exclude reference="aQn-Ri-c0N"/>
-                                            <exclude reference="qCn-ot-h87"/>
-                                            <exclude reference="rP2-dB-5Pn"/>
-                                            <exclude reference="vtw-f1-RKC"/>
                                             <exclude reference="1bZ-V3-DKY"/>
                                             <exclude reference="myf-ts-us3"/>
                                             <exclude reference="AQZ-Qp-s3o"/>
@@ -766,7 +744,6 @@
                                             <exclude reference="5BH-MM-0os"/>
                                             <exclude reference="UNR-Sv-CRa"/>
                                             <exclude reference="789-by-PnK"/>
-                                            <exclude reference="BfJ-3Y-mUc"/>
                                             <exclude reference="MPj-kH-l7f"/>
                                             <exclude reference="acR-RH-5da"/>
                                             <exclude reference="nne-BX-hhg"/>
@@ -781,7 +758,6 @@
                                     <outlet property="extraButton" destination="qwz-ty-wMV" id="4lC-h8-o54"/>
                                     <outlet property="likeButton" destination="tQn-3I-DYc" id="f8l-HW-EW2"/>
                                     <outlet property="timestampLabel" destination="UbC-Zg-Yot" id="apz-dH-QIh"/>
-                                    <outlet property="updateStoryLabel" destination="yBp-oe-F5n" id="zoV-EK-YPf"/>
                                     <outlet property="updateTitleLabel" destination="XIP-SH-POs" id="XN4-6z-YYZ"/>
                                 </connections>
                             </tableViewCell>
@@ -2309,7 +2285,7 @@
         <image name="tab_recipients" width="15" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dBx-mO-uYq"/>
         <segue reference="4oH-eb-ei5"/>
+        <segue reference="fgJ-IO-X8l"/>
     </inferredMetricsTieBreakers>
 </document>
